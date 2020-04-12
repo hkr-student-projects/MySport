@@ -189,7 +189,7 @@ public class WeekCalendar implements Initializable {
         for(int col = 0; col < gridPane.getColumnConstraints().size(); col++){
             for(int row = 0; row < gridPane.getRowConstraints().size(); row++){
                 Pane p = new Pane();
-                p.getStylesheets().add("/view/css/memberStyles.css");
+                p.getStylesheets().add("/view/css/general.css");
                 p.getStyleClass().add("pane");
                 gridPane.add(p, col, row);
                 gridPaneFast[row][col] = p;
