@@ -17,6 +17,10 @@ public class WeekCalendar implements Initializable {
 
     private static MyArrayList<WeekCalendar> weeks;
     @FXML
+    private Text month;
+    @FXML
+    private Text year;
+    @FXML
     private GridPane gridPane;
     private Node[][] gridPaneFast;
     private Node tempPane;

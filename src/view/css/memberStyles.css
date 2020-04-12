@@ -7,8 +7,8 @@
     textFill: rgb(0, 236, 165);
 }
 
-.pane {
-
+.loginLogo {
+    -fx-background-color: #763dee;
 }
 
 .pane:hover {
