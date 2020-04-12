@@ -7,8 +7,12 @@
     textFill: rgb(0, 236, 165);
 }
 
+.pane {
+
+}
+
 .pane:hover {
-    -fx-background-color: rgba(255,59,238,0.83);
+    -fx-background-color: rgba(255,51,61,0.83);
 }
 
 .field{
