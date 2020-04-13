@@ -13,7 +13,7 @@
 
 <AnchorPane cacheShape="false" centerShape="false" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: White;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Login">
    <children>
-      <Pane prefHeight="600.0" prefWidth="450.0" styleClass="loginLogo" stylesheets="@css/memberStyles.css">
+      <Pane prefHeight="600.0" prefWidth="450.0" styleClass="loginLogo" stylesheets="@css/general.css">
          <children>
             <Text fill="WHITE" layoutX="164.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="W E L C O M E   T O" textAlignment="CENTER">
                <font>

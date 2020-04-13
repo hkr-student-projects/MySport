@@ -3,7 +3,9 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
@@ -13,20 +15,20 @@ import model.MyArrayList;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class WeekCalendar implements Initializable {
+public class Calendar implements Initializable {
 
-    private static MyArrayList<WeekCalendar> weeks;
+    private static MyArrayList<Calendar> weeks;
     @FXML
-    private Text month;
-    @FXML
-    private Text year;
+    private Text month, year;
     @FXML
     private GridPane gridPane;
+    @FXML
+    private Button burger;
+    @FXML
+    private HBox bar;
     private Node[][] gridPaneFast;
-    private Node tempPane;
-    private Node prevPane;
-    private int tempRow;
-    private int tempCol;
+    private Node tempPane, prevPane;
+    private int tempRow, tempCol;
     private boolean flag = true;
 
     static {
@@ -37,6 +39,10 @@ public class WeekCalendar implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         gridPaneFast = new Node[gridPane.getRowConstraints().size()][gridPane.getColumnConstraints().size()];
         fillGrid();
+        burger.setOnMouseClicked(e -> {
+            bar.setVisible(!bar.isVisible());
+            bar.setDisable(!bar.isDisabled());
+        });
         gridPane.getChildren().forEach(pane -> pane.setOnMouseClicked(e -> {
             saveTempCords(pane);
             //int[] clickCords = getNodeCords(pane);
