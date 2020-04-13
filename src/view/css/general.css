@@ -14,6 +14,16 @@
     -fx-background-color: rgba(255,51,61,0.83);
 }
 
+.paneEvent {
+	-fx-background-radius: 33;
+	-fx-background-color: white;
+}
+
+.sportEvent {
+	-fx-background-radius: 15;
+	-fx-background-color: #763dee;
+}
+
 .field{
     -fx-background-color: transparent;
     -fx-text-fill: #727272;
@@ -52,4 +62,9 @@
 .scroll-bar:vertical .thumb {
     -fx-background-color: transparent;
     -fx-background-radius: 5em;
+}
+
+.scroll-bar > .increment-button > .increment-arrow,
+.scroll-bar > .decrement-button > .decrement-arrow {
+    -fx-background-color: transparent;
 }
