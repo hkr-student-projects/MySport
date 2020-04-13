@@ -353,7 +353,7 @@
             <String fx:value="button" />
          </styleClass>
       </Button>
-      <HBox fx:id="bar" alignment="CENTER_RIGHT" layoutX="451.0" layoutY="3.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="31.0" prefWidth="409.0" spacing="25.0" styleClass="button" stylesheets="@css/general.css">
+      <HBox fx:id="bar" alignment="CENTER_RIGHT" layoutX="400.0" layoutY="3.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="31.0" prefWidth="451.0" spacing="25.0" styleClass="button" stylesheets="@css/general.css">
          <children>
             <Button mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0">
                <graphic>
@@ -369,6 +369,24 @@
                   <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@img/user-icon_1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/mail-icon_14.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/forum-icon_1.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -404,9 +422,6 @@
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
-         <padding>
-            <Insets right="35.0" />
-         </padding>
       </HBox>
    </children>
 </AnchorPane>
