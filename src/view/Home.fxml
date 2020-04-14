@@ -105,13 +105,13 @@
          </opaqueInsets>
       </HBox>
       <Pane cacheShape="false" centerShape="false" disable="true" layoutX="560.0" layoutY="66.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="303.0" style="-fx-background-color: white; -fx-background-radius: 33;" visible="false" />
-      <ScrollPane cacheShape="false" centerShape="false" fitToWidth="true" focusTraversable="false" layoutX="541.0" layoutY="65.0" prefHeight="526.0" prefWidth="312.0" style="-fx-background-color: transparent;" styleClass="scrollPaneCalendar" stylesheets="@css/general.css">
+      <ScrollPane cacheShape="false" centerShape="false" fitToWidth="true" focusTraversable="false" layoutX="541.0" layoutY="65.0" prefHeight="526.0" prefWidth="303.0" style="-fx-background-color: transparent;" styleClass="scrollPaneCalendar" stylesheets="@css/general.css">
          <content>
             <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="303.0" styleClass="paneEvent" stylesheets="@css/general.css">
                <children>
-                  <VBox layoutX="23.0" layoutY="24.0" prefHeight="655.0" prefWidth="266.0" spacing="25.0">
+                  <VBox cacheShape="false" centerShape="false" layoutX="-10.0" layoutY="41.0" prefHeight="638.0" prefWidth="312.0" spacing="25.0">
                      <children>
-                        <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="247.0" style="-fx-background-color: orange;" styleClass="sportEvent" stylesheets="@css/general.css">
+                        <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="247.0" styleClass="sportEvent" stylesheets="@css/general.css">
                            <children>
                               <Text fill="WHITE" layoutX="27.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volleyball">
                                  <font>
@@ -125,7 +125,7 @@
                               </Text>
                            </children>
                         </Pane>
-                        <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="247.0" style="-fx-background-color: green;" styleClass="sportEvent" stylesheets="@css/general.css">
+                        <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="247.0" styleClass="sportEvent" stylesheets="@css/general.css">
                            <children>
                               <Text fill="WHITE" layoutX="27.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Football">
                                  <font>
@@ -139,7 +139,7 @@
                               </Text>
                            </children>
                         </Pane>
-                        <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="247.0" style="-fx-background-color: #f45431;" styleClass="sportEvent" stylesheets="@css/general.css">
+                        <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="247.0" styleClass="sportEvent" stylesheets="@css/general.css">
                            <children>
                               <Text fill="WHITE" layoutX="27.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Boxing">
                                  <font>
@@ -153,7 +153,7 @@
                               </Text>
                            </children>
                         </Pane>
-                        <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="247.0" style="-fx-background-color: dodgerblue;" styleClass="sportEvent" stylesheets="@css/general.css">
+                        <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="247.0" styleClass="sportEvent" stylesheets="@css/general.css">
                            <children>
                               <Text fill="WHITE" layoutX="27.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Climbing">
                                  <font>
@@ -167,7 +167,7 @@
                               </Text>
                            </children>
                         </Pane>
-                        <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="247.0" style="-fx-background-color: orange;" styleClass="sportEvent" stylesheets="@css/general.css">
+                        <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="247.0" styleClass="sportEvent" stylesheets="@css/general.css">
                            <children>
                               <Text fill="WHITE" layoutX="27.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volleyball">
                                  <font>
