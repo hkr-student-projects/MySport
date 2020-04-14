@@ -9,14 +9,16 @@ public abstract class User {
     private String middleName;
     private Date birthDay;
     private String ssn;
+    private String password;
 
-    public User(String name, String middleName, String surname, String ssn, Date birthDay){
+    public User(String name, String middleName, String surname, String ssn, Date birthDay, String password){
 
         this.name = name;
         this.middleName = middleName;
         this.surname = surname;
         this.ssn = ssn;
         this.birthDay = birthDay;
+        this.password = password;
     }
 
     public String getName() {
@@ -38,4 +40,6 @@ public abstract class User {
     public String getSsn() {
         return ssn;
     }
+
+    public String getPassword() { return password;}
 }
