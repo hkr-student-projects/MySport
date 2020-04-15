@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane cacheShape="false" centerShape="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #763dee;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Account">
+<AnchorPane cacheShape="false" centerShape="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #763dee;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Settings">
     <children>
       <Pane cacheShape="false" centerShape="false" layoutX="510.0" layoutY="97.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="459.0" prefWidth="341.0" style="-fx-background-color: white; -fx-background-radius: 33;">
          <children>
@@ -34,7 +34,7 @@
                   <Font name="AppleGothic Regular" size="16.0" />
                </font>
             </Text>
-            <JFXButton fx:id="buttonSaveName" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="50.0" layoutY="387.0" prefHeight="32.0" prefWidth="104.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="Save name" textFill="WHITE">
+            <JFXButton fx:id="buttonSaveName" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="50.0" layoutY="387.0" onAction="#buttonSaveNameClick" prefHeight="32.0" prefWidth="104.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="Save name" textFill="WHITE">
                <font>
                   <Font name="Arial" size="16.0" />
                </font>
@@ -64,12 +64,12 @@
                </font>
             </Text>
             <TextField fx:id="textFieldNewSurname" layoutX="172.0" layoutY="322.0" promptText="Enter new surname" />
-            <JFXButton fx:id="buttonDeleteAccount" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="181.0" layoutY="387.0" prefHeight="32.0" prefWidth="129.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="Delete account" textFill="WHITE">
+            <JFXButton fx:id="buttonDeleteAccount" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="181.0" layoutY="387.0" onAction="#buttonDeleteAccountClick" prefHeight="32.0" prefWidth="129.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="Delete account" textFill="WHITE">
                <font>
                   <Font name="Arial" size="16.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="buttonSaveNewPwd" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="84.0" layoutY="198.0" prefHeight="32.0" prefWidth="175.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="Save new password" textFill="WHITE">
+            <JFXButton fx:id="buttonSaveNewPwd" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="84.0" layoutY="198.0" onAction="#buttonSaveNewPwdClick" prefHeight="32.0" prefWidth="175.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="Save new password" textFill="WHITE">
                <font>
                   <Font name="Arial" size="16.0" />
                </font>
