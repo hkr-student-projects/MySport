@@ -34,7 +34,7 @@
                   <Font name="AppleGothic Regular" size="16.0" />
                </font>
             </Text>
-            <JFXButton cacheShape="false" centerShape="false" focusTraversable="false" layoutX="50.0" layoutY="387.0" prefHeight="32.0" prefWidth="104.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="Save" textFill="WHITE">
+            <JFXButton fx:id="buttonSaveName" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="50.0" layoutY="387.0" prefHeight="32.0" prefWidth="104.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="Save name" textFill="WHITE">
                <font>
                   <Font name="Arial" size="16.0" />
                </font>
@@ -44,27 +44,32 @@
                   <Font name="AppleGothic Regular" size="16.0" />
                </font>
             </Text>
-            <TextField layoutX="173.0" layoutY="116.0" promptText="Enter new password" />
-            <TextField layoutX="172.0" layoutY="151.0" promptText="Re-enter new password" />
-            <Text fill="#464646" layoutX="70.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change name: " wrappingWidth="111.236328125">
+            <TextField fx:id="textFieldNewPassword" layoutX="173.0" layoutY="116.0" promptText="Enter new password" />
+            <TextField fx:id="textFieldReNewPassword" layoutX="172.0" layoutY="151.0" promptText="Re-enter new password" />
+            <Text fill="#464646" layoutX="64.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change name: " wrappingWidth="111.236328125">
                <font>
                   <Font name="AppleGothic Regular" size="16.0" />
                </font>
             </Text>
-            <TextField layoutX="178.0" layoutY="230.0" promptText="Enter new name" />
-            <Text fill="#464646" layoutX="13.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change middle-name: " wrappingWidth="163.236328125">
+            <TextField fx:id="textFieldNewName" layoutX="172.0" layoutY="255.0" promptText="Enter new name" />
+            <Text fill="#464646" layoutX="7.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change middle-name: " wrappingWidth="163.236328125">
                <font>
                   <Font name="AppleGothic Regular" size="16.0" />
                </font>
             </Text>
-            <TextField layoutX="178.0" layoutY="265.0" promptText="Enter new middle-name" />
-            <Text fill="#464646" layoutX="44.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change surname: " wrappingWidth="129.236328125">
+            <TextField fx:id="textFieldNewMiddleName" layoutX="172.0" layoutY="290.0" promptText="Enter new middle-name" />
+            <Text fill="#464646" layoutX="38.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change surname: " wrappingWidth="129.236328125">
                <font>
                   <Font name="AppleGothic Regular" size="16.0" />
                </font>
             </Text>
-            <TextField layoutX="178.0" layoutY="297.0" promptText="Enter new surname" />
-            <JFXButton cacheShape="false" centerShape="false" focusTraversable="false" layoutX="181.0" layoutY="387.0" prefHeight="32.0" prefWidth="129.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="Delete account" textFill="WHITE">
+            <TextField fx:id="textFieldNewSurname" layoutX="172.0" layoutY="322.0" promptText="Enter new surname" />
+            <JFXButton fx:id="buttonDeleteAccount" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="181.0" layoutY="387.0" prefHeight="32.0" prefWidth="129.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="Delete account" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="16.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="buttonSaveNewPwd" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="84.0" layoutY="198.0" prefHeight="32.0" prefWidth="175.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="Save new password" textFill="WHITE">
                <font>
                   <Font name="Arial" size="16.0" />
                </font>

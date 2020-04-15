@@ -10,8 +10,9 @@ public abstract class User {
     private Date birthDay;
     private String ssn;
     private String password;
+    private String eMail;
 
-    public User(String name, String middleName, String surname, String ssn, Date birthDay, String password){
+    public User(String name, String middleName, String surname, String ssn, Date birthDay, String password, String eMail){
 
         this.name = name;
         this.middleName = middleName;
@@ -19,6 +20,7 @@ public abstract class User {
         this.ssn = ssn;
         this.birthDay = birthDay;
         this.password = password;
+        this.eMail = eMail;
     }
 
     public String getName() {
@@ -42,4 +44,6 @@ public abstract class User {
     }
 
     public String getPassword() { return password;}
+
+    public String getEMail() {return eMail;}
 }
