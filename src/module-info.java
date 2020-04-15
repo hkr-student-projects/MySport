@@ -6,5 +6,6 @@ module MySport {
 
     opens controller;
     opens view;
+    opens view.css;
     opens model;
 }
