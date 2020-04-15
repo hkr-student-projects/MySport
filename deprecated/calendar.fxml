@@ -16,37 +16,37 @@
          <content>
             <Pane prefHeight="427.0" prefWidth="632.0">
                <children>
-                  <TextField alignment="CENTER" editable="false" layoutX="48.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="80.0" styleClass="field" stylesheets="@../css/memberStyles.css" text="MON">
+                  <TextField alignment="CENTER" editable="false" layoutX="48.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="80.0" style="-fx-background-color: #fb3053; -fx-text-fill: white;" styleClass="field" stylesheets="@../css/memberStyles.css" text="MON">
                      <font>
                         <Font name="Arial Black" size="14.0" />
                      </font>
                   </TextField>
-                  <TextField alignment="CENTER" editable="false" layoutX="133.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="80.0" styleClass="field" stylesheets="@../css/memberStyles.css" text="TUE">
+                  <TextField alignment="CENTER" editable="false" layoutX="133.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="80.0" style="-fx-background-color: #fb3053; -fx-text-fill: white;" styleClass="field" stylesheets="@../css/memberStyles.css" text="TUE">
                      <font>
                         <Font name="Arial Black" size="14.0" />
                      </font>
                   </TextField>
-                  <TextField alignment="CENTER" editable="false" layoutX="218.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="80.0" styleClass="field" stylesheets="@../css/memberStyles.css" text="WED">
+                  <TextField alignment="CENTER" editable="false" layoutX="218.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="80.0" style="-fx-background-color: #fb3053; -fx-text-fill: white;" styleClass="field" stylesheets="@../css/memberStyles.css" text="WED">
                      <font>
                         <Font name="Arial Black" size="14.0" />
                      </font>
                   </TextField>
-                  <TextField alignment="CENTER" editable="false" layoutX="303.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="80.0" styleClass="field" stylesheets="@../css/memberStyles.css" text="TUE">
+                  <TextField alignment="CENTER" editable="false" layoutX="303.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="80.0" style="-fx-background-color: #fb3053; -fx-text-fill: white;" styleClass="field" stylesheets="@../css/memberStyles.css" text="TUE">
                      <font>
                         <Font name="Arial Black" size="14.0" />
                      </font>
                   </TextField>
-                  <TextField alignment="CENTER" editable="false" layoutX="388.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="80.0" styleClass="field" stylesheets="@../css/memberStyles.css" text="FRI">
+                  <TextField alignment="CENTER" editable="false" layoutX="388.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="80.0" style="-fx-background-color: #fb3053; -fx-text-fill: white;" styleClass="field" stylesheets="@../css/memberStyles.css" text="FRI">
                      <font>
                         <Font name="Arial Black" size="14.0" />
                      </font>
                   </TextField>
-                  <TextField alignment="CENTER" editable="false" layoutX="473.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="80.0" styleClass="field" stylesheets="@../css/memberStyles.css" text="SAT">
+                  <TextField alignment="CENTER" editable="false" layoutX="473.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="80.0" style="-fx-background-color: #fb3053; -fx-text-fill: white;" styleClass="field" stylesheets="@../css/memberStyles.css" text="SAT">
                      <font>
                         <Font name="Arial Black" size="14.0" />
                      </font>
                   </TextField>
-                  <TextField alignment="CENTER" editable="false" layoutX="558.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="80.0" styleClass="field" stylesheets="@../css/memberStyles.css" text="SUN">
+                  <TextField alignment="CENTER" editable="false" layoutX="558.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="80.0" style="-fx-background-color: #fb3053; -fx-text-fill: white;" styleClass="field" stylesheets="@../css/memberStyles.css" text="SUN">
                      <font>
                         <Font name="Arial Black" size="14.0" />
                      </font>
