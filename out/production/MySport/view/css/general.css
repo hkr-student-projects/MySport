@@ -2,12 +2,26 @@
     -fx-background-color: transparent;
 }
 
+.buttonInAcc {
+    -fx-background-color: #763dee;
+}
+
 .loginLogo {
     -fx-background-color: #763dee;
 }
 
 .pane:hover {
     -fx-background-color: rgba(255,51,61,0.83);
+}
+
+.paneEvent {
+	-fx-background-radius: 33;
+	-fx-background-color: white;
+}
+
+.sportEvent {
+	-fx-background-radius: 3;
+	-fx-background-color: #763dee;
 }
 
 .field{
@@ -48,4 +62,9 @@
 .scroll-bar:vertical .thumb {
     -fx-background-color: transparent;
     -fx-background-radius: 5em;
+}
+
+.scroll-bar > .increment-button > .increment-arrow,
+.scroll-bar > .decrement-button > .decrement-arrow {
+    -fx-background-color: transparent;
 }

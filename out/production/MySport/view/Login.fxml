@@ -30,9 +30,9 @@
                   <Font name="Foxlite Script" size="64.0" />
                </font>
             </Text>
-            <ImageView fitHeight="158.0" fitWidth="170.0" layoutX="142.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="207.0" fitWidth="200.0" layoutX="122.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@img/logo.png" />
+                  <Image url="@img/user-icon_5.png" />
                </image>
             </ImageView>
          </children></Pane>
