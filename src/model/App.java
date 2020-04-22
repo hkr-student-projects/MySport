@@ -25,8 +25,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Login.fxml"));
-        primaryStage.setScene(new Scene(loader.load(), 900, 600));
+        primaryStage.setScene(SceneSwitcher.getScene("Home.fxml"));
         this.stage = primaryStage;
         primaryStage.setResizable(false);
         primaryStage.show();

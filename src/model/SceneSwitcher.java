@@ -22,11 +22,12 @@ public class SceneSwitcher {
     public static SceneSwitcher sceneSwitcher = new SceneSwitcher();
 
     static {
-        loaders = new HashMap<>(10);
         try {
-            for(File f : new File("src/view").listFiles((dir, name) ->
-                    name.toLowerCase().endsWith(".fxml") && !name.equals("Login.fxml"))){
-                loaders.put(f.getName(), new Scene(new FXMLLoader(f.toURI().toURL()).load()));
+            File[] files = new File("src/view").listFiles((dir, name) ->
+                    name.toLowerCase().endsWith(".fxml"));
+            loaders = new HashMap<>(files.length);
+            for(File f : files){
+                loaders.put(f.getName(), new Scene(new FXMLLoader(f.toURI().toURL()).load(), 900, 600));
             }
         } catch (IOException e) {
             Logger.logException(e);
