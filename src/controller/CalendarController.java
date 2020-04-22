@@ -1,8 +1,12 @@
 package controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -10,8 +14,10 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import model.MyArrayList;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -25,6 +31,8 @@ public class CalendarController implements Initializable {
     @FXML
     private Button burger;
     @FXML
+    private Button homeButton;
+    @FXML
     private HBox bar;
     private Node[][] gridPaneFast;
     private Node tempPane, prevPane;
@@ -33,6 +41,14 @@ public class CalendarController implements Initializable {
 
     static {
         weeks = new MyArrayList<>();
+    }
+
+    @FXML
+    public void changeToHome(ActionEvent event) throws IOException {
+        Parent newParent = FXMLLoader.load(getClass().getResource("/View/Home.fxml"));
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene newScene = new Scene(newParent);
+        window.setScene(newScene);
     }
 
     @Override
@@ -47,7 +63,7 @@ public class CalendarController implements Initializable {
             saveTempCords(pane);
             //int[] clickCords = getNodeCords(pane);
             //out.println("row:"+ clickCords[0] +" " + "col:"+ clickCords[1] +"");
-            if(flag = !flag) {
+            if (flag = !flag) {
                 int[] tempPaneCords = getNodeCords(tempPane);//[0:row, 1:col]
 //                out.println("row:"+ tempPaneCords[0] +" " + "col:"+ tempPaneCords[1] +"");
 //                out.println("clickCords[0]: " + tempPaneCords[0] + " tempR: " + tempRow);
@@ -64,10 +80,10 @@ public class CalendarController implements Initializable {
 //                out.println("tempRow: " + tempRow);
 //                out.println("tempPaneCords[0]: " + tempPaneCords[0]);
 //                out.println("extendBy: " + extendBy);
-                if(extendBy != 0){
+                if (extendBy != 0) {
 //                    GridPane.setRowSpan(tempPane, extendBy + 1);
 //                    GridPane.setColumnSpan(tempPane, 1);
-                    if(extendBy < 0){
+                    if (extendBy < 0) {
                         int row = tempRow;
                         int col = tempCol;
                         tempRow = tempPaneCords[0];
@@ -82,7 +98,7 @@ public class CalendarController implements Initializable {
                 }
 
                 nodeTrackMouse(false);
-                Pane p = (Pane)tempPane;
+                Pane p = (Pane) tempPane;
                 tempPane.getProperties().put("baked", true);
                 Text t = new Text(10, 20, "09:35");
                 t.setFill(Paint.valueOf("#FFFFFF"));
@@ -91,8 +107,7 @@ public class CalendarController implements Initializable {
                 t1.setFill(Paint.valueOf("#FFFFFF"));
                 t1.setFont(new Font("Helvetica Light", 11.0));
                 p.getChildren().addAll(t, t1);
-            }
-            else {
+            } else {
                 pane.setStyle("-fx-background-color: cyan;");
                 tempPane = pane;
                 nodeTrackMouse(true);
@@ -100,14 +115,14 @@ public class CalendarController implements Initializable {
         }));
     }
 
-    private void saveTempCords(Node pane){
+    private void saveTempCords(Node pane) {
         int[] cords = getNodeCords(pane);
         tempRow = cords[0];
         tempCol = cords[1];
     }
 
     private void deleteBetween(int startRow, int endRow, int col) {
-        for(int i = startRow; i <= endRow; i++){
+        for (int i = startRow; i <= endRow; i++) {
             gridPane.getChildren().remove(getNode(i, col));
         }
     }
@@ -120,13 +135,13 @@ public class CalendarController implements Initializable {
 //        }
 //    }
 
-    private void nodeTrackMouse(boolean flag){
-        if(flag){
+    private void nodeTrackMouse(boolean flag) {
+        if (flag) {
             gridPane.getChildren().forEach(p -> {
                 p.setOnMouseEntered(e -> {
-                    if(p.getProperties().containsKey("baked"))
+                    if (p.getProperties().containsKey("baked"))
                         return;
-                    if(prevPane != null && !prevPane.getProperties().containsKey("baked") && isAfter(getNodeCords(p), getNodeCords(prevPane)))
+                    if (prevPane != null && !prevPane.getProperties().containsKey("baked") && isAfter(getNodeCords(p), getNodeCords(prevPane)))
                         prevPane.setStyle("");
                     int[] cords = getNodeCords(p);
                     p.setStyle("-fx-background-color: yellow;");
@@ -136,23 +151,22 @@ public class CalendarController implements Initializable {
                     prevPane = p;
                 });
             });
-        }
-        else gridPane.getChildren().forEach(p -> {
+        } else gridPane.getChildren().forEach(p -> {
             p.setOnMouseEntered(null);
             p.setOnMouseExited(null);
         });
     }
 
-    private int[] getNodeCords(Node n){
+    private int[] getNodeCords(Node n) {
         Object var0 = n.getProperties().get("gridpane-row");
         Object var1 = n.getProperties().get("gridpane-column");
         int row = var0 == null ? 0 : (int) var0;
         int col = var1 == null ? 0 : (int) var1;
 
-        return new int[] { row, col };
+        return new int[]{row, col};
     }
 
-    private Node getNode (int row, int column) {
+    private Node getNode(int row, int column) {
 //        Node result = null;
 //
 //        for (Node node : gridPane.getChildren()) {
@@ -171,29 +185,29 @@ public class CalendarController implements Initializable {
     }
 
     private void checkColorBetween(int[] start, int[] end) {
-        if(end[0] < start[0]){
+        if (end[0] < start[0]) {
             int t = start[0];
             start[0] = end[0];
             end[0] = t;
         }
-        for(int i = start[0]; i <= end[0]; i++){
+        for (int i = start[0]; i <= end[0]; i++) {
             Node node = getNode(i, end[1]);
             //out.println("i: " + i + " row: " + tempRow);
-            if(node.getStyle().isBlank())
+            if (node.getStyle().isBlank())
                 node.setStyle("-fx-background-color: purple;");
         }
     }
 
-    private boolean isAfter(int[] crnt, int[] prev){
+    private boolean isAfter(int[] crnt, int[] prev) {
         int[] tempPaneCords = getNodeCords(tempPane);
 
         //return (base[0] > tempPaneCords[0] ? check[0] > base[0] : check[0] < base[0]) & check[1] == base[1];
         return ((Math.abs(crnt[0] - tempPaneCords[0])) < (Math.abs(prev[0] - tempPaneCords[0]))) & crnt[1] == prev[1];
     }
 
-    private void fillGrid(){
-        for(int col = 0; col < gridPane.getColumnConstraints().size(); col++){
-            for(int row = 0; row < gridPane.getRowConstraints().size(); row++){
+    private void fillGrid() {
+        for (int col = 0; col < gridPane.getColumnConstraints().size(); col++) {
+            for (int row = 0; row < gridPane.getRowConstraints().size(); row++) {
                 Pane p = new Pane();
                 p.getStylesheets().add("/view/css/general.css");
                 p.getStyleClass().add("pane");
