@@ -3,7 +3,9 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -14,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane cacheShape="false" centerShape="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #763dee;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Account">
+<AnchorPane cacheShape="false" centerShape="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #763dee;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Home">
     <children>
         <Text fill="WHITE" layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="John Cena (Leader)" wrappingWidth="341.0">
             <font>
@@ -33,6 +35,9 @@
                 <String fx:value="burgerButton" />
                 <String fx:value="button" />
             </styleClass>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
         </Button>
       <HBox fx:id="bar" alignment="CENTER_RIGHT" layoutX="400.0" layoutY="3.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="31.0" prefWidth="400.0" spacing="25.0" styleClass="button" stylesheets="@css/general.css">
          <children>
@@ -44,6 +49,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
             </Button>
             <Button mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0">
                <graphic>
@@ -53,6 +61,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
             </Button>
             <Button mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0">
                <graphic>
@@ -62,6 +73,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
             </Button>
             <Button mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0">
                <graphic>
@@ -71,8 +85,11 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0">
+            <Button mnemonicParsing="false" onAction="#changeToCalendar" prefHeight="9.0" prefWidth="32.0">
                <graphic>
                   <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -80,6 +97,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
             </Button>
             <Button mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0">
                <graphic>
@@ -89,6 +109,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
             </Button>
             <Button mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0">
                <graphic>
@@ -98,94 +121,25 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
             </Button>
          </children>
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </HBox>
-      <Pane cacheShape="false" centerShape="false" disable="true" layoutX="560.0" layoutY="66.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="303.0" style="-fx-background-color: white; -fx-background-radius: 33;" visible="false" />
       <ScrollPane cacheShape="false" centerShape="false" fitToWidth="true" focusTraversable="false" layoutX="541.0" layoutY="65.0" prefHeight="526.0" prefWidth="303.0" style="-fx-background-color: transparent;" styleClass="scrollPaneCalendar" stylesheets="@css/general.css">
          <content>
-            <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="303.0" styleClass="paneEvent" stylesheets="@css/general.css">
+            <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="294.0" prefWidth="302.0" styleClass="paneEvent" stylesheets="@css/general.css">
                <children>
-                  <VBox cacheShape="false" centerShape="false" layoutX="-10.0" layoutY="41.0" prefHeight="638.0" prefWidth="312.0" spacing="25.0">
-                     <children>
-                        <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="247.0" styleClass="sportEvent" stylesheets="@css/general.css">
-                           <children>
-                              <Text fill="WHITE" layoutX="27.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volleyball">
-                                 <font>
-                                    <Font name="Al Tarikh Regular" size="20.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="WHITE" layoutX="131.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="16:30 - 19:00" wrappingWidth="124.87109375">
-                                 <font>
-                                    <Font name="Arial Black" size="15.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </Pane>
-                        <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="247.0" styleClass="sportEvent" stylesheets="@css/general.css">
-                           <children>
-                              <Text fill="WHITE" layoutX="27.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Football">
-                                 <font>
-                                    <Font name="Al Tarikh Regular" size="20.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="WHITE" layoutX="131.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="19:05 - 20:30" wrappingWidth="124.87109375">
-                                 <font>
-                                    <Font name="Arial Black" size="15.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </Pane>
-                        <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="247.0" styleClass="sportEvent" stylesheets="@css/general.css">
-                           <children>
-                              <Text fill="WHITE" layoutX="27.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Boxing">
-                                 <font>
-                                    <Font name="Al Tarikh Regular" size="20.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="WHITE" layoutX="131.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="20:30 - 22:00" wrappingWidth="124.87109375">
-                                 <font>
-                                    <Font name="Arial Black" size="15.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </Pane>
-                        <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="247.0" styleClass="sportEvent" stylesheets="@css/general.css">
-                           <children>
-                              <Text fill="WHITE" layoutX="27.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Climbing">
-                                 <font>
-                                    <Font name="Al Tarikh Regular" size="20.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="WHITE" layoutX="131.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="16:00 - 17:30" wrappingWidth="124.87109375">
-                                 <font>
-                                    <Font name="Arial Black" size="15.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </Pane>
-                        <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="247.0" styleClass="sportEvent" stylesheets="@css/general.css">
-                           <children>
-                              <Text fill="WHITE" layoutX="27.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volleyball">
-                                 <font>
-                                    <Font name="Al Tarikh Regular" size="20.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="WHITE" layoutX="131.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="17:30 - 19:00" wrappingWidth="124.87109375">
-                                 <font>
-                                    <Font name="Arial Black" size="15.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </Pane>
-                     </children>
-                     <padding>
-                        <Insets left="5.0" />
-                     </padding>
-                  </VBox>
+                  <Text layoutX="112.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Activities">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <ListView layoutX="9.0" layoutY="30.0" opacity="0.72" prefHeight="254.0" prefWidth="284.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" />
                </children>
             </Pane>
          </content>
@@ -302,5 +256,24 @@
             </Pane>
          </content>
       </ScrollPane>
+      <Pane layoutX="599.0" layoutY="368.0" prefHeight="202.0" prefWidth="191.0">
+         <children>
+            <ImageView fitHeight="115.0" fitWidth="176.0" layoutX="8.0" layoutY="14.0">
+               <image>
+                  <Image url="@img/LogoMakr_57xIWQ.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="4.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MySport" wrappingWidth="183.60009765625">
+               <font>
+                  <Font name="Dubai Bold" size="46.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Text fill="WHITE" layoutX="224.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="•4/22/2020•" wrappingWidth="113.45471096038818">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
     </children>
 </AnchorPane>
