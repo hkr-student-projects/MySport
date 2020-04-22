@@ -143,7 +143,7 @@ public class DatabaseManager {
     public static Connection createConnection(){
         Connection conn = null;
         try {
-            conn = DriverManager.getConnection(App.config.DatabaseAddress, App.config.DatabaseUsername, App.config.DatabasePassword);
+            conn = DriverManager.getConnection(Main.config.DatabaseAddress, Main.config.DatabaseUsername, Main.config.DatabasePassword);
         } catch (SQLException ex) {
             Logger.logException(ex);
         }

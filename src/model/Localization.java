@@ -73,19 +73,19 @@ public class Localization {
         if(!d.exists())
             d.mkdir();
         File[] fs = new File[] {
-                new File("Localization//"+ App.config.languageCode +".menu.json"),
-                new File("Localization//"+ App.config.languageCode +".bookinginfo.json"),
-                new File("Localization//"+ App.config.languageCode +".booking.json"),
-                new File("Localization//"+ App.config.languageCode +".admin.json")
+                new File("Localization//"+ Main.config.languageCode +".menu.json"),
+                new File("Localization//"+ Main.config.languageCode +".bookinginfo.json"),
+                new File("Localization//"+ Main.config.languageCode +".booking.json"),
+                new File("Localization//"+ Main.config.languageCode +".admin.json")
         };
         for(File f : fs){
             if(!f.exists()){
-                Logger.logError("Unable to load localization language pack: "+ App.config.languageCode +", because pack does not exist");
+                Logger.logError("Unable to load localization language pack: "+ Main.config.languageCode +", because pack does not exist");
                 return;
             }
             else {
 
-                try (FileReader reader = new FileReader(""+ App.config.languageCode +".translation.json"))
+                try (FileReader reader = new FileReader(""+ Main.config.languageCode +".translation.json"))
                 {
                     Deserialize(reader);
                 }

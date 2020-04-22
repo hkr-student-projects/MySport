@@ -1,21 +1,14 @@
 package model;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.FileFilter;
-import java.io.FilenameFilter;
-
-import static java.lang.System.out;
-
-public class App extends Application {
+public class Main extends Application {
 
     public static Config config;
     public static DatabaseManager databaseManager;
-    public static App instance;
+    public static Main instance;
     private Stage stage;
 
     static {
