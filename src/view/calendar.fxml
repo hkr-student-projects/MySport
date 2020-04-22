@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<<<<<<< HEAD
-<?import java.lang.String?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-=======
->>>>>>> parent of ee33433... Merge pull request #7 from Group4-ProjectCourse/deniel-branch
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -19,11 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< HEAD
-<AnchorPane cacheShape="false" centerShape="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #763dee;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CalendarController">
-=======
 <AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.WeekCalendar">
->>>>>>> parent of ee33433... Merge pull request #7 from Group4-ProjectCourse/deniel-branch
    <children>
       <ScrollPane cacheShape="false" centerShape="false" fitToWidth="true" focusTraversable="false" layoutY="57.0" prefHeight="543.0" prefWidth="900.0" scaleShape="false" style="-fx-border-color: transparent; -fx-background-color: transparent;">
          <content>
@@ -170,122 +159,6 @@
                <font>
                   <Font name="Helvetica Light" size="16.0" />
                </font>
-<<<<<<< HEAD
-            </Text>
-         </children>
-      </Pane>
-      <Text fill="WHITE" layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="John Cena (Leader)" wrappingWidth="341.0">
-         <font>
-            <Font name="AppleGothic Regular" size="14.0" />
-         </font>
-      </Text>
-      <Button fx:id="burger" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="857.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="31.0" prefWidth="31.0" scaleShape="false" stylesheets="@css/general.css">
-         <graphic>
-            <ImageView fitHeight="19.0" fitWidth="37.0" nodeOrientation="INHERIT" preserveRatio="true" smooth="false">
-               <image>
-                  <Image url="@img/burger.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <styleClass>
-            <String fx:value="burgerButton" />
-            <String fx:value="button" />
-         </styleClass>
-         <cursor>
-            <Cursor fx:constant="OPEN_HAND" />
-         </cursor>
-      </Button>
-      <HBox fx:id="bar" alignment="CENTER_RIGHT" layoutX="400.0" layoutY="3.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="31.0" prefWidth="451.0" spacing="25.0" styleClass="button" stylesheets="@css/general.css">
-         <children>
-            <Button mnemonicParsing="false" onAction="#changeToHome" prefHeight="9.0" prefWidth="32.0">
-               <graphic>
-                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@img/home-icon_2.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0">
-               <graphic>
-                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@img/user-icon_1.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0">
-               <graphic>
-                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@img/mail-icon_14.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0">
-               <graphic>
-                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@img/forum-icon_1.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0">
-               <graphic>
-                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@img/calendar-icon_4.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0">
-               <graphic>
-                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@img/settings-icon_10.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0">
-               <graphic>
-                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@img/power-off-icon_1.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-            </Button>
-         </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-=======
             </TextField>
             <TextField alignment="CENTER" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="111.0" scaleShape="false" styleClass="field" stylesheets="@../css/memberStyles.css" text="Wed">
                <font>
@@ -352,7 +225,6 @@
                </font>
             </TextField>
          </children>
->>>>>>> parent of ee33433... Merge pull request #7 from Group4-ProjectCourse/deniel-branch
       </HBox>
       <Line endX="690.0" layoutX="180.0" layoutY="55.0" startX="-103.0" stroke="#727272" strokeWidth="0.5" />
    </children>
