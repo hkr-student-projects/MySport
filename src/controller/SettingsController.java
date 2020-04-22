@@ -1,4 +1,4 @@
 package controller;
 
-public class Settings {
+public class SettingsController {
 }

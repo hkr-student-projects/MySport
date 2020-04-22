@@ -8,7 +8,7 @@ import javafx.scene.layout.HBox;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Account implements Initializable {
+public class AccountController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

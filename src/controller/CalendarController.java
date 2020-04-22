@@ -15,9 +15,9 @@ import model.MyArrayList;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Calendar implements Initializable {
+public class CalendarController implements Initializable {
 
-    private static MyArrayList<Calendar> weeks;
+    private static MyArrayList<CalendarController> weeks;
     @FXML
     private Text month, year;
     @FXML
