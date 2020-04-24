@@ -3,7 +3,7 @@ package model;
 import java.util.Arrays;
 import java.util.Collection;
 
-public class MyArrayList<T> {
+public class ArrayList<T> {
 
     private static int avrg;
     private Object[] content;
@@ -13,17 +13,17 @@ public class MyArrayList<T> {
         avrg = 10;
     }
 
-    public MyArrayList(){
+    public ArrayList(){
         content = new Object[avrg];
         size = 0;
     }
 
-    public MyArrayList(Collection<? extends T> c) {
+    public ArrayList(Collection<? extends T> c) {
         content = c.toArray();
         size = content.length;
     }
 
-    public MyArrayList(int initialCapacity) {
+    public ArrayList(int initialCapacity) {
         if (initialCapacity > 0)
             this.content = new Object[initialCapacity];
         else if (initialCapacity == 0)

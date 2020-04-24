@@ -1,6 +1,7 @@
-package model;
+package model.Localization;
 
 import model.Logging.Logger;
+import model.Main;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;

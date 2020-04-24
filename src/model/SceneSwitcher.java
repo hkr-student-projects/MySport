@@ -2,34 +2,29 @@ package model;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.TextField;
 import model.Logging.Logger;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Field;
-import java.net.MalformedURLException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
-import static java.lang.System.out;
 
 public class SceneSwitcher {
 
     private static Map<String, Scene> loaders;
-    public static SceneSwitcher sceneSwitcher = new SceneSwitcher();
+    public static SceneSwitcher instance = new SceneSwitcher();
 
-    static {
+    static  {
         try {
             File[] files = new File("src/view").listFiles((dir, name) ->
                     name.toLowerCase().endsWith(".fxml"));
+            assert files != null;
             loaders = new HashMap<>(files.length);
             for(File f : files){
                 loaders.put(f.getName(), new Scene(new FXMLLoader(f.toURI().toURL()).load(), 900, 600));
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
+            System.out.println("excep");
             Logger.logException(e);
         }
     }
@@ -58,7 +53,7 @@ public class SceneSwitcher {
 //        return loaders;
 //    }
 
-    public static Scene getScene(String name){
+    public Scene getScene(String name){
         return loaders.get(name);
     }
 }

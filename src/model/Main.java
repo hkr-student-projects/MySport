@@ -17,9 +17,9 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        primaryStage.setScene(SceneSwitcher.getScene("Home.fxml"));
-        this.stage = primaryStage;
+    public void start(Stage primaryStage) {
+        primaryStage.setScene(SceneSwitcher.instance.getScene("Calendar.fxml"));
+        stage = primaryStage;
         primaryStage.setResizable(false);
         primaryStage.show();
         instance = this;
@@ -28,4 +28,5 @@ public class Main extends Application {
     public void setScene(Scene scene){
         this.stage.setScene(scene);
     }
+
 }

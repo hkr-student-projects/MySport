@@ -2,6 +2,16 @@
     -fx-background-color: transparent;
 }
 
+.buttonTab:hover {
+    -fx-background-color: transparent;
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+}
+
+.buttonTab:pressed {
+    -fx-opacity: 0.25;
+}
+
 .buttonInAcc {
     -fx-background-color: #763dee;
 }
@@ -10,8 +20,14 @@
     -fx-background-color: #763dee;
 }
 
-.pane:hover {
-    -fx-background-color: rgba(255,51,61,0.83);
+/*.pane:hover {*/
+/*    -fx-background-color: rgba(255,51,61,0.83);*/
+/*}*/
+
+.pane {
+    -fx-border-style: solid solid none none;
+    -fx-border-color: rgb(231, 231, 231) #FFFFFF;
+    -fx-border-width: 0.5;
 }
 
 .paneEvent {
