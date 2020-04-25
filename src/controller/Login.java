@@ -19,6 +19,6 @@ public class Login implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        login.setOnMouseClicked(e -> Main.instance.setScene(SceneSwitcher.instance.getScene("Home.fxml")));
+        login.setOnMouseClicked(e -> Main.instance.setScene(SceneSwitcher.instance.getScene("Home")));
     }
 }

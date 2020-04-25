@@ -3,6 +3,7 @@ package model;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Main extends Application {
 
@@ -18,15 +19,15 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setScene(SceneSwitcher.instance.getScene("Calendar.fxml"));
-        stage = primaryStage;
+        primaryStage.setScene(SceneSwitcher.instance.getScene("Calendar"));
+        primaryStage.initStyle(StageStyle.UTILITY);
         primaryStage.setResizable(false);
         primaryStage.show();
+        stage = primaryStage;
         instance = this;
     }
 
     public void setScene(Scene scene){
         this.stage.setScene(scene);
     }
-
 }

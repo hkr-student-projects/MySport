@@ -14,21 +14,25 @@ public class SceneSwitcher {
     private static Map<String, Scene> loaders;
     public static SceneSwitcher instance = new SceneSwitcher();
 
-    static  {
+    static {
         try {
             File[] files = new File("src/view").listFiles((dir, name) ->
                     name.toLowerCase().endsWith(".fxml"));
             assert files != null;
             loaders = new HashMap<>(files.length);
-            for(File f : files){
-                loaders.put(f.getName(), new Scene(new FXMLLoader(f.toURI().toURL()).load(), 900, 600));
+            for(File f : files) {
+                loaders.put(f.getName().substring(0, f.getName().length() - 5), new Scene(new FXMLLoader(f.toURI().toURL()).load(), 900, 600));
             }
-        } catch (Exception e) {
-            System.out.println("excep");
+        }
+        catch (IOException e) {
             Logger.logException(e);
         }
     }
 
+    public Scene getScene(String name){
+        return loaders.get(name);
+    }
+}
 //    private Map<String, Scene> getLoaders() throws IOException {
 //
 //        Field[] fields = this.getClass().getDeclaredFields();
@@ -52,8 +56,3 @@ public class SceneSwitcher {
 //
 //        return loaders;
 //    }
-
-    public Scene getScene(String name){
-        return loaders.get(name);
-    }
-}
