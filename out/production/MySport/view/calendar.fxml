@@ -229,6 +229,7 @@
                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                             <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
                           </rowConstraints>
                         </GridPane>
                      </children>

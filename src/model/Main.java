@@ -2,6 +2,7 @@ package model;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -19,6 +20,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        primaryStage.getIcons().add(new Image("view/img/jarIcon.png"));
         primaryStage.setScene(SceneSwitcher.instance.getScene("Calendar"));
         primaryStage.initStyle(StageStyle.UTILITY);
         primaryStage.setResizable(false);

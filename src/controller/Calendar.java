@@ -11,8 +11,12 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import model.ArrayList;
+import model.Main;
+
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import static java.lang.System.out;
 
 public class Calendar extends Menu implements Initializable {
 
@@ -45,54 +49,6 @@ public class Calendar extends Menu implements Initializable {
         gridPane.getChildren().forEach(pane -> pane.setOnMouseClicked(e -> buildActivity(pane)));
     }
 
-    private void move(Pane pane, int sceneY){
-        int dif = initY - sceneY;
-        if(Math.abs(dif) > 15){
-            int[] cords = getNodeCords(pane);
-            if(cords[0] == 0)
-                return;
-            if(dif > 0){
-                int span = (int)pane.getProperties().get("span");
-                GridPane.setRowSpan(pane, span - 1);
-                addBetween(cords[0] + span - 1, span + cords[0], cords[1]);
-                gridPane.getChildren().remove(pane);
-                gridPane.getChildren().remove(64 * cords[1] + cords[0] - 1);
-                gridPane.add(pane, cords[1], cords[0] - 1);
-                gridPaneFast[cords[0]][cords[1]] = createPane(true);
-                GridPane.setRowSpan(pane, span);
-//                Pane above = (Pane)gridPaneFast[cords1[0] - 1][cords1[1]];
-//                int[] aboveCords = getNodeCords(above);
-//                above.setStyle(color);
-//                ObservableMap<Object, Object> props = above.getProperties();
-//                props.put("baked", true);
-//                int span1 = (int)pane.getProperties().get("span");
-//                props.put("span", span1);
-//                //cal new time
-//                pane.setStyle("");
-//                pane.getChildren().removeAll();
-//                deleteBetween(aboveCords[0] + 1, aboveCords[0] + span1, tempCol);
-//                GridPane.setRowSpan(pane, 1);
-//                GridPane.setRowSpan(above, span1);
-//                above.setOnMouseDragged(e -> move(above, (int) e.getSceneY()));
-//                    int span1 = (int)pane.getProperties().get("span");
-//                    GridPane.setRowSpan(pane, 1);
-//                    gridPaneFast[cords1[0] - 1][cords1[1]] = pane;
-//                    //deleteBetween(cords1[0], cords1[0] + span1, cords1[1]);
-//                    GridPane.setRowSpan(pane, span1);
-//                    gridPaneFast[cords1[0]][cords1[1]] = new Pane();
-            }
-            else {
-
-            }
-        }
-    }
-
-    private boolean bakedAbove(int[] cords){
-        Pane above = (Pane)gridPaneFast[cords[0] - 1][cords[1]];
-        System.out.println(getNodeCords(above)[0]);
-        return above.getProperties().containsKey("baked");
-    }
-
     private void buildActivity(Node pane){
 
         if(tempPane != null && getNodeCords(pane)[1] != getNodeCords(tempPane)[1])
@@ -110,7 +66,7 @@ public class Calendar extends Menu implements Initializable {
                     tempPaneCords[1] = col;
                     tempPane = pane;
                 }
-                deleteBetween(tempPaneCords[0] + 1, tempRow, tempCol);
+                deleteBetween(tempPane, tempPaneCords[0] + 1, tempRow, tempCol);
                 GridPane.setRowSpan(tempPane, Math.abs(extendBy) + 1);
             }
             bakePane(Math.abs(extendBy) + 1);
@@ -130,51 +86,72 @@ public class Calendar extends Menu implements Initializable {
     }
 
     private void setText(Pane pane, int span){
-        int[] cords = getNodeCords(pane);
-        byte hour = (byte) (7 + (cords[0] >> 2));
-        byte min = (byte) ((cords[0] % 4) * 15);
-        String time = String.format("%s%s:%s%s", hour < 10 ? "0" : "", hour, min, min == 0 ? "0" : "");
-        Text text = new Text(10, 20, time);
-        text.setFill(Paint.valueOf("#FFFFFF"));
-        text.setFont(new Font("Helvetica Light", 11.0));
+//        String time = String.format("%s%s:%s%s", hour < 10 ? "0" : "", hour, min, min == 0 ? "0" : "");
+//        Text text = new Text(10, 20, time);
+//        text.setFill(Paint.valueOf("#FFFFFF"));
+//        text.setFont(new Font("Helvetica Light", 11.0));
+        setTime(pane, span);
         Text activity = new Text(10, 40, "Leader.getSport()");
         activity.setFill(Paint.valueOf("#FFFFFF"));
         activity.setFont(new Font("Helvetica Light", 11.0));
-        pane.getChildren().addAll(text, activity);
+        pane.getChildren().add(activity);
         ObservableMap<Object, Object> props = pane.getProperties();
         props.put("baked", true);
         props.put("span", span);
-        //props.put("time", time);
         pane.setOnMousePressed(e -> initY = (short)e.getSceneY());
-        //gridPaneFast[cords[0]][cords[1]] = pane;
-        pane.setOnMouseDragged(e -> {
-            move(pane, (int) e.getSceneY());
-//            short dif = (short) (initY - e.getSceneY());
-//            if(Math.abs(dif) > 15){
-//                int[] cords1 = getNodeCords(pane);
-//                if(dif > 0){
-//                    Pane above = (Pane)gridPaneFast[cords1[0] - 1][cords1[1]];
-//                    int[] aboveCords = getNodeCords(above);
-//                    int span1 = (int)pane.getProperties().get("span");
-//                    above.setStyle(color);
-//                    //cal new time
-//                    pane.setStyle("");
-//                    pane.getChildren().removeAll();
-//                    deleteBetween(aboveCords[0] + 1, aboveCords[0] + span1, tempCol);
-//                    GridPane.setRowSpan(pane, 1);
-//                    GridPane.setRowSpan(above, span1);
-////                    int span1 = (int)pane.getProperties().get("span");
-////                    GridPane.setRowSpan(pane, 1);
-////                    gridPaneFast[cords1[0] - 1][cords1[1]] = pane;
-////                    //deleteBetween(cords1[0], cords1[0] + span1, cords1[1]);
-////                    GridPane.setRowSpan(pane, span1);
-////                    gridPaneFast[cords1[0]][cords1[1]] = new Pane();
-//                }
-//                else {
-//
-//                }
-//            }
-        });
+        pane.setOnMouseDragged(e -> move(pane, (int) e.getSceneY()));
+        pane.setOnMouseClicked(null);
+    }
+
+    private void setTime(Pane pane, int span){
+        int[] cords = getNodeCords(pane);
+        byte hourFrom = (byte) (7 + (cords[0] >> 2));
+        byte minFrom = (byte) ((cords[0] % 4) * 15);
+        int dur = span * 15;
+        int finalHour = (dur + minFrom) / 60;
+        byte minTo = (byte) ((dur + minFrom) - finalHour * 60);
+        int hourTo = hourFrom + finalHour;
+        String time = String.format("%s%s:%s%s - %s%s:%s%s",
+                hourFrom < 10 ? "0" : "", hourFrom, minFrom, minFrom == 0 ? "0" : "",
+                hourTo < 10 ? "0" : "", hourTo, minTo, minTo == 0 ? "0" : ""
+        );
+        Text text = new Text(10, 20, time);
+        text.setFill(Paint.valueOf("#FFFFFF"));
+        text.setFont(new Font("Helvetica Light", 11.0));
+        if(pane.getChildren().size() != 0)
+            ((Text)(pane.getChildren().get(0))).setText(time);
+        else
+            pane.getChildren().add(text);
+    }
+
+    private void move(Pane pane, int sceneY){
+        int dif = initY - sceneY;
+        if(Math.abs(dif) > 15){
+            int[] cords = getNodeCords(pane);
+            int span = (int)pane.getProperties().get("span");
+            if(dif > 0){
+                if(cords[0] == 0 || checkFreeSpace(cords, -1))
+                    return;
+                addBetween(cords[0] + span - 1, cords[0] + span - 1, cords[1]);
+                gridPane.getChildren().remove(pane);
+                gridPane.add(pane, cords[1], cords[0] - 1);
+                gridPaneFast[cords[0] - 1][cords[1]] = pane;
+            }
+            else {
+                if(cords[0] + span == 65 || checkFreeSpace(cords, span))//grindPane.rows.count
+                    return;
+                addBetween(cords[0], cords[0], cords[1]);
+                gridPane.getChildren().remove(pane);
+                gridPane.add(pane, cords[1], cords[0] + 1);
+                gridPaneFast[cords[0] + span][cords[1]] = pane;
+            }
+            setTime(pane, span);
+            GridPane.setRowSpan(pane, span);
+        }
+    }
+
+    private boolean checkFreeSpace(int[] cords, int span) {
+        return gridPaneFast[cords[0] + span][cords[1]].getProperties().containsKey("baked");
     }
 
     private void addBetween(int start, int end, int col){
@@ -185,14 +162,15 @@ public class Calendar extends Menu implements Initializable {
         }
         for(int i = start; i < end + 1; i++){
             Pane p = createPane(true);
-            gridPaneFast[i][col] = p;
             gridPane.add(p, col, i);
+            gridPaneFast[i][col] = p;
         }
     }
 
-    private void deleteBetween(int startRow, int endRow, int col) {
+    private void deleteBetween(Node extendee, int startRow, int endRow, int col) {
         for(int i = startRow; i <= endRow; i++){
             gridPane.getChildren().remove(getNode(i, col));
+            gridPaneFast[i][col] = extendee;
         }
     }
 
@@ -290,3 +268,4 @@ public class Calendar extends Menu implements Initializable {
     }
 }
 // row: 15px, 4 rows per hour, textfield: 22px, spacing: 4(15px) - 2(22px / 2)
+
