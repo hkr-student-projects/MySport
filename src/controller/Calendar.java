@@ -1,138 +1,196 @@
 package controller;
 
+import javafx.collections.ObservableMap;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import model.MyArrayList;
+import model.ArrayList;
+import model.Main;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Calendar implements Initializable {
+import static java.lang.System.out;
 
-    private static MyArrayList<Calendar> weeks;
+public class Calendar extends Menu implements Initializable {
+
+    private static ArrayList<Calendar> weeks;
     @FXML
     private Text month, year;
     @FXML
     private GridPane gridPane;
     @FXML
-    private Button burger;
-    @FXML
     private HBox bar;
     private Node[][] gridPaneFast;
     private Node tempPane, prevPane;
-    private int tempRow, tempCol;
+    private int tempRow, tempCol, tempY, initY;
     private boolean flag = true;
+    private final String color = "-fx-background-color: rgba(255,51,61,0.83)";
 
     static {
-        weeks = new MyArrayList<>();
+        weeks = new ArrayList<>();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        bindTab(this);
         gridPaneFast = new Node[gridPane.getRowConstraints().size()][gridPane.getColumnConstraints().size()];
-        fillGrid();
         burger.setOnMouseClicked(e -> {
             bar.setVisible(!bar.isVisible());
             bar.setDisable(!bar.isDisabled());
         });
-        gridPane.getChildren().forEach(pane -> pane.setOnMouseClicked(e -> {
-            saveTempCords(pane);
-            //int[] clickCords = getNodeCords(pane);
-            //out.println("row:"+ clickCords[0] +" " + "col:"+ clickCords[1] +"");
-            if(flag = !flag) {
-                int[] tempPaneCords = getNodeCords(tempPane);//[0:row, 1:col]
-//                out.println("row:"+ tempPaneCords[0] +" " + "col:"+ tempPaneCords[1] +"");
-//                out.println("clickCords[0]: " + tempPaneCords[0] + " tempR: " + tempRow);
-//                out.println("clickCords[1]: " + tempPaneCords[1] + " tempC: " + tempCol);
-//                if(tempPaneCords[0] != tempRow && tempPaneCords[1] == tempCol){
-//                    deleteBelow(tempPaneCords[0] + 1, tempRow, tempCol);
-//                    //setBelow(tempPaneCords, tempPaneCords[0] + 1, tempRow, tempCol);
-//                }
+        fillGrid();
+        gridPane.getChildren().forEach(pane -> pane.setOnMouseClicked(e -> buildActivity(pane)));
+    }
 
-//                out.println("temprow: " + tempRow);
-//                out.println("getNodeCords(tempPane)[0]: " + getNodeCords(tempPane)[0]);
-                //int extendBy = Math.max(tempRow, tempPaneCords[0]) - Math.min(tempRow, tempPaneCords[0]);
-                int extendBy = tempRow - tempPaneCords[0];
-//                out.println("tempRow: " + tempRow);
-//                out.println("tempPaneCords[0]: " + tempPaneCords[0]);
-//                out.println("extendBy: " + extendBy);
-                if(extendBy != 0){
-//                    GridPane.setRowSpan(tempPane, extendBy + 1);
-//                    GridPane.setColumnSpan(tempPane, 1);
-                    if(extendBy < 0){
-                        int row = tempRow;
-                        int col = tempCol;
-                        tempRow = tempPaneCords[0];
-                        tempCol = tempPaneCords[1];
-                        tempPaneCords[0] = row;
-                        tempPaneCords[1] = col;
-                        tempPane = pane;
-                        pane.setStyle("-fx-background-color: rgba(255,148,33,0.83);");
-                    }
-                    deleteBetween(tempPaneCords[0] + 1, tempRow, tempCol);
-                    GridPane.setRowSpan(tempPane, Math.abs(extendBy) + 1);
+    private void buildActivity(Node pane){
+
+        if(tempPane != null && getNodeCords(pane)[1] != getNodeCords(tempPane)[1])
+            return;
+        if(flag = !flag) {
+            int[] tempPaneCords = getNodeCords(tempPane);//[0:row, 1:col]
+            int extendBy = tempRow - tempPaneCords[0];
+            if(extendBy != 0){
+                if(extendBy < 0){
+                    int row = tempRow;
+                    int col = tempCol;
+                    tempRow = tempPaneCords[0];
+                    tempCol = tempPaneCords[1];
+                    tempPaneCords[0] = row;
+                    tempPaneCords[1] = col;
+                    tempPane = pane;
                 }
-
-                nodeTrackMouse(false);
-                Pane p = (Pane)tempPane;
-                tempPane.getProperties().put("baked", true);
-                Text t = new Text(10, 20, "09:35");
-                t.setFill(Paint.valueOf("#FFFFFF"));
-                t.setFont(new Font("Helvetica Light", 11.0));
-                Text t1 = new Text(10, 40, "My new sport here");
-                t1.setFill(Paint.valueOf("#FFFFFF"));
-                t1.setFont(new Font("Helvetica Light", 11.0));
-                p.getChildren().addAll(t, t1);
+                deleteBetween(tempPane, tempPaneCords[0] + 1, tempRow, tempCol);
+                GridPane.setRowSpan(tempPane, Math.abs(extendBy) + 1);
             }
-            else {
-                pane.setStyle("-fx-background-color: cyan;");
-                tempPane = pane;
-                nodeTrackMouse(true);
-            }
-        }));
-    }
-
-    private void saveTempCords(Node pane){
-        int[] cords = getNodeCords(pane);
-        tempRow = cords[0];
-        tempCol = cords[1];
-    }
-
-    private void deleteBetween(int startRow, int endRow, int col) {
-        for(int i = startRow; i <= endRow; i++){
-            gridPane.getChildren().remove(getNode(i, col));
+            bakePane(Math.abs(extendBy) + 1);
+        }
+        else {
+            pane.setStyle(color);
+            tempPane = pane;
+            nodeTrackMouse(true);
         }
     }
 
-//    private void setBelow(int[] tempPaneCords, int startRow, int endRow, int col){
-//        for(int i = startRow; i <= endRow; i ++){
-//            //GridPane.setConstraints(getNode(i, col), tempPaneCords[1], tempPaneCords[0]);
-//            gridPane.getChildren().remove(getNode(i, col));
-//            gridPane.add(tempPane, col, i);
-//        }
-//    }
+    private void bakePane(int span){
+        nodeTrackMouse(false);
+        setText((Pane)tempPane, span);
+        prevPane = null;
+        tempPane = null;
+    }
+
+    private void setText(Pane pane, int span){
+//        String time = String.format("%s%s:%s%s", hour < 10 ? "0" : "", hour, min, min == 0 ? "0" : "");
+//        Text text = new Text(10, 20, time);
+//        text.setFill(Paint.valueOf("#FFFFFF"));
+//        text.setFont(new Font("Helvetica Light", 11.0));
+        setTime(pane, span);
+        Text activity = new Text(10, 40, "Leader.getSport()");
+        activity.setFill(Paint.valueOf("#FFFFFF"));
+        activity.setFont(new Font("Helvetica Light", 11.0));
+        pane.getChildren().add(activity);
+        ObservableMap<Object, Object> props = pane.getProperties();
+        props.put("baked", true);
+        props.put("span", span);
+        pane.setOnMousePressed(e -> initY = (short)e.getSceneY());
+        pane.setOnMouseDragged(e -> move(pane, (int) e.getSceneY()));
+        pane.setOnMouseClicked(null);
+    }
+
+    private void setTime(Pane pane, int span){
+        int[] cords = getNodeCords(pane);
+        byte hourFrom = (byte) (7 + (cords[0] >> 2));
+        byte minFrom = (byte) ((cords[0] % 4) * 15);
+        int dur = span * 15;
+        int finalHour = (dur + minFrom) / 60;
+        byte minTo = (byte) ((dur + minFrom) - finalHour * 60);
+        int hourTo = hourFrom + finalHour;
+        String time = String.format("%s%s:%s%s - %s%s:%s%s",
+                hourFrom < 10 ? "0" : "", hourFrom, minFrom, minFrom == 0 ? "0" : "",
+                hourTo < 10 ? "0" : "", hourTo, minTo, minTo == 0 ? "0" : ""
+        );
+        Text text = new Text(10, 20, time);
+        text.setFill(Paint.valueOf("#FFFFFF"));
+        text.setFont(new Font("Helvetica Light", 11.0));
+        if(pane.getChildren().size() != 0)
+            ((Text)(pane.getChildren().get(0))).setText(time);
+        else
+            pane.getChildren().add(text);
+    }
+
+    private void move(Pane pane, int sceneY){
+        int dif = initY - sceneY;
+        if(Math.abs(dif) > 15){
+            int[] cords = getNodeCords(pane);
+            int span = (int)pane.getProperties().get("span");
+            if(dif > 0){
+                if(cords[0] == 0 || checkFreeSpace(cords, -1))
+                    return;
+                addBetween(cords[0] + span - 1, cords[0] + span - 1, cords[1]);
+                gridPane.getChildren().remove(pane);
+                gridPane.add(pane, cords[1], cords[0] - 1);
+                gridPaneFast[cords[0] - 1][cords[1]] = pane;
+            }
+            else {
+                if(cords[0] + span == 65 || checkFreeSpace(cords, span))//grindPane.rows.count
+                    return;
+                addBetween(cords[0], cords[0], cords[1]);
+                gridPane.getChildren().remove(pane);
+                gridPane.add(pane, cords[1], cords[0] + 1);
+                gridPaneFast[cords[0] + span][cords[1]] = pane;
+            }
+            setTime(pane, span);
+            GridPane.setRowSpan(pane, span);
+        }
+    }
+
+    private boolean checkFreeSpace(int[] cords, int span) {
+        return gridPaneFast[cords[0] + span][cords[1]].getProperties().containsKey("baked");
+    }
+
+    private void addBetween(int start, int end, int col){
+        if(end < start){
+            int temp = start;
+            start = end;
+            end = temp;
+        }
+        for(int i = start; i < end + 1; i++){
+            Pane p = createPane(true);
+            gridPane.add(p, col, i);
+            gridPaneFast[i][col] = p;
+        }
+    }
+
+    private void deleteBetween(Node extendee, int startRow, int endRow, int col) {
+        for(int i = startRow; i <= endRow; i++){
+            gridPane.getChildren().remove(getNode(i, col));
+            gridPaneFast[i][col] = extendee;
+        }
+    }
 
     private void nodeTrackMouse(boolean flag){
         if(flag){
             gridPane.getChildren().forEach(p -> {
                 p.setOnMouseEntered(e -> {
-                    if(p.getProperties().containsKey("baked"))
+                    int[] curCords = getNodeCords(p);
+                    int[] tempCords = getNodeCords(tempPane);
+                    if(curCords[1] != tempCords[1])
                         return;
-                    if(prevPane != null && !prevPane.getProperties().containsKey("baked") && isAfter(getNodeCords(p), getNodeCords(prevPane)))
-                        prevPane.setStyle("");
-                    int[] cords = getNodeCords(p);
-                    p.setStyle("-fx-background-color: yellow;");
-                    tempRow = cords[0];
-                    tempCol = cords[1];
-                    checkColorBetween(getNodeCords(tempPane), cords);
+                    if(prevPane != null && !prevPane.getProperties().containsKey("baked") &&
+                            isAfter(getNodeCords(p), getNodeCords(prevPane))) {
+                        int[] prevCords = getNodeCords(prevPane);
+                        resetColorBetween(curCords, prevCords);
+                    }
+                    p.setStyle(color);
+                    tempRow = curCords[0];
+                    tempCol = curCords[1];
+                    checkColorBetween(tempCords, curCords);
                     prevPane = p;
                 });
             });
@@ -152,54 +210,62 @@ public class Calendar implements Initializable {
         return new int[] { row, col };
     }
 
-    private Node getNode (int row, int column) {
-//        Node result = null;
-//
-//        for (Node node : gridPane.getChildren()) {
-//            if(node == null)
-//                continue;
-//            if(GridPane.getColumnIndex(node) == null)
-//                GridPane.setColumnIndex(node, 0);
-//            if(GridPane.getRowIndex(node) == null)
-//                GridPane.setRowIndex(node, 0);
-//            if(GridPane.getRowIndex(node) == row && GridPane.getColumnIndex(node) == column) {
-//                result = node;
-//                break;
-//            }
-//        }
+    private Node getNode(int row, int column) {
         return gridPaneFast[row][column];
     }
 
     private void checkColorBetween(int[] start, int[] end) {
         if(end[0] < start[0]){
-            int t = start[0];
-            start[0] = end[0];
-            end[0] = t;
+            int[] temp = start;
+            start = end;
+            end = temp;
         }
-        for(int i = start[0]; i <= end[0]; i++){
+        for(int i = start[0]; i < end[0] + 1; i++){
             Node node = getNode(i, end[1]);
-            //out.println("i: " + i + " row: " + tempRow);
             if(node.getStyle().isBlank())
-                node.setStyle("-fx-background-color: purple;");
+                node.setStyle(color);
         }
     }
 
-    private boolean isAfter(int[] crnt, int[] prev){
-        int[] tempPaneCords = getNodeCords(tempPane);
+    private void resetColorBetween(int[] start, int[] end){
+        if(end[0] < start[0]){
+            int[] temp = start;
+            start = end;
+            end = temp;
+        }
+        for(int i = start[0]; i < end[0] + 1; i++){
+            Node node = getNode(i, end[1]);
+            node.setStyle("");
+        }
+    }
 
+    private boolean isAfter(int[] curr, int[] prev){
+        int[] tempPaneCords = getNodeCords(tempPane);
         //return (base[0] > tempPaneCords[0] ? check[0] > base[0] : check[0] < base[0]) & check[1] == base[1];
-        return ((Math.abs(crnt[0] - tempPaneCords[0])) < (Math.abs(prev[0] - tempPaneCords[0]))) & crnt[1] == prev[1];
+        return ((Math.abs(curr[0] - tempPaneCords[0])) < (Math.abs(prev[0] - tempPaneCords[0]))) ||
+                ((prev[0] < tempPaneCords[0]) & (curr[0] > tempPaneCords[0])) ||
+                ((curr[0] < tempPaneCords[0]) & (prev[0] > tempPaneCords[0]));
     }
 
     private void fillGrid(){
         for(int col = 0; col < gridPane.getColumnConstraints().size(); col++){
             for(int row = 0; row < gridPane.getRowConstraints().size(); row++){
-                Pane p = new Pane();
-                p.getStylesheets().add("/view/css/general.css");
-                p.getStyleClass().add("pane");
+                Pane p = createPane(false);
                 gridPane.add(p, col, row);
                 gridPaneFast[row][col] = p;
             }
         }
     }
+
+    private Pane createPane(boolean trackable){
+        Pane p = new Pane();
+        p.getStylesheets().add("/view/css/general.css");
+        p.getStyleClass().add("pane");
+        if(trackable)
+            p.setOnMouseClicked(e -> buildActivity(p));
+
+        return p;
+    }
 }
+// row: 15px, 4 rows per hour, textfield: 22px, spacing: 4(15px) - 2(22px / 2)
+

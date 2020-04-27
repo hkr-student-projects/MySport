@@ -24,45 +24,10 @@
          <children>
             <ScrollPane cacheShape="false" centerShape="false" fitToWidth="true" focusTraversable="false" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="508.0" prefWidth="877.0" scaleShape="false" style="-fx-background-color: transparent;" stylesheets="@css/general.css">
                <content>
-                  <Pane cacheShape="false" centerShape="false" prefHeight="1070.0" prefWidth="877.0" scaleShape="false" style="-fx-background-color: transparent;">
+                  <Pane cacheShape="false" centerShape="false" prefHeight="1000.0" prefWidth="877.0" scaleShape="false" style="-fx-background-color: transparent;">
                      <children>
-                        <VBox alignment="TOP_CENTER" cacheShape="false" centerShape="false" layoutX="10.0" layoutY="12.0" prefHeight="480.0" prefWidth="69.0" scaleShape="false" spacing="23.0">
+                        <VBox alignment="TOP_CENTER" cacheShape="false" centerShape="false" layoutX="7.0" layoutY="12.0" prefHeight="480.0" prefWidth="69.0" scaleShape="false" spacing="38.0">
                            <children>
-                              <TextField alignment="CENTER" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.7" prefHeight="22.0" prefWidth="69.0" scaleShape="false" styleClass="field" stylesheets="@css/general.css" text="00:00">
-                                 <font>
-                                    <Font name="Helvetica Light" size="13.0" />
-                                 </font>
-                              </TextField>
-                              <TextField alignment="CENTER" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.7" prefHeight="22.0" prefWidth="69.0" scaleShape="false" styleClass="field" stylesheets="@css/general.css" text="01:00">
-                                 <font>
-                                    <Font name="Helvetica Light" size="13.0" />
-                                 </font>
-                              </TextField>
-                              <TextField alignment="CENTER" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.7" prefHeight="22.0" prefWidth="69.0" scaleShape="false" styleClass="field" stylesheets="@css/general.css" text="02:00">
-                                 <font>
-                                    <Font name="Helvetica Light" size="13.0" />
-                                 </font>
-                              </TextField>
-                              <TextField alignment="CENTER" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.7" prefHeight="22.0" prefWidth="69.0" scaleShape="false" styleClass="field" stylesheets="@css/general.css" text="03:00">
-                                 <font>
-                                    <Font name="Helvetica Light" size="13.0" />
-                                 </font>
-                              </TextField>
-                              <TextField alignment="CENTER" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.7" prefHeight="22.0" prefWidth="69.0" scaleShape="false" styleClass="field" stylesheets="@css/general.css" text="04:00">
-                                 <font>
-                                    <Font name="Helvetica Light" size="13.0" />
-                                 </font>
-                              </TextField>
-                              <TextField alignment="CENTER" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.7" prefHeight="22.0" prefWidth="69.0" scaleShape="false" styleClass="field" stylesheets="@css/general.css" text="05:00">
-                                 <font>
-                                    <Font name="Helvetica Light" size="13.0" />
-                                 </font>
-                              </TextField>
-                              <TextField alignment="CENTER" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.7" prefHeight="22.0" prefWidth="69.0" scaleShape="false" styleClass="field" stylesheets="@css/general.css" text="06:00">
-                                 <font>
-                                    <Font name="Helvetica Light" size="13.0" />
-                                 </font>
-                              </TextField>
                               <TextField alignment="CENTER" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.7" prefHeight="22.0" prefWidth="69.0" scaleShape="false" styleClass="field" stylesheets="@css/general.css" text="07:00">
                                  <font>
                                     <Font name="Helvetica Light" size="13.0" />
@@ -150,32 +115,32 @@
                               </TextField>
                            </children>
                         </VBox>
-                        <VBox layoutX="75.0" layoutY="23.0" prefHeight="200.0" prefWidth="100.0" spacing="44.0">
+                        <VBox disable="true" layoutX="75.0" layoutY="23.0" prefHeight="200.0" prefWidth="100.0" spacing="60.0" visible="false">
                            <children>
-                              <Line disable="true" endX="777.0" strokeWidth="0.2" />
-                              <Line disable="true" endX="777.0" strokeWidth="0.2" />
-                              <Line disable="true" endX="777.0" strokeWidth="0.2" />
-                              <Line disable="true" endX="777.0" strokeWidth="0.2" />
-                              <Line disable="true" endX="777.0" strokeWidth="0.2" />
-                              <Line disable="true" endX="777.0" strokeWidth="0.2" />
-                              <Line disable="true" endX="777.0" strokeWidth="0.2" />
-                              <Line disable="true" endX="777.0" strokeWidth="0.2" />
-                              <Line disable="true" endX="777.0" strokeWidth="0.2" />
-                              <Line disable="true" endX="777.0" strokeWidth="0.2" />
-                              <Line disable="true" endX="777.0" strokeWidth="0.2" />
-                              <Line disable="true" endX="777.0" strokeWidth="0.2" />
-                              <Line disable="true" endX="777.0" strokeWidth="0.2" />
-                              <Line disable="true" endX="777.0" strokeWidth="0.2" />
-                              <Line disable="true" endX="777.0" strokeWidth="0.2" />
-                              <Line disable="true" endX="777.0" strokeWidth="0.2" />
-                              <Line disable="true" endX="777.0" strokeWidth="0.2" />
-                              <Line disable="true" endX="777.0" strokeWidth="0.2" />
-                              <Line disable="true" endX="777.0" strokeWidth="0.2" />
-                              <Line disable="true" endX="777.0" strokeWidth="0.2" />
-                              <Line disable="true" endX="777.0" strokeWidth="0.2" />
-                              <Line disable="true" endX="777.0" strokeWidth="0.2" />
-                              <Line disable="true" endX="777.0" strokeWidth="0.2" />
-                              <Line disable="true" endX="777.0" strokeWidth="0.2" />
+                              <Line disable="true" endX="777.0" stroke="#c2c2c2c7" />
+                              <Line disable="true" endX="777.0" stroke="#c2c2c2c7" />
+                              <Line disable="true" endX="777.0" stroke="#c2c2c2c7" />
+                              <Line disable="true" endX="777.0" stroke="#c2c2c2c7" />
+                              <Line disable="true" endX="777.0" stroke="#c2c2c2c7" />
+                              <Line disable="true" endX="777.0" stroke="#c2c2c2c7" />
+                              <Line disable="true" endX="777.0" stroke="#c2c2c2c7" />
+                              <Line disable="true" endX="777.0" stroke="#c2c2c2c7" />
+                              <Line disable="true" endX="777.0" stroke="#c2c2c2c7" />
+                              <Line disable="true" endX="777.0" stroke="#c2c2c2c7" />
+                              <Line disable="true" endX="777.0" stroke="#c2c2c2c7" />
+                              <Line disable="true" endX="777.0" stroke="#c2c2c2c7" />
+                              <Line disable="true" endX="777.0" stroke="#c2c2c2c7" />
+                              <Line disable="true" endX="777.0" stroke="#c2c2c2c7" />
+                              <Line disable="true" endX="777.0" stroke="#c2c2c2c7" />
+                              <Line disable="true" endX="777.0" stroke="#c2c2c2c7" />
+                              <Line disable="true" endX="777.0" stroke="#c2c2c2c7" />
+                              <Line disable="true" endX="777.0" stroke="#c2c2c2c7" />
+                              <Line disable="true" endX="777.0" stroke="#c2c2c2c7" />
+                              <Line disable="true" endX="777.0" stroke="#c2c2c2c7" />
+                              <Line disable="true" endX="777.0" stroke="#c2c2c2c7" />
+                              <Line disable="true" endX="777.0" stroke="#c2c2c2c7" />
+                              <Line disable="true" endX="777.0" stroke="#c2c2c2c7" />
+                              <Line disable="true" endX="777.0" stroke="#c2c2c2c7" />
                            </children>
                         </VBox>
                         <VBox disable="true" layoutX="75.0" layoutY="23.0" prefHeight="200.0" prefWidth="100.0" spacing="44.0" visible="false">
@@ -189,7 +154,7 @@
                               <Line disable="true" endX="678.0" startX="-116.0" stroke="#6f6f6f" strokeWidth="0.3" visible="false" />
                            </children>
                         </VBox>
-                        <GridPane fx:id="gridPane" alignment="CENTER" layoutX="75.0" layoutY="23.0" prefHeight="511.0" prefWidth="777.0">
+                        <GridPane fx:id="gridPane" alignment="CENTER" layoutX="75.0" layoutY="23.0" prefWidth="777.0">
                           <columnConstraints>
                             <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="-Infinity" minWidth="111.0" percentWidth="0.0" prefWidth="111.0" />
                             <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="-Infinity" minWidth="111.0" percentWidth="0.0" prefWidth="111.0" />
@@ -200,24 +165,9 @@
                               <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="-Infinity" minWidth="111.0" percentWidth="0.0" prefWidth="111.0" />
                           </columnConstraints>
                           <rowConstraints>
-                            <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="ALWAYS" />
-                            <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="ALWAYS" />
-                            <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="ALWAYS" />
-                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
-                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
-                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
-                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
-                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
-                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
-                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
-                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
-                              <RowConstraints maxHeight="15.0" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
-                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
-                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
-                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
-                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
-                              <RowConstraints minHeight="15.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
-                              <RowConstraints minHeight="15.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                            <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                            <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                            <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
                               <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
                               <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
                               <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
@@ -230,6 +180,8 @@
                               <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
                               <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
                               <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                             <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                             <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
                               <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
                               <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
                               <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
@@ -237,6 +189,47 @@
                               <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
                               <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
                               <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                             <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                             <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                             <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                             <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                             <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
+                             <RowConstraints maxHeight="-Infinity" minHeight="15.0" percentHeight="0.0" prefHeight="15.0" valignment="CENTER" vgrow="NEVER" />
                           </rowConstraints>
                         </GridPane>
                      </children>
@@ -337,22 +330,9 @@
             <Font name="AppleGothic Regular" size="14.0" />
          </font>
       </Text>
-      <Button fx:id="burger" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="857.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="31.0" prefWidth="31.0" scaleShape="false" stylesheets="@css/general.css">
-         <graphic>
-            <ImageView fitHeight="19.0" fitWidth="37.0" nodeOrientation="INHERIT" preserveRatio="true" smooth="false">
-               <image>
-                  <Image url="@img/burger.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <styleClass>
-            <String fx:value="burgerButton" />
-            <String fx:value="button" />
-         </styleClass>
-      </Button>
-      <HBox fx:id="bar" alignment="CENTER_RIGHT" layoutX="400.0" layoutY="3.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="31.0" prefWidth="451.0" spacing="25.0" styleClass="button" stylesheets="@css/general.css">
+      <HBox fx:id="bar" alignment="CENTER_RIGHT" layoutX="400.0" layoutY="3.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="31.0" prefWidth="400.0" spacing="25.0" style="-fx-background-color: transparent;">
          <children>
-            <Button mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0">
+            <Button fx:id="home" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
                <graphic>
                   <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -361,7 +341,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0">
+            <Button fx:id="account" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
                <graphic>
                   <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -370,7 +350,25 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0">
+            <Button fx:id="mail" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/mail-icon_14.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="forum" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/forum-icon_1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="calendar" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
                <graphic>
                   <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -397,7 +395,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0">
+            <Button fx:id="settings" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
                <graphic>
                   <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -406,7 +404,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0">
+            <Button fx:id="logout" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
                <graphic>
                   <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -420,5 +418,18 @@
             <Insets />
          </opaqueInsets>
       </HBox>
+      <Button fx:id="burger" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="857.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="31.0" prefWidth="31.0" scaleShape="false" stylesheets="@css/general.css">
+         <graphic>
+            <ImageView fitHeight="19.0" fitWidth="37.0" nodeOrientation="INHERIT" preserveRatio="true" smooth="false">
+               <image>
+                  <Image url="@img/burger.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <styleClass>
+            <String fx:value="burgerButton" />
+            <String fx:value="button" />
+         </styleClass>
+      </Button>
    </children>
 </AnchorPane>

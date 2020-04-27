@@ -14,13 +14,84 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane cacheShape="false" centerShape="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #763dee;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Account">
+
+<AnchorPane cacheShape="false" centerShape="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #763dee;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Home">
     <children>
         <Text fill="WHITE" layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="John Cena (Leader)" wrappingWidth="341.0">
             <font>
                 <Font name="AppleGothic Regular" size="14.0" />
             </font>
         </Text>
+       <HBox fx:id="bar" alignment="CENTER_RIGHT" layoutX="400.0" layoutY="3.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="31.0" prefWidth="400.0" spacing="25.0" style="-fx-background-color: transparent;">
+          <children>
+             <Button fx:id="home" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
+                <graphic>
+                   <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                         <Image url="@img/home-icon_2.png" />
+                      </image>
+                   </ImageView>
+                </graphic>
+             </Button>
+             <Button fx:id="account" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
+                <graphic>
+                   <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                         <Image url="@img/user-icon_1.png" />
+                      </image>
+                   </ImageView>
+                </graphic>
+             </Button>
+             <Button fx:id="mail" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
+                <graphic>
+                   <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                         <Image url="@img/mail-icon_14.png" />
+                      </image>
+                   </ImageView>
+                </graphic>
+             </Button>
+             <Button fx:id="forum" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
+                <graphic>
+                   <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                         <Image url="@img/forum-icon_1.png" />
+                      </image>
+                   </ImageView>
+                </graphic>
+             </Button>
+             <Button fx:id="calendar" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
+                <graphic>
+                   <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                         <Image url="@img/calendar-icon_4.png" />
+                      </image>
+                   </ImageView>
+                </graphic>
+             </Button>
+             <Button fx:id="settings" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
+                <graphic>
+                   <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                         <Image url="@img/settings-icon_10.png" />
+                      </image>
+                   </ImageView>
+                </graphic>
+             </Button>
+             <Button fx:id="logout" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
+                <graphic>
+                   <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                         <Image url="@img/power-off-icon_1.png" />
+                      </image>
+                   </ImageView>
+                </graphic>
+             </Button>
+          </children>
+          <opaqueInsets>
+             <Insets />
+          </opaqueInsets>
+       </HBox>
         <Button fx:id="burger" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="857.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="31.0" prefWidth="31.0" scaleShape="false" stylesheets="@css/general.css">
             <graphic>
                 <ImageView fitHeight="19.0" fitWidth="37.0" nodeOrientation="INHERIT" preserveRatio="true" smooth="false">
@@ -34,84 +105,14 @@
                 <String fx:value="button" />
             </styleClass>
         </Button>
-      <HBox fx:id="bar" alignment="CENTER_RIGHT" layoutX="400.0" layoutY="3.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="31.0" prefWidth="400.0" spacing="25.0" styleClass="button" stylesheets="@css/general.css">
-         <children>
-            <Button mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0">
-               <graphic>
-                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@img/home-icon_2.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0">
-               <graphic>
-                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@img/user-icon_1.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0">
-               <graphic>
-                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@img/mail-icon_14.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0">
-               <graphic>
-                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@img/forum-icon_1.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0">
-               <graphic>
-                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@img/calendar-icon_4.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0">
-               <graphic>
-                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@img/settings-icon_10.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0">
-               <graphic>
-                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@img/power-off-icon_1.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </HBox>
       <Pane cacheShape="false" centerShape="false" disable="true" layoutX="560.0" layoutY="66.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="303.0" style="-fx-background-color: white; -fx-background-radius: 33;" visible="false" />
-      <ScrollPane cacheShape="false" centerShape="false" fitToWidth="true" focusTraversable="false" layoutX="541.0" layoutY="65.0" prefHeight="526.0" prefWidth="312.0" style="-fx-background-color: transparent;" styleClass="scrollPaneCalendar" stylesheets="@css/general.css">
+      <ScrollPane cacheShape="false" centerShape="false" fitToWidth="true" focusTraversable="false" layoutX="541.0" layoutY="65.0" prefHeight="526.0" prefWidth="303.0" style="-fx-background-color: transparent;" styleClass="scrollPaneCalendar" stylesheets="@css/general.css">
          <content>
             <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="303.0" styleClass="paneEvent" stylesheets="@css/general.css">
                <children>
-                  <VBox layoutX="23.0" layoutY="24.0" prefHeight="655.0" prefWidth="266.0" spacing="25.0">
+                  <VBox cacheShape="false" centerShape="false" layoutX="-10.0" layoutY="41.0" prefHeight="638.0" prefWidth="312.0" spacing="25.0">
                      <children>
-                        <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="247.0" style="-fx-background-color: orange;" styleClass="sportEvent" stylesheets="@css/general.css">
+                        <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="247.0" styleClass="sportEvent" stylesheets="@css/general.css">
                            <children>
                               <Text fill="WHITE" layoutX="27.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volleyball">
                                  <font>
@@ -125,7 +126,8 @@
                               </Text>
                            </children>
                         </Pane>
-                        <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="247.0" style="-fx-background-color: green;" styleClass="sportEvent" stylesheets="@css/general.css">
+                        <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="247.0" styleClass="sportEvent" stylesheets="@css/general.css">
+
                            <children>
                               <Text fill="WHITE" layoutX="27.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Football">
                                  <font>
@@ -139,7 +141,7 @@
                               </Text>
                            </children>
                         </Pane>
-                        <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="247.0" style="-fx-background-color: #f45431;" styleClass="sportEvent" stylesheets="@css/general.css">
+                        <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="247.0" styleClass="sportEvent" stylesheets="@css/general.css">
                            <children>
                               <Text fill="WHITE" layoutX="27.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Boxing">
                                  <font>
@@ -153,7 +155,7 @@
                               </Text>
                            </children>
                         </Pane>
-                        <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="247.0" style="-fx-background-color: dodgerblue;" styleClass="sportEvent" stylesheets="@css/general.css">
+                        <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="247.0" styleClass="sportEvent" stylesheets="@css/general.css">
                            <children>
                               <Text fill="WHITE" layoutX="27.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Climbing">
                                  <font>
@@ -167,7 +169,7 @@
                               </Text>
                            </children>
                         </Pane>
-                        <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="247.0" style="-fx-background-color: orange;" styleClass="sportEvent" stylesheets="@css/general.css">
+                        <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="247.0" styleClass="sportEvent" stylesheets="@css/general.css">
                            <children>
                               <Text fill="WHITE" layoutX="27.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volleyball">
                                  <font>

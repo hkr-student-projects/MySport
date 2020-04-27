@@ -6,20 +6,25 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Settings implements Initializable {
+
+
+public class Settings extends Menu implements Initializable {
 
     @FXML private TextField textFieldNewPassword, textFieldReNewPassword, textFieldNewName, textFieldNewMiddleName, textFieldNewSurname;
     @FXML private Button buttonSaveNewPwd, buttonSaveName, buttonDeleteAccount;
     // add database manager object
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+        public void initialize(URL url, ResourceBundle resourceBundle) {
+            bindTab(this);
+        }
 
-    }
 
     @FXML public void buttonSaveNewPwdClick(){
         if (!textFieldNewPassword.getText().equals(textFieldReNewPassword.getText())) {
@@ -68,5 +73,6 @@ public class Settings implements Initializable {
     }
 
     @FXML public void buttonDeleteAccountClick() {}
+
 
 }
