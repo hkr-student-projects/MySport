@@ -943,3 +943,19 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-04-27 05:32:50 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/view/Calendar.fxml
+
+[2020-04-27 05:32:50 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.SceneSwitcher.<clinit>()
+	at model.Main.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()

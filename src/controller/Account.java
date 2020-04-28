@@ -11,4 +11,14 @@ public class Account extends Menu implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         bindTab(this);
     }
+
+    @Override
+    protected void burgerOpenAction() {
+
+    }
+
+    @Override
+    protected void burgerCloseAction() {
+
+    }
 }

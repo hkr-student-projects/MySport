@@ -240,7 +240,7 @@
                   <String fx:value="scroll-pane" />
                </styleClass>
             </ScrollPane>
-            <HBox alignment="CENTER_LEFT" layoutX="75.0" layoutY="15.0" prefHeight="41.0" prefWidth="777.0">
+            <HBox alignment="CENTER_LEFT" layoutX="75.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="41.0" prefWidth="777.0">
                <children>
                   <TextField alignment="CENTER" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="111.0" scaleShape="false" styleClass="field" stylesheets="@css/general.css" text="Mon">
                      <font>
@@ -279,42 +279,87 @@
                   </TextField>
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="63.0" layoutY="15.0" prefHeight="41.0" prefWidth="777.0">
+            <HBox fx:id="dates" alignment="CENTER_LEFT" layoutX="75.0" layoutY="15.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="41.0" prefWidth="241.0" spacing="70.0">
                <children>
-                  <TextField alignment="CENTER_RIGHT" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="111.0" scaleShape="false" styleClass="field" stylesheets="@css/general.css" text="1">
+                  <TextField alignment="CENTER" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="35.0" scaleShape="false" style="-fx-background-radius: 32; -fx-background-insets: 5;" styleClass="field" stylesheets="@css/general.css" text="26">
                      <font>
                         <Font name="Helvetica Light" size="16.0" />
                      </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="1.0" right="1.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets left="70.0" />
+                     </HBox.margin>
                   </TextField>
-                  <TextField alignment="CENTER_RIGHT" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="111.0" scaleShape="false" styleClass="field" stylesheets="@css/general.css" text="2">
+                  <TextField alignment="CENTER" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="35.0" scaleShape="false" style="-fx-background-radius: 32; -fx-background-insets: 5;" styleClass="field" stylesheets="@css/general.css" text="2">
                      <font>
                         <Font name="Helvetica Light" size="16.0" />
                      </font>
+                     <padding>
+                        <Insets left="1.0" right="1.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets left="4.0" />
+                     </HBox.margin>
                   </TextField>
-                  <TextField alignment="CENTER_RIGHT" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="111.0" scaleShape="false" styleClass="field" stylesheets="@css/general.css" text="3">
+                  <TextField alignment="CENTER" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="35.0" scaleShape="false" style="-fx-background-radius: 32; -fx-background-insets: 5;" styleClass="field" stylesheets="@css/general.css" text="3">
                      <font>
                         <Font name="Helvetica Light" size="16.0" />
                      </font>
+                     <padding>
+                        <Insets left="1.0" right="1.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets left="9.0" />
+                     </HBox.margin>
                   </TextField>
-                  <TextField alignment="CENTER_RIGHT" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="111.0" scaleShape="false" styleClass="field" stylesheets="@css/general.css" text="4">
+                  <TextField alignment="CENTER" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="35.0" scaleShape="false" style="-fx-background-radius: 32; -fx-background-insets: 5;" styleClass="field" stylesheets="@css/general.css" text="4">
                      <font>
                         <Font name="Helvetica Light" size="16.0" />
                      </font>
+                     <padding>
+                        <Insets left="1.0" right="1.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets left="3.0" />
+                     </HBox.margin>
                   </TextField>
-                  <TextField alignment="CENTER_RIGHT" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="111.0" scaleShape="false" styleClass="field" stylesheets="@css/general.css" text="5">
+                  <TextField alignment="CENTER" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="35.0" scaleShape="false" style="-fx-background-radius: 32; -fx-background-insets: 5;" styleClass="field" stylesheets="@css/general.css" text="5">
                      <font>
                         <Font name="Helvetica Light" size="16.0" />
                      </font>
+                     <padding>
+                        <Insets left="1.0" right="1.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets left="1.0" />
+                     </HBox.margin>
                   </TextField>
-                  <TextField alignment="CENTER_RIGHT" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="111.0" scaleShape="false" styleClass="field" stylesheets="@css/general.css" text="6">
+                  <TextField alignment="CENTER" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="35.0" scaleShape="false" style="-fx-background-radius: 32; -fx-background-insets: 5;" styleClass="field" stylesheets="@css/general.css" text="6">
                      <font>
                         <Font name="Helvetica Light" size="16.0" />
                      </font>
+                     <padding>
+                        <Insets left="1.0" right="1.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets left="9.0" />
+                     </HBox.margin>
                   </TextField>
-                  <TextField alignment="CENTER_RIGHT" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="111.0" scaleShape="false" styleClass="field" stylesheets="@css/general.css" text="7">
+                  <TextField alignment="CENTER" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="35.0" scaleShape="false" style="-fx-background-radius: 32; -fx-background-insets: 5;" styleClass="field" stylesheets="@css/general.css" text="7">
                      <font>
                         <Font name="Helvetica Light" size="16.0" />
                      </font>
+                     <padding>
+                        <Insets left="1.0" right="1.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets left="8.0" />
+                     </HBox.margin>
                   </TextField>
                </children>
             </HBox>
@@ -330,7 +375,7 @@
             <Font name="AppleGothic Regular" size="14.0" />
          </font>
       </Text>
-      <HBox fx:id="bar" alignment="CENTER_RIGHT" layoutX="400.0" layoutY="3.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="31.0" prefWidth="400.0" spacing="25.0" style="-fx-background-color: transparent;">
+      <HBox fx:id="tab" alignment="CENTER_RIGHT" layoutX="400.0" layoutY="3.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="31.0" prefWidth="400.0" spacing="25.0" style="-fx-background-color: transparent;">
          <children>
             <Button fx:id="home" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
                <graphic>
@@ -413,5 +458,48 @@
             <String fx:value="button" />
          </styleClass>
       </Button>
+      <HBox fx:id="options" alignment="CENTER_RIGHT" disable="true" layoutX="400.0" layoutY="3.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="31.0" prefWidth="400.0" spacing="25.0" style="-fx-background-color: transparent;" visible="false">
+         <children>
+            <Button fx:id="forum1" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/bug-report-icon_1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="calendar1" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/save-icon_3.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="prev" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/arrow-round-back-icon_1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="next" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                     <image>
+                        <Image url="@img/arrow-round-back-icon_1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </HBox>
    </children>
 </AnchorPane>

@@ -1,9 +1,12 @@
 package controller;
 
+import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -11,51 +14,82 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import model.ArrayList;
-import model.Main;
 
+import java.io.Serializable;
 import java.net.URL;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-import static java.lang.System.out;
-
-public class Calendar extends Menu implements Initializable {
+public class Calendar extends Menu implements Initializable, Serializable {
 
     private static ArrayList<Calendar> weeks;
     @FXML
-    private Text month, year;
+    private Text month;
     @FXML
     private GridPane gridPane;
     @FXML
-    private HBox bar;
+    private HBox options, dates;
+    @FXML
+    private Button prev, next;
     private Node[][] gridPaneFast;
     private Node tempPane, prevPane;
-    private int tempRow, tempCol, tempY, initY;
-    private boolean flag = true;
+    private int tempRow, tempCol, initY;
+    private boolean flag = true, ctrl;
     private final String color = "-fx-background-color: rgba(255,51,61,0.83)";
+    private LocalDate currWeek;
 
     static {
         weeks = new ArrayList<>();
     }
 
     @Override
+    protected void burgerOpenAction() {
+        super.toggleTab();
+        //polymorphic starts
+        options.setVisible(true);
+        options.setDisable(false);
+    }
+
+    @Override
+    protected void burgerCloseAction() {
+        super.toggleTab();
+        //polymorphic starts
+        options.setVisible(false);
+        options.setDisable(true);
+    }
+
+    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        bindTab(this);
+        currWeek = LocalDate.now();
         gridPaneFast = new Node[gridPane.getRowConstraints().size()][gridPane.getColumnConstraints().size()];
-        burger.setOnMouseClicked(e -> {
-            bar.setVisible(!bar.isVisible());
-            bar.setDisable(!bar.isDisabled());
-        });
+        new Thread(() -> {
+            bindTab(this);
+            fillWeek(0);
+        }).start();
+        //make synchronized
+//        prev.setOnMouseClicked(e -> new Thread(() -> fillWeek(-7)).start());
+//        next.setOnMouseClicked(e -> new Thread(() -> fillWeek(7)).start());
+        prev.setOnMouseClicked(e -> fillWeek(-7));
+        next.setOnMouseClicked(e -> fillWeek(7));
         fillGrid();
         gridPane.getChildren().forEach(pane -> pane.setOnMouseClicked(e -> buildActivity(pane)));
     }
 
     private void buildActivity(Node pane){
-
-        if(tempPane != null && getNodeCords(pane)[1] != getNodeCords(tempPane)[1])
+        if((tempPane != null && getNodeCords(pane)[1] != getNodeCords(tempPane)[1]))
             return;
         if(flag = !flag) {
-            int[] tempPaneCords = getNodeCords(tempPane);//[0:row, 1:col]
+            int[] tempPaneCords = getNodeCords(tempPane);//tempPane cannot be null because at first "!flag" will return false and else block will assign reference to tempPane
             int extendBy = tempRow - tempPaneCords[0];
+            if (tempRow == tempPaneCords[0])
+            {
+                nodeTrackMouse(false);
+                tempPane.setStyle("");
+                tempPane = null;
+                return;
+            }
             if(extendBy != 0){
                 if(extendBy < 0){
                     int row = tempRow;
@@ -73,6 +107,9 @@ public class Calendar extends Menu implements Initializable {
         }
         else {
             pane.setStyle(color);
+            int[] cords = getNodeCords(pane);
+            tempRow = cords[0];
+            tempCol = cords[1];
             tempPane = pane;
             nodeTrackMouse(true);
         }
@@ -80,16 +117,12 @@ public class Calendar extends Menu implements Initializable {
 
     private void bakePane(int span){
         nodeTrackMouse(false);
-        setText((Pane)tempPane, span);
+        setProps((Pane)tempPane, span);
         prevPane = null;
         tempPane = null;
     }
 
-    private void setText(Pane pane, int span){
-//        String time = String.format("%s%s:%s%s", hour < 10 ? "0" : "", hour, min, min == 0 ? "0" : "");
-//        Text text = new Text(10, 20, time);
-//        text.setFill(Paint.valueOf("#FFFFFF"));
-//        text.setFont(new Font("Helvetica Light", 11.0));
+    private void setProps(Pane pane, int span){
         setTime(pane, span);
         Text activity = new Text(10, 40, "Leader.getSport()");
         activity.setFill(Paint.valueOf("#FFFFFF"));
@@ -124,29 +157,44 @@ public class Calendar extends Menu implements Initializable {
             pane.getChildren().add(text);
     }
 
-    private void move(Pane pane, int sceneY){
+    private void move(Pane pane, int sceneY){//in Maintenance, that's why strange look
         int dif = initY - sceneY;
         if(Math.abs(dif) > 15){
             int[] cords = getNodeCords(pane);
             int span = (int)pane.getProperties().get("span");
+            int var0;
             if(dif > 0){
-                if(cords[0] == 0 || checkFreeSpace(cords, -1))
-                    return;
-                addBetween(cords[0] + span - 1, cords[0] + span - 1, cords[1]);
-                gridPane.getChildren().remove(pane);
-                gridPane.add(pane, cords[1], cords[0] - 1);
-                gridPaneFast[cords[0] - 1][cords[1]] = pane;
+                if(ctrl){
+
+                }
+                else {
+                    if(cords[0] == 0 || checkFreeSpace(cords, -1))
+                        return;
+                    var0 = -1;
+                    addBetween(cords[0] + span - 1, cords[0] + span - 1, cords[1]);//strict order
+                    gridPane.getChildren().remove(pane);//strict order
+                    gridPane.add(pane, cords[1], cords[0] - 1);//strict order
+                    gridPaneFast[cords[0] + var0][cords[1]] = pane;
+                    setTime(pane, span);
+                    GridPane.setRowSpan(pane, span);
+                }
             }
             else {
-                if(cords[0] + span == 65 || checkFreeSpace(cords, span))//grindPane.rows.count
-                    return;
-                addBetween(cords[0], cords[0], cords[1]);
-                gridPane.getChildren().remove(pane);
-                gridPane.add(pane, cords[1], cords[0] + 1);
-                gridPaneFast[cords[0] + span][cords[1]] = pane;
+                if(ctrl){
+
+                }
+                else {
+                    if(cords[0] + span == gridPane.getRowConstraints().size() || checkFreeSpace(cords, span))//grindPane.rows.count
+                        return;
+                    var0 = span;
+                    addBetween(cords[0], cords[0], cords[1]);//strict order
+                    gridPane.getChildren().remove(pane);//strict order
+                    gridPane.add(pane, cords[1], cords[0] + 1);//strict order
+                    gridPaneFast[cords[0] + var0][cords[1]] = pane;
+                    setTime(pane, span);
+                    GridPane.setRowSpan(pane, span);
+                }
             }
-            setTime(pane, span);
-            GridPane.setRowSpan(pane, span);
         }
     }
 
@@ -201,7 +249,7 @@ public class Calendar extends Menu implements Initializable {
         });
     }
 
-    private int[] getNodeCords(Node n){
+    private int[] getNodeCords(Node n){ //[0:row, 1:col]
         Object var0 = n.getProperties().get("gridpane-row");
         Object var1 = n.getProperties().get("gridpane-column");
         int row = var0 == null ? 0 : (int) var0;
@@ -247,6 +295,16 @@ public class Calendar extends Menu implements Initializable {
                 ((curr[0] < tempPaneCords[0]) & (prev[0] > tempPaneCords[0]));
     }
 
+    private Pane createPane(boolean trackable){
+        Pane p = new Pane();
+        p.getStylesheets().add("/view/css/general.css");
+        p.getStyleClass().add("pane");
+        if(trackable)
+            p.setOnMouseClicked(e -> buildActivity(p));
+
+        return p;
+    }
+
     private void fillGrid(){
         for(int col = 0; col < gridPane.getColumnConstraints().size(); col++){
             for(int row = 0; row < gridPane.getRowConstraints().size(); row++){
@@ -257,14 +315,33 @@ public class Calendar extends Menu implements Initializable {
         }
     }
 
-    private Pane createPane(boolean trackable){
-        Pane p = new Pane();
-        p.getStylesheets().add("/view/css/general.css");
-        p.getStyleClass().add("pane");
-        if(trackable)
-            p.setOnMouseClicked(e -> buildActivity(p));
+    private void fillWeek(int offset){
+        LocalDate now = LocalDate.of(currWeek.getYear(), currWeek.getMonth(), currWeek.getDayOfMonth());
+        DayOfWeek today = now.getDayOfWeek();
+        System.out.println(now.getMonth().getValue());
+        ObservableList<Node> childs = dates.getChildren();
+        for(int i = today.getValue() - 1; i < 7; i++){
+            TextField field = (TextField) childs.get(i);
+            field.setText(String.valueOf(now.plusDays(i - (today.getValue() - 1) + offset).getDayOfMonth()));
+        }
+        for(int i = today.getValue() - 2; i > -1; i--){
+            TextField field = (TextField) childs.get(i);
+            field.setText(String.valueOf(now.minusDays((today.getValue() - 1) - i - offset).getDayOfMonth()));
+        }
 
-        return p;
+        TextField todayF = (TextField)(childs.get(today.getValue() - 1));
+        if(Integer.parseInt(todayF.getText()) == LocalDate.now().getDayOfMonth()){
+            todayF.getStyleClass().add("fieldTodayRed");
+        }
+        else
+            todayF.getStyleClass().remove("fieldTodayRed");
+        currWeek = currWeek.plusDays(offset);
+        month.setText(currWeek.format(DateTimeFormatter.ofPattern("MMMM")));
+        fillTable();
+    }
+
+    private void fillTable(){
+
     }
 }
 // row: 15px, 4 rows per hour, textfield: 22px, spacing: 4(15px) - 2(22px / 2)

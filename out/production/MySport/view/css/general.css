@@ -45,6 +45,11 @@
     -fx-text-fill: #727272;
 }
 
+.fieldTodayRed {
+    -fx-background-color: rgba(255,51,61,0.83);
+    -fx-text-fill: #FFFFFF;
+}
+
 .burgerButton:hover {
     -fx-border-radius: 100;
     -fx-border-color: white;
