@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ScrollPane fitToWidth="true" layoutX="-1.0" layoutY="-1.0" prefHeight="430.0" prefWidth="650.0">
+         <content>
+            <Pane prefHeight="427.0" prefWidth="632.0">
+               <children>
+                  <TextField alignment="CENTER" editable="false" layoutX="48.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="80.0" style="-fx-background-color: #fb3053; -fx-text-fill: white;" styleClass="field" stylesheets="@../css/memberStyles.css" text="MON">
+                     <font>
+                        <Font name="Arial Black" size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField alignment="CENTER" editable="false" layoutX="133.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="80.0" style="-fx-background-color: #fb3053; -fx-text-fill: white;" styleClass="field" stylesheets="@../css/memberStyles.css" text="TUE">
+                     <font>
+                        <Font name="Arial Black" size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField alignment="CENTER" editable="false" layoutX="218.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="80.0" style="-fx-background-color: #fb3053; -fx-text-fill: white;" styleClass="field" stylesheets="@../css/memberStyles.css" text="WED">
+                     <font>
+                        <Font name="Arial Black" size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField alignment="CENTER" editable="false" layoutX="303.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="80.0" style="-fx-background-color: #fb3053; -fx-text-fill: white;" styleClass="field" stylesheets="@../css/memberStyles.css" text="TUE">
+                     <font>
+                        <Font name="Arial Black" size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField alignment="CENTER" editable="false" layoutX="388.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="80.0" style="-fx-background-color: #fb3053; -fx-text-fill: white;" styleClass="field" stylesheets="@../css/memberStyles.css" text="FRI">
+                     <font>
+                        <Font name="Arial Black" size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField alignment="CENTER" editable="false" layoutX="473.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="80.0" style="-fx-background-color: #fb3053; -fx-text-fill: white;" styleClass="field" stylesheets="@../css/memberStyles.css" text="SAT">
+                     <font>
+                        <Font name="Arial Black" size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField alignment="CENTER" editable="false" layoutX="558.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="80.0" style="-fx-background-color: #fb3053; -fx-text-fill: white;" styleClass="field" stylesheets="@../css/memberStyles.css" text="SUN">
+                     <font>
+                        <Font name="Arial Black" size="14.0" />
+                     </font>
+                  </TextField>
+                  <Pane layoutX="48.0" layoutY="62.0" prefHeight="89.0" prefWidth="80.0" style="-fx-background-color: #FD9918; -fx-background-radius: 5;">
+                     <children>
+                        <Text fill="WHITE" layoutX="6.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volleyball" textAlignment="CENTER" underline="true">
+                           <font>
+                              <Font name="Avenir Next Bold" size="14.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="4.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="17:30" textAlignment="CENTER" wrappingWidth="72.0546875">
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="4.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="19:30" textAlignment="CENTER" wrappingWidth="72.0546875">
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="133.0" layoutY="62.0" prefHeight="89.0" prefWidth="80.0" style="-fx-background-color: #11EC6B; -fx-background-radius: 5;">
+                     <children>
+                        <Text fill="WHITE" layoutX="12.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Football" textAlignment="CENTER" underline="true">
+                           <font>
+                              <Font name="Avenir Next Bold" size="14.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="4.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="20:00" textAlignment="CENTER" wrappingWidth="72.0546875">
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="4.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="22:30" textAlignment="CENTER" wrappingWidth="72.0546875">
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="558.0" layoutY="62.0" prefHeight="89.0" prefWidth="80.0" style="-fx-background-color: #FD9918; -fx-background-radius: 5;">
+                     <children>
+                        <Text fill="WHITE" layoutX="6.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volleyball" textAlignment="CENTER" underline="true">
+                           <font>
+                              <Font name="Avenir Next Bold" size="14.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="4.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="15:30" textAlignment="CENTER" wrappingWidth="72.0546875">
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="4.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="17:30" textAlignment="CENTER" wrappingWidth="72.0546875">
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+                  <VBox alignment="TOP_CENTER" layoutX="218.0" layoutY="62.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="364.0" prefWidth="80.0" spacing="5.0">
+                     <children>
+                        <Pane prefHeight="89.0" prefWidth="80.0" style="-fx-background-color: #FD9918; -fx-background-radius: 5;">
+                           <children>
+                              <Text fill="WHITE" layoutX="6.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volleyball" textAlignment="CENTER" underline="true">
+                                 <font>
+                                    <Font name="Avenir Next Bold" size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="4.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="17:30" textAlignment="CENTER" wrappingWidth="72.0546875">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="4.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="19:30" textAlignment="CENTER" wrappingWidth="72.0546875">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="89.0" prefWidth="80.0" style="-fx-background-color: #11EC6B; -fx-background-radius: 5;">
+                           <children>
+                              <Text fill="WHITE" layoutX="12.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Football" textAlignment="CENTER" underline="true">
+                                 <font>
+                                    <Font name="Avenir Next Bold" size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="4.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="20:00" textAlignment="CENTER" wrappingWidth="72.0546875">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="4.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="22:30" textAlignment="CENTER" wrappingWidth="72.0546875">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Pane>
+                        <Pane prefHeight="89.0" prefWidth="80.0" style="-fx-background-color: #FF0724; -fx-background-radius: 5;">
+                           <children>
+                              <Text fill="WHITE" layoutX="16.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Boxing" textAlignment="CENTER" underline="true">
+                                 <font>
+                                    <Font name="Avenir Next Bold" size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="4.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="23:00" textAlignment="CENTER" wrappingWidth="72.0546875">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="4.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="01:30" textAlignment="CENTER" wrappingWidth="72.0546875">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="89.0" prefWidth="80.0" style="-fx-background-color: #FD9918; -fx-background-radius: 5;">
+                           <children>
+                              <Text fill="WHITE" layoutX="6.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volleyball" textAlignment="CENTER" underline="true">
+                                 <font>
+                                    <Font name="Avenir Next Bold" size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="4.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="15:30" textAlignment="CENTER" wrappingWidth="72.0546875">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="4.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="17:30" textAlignment="CENTER" wrappingWidth="72.0546875">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </Pane>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" layoutX="388.0" layoutY="62.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="364.0" prefWidth="80.0" spacing="5.0">
+                     <children>
+                        <Pane prefHeight="89.0" prefWidth="80.0" style="-fx-background-color: #FD9918; -fx-background-radius: 5;">
+                           <children>
+                              <Text fill="WHITE" layoutX="6.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volleyball" textAlignment="CENTER" underline="true">
+                                 <font>
+                                    <Font name="Avenir Next Bold" size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="4.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="17:30" textAlignment="CENTER" wrappingWidth="72.0546875">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="4.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="19:30" textAlignment="CENTER" wrappingWidth="72.0546875">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="89.0" prefWidth="80.0" style="-fx-background-color: #11EC6B; -fx-background-radius: 5;">
+                           <children>
+                              <Text fill="WHITE" layoutX="12.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Football" textAlignment="CENTER" underline="true">
+                                 <font>
+                                    <Font name="Avenir Next Bold" size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="4.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="20:00" textAlignment="CENTER" wrappingWidth="72.0546875">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="4.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="22:30" textAlignment="CENTER" wrappingWidth="72.0546875">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Pane>
+                        <Pane prefHeight="89.0" prefWidth="80.0" style="-fx-background-color: #FD9918; -fx-background-radius: 5;">
+                           <children>
+                              <Text fill="WHITE" layoutX="6.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volleyball" textAlignment="CENTER" underline="true">
+                                 <font>
+                                    <Font name="Avenir Next Bold" size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="4.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="15:30" textAlignment="CENTER" wrappingWidth="72.0546875">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="4.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="17:30" textAlignment="CENTER" wrappingWidth="72.0546875">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="89.0" prefWidth="80.0" style="-fx-background-color: #FD9918; -fx-background-radius: 5;">
+                           <children>
+                              <Text fill="WHITE" layoutX="6.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volleyball" textAlignment="CENTER" underline="true">
+                                 <font>
+                                    <Font name="Avenir Next Bold" size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="4.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="17:30" textAlignment="CENTER" wrappingWidth="72.0546875">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="4.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="19:30" textAlignment="CENTER" wrappingWidth="72.0546875">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </Pane>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" layoutX="473.0" layoutY="62.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="364.0" prefWidth="80.0" spacing="5.0">
+                     <children>
+                        <Pane prefHeight="89.0" prefWidth="80.0" style="-fx-background-color: #FD9918; -fx-background-radius: 5;">
+                           <children>
+                              <Text fill="WHITE" layoutX="6.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volleyball" textAlignment="CENTER" underline="true">
+                                 <font>
+                                    <Font name="Avenir Next Bold" size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="4.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="17:30" textAlignment="CENTER" wrappingWidth="72.0546875">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="4.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="19:30" textAlignment="CENTER" wrappingWidth="72.0546875">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="89.0" prefWidth="80.0" style="-fx-background-color: #11EC6B; -fx-background-radius: 5;">
+                           <children>
+                              <Text fill="WHITE" layoutX="12.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Football" textAlignment="CENTER" underline="true">
+                                 <font>
+                                    <Font name="Avenir Next Bold" size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="4.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="20:00" textAlignment="CENTER" wrappingWidth="72.0546875">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="4.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="22:30" textAlignment="CENTER" wrappingWidth="72.0546875">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Pane>
+                        <Pane prefHeight="89.0" prefWidth="80.0" style="-fx-background-color: #FF0724; -fx-background-radius: 5;">
+                           <children>
+                              <Text fill="WHITE" layoutX="16.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Boxing" textAlignment="CENTER" underline="true">
+                                 <font>
+                                    <Font name="Avenir Next Bold" size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="4.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="23:00" textAlignment="CENTER" wrappingWidth="72.0546875">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="4.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="01:30" textAlignment="CENTER" wrappingWidth="72.0546875">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="89.0" prefWidth="80.0" style="-fx-background-color: #FD9918; -fx-background-radius: 5;">
+                           <children>
+                              <Text fill="WHITE" layoutX="6.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volleyball" textAlignment="CENTER" underline="true">
+                                 <font>
+                                    <Font name="Avenir Next Bold" size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="4.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="15:30" textAlignment="CENTER" wrappingWidth="72.0546875">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="4.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="17:30" textAlignment="CENTER" wrappingWidth="72.0546875">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </Pane>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+                  <Pane layoutX="46.0" layoutY="155.0" prefHeight="89.0" prefWidth="80.0" style="-fx-background-color: #11EC6B; -fx-background-radius: 5;">
+                     <children>
+                        <Text fill="WHITE" layoutX="12.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Football" textAlignment="CENTER" underline="true">
+                           <font>
+                              <Font name="Avenir Next Bold" size="14.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="4.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="20:00" textAlignment="CENTER" wrappingWidth="72.0546875">
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="4.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="22:30" textAlignment="CENTER" wrappingWidth="72.0546875">
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+                  <VBox alignment="TOP_CENTER" layoutX="303.0" layoutY="62.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="364.0" prefWidth="80.0" spacing="5.0">
+                     <children>
+                        <Pane prefHeight="89.0" prefWidth="80.0" style="-fx-background-color: #FD9918; -fx-background-radius: 5;">
+                           <children>
+                              <Text fill="WHITE" layoutX="6.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volleyball" textAlignment="CENTER" underline="true">
+                                 <font>
+                                    <Font name="Avenir Next Bold" size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="4.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="17:30" textAlignment="CENTER" wrappingWidth="72.0546875">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="4.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="19:30" textAlignment="CENTER" wrappingWidth="72.0546875">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="89.0" prefWidth="80.0" style="-fx-background-color: #11EC6B; -fx-background-radius: 5;">
+                           <children>
+                              <Text fill="WHITE" layoutX="12.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Football" textAlignment="CENTER" underline="true">
+                                 <font>
+                                    <Font name="Avenir Next Bold" size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="4.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="20:00" textAlignment="CENTER" wrappingWidth="72.0546875">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="4.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="22:30" textAlignment="CENTER" wrappingWidth="72.0546875">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Pane>
+                        <Pane prefHeight="89.0" prefWidth="80.0" style="-fx-background-color: #FF0724; -fx-background-radius: 5;">
+                           <children>
+                              <Text fill="WHITE" layoutX="16.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Boxing" textAlignment="CENTER" underline="true">
+                                 <font>
+                                    <Font name="Avenir Next Bold" size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="4.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="23:00" textAlignment="CENTER" wrappingWidth="72.0546875">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="4.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="01:30" textAlignment="CENTER" wrappingWidth="72.0546875">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="89.0" prefWidth="80.0" style="-fx-background-color: #FD9918; -fx-background-radius: 5;">
+                           <children>
+                              <Text fill="WHITE" layoutX="6.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volleyball" textAlignment="CENTER" underline="true">
+                                 <font>
+                                    <Font name="Avenir Next Bold" size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="4.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="15:30" textAlignment="CENTER" wrappingWidth="72.0546875">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="4.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="17:30" textAlignment="CENTER" wrappingWidth="72.0546875">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </Pane>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+                  <Pane layoutX="133.0" layoutY="155.0" prefHeight="89.0" prefWidth="80.0" style="-fx-background-color: #FD9918; -fx-background-radius: 5;">
+                     <children>
+                        <Text fill="WHITE" layoutX="6.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volleyball" textAlignment="CENTER" underline="true">
+                           <font>
+                              <Font name="Avenir Next Bold" size="14.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="4.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="15:30" textAlignment="CENTER" wrappingWidth="72.0546875">
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="4.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="17:30" textAlignment="CENTER" wrappingWidth="72.0546875">
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+         </content>
+      </ScrollPane>
+      <Pane prefHeight="400.0" prefWidth="180.0" styleClass="pane" stylesheets="@../css/memberStyles.css" visible="false">
+         <children>
+            <VBox alignment="TOP_CENTER" cacheShape="false" centerShape="false" layoutY="200.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="180.0" scaleShape="false">
+               <children>
+                  <JFXButton cacheShape="false" centerShape="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="200.0" scaleShape="false" stylesheets="@../css/memberStyles.css" textFill="WHITE">
+                     <font>
+                        <Font name="AppleGothic Regular" size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton cacheShape="false" centerShape="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="200.0" scaleShape="false" stylesheets="@../css/memberStyles.css" textFill="WHITE">
+                     <font>
+                        <Font name="AppleGothic Regular" size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton cacheShape="false" centerShape="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="200.0" scaleShape="false" stylesheets="@../css/memberStyles.css" textFill="WHITE">
+                     <font>
+                        <Font name="AppleGothic Regular" size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton cacheShape="false" centerShape="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="200.0" scaleShape="false" stylesheets="@../css/memberStyles.css" textFill="WHITE">
+                     <font>
+                        <Font name="AppleGothic Regular" size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton cacheShape="false" centerShape="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="200.0" scaleShape="false" stylesheets="@../css/memberStyles.css" textFill="WHITE">
+                     <font>
+                        <Font name="AppleGothic Regular" size="15.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </VBox>
+         </children></Pane>
+   </children>
+</AnchorPane>
