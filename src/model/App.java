@@ -6,12 +6,14 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.Database.DatabaseManager;
+import model.Tools.Config;
+import model.Tools.SceneSwitcher;
 
-public class Main extends Application {
+public class App extends Application {
 
     public static Config config;
     public static DatabaseManager databaseManager;
-    public static Main instance;
+    public static App instance;
     private Stage stage;
 
     static {

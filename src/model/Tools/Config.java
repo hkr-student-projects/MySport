@@ -1,4 +1,4 @@
-package model;
+package model.Tools;
 
 import model.Logging.Logger;
 import org.json.simple.JSONArray;

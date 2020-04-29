@@ -1,6 +1,6 @@
 package model.Logging;
 
-import model.Main;
+import model.App;
 
 import java.lang.reflect.Method;
 import java.util.ArrayDeque;
@@ -40,7 +40,7 @@ public class QueryQueue {
 
     private void executeMethod(Method method, Object[] args){
         try {
-            method.invoke(Main.databaseManager, args);
+            method.invoke(App.databaseManager, args);
         }
         catch (Exception e){
             Logger.logException(e);

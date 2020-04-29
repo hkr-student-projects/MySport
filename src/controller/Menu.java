@@ -3,8 +3,8 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
-import model.Main;
-import model.SceneSwitcher;
+import model.App;
+import model.Tools.SceneSwitcher;
 
 public abstract class Menu {
     @FXML
@@ -33,33 +33,33 @@ public abstract class Menu {
         home.setOnMouseClicked(e -> {
             if(caller instanceof Home)
                 return;
-            Main.instance.setScene(SceneSwitcher.instance.getScene("Home"));
+            App.instance.setScene(SceneSwitcher.instance.getScene("Home"));
         });
         account.setOnMouseClicked(e -> {
             if(caller instanceof Account)
                 return;
-            Main.instance.setScene(SceneSwitcher.instance.getScene("Account"));
+            App.instance.setScene(SceneSwitcher.instance.getScene("Account"));
         });
         mail.setOnMouseClicked(e -> {
             if(caller instanceof Mail)
                 return;
-            Main.instance.setScene(SceneSwitcher.instance.getScene("Mail"));
+            App.instance.setScene(SceneSwitcher.instance.getScene("Mail"));
         });
         forum.setOnMouseClicked(e -> {
             if(caller instanceof Forum)
                 return;
-            Main.instance.setScene(SceneSwitcher.instance.getScene("Forum"));
+            App.instance.setScene(SceneSwitcher.instance.getScene("Forum"));
         });
         calendar.setOnMouseClicked(e -> {
             if(caller instanceof Calendar)
                 return;
-            Main.instance.setScene(SceneSwitcher.instance.getScene("Calendar"));
+            App.instance.setScene(SceneSwitcher.instance.getScene("Calendar"));
         });
         settings.setOnMouseClicked(e -> {
             if(caller instanceof Settings)
                 return;
-            Main.instance.setScene(SceneSwitcher.instance.getScene("Settings"));
+            App.instance.setScene(SceneSwitcher.instance.getScene("Settings"));
         });
-        logout.setOnMouseClicked(e -> Main.instance.setScene(SceneSwitcher.instance.getScene("Login")));
+        logout.setOnMouseClicked(e -> App.instance.setScene(SceneSwitcher.instance.getScene("Login")));
     }
 }

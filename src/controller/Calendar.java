@@ -14,8 +14,8 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import model.ArrayList;
-import model.Serializable;
+import model.Tools.ArrayList;
+import model.Tools.Serializable;
 
 import java.net.URL;
 import java.time.DayOfWeek;

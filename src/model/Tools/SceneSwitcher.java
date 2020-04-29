@@ -1,4 +1,4 @@
-package model;
+package model.Tools;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

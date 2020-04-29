@@ -1,4 +1,4 @@
-package model;
+package model.Tools;
 
 import java.util.Formatter;
 

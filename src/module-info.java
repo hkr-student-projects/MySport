@@ -11,6 +11,8 @@ module MySport {
     opens model.Logging;
     opens model.Localization;
     opens model.Database;
+    opens model.People;
+    opens model.Tools;
     opens view;
     opens view.css;
     opens view.img;
