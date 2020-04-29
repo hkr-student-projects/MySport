@@ -4,27 +4,31 @@ import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.HPos;
+import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import model.ArrayList;
+import model.Serializable;
 
-import java.io.Serializable;
 import java.net.URL;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-public class Calendar extends Menu implements Initializable, Serializable {
+public class Calendar extends Menu implements Initializable, Serializable<GridPane> {
 
-    private static ArrayList<Calendar> weeks;
+    private static ArrayList<GridsPair> weeks;
+    @FXML
+    private Pane tableHolder;
+    private int currentTable;
     @FXML
     private Text month;
     @FXML
@@ -71,9 +75,15 @@ public class Calendar extends Menu implements Initializable, Serializable {
         //make synchronized
 //        prev.setOnMouseClicked(e -> new Thread(() -> fillWeek(-7)).start());
 //        next.setOnMouseClicked(e -> new Thread(() -> fillWeek(7)).start());
-        prev.setOnMouseClicked(e -> fillWeek(-7));
-        next.setOnMouseClicked(e -> fillWeek(7));
-        fillGrid();
+        prev.setOnMouseClicked(e -> {
+            fillWeek(-7);
+            loadTable(--currentTable);
+        });
+        next.setOnMouseClicked(e -> {
+            fillWeek(7);
+            loadTable(++currentTable);
+        });
+        fillGrids(this.gridPane, this.gridPaneFast);
         gridPane.getChildren().forEach(pane -> pane.setOnMouseClicked(e -> buildActivity(pane)));
     }
 
@@ -198,6 +208,112 @@ public class Calendar extends Menu implements Initializable, Serializable {
         }
     }
 
+    private GridsPair createGrid(){
+        GridPane grid = new GridPane();
+        grid.setPrefWidth(777.0);
+        grid.setMaxWidth(777.0);
+        grid.setMinWidth(777.0);
+        grid.setLayoutX(75.0);
+        grid.setLayoutY(23.0);
+        grid.setAlignment(Pos.CENTER);
+        ColumnConstraints[] cc = new ColumnConstraints[7];//7 days in week
+        for(ColumnConstraints c : cc){
+            c = new ColumnConstraints();
+            c.setHgrow(Priority.NEVER);
+            c.setPrefWidth(111.0);
+            c.setMinWidth(111.0);
+            c.setHalignment(HPos.CENTER);
+            c.setPercentWidth(0.0);
+            c.setMaxWidth(111.0);
+        }
+        RowConstraints[] rc = new RowConstraints[65];//or get how 15 slots needed
+        for(RowConstraints r : rc){
+            r = new RowConstraints();
+            r.setMinHeight(15.0);
+            r.setPrefHeight(15.0);
+            r.setPercentHeight(0.0);
+            r.setValignment(VPos.CENTER);
+            r.setMaxHeight(15.0);
+            r.setVgrow(Priority.NEVER);
+        }
+        Node[][] gridFast = new Node[rc.length][cc.length];
+        fillGrids(grid, gridFast);
+        grid.getRowConstraints().addAll(rc);
+        grid.getColumnConstraints().addAll(cc);
+
+        return new GridsPair(grid, gridFast);
+    }
+
+    @Override
+    public byte[] serialize(GridPane obj) {
+        return new byte[0];
+    }
+
+    @Override
+    public GridPane deserialize(byte[] bytes) {
+        return null;
+    }
+
+    private static class GridsPair {
+        GridPane gridPane;
+        Node[][] gridPaneFast;
+
+        private GridsPair(GridPane gridPane, Node[][] gridPaneFast){
+            this.gridPane = gridPane;
+            this.gridPaneFast = gridPaneFast;
+        }
+    }
+
+    private void fillWeek(int offset){
+        LocalDate now = LocalDate.of(currWeek.getYear(), currWeek.getMonth(), currWeek.getDayOfMonth());
+        DayOfWeek today = now.getDayOfWeek();
+        ObservableList<Node> childs = dates.getChildren();
+        for(int i = today.getValue() - 1; i < 7; i++){
+            TextField field = (TextField) childs.get(i);
+            field.setText(String.valueOf(now.plusDays(i - (today.getValue() - 1) + offset).getDayOfMonth()));
+        }
+        for(int i = today.getValue() - 2; i > -1; i--){
+            TextField field = (TextField) childs.get(i);
+            field.setText(String.valueOf(now.minusDays((today.getValue() - 1) - i - offset).getDayOfMonth()));
+        }
+
+        TextField todayF = (TextField)(childs.get(today.getValue() - 1));
+        if(Integer.parseInt(todayF.getText()) == LocalDate.now().getDayOfMonth()){
+            todayF.getStyleClass().add("fieldTodayRed");
+        }
+        else
+            todayF.getStyleClass().remove("fieldTodayRed");
+        currWeek = currWeek.plusDays(offset);
+        month.setText(currWeek.format(DateTimeFormatter.ofPattern("MMMM")));
+        //loadTable(currWeek.getMonth().getValue() + "-" + (byte)Math.ceil((currWeek.getDayOfMonth() / (float)currWeek.lengthOfMonth()) * 4.0));
+    }
+
+    private void fillGrids(GridPane gridPane, Node[][] gridPaneFast){
+        for(int col = 0; col < gridPane.getColumnConstraints().size(); col++){
+            for(int row = 0; row < gridPane.getRowConstraints().size(); row++){
+                Pane p = createPane(false);
+                gridPane.add(p, col, row);
+                gridPaneFast[row][col] = p;
+            }
+        }
+    }
+
+    private void loadTable(int offset){
+        if(currentTable + offset >= weeks.size()){
+            currentTable += offset;
+            weeks.add(createGrid());
+        }
+        else if(currentTable + offset < 0){
+            currentTable = 0;
+            weeks.insertAt(createGrid(), 0);
+        }
+        this.gridPane = weeks.get(currentTable).gridPane;
+        this.gridPaneFast = weeks.get(currentTable).gridPaneFast;
+        tempCol = 0;
+        tempRow = 0;
+        tempPane = null;
+    }
+
     private boolean checkFreeSpace(int[] cords, int span) {
         return gridPaneFast[cords[0] + span][cords[1]].getProperties().containsKey("baked");
     }
@@ -304,45 +420,5 @@ public class Calendar extends Menu implements Initializable, Serializable {
 
         return p;
     }
-
-    private void fillGrid(){
-        for(int col = 0; col < gridPane.getColumnConstraints().size(); col++){
-            for(int row = 0; row < gridPane.getRowConstraints().size(); row++){
-                Pane p = createPane(false);
-                gridPane.add(p, col, row);
-                gridPaneFast[row][col] = p;
-            }
-        }
-    }
-
-    private void fillWeek(int offset){
-        LocalDate now = LocalDate.of(currWeek.getYear(), currWeek.getMonth(), currWeek.getDayOfMonth());
-        DayOfWeek today = now.getDayOfWeek();
-        System.out.println(now.getMonth().getValue());
-        ObservableList<Node> childs = dates.getChildren();
-        for(int i = today.getValue() - 1; i < 7; i++){
-            TextField field = (TextField) childs.get(i);
-            field.setText(String.valueOf(now.plusDays(i - (today.getValue() - 1) + offset).getDayOfMonth()));
-        }
-        for(int i = today.getValue() - 2; i > -1; i--){
-            TextField field = (TextField) childs.get(i);
-            field.setText(String.valueOf(now.minusDays((today.getValue() - 1) - i - offset).getDayOfMonth()));
-        }
-
-        TextField todayF = (TextField)(childs.get(today.getValue() - 1));
-        if(Integer.parseInt(todayF.getText()) == LocalDate.now().getDayOfMonth()){
-            todayF.getStyleClass().add("fieldTodayRed");
-        }
-        else
-            todayF.getStyleClass().remove("fieldTodayRed");
-        currWeek = currWeek.plusDays(offset);
-        month.setText(currWeek.format(DateTimeFormatter.ofPattern("MMMM")));
-        fillTable();
-    }
-
-    private void fillTable(){
-
-    }
 }
 // row: 15px, 4 rows per hour, textfield: 22px, spacing: 4(15px) - 2(22px / 2)
-

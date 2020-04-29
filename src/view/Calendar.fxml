@@ -24,7 +24,7 @@
          <children>
             <ScrollPane cacheShape="false" centerShape="false" fitToWidth="true" focusTraversable="false" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="508.0" prefWidth="877.0" scaleShape="false" style="-fx-background-color: transparent;" stylesheets="@css/general.css">
                <content>
-                  <Pane cacheShape="false" centerShape="false" prefHeight="1000.0" prefWidth="877.0" scaleShape="false" style="-fx-background-color: transparent;">
+                  <Pane fx:id="tableHolder" cacheShape="false" centerShape="false" prefHeight="1000.0" prefWidth="877.0" scaleShape="false" style="-fx-background-color: transparent;">
                      <children>
                         <VBox alignment="TOP_CENTER" cacheShape="false" centerShape="false" layoutX="7.0" layoutY="12.0" prefHeight="480.0" prefWidth="69.0" scaleShape="false" spacing="38.0">
                            <children>
