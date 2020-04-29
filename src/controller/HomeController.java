@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Home {
+class Home {
 
     @FXML
     public void changeToCalendar(ActionEvent event) throws IOException {
