@@ -2,10 +2,13 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+=======
+>>>>>>> parent of ee33433... Merge pull request #7 from Group4-ProjectCourse/deniel-branch
 =======
 >>>>>>> parent of ee33433... Merge pull request #7 from Group4-ProjectCourse/deniel-branch
 =======
@@ -161,10 +164,19 @@
       <HBox alignment="CENTER_LEFT" layoutX="93.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="41.0" prefWidth="777.0">
          <children>
             <TextField alignment="CENTER" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="111.0" scaleShape="false" styleClass="field" stylesheets="@../css/memberStyles.css" text="Mon">
+<<<<<<< HEAD
+=======
                <font>
                   <Font name="Helvetica Light" size="16.0" />
                </font>
             </TextField>
+            <TextField alignment="CENTER" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="111.0" scaleShape="false" styleClass="field" stylesheets="@../css/memberStyles.css" text="Tue">
+>>>>>>> parent of ee33433... Merge pull request #7 from Group4-ProjectCourse/deniel-branch
+               <font>
+                  <Font name="Helvetica Light" size="16.0" />
+               </font>
+            </TextField>
+<<<<<<< HEAD
             <TextField alignment="CENTER" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="111.0" scaleShape="false" styleClass="field" stylesheets="@../css/memberStyles.css" text="Tue">
                <font>
                   <Font name="Helvetica Light" size="16.0" />
@@ -355,6 +367,73 @@
 >>>>>>> parent of ee33433... Merge pull request #7 from Group4-ProjectCourse/deniel-branch
 =======
             </TextField>
+            <TextField alignment="CENTER" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="111.0" scaleShape="false" styleClass="field" stylesheets="@../css/memberStyles.css" text="Wed">
+               <font>
+                  <Font name="Helvetica Light" size="16.0" />
+               </font>
+            </TextField>
+            <TextField alignment="CENTER" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="111.0" scaleShape="false" styleClass="field" stylesheets="@../css/memberStyles.css" text="Thu">
+               <font>
+                  <Font name="Helvetica Light" size="16.0" />
+               </font>
+            </TextField>
+            <TextField alignment="CENTER" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="111.0" scaleShape="false" styleClass="field" stylesheets="@../css/memberStyles.css" text="Fri">
+               <font>
+                  <Font name="Helvetica Light" size="16.0" />
+               </font>
+            </TextField>
+            <TextField alignment="CENTER" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="111.0" scaleShape="false" styleClass="field" stylesheets="@../css/memberStyles.css" text="Sat">
+               <font>
+                  <Font name="Helvetica Light" size="16.0" />
+               </font>
+            </TextField>
+            <TextField alignment="CENTER" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="111.0" scaleShape="false" styleClass="field" stylesheets="@../css/memberStyles.css" text="Sun">
+               <font>
+                  <Font name="Helvetica Light" size="16.0" />
+               </font>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="80.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="41.0" prefWidth="777.0">
+         <children>
+            <TextField alignment="CENTER_RIGHT" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="111.0" scaleShape="false" styleClass="field" stylesheets="@../css/memberStyles.css" text="1">
+               <font>
+                  <Font name="Helvetica Light" size="16.0" />
+               </font>
+            </TextField>
+            <TextField alignment="CENTER_RIGHT" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="111.0" scaleShape="false" styleClass="field" stylesheets="@../css/memberStyles.css" text="2">
+               <font>
+                  <Font name="Helvetica Light" size="16.0" />
+               </font>
+            </TextField>
+            <TextField alignment="CENTER_RIGHT" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="111.0" scaleShape="false" styleClass="field" stylesheets="@../css/memberStyles.css" text="3">
+               <font>
+                  <Font name="Helvetica Light" size="16.0" />
+               </font>
+            </TextField>
+            <TextField alignment="CENTER_RIGHT" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="111.0" scaleShape="false" styleClass="field" stylesheets="@../css/memberStyles.css" text="4">
+               <font>
+                  <Font name="Helvetica Light" size="16.0" />
+               </font>
+            </TextField>
+            <TextField alignment="CENTER_RIGHT" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="111.0" scaleShape="false" styleClass="field" stylesheets="@../css/memberStyles.css" text="5">
+               <font>
+                  <Font name="Helvetica Light" size="16.0" />
+               </font>
+            </TextField>
+            <TextField alignment="CENTER_RIGHT" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="111.0" scaleShape="false" styleClass="field" stylesheets="@../css/memberStyles.css" text="6">
+               <font>
+                  <Font name="Helvetica Light" size="16.0" />
+               </font>
+            </TextField>
+            <TextField alignment="CENTER_RIGHT" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="111.0" scaleShape="false" styleClass="field" stylesheets="@../css/memberStyles.css" text="7">
+               <font>
+                  <Font name="Helvetica Light" size="16.0" />
+               </font>
+            </TextField>
+         </children>
+>>>>>>> parent of ee33433... Merge pull request #7 from Group4-ProjectCourse/deniel-branch
+=======
             <TextField alignment="CENTER" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="111.0" scaleShape="false" styleClass="field" stylesheets="@../css/memberStyles.css" text="Wed">
                <font>
                   <Font name="Helvetica Light" size="16.0" />
