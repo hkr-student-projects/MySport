@@ -40,16 +40,6 @@
 	-fx-background-color: #763dee;
 }
 
-.paneEvent {
-	-fx-background-radius: 33;
-	-fx-background-color: white;
-}
-
-.sportEvent {
-	-fx-background-radius: 3;
-	-fx-background-color: #763dee;
-}
-
 .field{
     -fx-background-color: transparent;
     -fx-text-fill: #727272;

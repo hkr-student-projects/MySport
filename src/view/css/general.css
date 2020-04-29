@@ -2,6 +2,16 @@
     -fx-background-color: transparent;
 }
 
+.buttonTab:hover {
+    -fx-background-color: transparent;
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+}
+
+.buttonTab:pressed {
+    -fx-opacity: 0.25;
+}
+
 .buttonInAcc {
     -fx-background-color: #763dee;
 }
@@ -10,13 +20,34 @@
     -fx-background-color: #763dee;
 }
 
-.pane:hover {
-    -fx-background-color: rgba(255,51,61,0.83);
+/*.pane:hover {*/
+/*    -fx-background-color: rgba(255,51,61,0.83);*/
+/*}*/
+
+.pane {
+    -fx-border-style: solid solid none none;
+    -fx-border-color: rgb(231, 231, 231) #FFFFFF;
+    -fx-border-width: 0.5;
+}
+
+.paneEvent {
+	-fx-background-radius: 33;
+	-fx-background-color: white;
+}
+
+.sportEvent {
+	-fx-background-radius: 3;
+	-fx-background-color: #763dee;
 }
 
 .field{
     -fx-background-color: transparent;
     -fx-text-fill: #727272;
+}
+
+.fieldTodayRed {
+    -fx-background-color: rgba(255,51,61,0.83);
+    -fx-text-fill: #FFFFFF;
 }
 
 .burgerButton:hover {
@@ -52,4 +83,9 @@
 .scroll-bar:vertical .thumb {
     -fx-background-color: transparent;
     -fx-background-radius: 5em;
+}
+
+.scroll-bar > .increment-button > .increment-arrow,
+.scroll-bar > .decrement-button > .decrement-arrow {
+    -fx-background-color: transparent;
 }
