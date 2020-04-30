@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Date;
 
 
 public class DatabaseManager {
@@ -149,5 +150,51 @@ public class DatabaseManager {
         UPDATE,//INSERT, UPDATE, DELETE, CREATE TABLE, DROP TABLE
         READER,//SELECT -> ResultSet
         BOOL//ALL -> SELECT ? true : false
+    }
+
+    public void addAccount(String name, String middleName, String surname, String ssn, String eMail, String password, String phoneNumber) {
+        executeQuery(QueryType.UPDATE, "INSERT INTO member (ssn, name, middlename, surname, mobile) " +
+                "VALUES ('" + ssn + "'," +
+                " '" + name + "'," +
+                " '" + middleName + "'," +
+                " '" + surname + "'," +
+                " '" + phoneNumber + "');");
+        executeQuery(QueryType.UPDATE, "INSERT INTO account (email, password) " +
+                "VALUES ('" + eMail + "'," +
+                " '" + password + "');");
+    }
+
+    public void removeAccount(String ssn) {
+        executeQuery(QueryType.UPDATE, "DELETE FROM member WHERE ssn = '" + ssn + "';");
+    }
+
+    public void updateName(String name, String ssn) {
+        executeQuery(QueryType.UPDATE, "UPDATE member SET name = '" + name + "'" +
+                " WHERE ssn = '" + ssn + "';");
+    }
+
+    public void updateMiddleName(String middleName, String ssn) {
+        executeQuery(QueryType.UPDATE, "UPDATE member SET middlename = '" + middleName + "'" +
+                " WHERE ssn = '" + ssn + "';");
+    }
+
+    public void updateSurname(String surname, String ssn) {
+        executeQuery(QueryType.UPDATE, "UPDATE member SET surname = '" + surname + "'" +
+                " WHERE ssn = '" + ssn + "';");
+    }
+
+    public void updatePhoneNumber(String phoneNumber, String ssn) {
+        executeQuery(QueryType.UPDATE, "UPDATE member SET mobile = '" + phoneNumber + "'" +
+                " WHERE ssn = '" + ssn + "';");
+    }
+
+    public void updatePassword(String password, String ssn) {
+        executeQuery(QueryType.UPDATE, "UPDATE account SET password = '" + password + "'" +
+                "WHERE member_id = SELECT id FROM member WHERE ssn = '" + ssn + "';");
+    }
+
+    public void updateEMail(String eMail, String ssn) {
+        executeQuery(QueryType.UPDATE, "UPDATE account SET email = '" + eMail + "'" +
+                "WHERE member_id = SELECT id FROM member WHERE ssn = '" + ssn + "';");
     }
 }
