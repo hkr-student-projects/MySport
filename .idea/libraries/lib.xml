@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="file://$USER_HOME$/Desktop/HKR software development/Project Course 2/javafx-sdk-11.0.2/lib" />
+      <root url="jar://$PROJECT_DIR$/lib/WIN/jfoenix-9.0.8.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/WIN/json-simple-1.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/WIN/mysql-connector-java-8.0.18.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$USER_HOME$/Desktop/HKR software development/Project Course 2/javafx-sdk-11.0.2/lib" recursive="false" />
+  </library>
+</component>

@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Admin extends User {
 
-    public Admin(String name, String middleName, String surname, String ssn, Date birthDay) {
-        super(name, middleName, surname, ssn, birthDay);
+    public Admin(String name, String middleName, String surname, String ssn, Date birthDay, String eMail, String password, String phoneNumber) {
+        super(name, middleName, surname, ssn, birthDay, eMail, password, phoneNumber);
     }
 }
