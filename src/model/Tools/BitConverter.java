@@ -3,24 +3,32 @@ package model.Tools;
 public class BitConverter {
 
     public static short toInt16(byte[] value, int startIndex) {
-        checkNull(value, startIndex);
+        validate(value, startIndex);
 
         return (short) (value[startIndex] + (value[startIndex + 1] << 8));
     }
 
     // Converts an array of bytes into an int.
     public static int toInt32(byte[] value, int startIndex) {
-        checkNull(value, startIndex);
+        validate(value, startIndex);
 
         return value[startIndex] + (value[startIndex + 1] << 8) + (value[startIndex + 2] << 16) + (value[startIndex + 3] << 24);
     }
 
     // Converts an array of bytes into a long.
     public static long toInt64(byte[] value, int startIndex) {
-        checkNull(value, startIndex);
+        validate(value, startIndex);
 
         return value[startIndex] + (value[startIndex + 1] << 8) + (value[startIndex + 2] << 16) + (value[startIndex + 3] << 24) +
                 (value[startIndex + 4] << 32) + (value[startIndex + 5] << 40) + (value[startIndex + 6] << 48) + (value[startIndex + 7] << 56);
+    }
+
+    public static float toSingle (byte[] value, int startIndex)
+    {
+        validate(value, startIndex);
+
+        int val = toInt32(value, startIndex);
+        return val / 100.0f;
     }
 
     public static byte getBytes(boolean value) {
@@ -74,7 +82,12 @@ public class BitConverter {
         return bytes;
     }
 
-    private static void checkNull(byte[] value, int startIndex) {
+    public static byte[] getBytes(float value)
+    {
+        return getBytes((int)(value * 100));
+    }
+
+    private static void validate(byte[] value, int startIndex) {
         if(value == null) {
             throw new NullPointerException("Argument \"value\" is null.");
         }

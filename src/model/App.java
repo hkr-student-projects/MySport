@@ -6,6 +6,8 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.Database.DatabaseManager;
+import model.Logging.Logger;
+import model.Tools.Block;
 import model.Tools.Config;
 import model.Tools.SceneSwitcher;
 
@@ -30,6 +32,7 @@ public class App extends Application {
         primaryStage.show();
         stage = primaryStage;
         instance = this;
+        Logger.logUML(Block.class, true);
     }
 
     public void setScene(Scene scene){

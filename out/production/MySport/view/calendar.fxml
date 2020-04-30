@@ -460,7 +460,7 @@
       </Button>
       <HBox fx:id="options" alignment="CENTER_RIGHT" disable="true" layoutX="400.0" layoutY="3.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="31.0" prefWidth="400.0" spacing="25.0" style="-fx-background-color: transparent;" visible="false">
          <children>
-            <Button fx:id="forum1" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
+            <Button fx:id="bug" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
                <graphic>
                   <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>

@@ -15,15 +15,18 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import model.Tools.ArrayList;
+import model.Tools.Block;
 import model.Tools.Serializable;
 
 import java.net.URL;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
-public class Calendar extends Menu implements Initializable, Serializable<GridPane> {
+public class Calendar extends Menu implements Initializable, Serializable<Calendar.GridsPair> {
 
     private static ArrayList<GridsPair> weeks;
     @FXML
@@ -36,7 +39,7 @@ public class Calendar extends Menu implements Initializable, Serializable<GridPa
     @FXML
     private HBox options, dates;
     @FXML
-    private Button prev, next;
+    private Button prev, next, bug;
     private Node[][] gridPaneFast;
     private Node tempPane, prevPane;
     private int tempRow, tempCol, initY;
@@ -83,9 +86,19 @@ public class Calendar extends Menu implements Initializable, Serializable<GridPa
             fillWeek(7);
             loadTable(++currentTable);
         });
+        bug.setOnMouseClicked(e -> {
+            GridsPair pair = deserialize(serialize(new GridsPair(this.gridPane, this.gridPaneFast)));
+            tableHolder.getChildren().remove(gridPane);
+            gridPane = pair.gridPane;
+            tableHolder.getChildren().add(pair.gridPane);
+            gridPaneFast = pair.gridPaneFast;
+
+        });
         fillGrids(this.gridPane, this.gridPaneFast);
         gridPane.getChildren().forEach(pane -> pane.setOnMouseClicked(e -> buildActivity(pane)));
     }
+
+
 
     private void buildActivity(Node pane){
         if((tempPane != null && getNodeCords(pane)[1] != getNodeCords(tempPane)[1]))
@@ -127,26 +140,27 @@ public class Calendar extends Menu implements Initializable, Serializable<GridPa
 
     private void bakePane(int span){
         nodeTrackMouse(false);
-        setProps((Pane)tempPane, span);
+        buildProps((Pane)tempPane, span);
         prevPane = null;
         tempPane = null;
     }
 
-    private void setProps(Pane pane, int span){
-        setTime(pane, span);
-        Text activity = new Text(10, 40, "Leader.getSport()");
+    private void buildProps(Pane pane, int span){
+        buildTime(pane, span);
+        String sp = "Leader.getSport()";
+        pane.getProperties().put("sp", sp);
+        Text activity = new Text(10, 40, sp);
         activity.setFill(Paint.valueOf("#FFFFFF"));
         activity.setFont(new Font("Helvetica Light", 11.0));
         pane.getChildren().add(activity);
         ObservableMap<Object, Object> props = pane.getProperties();
-        props.put("baked", true);
         props.put("span", span);
         pane.setOnMousePressed(e -> initY = (short)e.getSceneY());
         pane.setOnMouseDragged(e -> move(pane, (int) e.getSceneY()));
         pane.setOnMouseClicked(null);
     }
 
-    private void setTime(Pane pane, int span){
+    private void buildTime(Pane pane, int span){
         int[] cords = getNodeCords(pane);
         byte hourFrom = (byte) (7 + (cords[0] >> 2));
         byte minFrom = (byte) ((cords[0] % 4) * 15);
@@ -154,13 +168,22 @@ public class Calendar extends Menu implements Initializable, Serializable<GridPa
         int finalHour = (dur + minFrom) / 60;
         byte minTo = (byte) ((dur + minFrom) - finalHour * 60);
         int hourTo = hourFrom + finalHour;
-        String time = String.format("%s%s:%s%s - %s%s:%s%s",
-                hourFrom < 10 ? "0" : "", hourFrom, minFrom, minFrom == 0 ? "0" : "",
-                hourTo < 10 ? "0" : "", hourTo, minTo, minTo == 0 ? "0" : ""
-        );
+
+        String h0 = (hourFrom < 10 ? "0" : "") + hourFrom;
+        String m0 = minFrom + (minFrom == 0 ? "0" : "");
+        String h1 = (hourTo < 10 ? "0" : "") + hourTo;
+        String m1 = minTo + (minTo == 0 ? "0" : "");
+
+        ObservableMap<Object, Object> props = pane.getProperties();
+
+        String time = String.format("%s:%s - %s:%s", h0, m0, h1, m1);
         Text text = new Text(10, 20, time);
         text.setFill(Paint.valueOf("#FFFFFF"));
         text.setFont(new Font("Helvetica Light", 11.0));
+        props.put("hf", h0);
+        props.put("mf", m0);
+        props.put("ht", h1);
+        props.put("mt", m1);
         if(pane.getChildren().size() != 0)
             ((Text)(pane.getChildren().get(0))).setText(time);
         else
@@ -185,7 +208,7 @@ public class Calendar extends Menu implements Initializable, Serializable<GridPa
                     gridPane.getChildren().remove(pane);//strict order
                     gridPane.add(pane, cords[1], cords[0] - 1);//strict order
                     gridPaneFast[cords[0] + var0][cords[1]] = pane;
-                    setTime(pane, span);
+                    buildTime(pane, span);
                     GridPane.setRowSpan(pane, span);
                 }
             }
@@ -201,15 +224,32 @@ public class Calendar extends Menu implements Initializable, Serializable<GridPa
                     gridPane.getChildren().remove(pane);//strict order
                     gridPane.add(pane, cords[1], cords[0] + 1);//strict order
                     gridPaneFast[cords[0] + var0][cords[1]] = pane;
-                    setTime(pane, span);
+                    buildTime(pane, span);
                     GridPane.setRowSpan(pane, span);
                 }
             }
         }
     }
 
-    private GridsPair createGrid(){
+    private void loadTable(int offset){
+        if(currentTable + offset >= weeks.size()){
+            currentTable += offset;
+            weeks.add(createGrids());
+        }
+        else if(currentTable + offset < 0){
+            currentTable = 0;
+            weeks.insertAt(createGrids(), 0);
+        }
+        this.gridPane = weeks.get(currentTable).gridPane;
+        this.gridPaneFast = weeks.get(currentTable).gridPaneFast;
+        tempCol = 0;
+        tempRow = 0;
+        tempPane = null;
+    }
+
+    private GridsPair createGrids(){
         GridPane grid = new GridPane();
+        grid.setPrefHeight(975);
         grid.setPrefWidth(777.0);
         grid.setMaxWidth(777.0);
         grid.setMinWidth(777.0);
@@ -236,31 +276,114 @@ public class Calendar extends Menu implements Initializable, Serializable<GridPa
             r.setMaxHeight(15.0);
             r.setVgrow(Priority.NEVER);
         }
-        Node[][] gridFast = new Node[rc.length][cc.length];
+        Node[][] gridFast = new Pane[rc.length][cc.length];
         fillGrids(grid, gridFast);
         grid.getRowConstraints().addAll(rc);
         grid.getColumnConstraints().addAll(cc);
 
         return new GridsPair(grid, gridFast);
     }
-
+    //byte[0] - pane count
+    //{
+    //  0. row
+    //  1. col
+    //  2. span
+    //  3. color
+    //  4. hFrom
+    //  5. mFrom
+    //  6. hTo
+    //  7. mTo
+    //  8. activity name
+    //}
     @Override
-    public byte[] serialize(GridPane obj) {
-        return new byte[0];
+    public byte[] serialize(GridsPair grid) {
+        Block block = new Block();
+        byte count = 0;
+        block.writeByte(count);
+        for(Node node : grid.gridPane.getChildren()){
+            if(node.getProperties().containsKey("span")){
+                count++;
+                int[] cords = getNodeCords(node);
+                Map<Object, Object> props = node.getProperties();
+                block.writeByte((byte) cords[0]);
+                block.writeByte((byte) cords[1]);
+                block.writeByte((byte) ((int)(props.get("span"))));
+                block.writeColor(getColor(this.color).split(","));
+                block.writeString((String) props.get("hf"));
+                block.writeString((String) props.get("mf"));
+                block.writeString((String) props.get("ht"));
+                block.writeString((String) props.get("mt"));
+                block.writeString((String) props.get("sp"));
+            }
+        }
+        block.getBuffer()[0] = count;
+        byte[] bytes = new byte[block.getSize()];
+        System.arraycopy(block.getBuffer(), 0, bytes, 0, block.getSize());
+
+        return bytes;
+    }
+    //  0. row
+    //  1. col
+    //  2. span
+    //  3. color
+    //  4. hFrom
+    //  5. mFrom
+    //  6. hTo
+    //  7. mTo
+    //  8. activity name
+    @Override
+    public GridsPair deserialize(byte[] bytes) {
+        GridsPair grids = createGrids();
+        Block block = new Block(bytes);
+        byte count = block.readByte();
+        for (int i = 0; i < count; i++){
+            byte row = block.readByte();
+            byte col = block.readByte();
+            Pane pane = (Pane) grids.gridPaneFast[row][col];
+            ObservableMap<Object, Object> props = pane.getProperties();
+            byte span = block.readByte();
+            grids.spanRecords.put(span, pane);
+            for(int j = 1; j < span; j++)
+                gridPaneFast[row + j][col] = pane;
+            props.put("span", span);
+            //pane.setStyle("-fx-background-color: rgba("+ block.readColor() +")");
+            pane.setStyle("-fx-background-color: rgba(0,59,160,0.87)");
+            String h0 = block.readString();
+            String m0 = block.readString();
+            String h1 = block.readString();
+            String m1 = block.readString();
+            String time = String.format("%s:%s - %s:%s", h0, m0, h1, m1);
+            Text text = new Text(10, 20, time);
+            text.setFill(Paint.valueOf("#FFFFFF"));
+            text.setFont(new Font("Helvetica Light", 11.0));
+            props.put("hf", h0);
+            props.put("mf", m0);
+            props.put("ht", h1);
+            props.put("mt", m1);
+            pane.getChildren().add(text);
+            String sp = block.readString();
+            props.put("sp", sp);
+            Text activity = new Text(10, 40, sp);
+            activity.setFill(Paint.valueOf("#FFFFFF"));
+            activity.setFont(new Font("Helvetica Light", 11.0));
+            pane.getChildren().add(activity);
+        }
+        return grids;
     }
 
-    @Override
-    public GridPane deserialize(byte[] bytes) {
-        return null;
+    private String getColor(String unformatted){
+        return unformatted.substring(unformatted.indexOf('(') + 1, unformatted.indexOf(')'));
     }
 
-    private static class GridsPair {
+    public static class GridsPair {
         GridPane gridPane;
         Node[][] gridPaneFast;
+        Map<Byte, Node> spanRecords;
 
         private GridsPair(GridPane gridPane, Node[][] gridPaneFast){
             this.gridPane = gridPane;
             this.gridPaneFast = gridPaneFast;
+            spanRecords = new HashMap<>(32);
         }
     }
 
@@ -298,24 +421,8 @@ public class Calendar extends Menu implements Initializable, Serializable<GridPa
         }
     }
 
-    private void loadTable(int offset){
-        if(currentTable + offset >= weeks.size()){
-            currentTable += offset;
-            weeks.add(createGrid());
-        }
-        else if(currentTable + offset < 0){
-            currentTable = 0;
-            weeks.insertAt(createGrid(), 0);
-        }
-        this.gridPane = weeks.get(currentTable).gridPane;
-        this.gridPaneFast = weeks.get(currentTable).gridPaneFast;
-        tempCol = 0;
-        tempRow = 0;
-        tempPane = null;
-    }
-
     private boolean checkFreeSpace(int[] cords, int span) {
-        return gridPaneFast[cords[0] + span][cords[1]].getProperties().containsKey("baked");
+        return gridPaneFast[cords[0] + span][cords[1]].getProperties().containsKey("span");
     }
 
     private void addBetween(int start, int end, int col){
@@ -346,7 +453,7 @@ public class Calendar extends Menu implements Initializable, Serializable<GridPa
                     int[] tempCords = getNodeCords(tempPane);
                     if(curCords[1] != tempCords[1])
                         return;
-                    if(prevPane != null && !prevPane.getProperties().containsKey("baked") &&
+                    if(prevPane != null && !prevPane.getProperties().containsKey("span") &&
                             isAfter(getNodeCords(p), getNodeCords(prevPane))) {
                         int[] prevCords = getNodeCords(prevPane);
                         resetColorBetween(curCords, prevCords);

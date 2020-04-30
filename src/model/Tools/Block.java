@@ -1,13 +1,17 @@
 package model.Tools;
 
+import model.Logging.Logger;
+
+import java.security.InvalidParameterException;
+import java.text.ParseException;
 import java.util.Formatter;
 
 public class Block {
-    public static final int BUFFER_SIZE = Short.MAX_VALUE << 1;
-    public static byte[] buffer = new byte[Block.BUFFER_SIZE];
+    public static final int BUFFER_SIZE = Short.MAX_VALUE;
+    public byte[] buffer = new byte[Block.BUFFER_SIZE];
     public int step;
+    public int size;
     public byte[] block;
-    public boolean useCompression;
     public boolean longBinaryData;
 
     public Block(int prefix, byte[] contents)
@@ -30,6 +34,25 @@ public class Block {
         this.reset();
     }
 
+    public byte checkByte()
+    {
+        if (this.block == null || this.step > this.block.length - 1)
+            return 0;
+        return this.block[this.step];
+    }
+
+    public byte[] getBytes()
+    {
+        if(this.block == null){
+            size = this.step;
+            return this.buffer;
+        }
+        else {
+            size = this.block.length;
+            return this.block;
+        }
+    }
+
     public byte readByte()
     {
         if (this.block == null || this.step > this.block.length - 1)
@@ -37,13 +60,6 @@ public class Block {
         byte num = this.block[this.step];
         ++this.step;
         return num;
-    }
-
-    public byte checkByte()
-    {
-        if (this.block == null || this.step > this.block.length - 1)
-            return 0;
-        return this.block[this.step];
     }
 
     public byte[] readByteArray()
@@ -89,6 +105,34 @@ public class Block {
         return int32;
     }
 
+     public String readString()
+    {
+        if (this.block == null || this.step >= this.block.length)
+            return "";
+        byte num = this.block[this.step];
+        String str = this.step + (int)num > this.block.length ? "" : new String(this.block, this.step + 1, num);
+        this.step = this.step + 1 + (int)num;
+        return str;
+    }
+
+    public float readSingle()
+    {
+        if (this.block == null || this.step > this.block.length - 4)
+            return 0.0f;
+        float single = BitConverter.toSingle(this.block, this.step);
+        this.step += 4;
+        return single;
+    }
+
+    public String readColor()
+    {
+        byte r = readByte();
+        byte g = readByte();
+        byte b = readByte();
+        byte a = readByte();
+        return String.format("%s,%s,%s,%s", r < 0 ? 256 - r : r, g < 0 ? 256 - g : g, b < 0 ? 256 - b : b, a / 100.0f);
+    }
+
     public void writeByte(byte value)
     {
         buffer[this.step] = value;
@@ -102,16 +146,16 @@ public class Block {
         if (this.longBinaryData)
         {
             this.writeInt32(values.length);
-            System.arraycopy(values, 0, Block.buffer, this.step, values.length);
+            System.arraycopy(values, 0, this.buffer, this.step, values.length);
             this.step += values.length;
         }
         else
         {
             byte length = (byte)values.length;
-            Block.buffer[this.step] = length;
+            this.buffer[this.step] = length;
             ++this.step;
-            System.arraycopy(values, 0, Block.buffer, this.step, length);
-            this.step += (int)length;
+            System.arraycopy(values, 0, this.buffer, this.step, length);
+            this.step += length;
         }
     }
 
@@ -119,10 +163,10 @@ public class Block {
     {
         byte[] bytes = value.getBytes();
         byte length = (byte)bytes.length;
-        Block.buffer[this.step] = length;
+        this.buffer[this.step] = length;
         ++this.step;
-        System.arraycopy(bytes, 0, Block.buffer, this.step, length);
-        this.step += (int)length;
+        System.arraycopy(bytes, 0, this.buffer, this.step, length);
+        this.step += length;
     }
 
     public void writeStringArray(String[] values)
@@ -133,23 +177,56 @@ public class Block {
             this.writeString(values[(int)index]);
     }
 
+    public void writeColor(String[] rgba)
+    {
+        if(rgba.length != 4)
+            throw new InvalidParameterException("Argument \"rgba[]\" must have exactly 4 elements");
+        byte r, g, b;
+        float a;
+        try {
+            r = (byte) Short.parseShort(rgba[0]);
+            g = (byte) Short.parseShort(rgba[1]);
+            b = (byte) Short.parseShort(rgba[2]);
+            a = Float.parseFloat(rgba[3]);
+            writeColor(r, g, b, a);
+        }
+        catch (NumberFormatException ex){
+            Logger.logException(ex);
+        }
+    }
+
+    public void writeColor(byte r, byte g, byte b, float a)
+    {
+        this.writeByte(r);
+        this.writeByte(g);
+        this.writeByte(b);
+        this.writeByte((byte) (a * 100.0f));
+    }
+
     public void writeBoolean(boolean value)
     {
-        Block.buffer[this.step] = BitConverter.getBytes(value);
+        this.buffer[this.step] = BitConverter.getBytes(value);
         ++this.step;
+    }
+
+    public void writeSingle(float value)
+    {
+        byte[] bytes = BitConverter.getBytes(value);
+        System.arraycopy(bytes, 0, this.buffer, this.step, bytes.length);
+        this.step += 4;
     }
 
     public void writeInt16(short value)
     {
         byte[] bytes = BitConverter.getBytes(value);
-        System.arraycopy(bytes, 0, Block.buffer, this.step, bytes.length);
+        System.arraycopy(bytes, 0, this.buffer, this.step, bytes.length);
         this.step += 2;
     }
 
     public void writeInt32(int value)
     {
         byte[] bytes = BitConverter.getBytes(value);
-        System.arraycopy(bytes, 0, Block.buffer, this.step, bytes.length );
+        System.arraycopy(bytes, 0, this.buffer, this.step, bytes.length );
         this.step += 4;
     }
 
@@ -163,32 +240,14 @@ public class Block {
     public void writeInt64(long value)
     {
         byte[] bytes = BitConverter.getBytes(value);
-        //Buffer.BlockCopy((Array)bytes, 0, (Array)Block.buffer, this.step, bytes.length);
-        System.arraycopy(bytes, 0, Block.buffer, this.step, bytes.length );
+        System.arraycopy(bytes, 0, this.buffer, this.step, bytes.length );
         this.step += 4;
-    }
-
-    public ByteSize getBytes()
-    {
-        return this.block == null ? new ByteSize(Block.buffer, this.step) : new ByteSize(this.block, this.block.length);
-    }
-
-    public static class ByteSize{
-        byte[] bytes;
-        int size;
-
-        public ByteSize(byte[] bytes, int size){
-
-            this.bytes = bytes;
-            this.size = size;
-        }
     }
 
     private String getHash(byte[] hash) {
         Formatter formatter = new Formatter();
-        for (byte b : hash) {
+        for (byte b : hash)
             formatter.format("%02x", b);
-        }
         return formatter.toString();
     }
 
@@ -207,13 +266,21 @@ public class Block {
     public void reset(int prefix)
     {
         this.step = prefix;
-        this.block = (byte[])null;
+        this.block = null;
     }
 
     public void reset()
     {
         this.step = 0;
-        this.block = (byte[])null;
+        this.block = null;
+    }
+
+    public byte[] getBuffer(){
+        return buffer;
+    }
+
+    public int getSize(){
+        return this.size;
     }
 }
 //
