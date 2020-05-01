@@ -53,7 +53,7 @@ public class ArrayList<T> {
         return Arrays.copyOf(content, size + avrg);
     }
 
-    public void remove(int index){
+    public void removeAt(int index){
         checkIndex(index);
         shiftElements(index);
     }

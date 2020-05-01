@@ -4,9 +4,6 @@ import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.HPos;
-import javafx.geometry.Pos;
-import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -22,30 +19,28 @@ import java.net.URL;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-public class Calendar extends Menu implements Initializable, Serializable<Calendar.GridsPair> {
+public class Calendar extends Menu implements Initializable, Serializable<Calendar.WeekProperties> {
 
-    private static ArrayList<GridsPair> weeks;
+    private static ArrayList<WeekProperties> weeks;
     @FXML
     private Pane tableHolder;
-    private int currentTable;
     @FXML
     private Text month;
     @FXML
     private GridPane gridPane;
+    private Node[][] gridPaneFast;
+    private Node tempPane, prevPane;
     @FXML
     private HBox options, dates;
     @FXML
     private Button prev, next, bug;
-    private Node[][] gridPaneFast;
-    private Node tempPane, prevPane;
     private int tempRow, tempCol, initY;
-    private boolean flag = true, ctrl;
+    private boolean flag = true, ctrl, modified = false;
     private final String color = "-fx-background-color: rgba(255,51,61,0.83)";
-    private LocalDate currWeek;
+    private LocalDate currentWeek;
 
     static {
         weeks = new ArrayList<>();
@@ -69,7 +64,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        currWeek = LocalDate.now();
+        currentWeek = LocalDate.now();
         gridPaneFast = new Node[gridPane.getRowConstraints().size()][gridPane.getColumnConstraints().size()];
         new Thread(() -> {
             bindTab(this);
@@ -79,26 +74,24 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
 //        prev.setOnMouseClicked(e -> new Thread(() -> fillWeek(-7)).start());
 //        next.setOnMouseClicked(e -> new Thread(() -> fillWeek(7)).start());
         prev.setOnMouseClicked(e -> {
-            fillWeek(-7);
-            loadTable(--currentTable);
+            loadTable(-7);//currentWeek unmodified
+            fillWeek(-7);//currentWeek modified
         });
         next.setOnMouseClicked(e -> {
-            fillWeek(7);
-            loadTable(++currentTable);
+            loadTable(7);//currentWeek unmodified
+            fillWeek(7);//currentWeek modified
         });
-        bug.setOnMouseClicked(e -> {
-            GridsPair pair = deserialize(serialize(new GridsPair(this.gridPane, this.gridPaneFast)));
-            tableHolder.getChildren().remove(gridPane);
-            gridPane = pair.gridPane;
-            tableHolder.getChildren().add(pair.gridPane);
-            gridPaneFast = pair.gridPaneFast;
-
-        });
+//        bug.setOnMouseClicked(e -> {
+//            WeekProperties pair = deserialize(serialize(new WeekProperties(this.gridPane, this.gridPaneFast)));
+//            tableHolder.getChildren().remove(gridPane);
+//            gridPane = pair.gridPane;
+//            tableHolder.getChildren().add(pair.gridPane);
+//            gridPaneFast = pair.gridPaneFast;
+//
+//        });
         fillGrids(this.gridPane, this.gridPaneFast);
         gridPane.getChildren().forEach(pane -> pane.setOnMouseClicked(e -> buildActivity(pane)));
     }
-
-
 
     private void buildActivity(Node pane){
         if((tempPane != null && getNodeCords(pane)[1] != getNodeCords(tempPane)[1]))
@@ -231,76 +224,121 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         }
     }
 
+    private void saveCurrentTable(){//modified true
+        for(int i = 0; i < weeks.size(); i++)
+            if(currentWeek.getDayOfYear() == weeks.get(i).currentWeek.getDayOfYear())
+                weeks.removeAt(i);
+
+        WeekProperties newWeek = new WeekProperties(currentWeek);
+        for(Node pane : gridPane.getChildren()) {//grabbing all baked panes
+            ObservableMap<Object, Object> props = pane.getProperties();
+            if (props.containsKey("span")) {
+                int[] cords = getNodeCords(pane);
+                newWeek.addProperty(new WeekProperties.PaneProperties(
+                        cords[0], cords[1], (int) pane.getProperties().get("span"),
+                        (String) props.get("hf"), (String)props.get("mf"), (String)props.get("ht"), (String)props.get("mt"), pane.getStyle(),
+                        (Text) ((Pane) pane).getChildren().get(0), (Text) ((Pane) pane).getChildren().get(1)
+                ));
+            }
+        }
+        weeks.add(newWeek);
+    }
+
     private void loadTable(int offset){
-        if(currentTable + offset >= weeks.size()){
-            currentTable += offset;
-            weeks.add(createGrids());
-        }
-        else if(currentTable + offset < 0){
-            currentTable = 0;
-            weeks.insertAt(createGrids(), 0);
-        }
-        this.gridPane = weeks.get(currentTable).gridPane;
-        this.gridPaneFast = weeks.get(currentTable).gridPaneFast;
-        tempCol = 0;
-        tempRow = 0;
-        tempPane = null;
+        if(!modified)
+            saveCurrentTable();
+        WeekProperties desiredWeek = null;
+        int desiredDay = currentWeek.plusDays(offset).getDayOfYear();
+        for(int i = 0; i < weeks.size(); i++)
+            if(desiredDay == weeks.get(i).currentWeek.getDayOfYear()){//found timetable for desired week (prev or next)
+                desiredWeek = weeks.get(i);
+                break;
+            }
+        fillGrids(gridPane, gridPaneFast);
+        if(desiredWeek != null)
+            for(int i = 0; i < desiredWeek.panes.size(); i++){
+                WeekProperties.PaneProperties paneProp = desiredWeek.panes.get(i);
+                Pane pane = (Pane) getNode(paneProp.row, paneProp.col);
+                ObservableMap<Object, Object> props = pane.getProperties();
+                ObservableList<Node> childs = pane.getChildren();
+                props.put("span", paneProp.span);
+                props.put("hf", paneProp.hf);
+                props.put("mf", paneProp.mf);
+                props.put("ht", paneProp.ht);
+                props.put("mt", paneProp.mt);
+                childs.add(paneProp.time);
+                childs.add(paneProp.sport);
+                GridPane.setRowSpan(pane, paneProp.span);
+                deleteBetween(pane, paneProp.row + 1, paneProp.row + paneProp.span, paneProp.col);
+                pane.setStyle(paneProp.color);
+            }
     }
 
-    private GridsPair createGrids(){
-        GridPane grid = new GridPane();
-        grid.setPrefHeight(975);
-        grid.setPrefWidth(777.0);
-        grid.setMaxWidth(777.0);
-        grid.setMinWidth(777.0);
-        grid.setLayoutX(75.0);
-        grid.setLayoutY(23.0);
-        grid.setAlignment(Pos.CENTER);
-        ColumnConstraints[] cc = new ColumnConstraints[7];//7 days in week
-        for(ColumnConstraints c : cc){
-            c = new ColumnConstraints();
-            c.setHgrow(Priority.NEVER);
-            c.setPrefWidth(111.0);
-            c.setMinWidth(111.0);
-            c.setHalignment(HPos.CENTER);
-            c.setPercentWidth(0.0);
-            c.setMaxWidth(111.0);
-        }
-        RowConstraints[] rc = new RowConstraints[65];//or get how 15 slots needed
-        for(RowConstraints r : rc){
-            r = new RowConstraints();
-            r.setMinHeight(15.0);
-            r.setPrefHeight(15.0);
-            r.setPercentHeight(0.0);
-            r.setValignment(VPos.CENTER);
-            r.setMaxHeight(15.0);
-            r.setVgrow(Priority.NEVER);
-        }
-        Node[][] gridFast = new Pane[rc.length][cc.length];
-        fillGrids(grid, gridFast);
-        grid.getRowConstraints().addAll(rc);
-        grid.getColumnConstraints().addAll(cc);
-
-        return new GridsPair(grid, gridFast);
-    }
-    //byte[0] - pane count
-    //{
-    //  0. row
-    //  1. col
-    //  2. span
-    //  3. color
-    //  4. hFrom
-    //  5. mFrom
-    //  6. hTo
-    //  7. mTo
-    //  8. activity name
-    //}
+//    private WeekProperties createGrids(){
+//        GridPane grid = new GridPane();
+//        grid.setPrefHeight(975);
+//        grid.setPrefWidth(777.0);
+//        grid.setMaxWidth(777.0);
+//        grid.setMinWidth(777.0);
+//        grid.setLayoutX(75.0);
+//        grid.setLayoutY(23.0);
+//        grid.setAlignment(Pos.CENTER);
+//        ColumnConstraints[] cc = new ColumnConstraints[7];//7 days in week
+//        for(ColumnConstraints c : cc){
+//            c = new ColumnConstraints();
+//            c.setHgrow(Priority.NEVER);
+//            c.setPrefWidth(111.0);
+//            c.setMinWidth(111.0);
+//            c.setHalignment(HPos.CENTER);
+//            c.setPercentWidth(0.0);
+//            c.setMaxWidth(111.0);
+//        }
+//        RowConstraints[] rc = new RowConstraints[65];//or get how 15 slots needed
+//        for(RowConstraints r : rc){
+//            r = new RowConstraints();
+//            r.setMinHeight(15.0);
+//            r.setPrefHeight(15.0);
+//            r.setPercentHeight(0.0);
+//            r.setValignment(VPos.CENTER);
+//            r.setMaxHeight(15.0);
+//            r.setVgrow(Priority.NEVER);
+//        }
+//        Node[][] gridFast = new Pane[rc.length][cc.length];
+//        fillGrids(grid, gridFast);
+//        grid.getRowConstraints().addAll(rc);
+//        grid.getColumnConstraints().addAll(cc);
+//
+//        return new WeekProperties(grid, gridFast);
+//    }
+    //  count
+    //  week: {year, mon, day}
+    // {
+    //  row;
+    //  col;
+    //  span;
+    //  color;
+    //  time: {hour from, min from, hour to, min to}
+    //  sport;
+    // }
+//  count
+//  week: {year, mon, day}
+// {
+//  row;
+//  col;
+//  span;
+//  color;
+//  time: {hour from, min from, hour to, min to}
+//  sport;
+// }
     @Override
-    public byte[] serialize(GridsPair grid) {
+    public byte[] serialize() {
         Block block = new Block();
         byte count = 0;
         block.writeByte(count);
-        for(Node node : grid.gridPane.getChildren()){
+        block.writeInt16((short) this.currentWeek.getYear());
+        block.writeByte((byte) this.currentWeek.getMonthValue());
+        block.writeByte((byte) this.currentWeek.getDayOfMonth());
+        for(Node node : gridPane.getChildren()){
             if(node.getProperties().containsKey("span")){
                 count++;
                 int[] cords = getNodeCords(node);
@@ -308,7 +346,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
                 block.writeByte((byte) cords[0]);
                 block.writeByte((byte) cords[1]);
                 block.writeByte((byte) ((int)(props.get("span"))));
-                block.writeColor(getColor(this.color).split(","));
+                block.writeColor(getRGBAColor(node.getStyle()).split(","));
                 block.writeString((String) props.get("hf"));
                 block.writeString((String) props.get("mf"));
                 block.writeString((String) props.get("ht"));
@@ -322,103 +360,95 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
 
         return bytes;
     }
-    //  0. row
-    //  1. col
-    //  2. span
-    //  3. color
-    //  4. hFrom
-    //  5. mFrom
-    //  6. hTo
-    //  7. mTo
-    //  8. activity name
+    //  count
+    //  week: {year, mon, day}
+    // {
+    //  row;
+    //  col;
+    //  span;
+    //  color;
+    //  time: {hour from, min from, hour to, min to}
+    //  sport;
+    // }
     @Override
-    public GridsPair deserialize(byte[] bytes) {
-        GridsPair grids = createGrids();
+    public WeekProperties deserialize(byte[] bytes) {
         Block block = new Block(bytes);
         byte count = block.readByte();
+        WeekProperties week = new WeekProperties(block.readInt16(), block.readByte(), block.readByte());
         for (int i = 0; i < count; i++){
             byte row = block.readByte();
             byte col = block.readByte();
-            Pane pane = (Pane) grids.gridPaneFast[row][col];
-            ObservableMap<Object, Object> props = pane.getProperties();
             byte span = block.readByte();
-            grids.spanRecords.put(span, pane);
-            for(int j = 1; j < span; j++)
-                gridPaneFast[row + j][col] = pane;
-            props.put("span", span);
-            //pane.setStyle("-fx-background-color: rgba("+ block.readColor() +")");
-            pane.setStyle("-fx-background-color: rgba(0,59,160,0.87)");
-            String h0 = block.readString();
-            String m0 = block.readString();
-            String h1 = block.readString();
-            String m1 = block.readString();
-            String time = String.format("%s:%s - %s:%s", h0, m0, h1, m1);
-            Text text = new Text(10, 20, time);
-            text.setFill(Paint.valueOf("#FFFFFF"));
-            text.setFont(new Font("Helvetica Light", 11.0));
-            props.put("hf", h0);
-            props.put("mf", m0);
-            props.put("ht", h1);
-            props.put("mt", m1);
-            pane.getChildren().add(text);
+            String color = "-fx-background-color: rgba("+ block.readColor() +")";
+            String hf = block.readString();
+            String mf = block.readString();
+            String ht = block.readString();
+            String mt = block.readString();
+            String tm = String.format("%s:%s - %s:%s",
+                    hf, mf, ht, mt
+            );
+            Text time = new Text(10, 20, tm);
+            time.setFill(Paint.valueOf("#FFFFFF"));
+            time.setFont(new Font("Helvetica Light", 11.0));
             String sp = block.readString();
-            props.put("sp", sp);
-            Text activity = new Text(10, 40, sp);
-            activity.setFill(Paint.valueOf("#FFFFFF"));
-            activity.setFont(new Font("Helvetica Light", 11.0));
-            pane.getChildren().add(activity);
+            Text sport = new Text(10, 40, sp);
+            sport.setFill(Paint.valueOf("#FFFFFF"));
+            sport.setFont(new Font("Helvetica Light", 11.0));
+
+            week.addProperty(new WeekProperties.PaneProperties(
+                    row, col, span, hf, mf, ht, mt, color, time, sport
+            ));
         }
-        return grids;
+        return week;
     }
 
-    private String getColor(String unformatted){
-        return unformatted.substring(unformatted.indexOf('(') + 1, unformatted.indexOf(')'));
-    }
+    public static class WeekProperties {
+        ArrayList<PaneProperties> panes;
+        LocalDate currentWeek;
 
-    public static class GridsPair {
-        GridPane gridPane;
-        Node[][] gridPaneFast;
-        Map<Byte, Node> spanRecords;
-
-        private GridsPair(GridPane gridPane, Node[][] gridPaneFast){
-            this.gridPane = gridPane;
-            this.gridPaneFast = gridPaneFast;
-            spanRecords = new HashMap<>(32);
-        }
-    }
-
-    private void fillWeek(int offset){
-        LocalDate now = LocalDate.of(currWeek.getYear(), currWeek.getMonth(), currWeek.getDayOfMonth());
-        DayOfWeek today = now.getDayOfWeek();
-        ObservableList<Node> childs = dates.getChildren();
-        for(int i = today.getValue() - 1; i < 7; i++){
-            TextField field = (TextField) childs.get(i);
-            field.setText(String.valueOf(now.plusDays(i - (today.getValue() - 1) + offset).getDayOfMonth()));
-        }
-        for(int i = today.getValue() - 2; i > -1; i--){
-            TextField field = (TextField) childs.get(i);
-            field.setText(String.valueOf(now.minusDays((today.getValue() - 1) - i - offset).getDayOfMonth()));
+        private WeekProperties(LocalDate localDate){
+            this(localDate.getYear(), localDate.getMonthValue(), localDate.getDayOfMonth());
         }
 
-        TextField todayF = (TextField)(childs.get(today.getValue() - 1));
-        if(Integer.parseInt(todayF.getText()) == LocalDate.now().getDayOfMonth()){
-            todayF.getStyleClass().add("fieldTodayRed");
+        private WeekProperties(int year, int mon, int day){ //day of month
+            panes = new ArrayList<>(32);
+            this.currentWeek = LocalDate.of(year, mon, day);
         }
-        else
-            todayF.getStyleClass().remove("fieldTodayRed");
-        currWeek = currWeek.plusDays(offset);
-        month.setText(currWeek.format(DateTimeFormatter.ofPattern("MMMM")));
-        //loadTable(currWeek.getMonth().getValue() + "-" + (byte)Math.ceil((currWeek.getDayOfMonth() / (float)currWeek.lengthOfMonth()) * 4.0));
-    }
 
-    private void fillGrids(GridPane gridPane, Node[][] gridPaneFast){
-        for(int col = 0; col < gridPane.getColumnConstraints().size(); col++){
-            for(int row = 0; row < gridPane.getRowConstraints().size(); row++){
-                Pane p = createPane(false);
-                gridPane.add(p, col, row);
-                gridPaneFast[row][col] = p;
+        public void addProperty(PaneProperties paneProperty){
+            this.panes.add(paneProperty);
+        }
+
+        public void removeProperty(int row, int col){
+            for(int i = 0; i < panes.size(); i++) {
+                PaneProperties prop = panes.get(i);
+                if (prop.row == row && prop.col == col)
+                    panes.removeAt(i);
             }
         }
+
+        public static class PaneProperties {
+            int row, col, span;
+            Text time, sport;
+            String color, hf, mf, ht, mt;
+
+            private PaneProperties(int row, int col, int span, String hf, String mf, String ht, String mt, String color, Text time, Text sport){
+                this.row = row;
+                this.col = col;
+                this.span = span;
+                this.hf = hf;
+                this.mf = mf;
+                this.ht = ht;
+                this.mt = mt;
+                this.color = color;
+                this.time = time;
+                this.sport = sport;
+            }
+        }
+    }
+
+    private String getRGBAColor(String unformatted){
+        return unformatted.substring(unformatted.indexOf('(') + 1, unformatted.indexOf(')'));
     }
 
     private boolean checkFreeSpace(int[] cords, int span) {
@@ -526,6 +556,41 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             p.setOnMouseClicked(e -> buildActivity(p));
 
         return p;
+    }
+
+    private void fillWeek(int offset){
+        LocalDate now = LocalDate.of(currentWeek.getYear(), currentWeek.getMonth(), currentWeek.getDayOfMonth());
+        DayOfWeek today = now.getDayOfWeek();
+        ObservableList<Node> childs = dates.getChildren();
+        for(int i = today.getValue() - 1; i < 7; i++){
+            TextField field = (TextField) childs.get(i);
+            field.setText(String.valueOf(now.plusDays(i - (today.getValue() - 1) + offset).getDayOfMonth()));
+        }
+        for(int i = today.getValue() - 2; i > -1; i--){
+            TextField field = (TextField) childs.get(i);
+            field.setText(String.valueOf(now.minusDays((today.getValue() - 1) - i - offset).getDayOfMonth()));
+        }
+
+        TextField todayF = (TextField)(childs.get(today.getValue() - 1));
+        if(Integer.parseInt(todayF.getText()) == LocalDate.now().getDayOfMonth()){
+            todayF.getStyleClass().add("fieldTodayRed");
+        }
+        else
+            todayF.getStyleClass().remove("fieldTodayRed");
+        currentWeek = currentWeek.plusDays(offset);
+        month.setText(currentWeek.format(DateTimeFormatter.ofPattern("MMMM")));
+        //loadTable(currWeek.getMonth().getValue() + "-" + (byte)Math.ceil((currWeek.getDayOfMonth() / (float)currWeek.lengthOfMonth()) * 4.0));
+    }
+
+    private void fillGrids(GridPane gridPane, Node[][] gridPaneFast){
+        gridPane.getChildren().clear();
+        for(int col = 0; col < gridPane.getColumnConstraints().size(); col++){
+            for(int row = 0; row < gridPane.getRowConstraints().size(); row++){
+                Pane p = createPane(false);
+                gridPane.add(p, col, row);
+                gridPaneFast[row][col] = p;
+            }
+        }
     }
 }
 // row: 15px, 4 rows per hour, textfield: 22px, spacing: 4(15px) - 2(22px / 2)
