@@ -1,5 +1,6 @@
 package model;
 
+import controller.Calendar;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -32,7 +33,6 @@ public class App extends Application {
         primaryStage.show();
         stage = primaryStage;
         instance = this;
-        Logger.logUML(Block.class, true);
     }
 
     public void setScene(Scene scene){
