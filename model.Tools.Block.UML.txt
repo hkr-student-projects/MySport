@@ -17,21 +17,21 @@
 + writeBoolean(arg0: boolean): void
 + writeByte(arg0: byte): void
 + getBuffer(): byte[]
-+ readInt32(): int
-+ readByteArray(): byte[]
-+ readInt16(): short
-+ readSingle(): float
-+ readColor(): String
-+ writeByteArray(arg0: byte[]): void
-+ writeStringArray(arg0: String[]): void
-+ writeSingle(arg0: float): void
-+ writeInt32Array(arg0: int[]): void
-+ writeInt64(arg0: long): void
-+ writeInt32(arg0: int): void
-+ writeInt16(arg0: short): void
-+ checkByte(): byte
 + writeColor(arg0: String[]): void
 + writeColor(arg0: byte, arg1: byte, arg2: byte, arg3: float): void
++ writeSingle(arg0: float): void
++ writeInt32(arg0: int): void
++ writeInt64(arg0: long): void
++ readInt32(): int
++ checkByte(): byte
++ readInt16(): short
++ writeInt32Array(arg0: int[]): void
++ readByteArray(): byte[]
++ writeInt16(arg0: short): void
++ writeByteArray(arg0: byte[]): void
++ writeStringArray(arg0: String[]): void
++ readSingle(): float
++ readColor(): String
 + wait(arg0: long): void
 + wait(arg0: long, arg1: int): void
 + wait(): void
