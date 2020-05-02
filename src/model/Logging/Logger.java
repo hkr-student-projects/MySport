@@ -8,12 +8,22 @@ import java.lang.reflect.Parameter;
 
 import static java.lang.System.out;
 
+//public static final String ANSI_RESET = "\u001B[0m";
+//public static final String ANSI_BLACK = "\u001B[30m";
+//public static final String ANSI_RED = "\u001B[31m";
+//public static final String ANSI_GREEN = "\u001B[32m";
+//public static final String ANSI_YELLOW = "\u001B[33m";
+//public static final String ANSI_BLUE = "\u001B[34m";
+//public static final String ANSI_PURPLE = "\u001B[35m";
+//public static final String ANSI_CYAN = "\u001B[36m";
+//public static final String ANSI_WHITE = "\u001B[37m";
+
 enum ELogType{
 
     Error("\u001B[31m"),
     Warning("\u001B[33m"),
     Log("\u001B[0m"),
-    Exception("\u001B[31m");
+    Exception("\u001B[35m");
     //more
 
     private String code;
@@ -52,12 +62,16 @@ public class Logger {
    }
 
    public static void logException(Exception ex){
-       writeConsole("Exception message: " + ex.getMessage(), ELogType.Exception);
-       String exm = "";
-       for(StackTraceElement se : ex.getStackTrace())
-           exm += "\n\tat " + se.getClassName() + "." + se.getMethodName() + "()";
-       writeConsole(exm, ELogType.Exception);
+       logException(ex, ex.getMessage());
    }
+
+    public static void logException(Exception ex, String message){
+        writeConsole("Exception message: " + message, ELogType.Exception);
+        String exm = "";
+        for(StackTraceElement se : ex.getStackTrace())
+            exm += "\n\tat " + se.getClassName() + "." + se.getMethodName() + "()";
+        writeConsole(exm, ELogType.Exception);
+    }
 
    private static void writeConsole(String message, ELogType logType){
 

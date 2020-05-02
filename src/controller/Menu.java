@@ -13,9 +13,13 @@ public abstract class Menu {
     protected Button burger, home, account, mail, forum, calendar, settings, logout;
     private boolean flag = false;
 
-    protected abstract void burgerOpenAction();
+    protected abstract void onBurgerOpen();
 
-    protected abstract void burgerCloseAction();
+    protected abstract void onBurgerClose();
+
+    protected abstract void onSceneSwitch();
+
+    protected abstract void onAppClose();
 
     protected void toggleTab(){
         tab.setDisable(flag);
@@ -26,40 +30,49 @@ public abstract class Menu {
         burger.setOnMouseClicked(e -> {
             burger.setRotate(360 - burger.getRotate() + 90);
             if(flag = !flag)
-                burgerOpenAction();
+                onBurgerOpen();
             else
-                burgerCloseAction();
+                onBurgerClose();
         });
         home.setOnMouseClicked(e -> {
             if(caller instanceof Home)
                 return;
+            onSceneSwitch();
             App.instance.setScene(SceneSwitcher.instance.getScene("Home"));
         });
         account.setOnMouseClicked(e -> {
             if(caller instanceof Account)
                 return;
+            onSceneSwitch();
             App.instance.setScene(SceneSwitcher.instance.getScene("Account"));
         });
         mail.setOnMouseClicked(e -> {
             if(caller instanceof Mail)
                 return;
+            onSceneSwitch();
             App.instance.setScene(SceneSwitcher.instance.getScene("Mail"));
         });
         forum.setOnMouseClicked(e -> {
             if(caller instanceof Forum)
                 return;
+            onSceneSwitch();
             App.instance.setScene(SceneSwitcher.instance.getScene("Forum"));
         });
         calendar.setOnMouseClicked(e -> {
             if(caller instanceof Calendar)
                 return;
+            onSceneSwitch();
             App.instance.setScene(SceneSwitcher.instance.getScene("Calendar"));
         });
         settings.setOnMouseClicked(e -> {
             if(caller instanceof Settings)
                 return;
+            onSceneSwitch();
             App.instance.setScene(SceneSwitcher.instance.getScene("Settings"));
         });
-        logout.setOnMouseClicked(e -> App.instance.setScene(SceneSwitcher.instance.getScene("Login")));
+        logout.setOnMouseClicked(e -> {
+            new Thread(this::onAppClose).start();
+            App.instance.setScene(SceneSwitcher.instance.getScene("Login"));
+        });
     }
 }

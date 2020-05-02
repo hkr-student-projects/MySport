@@ -11,7 +11,8 @@ import java.util.Map;
 
 public class SceneSwitcher {
 
-    private static Map<String, Scene> loaders;
+    private static Map<String, Scene> scenes;
+    private static Map<String, Object> controllers;
     public static SceneSwitcher instance = new SceneSwitcher();
 
     static {
@@ -19,9 +20,13 @@ public class SceneSwitcher {
             File[] files = new File("src/view").listFiles((dir, name) ->
                     name.toLowerCase().endsWith(".fxml"));
             assert files != null;
-            loaders = new HashMap<>(files.length);
+            scenes = new HashMap<>(files.length);
+            controllers = new HashMap<>(files.length);
             for(File f : files) {
-                loaders.put(f.getName().substring(0, f.getName().length() - 5), new Scene(new FXMLLoader(f.toURI().toURL()).load(), 900, 600));
+                String name = f.getName().substring(0, f.getName().length() - 5);
+                FXMLLoader loader = new FXMLLoader(f.toURI().toURL());
+                scenes.put(name, new Scene(loader.load(), 900, 600));
+                controllers.put(name, loader.getController());
             }
         }
         catch (IOException e) {
@@ -30,8 +35,9 @@ public class SceneSwitcher {
     }
 
     public Scene getScene(String name){
-        return loaders.get(name);
+        return scenes.get(name);
     }
+    public <T> T getController(String name){ return (T)controllers.get(name); }
 }
 //    private Map<String, Scene> getLoaders() throws IOException {
 //

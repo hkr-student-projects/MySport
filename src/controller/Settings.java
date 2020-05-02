@@ -13,12 +13,22 @@ public class Settings extends Menu implements Initializable {
     }
 
     @Override
-    protected void burgerOpenAction() {
+    protected void onBurgerOpen() {
 
     }
 
     @Override
-    protected void burgerCloseAction() {
+    protected void onBurgerClose() {
+
+    }
+
+    @Override
+    protected void onSceneSwitch() {
+
+    }
+
+    @Override
+    protected void onAppClose() {
 
     }
 }

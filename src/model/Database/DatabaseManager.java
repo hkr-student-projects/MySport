@@ -2,15 +2,21 @@ package model.Database;
 
 import model.App;
 import model.Logging.Logger;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.Date;
 
 
 public class DatabaseManager {
+
+    private final String dbName = "sql7336945";
+    private final String member = "`" + dbName + "`.`member`";
+    private final String leader = "`" + dbName + "`.`leader`";
+    private final String account = "`" + dbName + "`.`account`";
+    private final String schedule = "`" + dbName + "`.`schedule`";
+    private final String leader_has_activity = "`" + dbName + "`.`leader_has_activity`";
+    private final String activity = "`" + dbName + "`.`activity`";
 
     static {
         try{
@@ -23,133 +29,6 @@ public class DatabaseManager {
 
     public DatabaseManager(){
         checkSchema();
-    }
-
-    public void checkSchema()
-    {
-//        try {
-//            executeQuery(QueryType.BOOL,
-//                    "CREATE TABLE IF NOT EXISTS `hotel`.`Account` (\n" +
-//                            "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
-//                            "  `email` VARCHAR(45) NOT NULL,\n" +
-//                            "  `password` VARCHAR(40) NOT NULL,\n" +
-//                            "  PRIMARY KEY (`id`));" +
-//                            "CREATE TABLE IF NOT EXISTS " + books + " (" +
-//                            "`reference` INT NOT NULL AUTO_INCREMENT," +
-//                            "`guests` TINYINT NOT NULL," +
-//                            "`movein` DATE NOT NULL," +
-//                            "`moveout` DATE NOT NULL," +
-//                            "PRIMARY KEY (`reference`));" +
-//                            "CREATE TABLE IF NOT EXISTS `hotel`.`Customer` (\n" +
-//                            "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
-//                            "  `account_id` INT NOT NULL,\n" +
-//                            "  `ssn` VARCHAR(13) NOT NULL,\n" +
-//                            "  `name` VARCHAR(45) NOT NULL,\n" +
-//                            "  `surname` VARCHAR(45) NOT NULL,\n" +
-//                            "  `phone` VARCHAR(15) NOT NULL,\n" +
-//                            "  `address` VARCHAR(45) NOT NULL,\n" +
-//                            "  PRIMARY KEY (`id`),\n" +
-//                            "  INDEX `fk_Customer_Account1_idx` (`account_id` ASC),\n" +
-//                            "  CONSTRAINT `fk_Customer_Account1`\n" +
-//                            "    FOREIGN KEY (`account_id`)\n" +
-//                            "    REFERENCES `hotel`.`Account` (`id`)\n" +
-//                            "    ON DELETE CASCADE" +
-//                            "    ON UPDATE CASCADE);" +
-//                            "CREATE TABLE IF NOT EXISTS `hotel`.`Order` (\n" +
-//                            "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
-//                            "  `Customer_id` INT NOT NULL,\n" +
-//                            "  `Booking_reference` INT NOT NULL,\n" +
-//                            "  PRIMARY KEY (`id`),\n" +
-//                            "  INDEX `fk_Order_Customer1_idx` (`Customer_id` ASC),\n" +
-//                            "  INDEX `fk_Order_Booking1_idx` (`Booking_reference` ASC),\n" +
-//                            "  CONSTRAINT `fk_Order_Customer1`\n" +
-//                            "    FOREIGN KEY (`Customer_id`)\n" +
-//                            "    REFERENCES `hotel`.`Customer` (`id`)\n" +
-//                            "    ON DELETE NO ACTION\n" +
-//                            "    ON UPDATE NO ACTION,\n" +
-//                            "  CONSTRAINT `fk_Order_Booking1`\n" +
-//                            "    FOREIGN KEY (`Booking_reference`)\n" +
-//                            "    REFERENCES `hotel`.`Booking` (`reference`)\n" +
-//                            "    ON DELETE CASCADE\n" +
-//                            "    ON UPDATE CASCADE);" +
-//                            "CREATE TABLE IF NOT EXISTS `hotel`.`Employee` (\n" +
-//                            "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
-//                            "  `account_id` INT NOT NULL,\n" +
-//                            "  `position` ENUM('ADMIN', 'RECEPTIONIST', 'CLEANER') NOT NULL,\n" +
-//                            "  `ssn` VARCHAR(13) NOT NULL,\n" +
-//                            "  `name` VARCHAR(45) NOT NULL,\n" +
-//                            "  `surname` VARCHAR(45) NOT NULL,\n" +
-//                            "  `phone` VARCHAR(15) NOT NULL,\n" +
-//                            "  `address` VARCHAR(45) NOT NULL,\n" +
-//                            "  PRIMARY KEY (`id`),\n" +
-//                            "  INDEX `fk_Customer_Account1_idx` (`account_id` ASC),\n" +
-//                            "  CONSTRAINT `fk_Customer_Account10`\n" +
-//                            "    FOREIGN KEY (`account_id`)\n" +
-//                            "    REFERENCES `hotel`.`Account` (`id`)\n" +
-//                            "    ON DELETE CASCADE\n" +
-//                            "    ON UPDATE CASCADE);" +
-//                            "CREATE TABLE IF NOT EXISTS " + rooms + " (" +
-//                            "`number` VARCHAR(10) NOT NULL," +
-//                            "`floor` SMALLINT(3) NOT NULL," +
-//                            "`class` ENUM('ECONOMY', 'MIDDLE', 'LUXURY') NOT NULL," +
-//                            "PRIMARY KEY (`number`));" +
-//                            "CREATE TABLE IF NOT EXISTS " + booked + " (" +
-//                            "`id` INT NOT NULL AUTO_INCREMENT," +
-//                            "`Booking_reference` INT NOT NULL," +
-//                            "`Room_number` VARCHAR(10) NOT NULL," +
-//                            "PRIMARY KEY (`id`)," +
-//                            "INDEX `fk_BookedRoom_Booking1_idx` (`Booking_reference` ASC)," +
-//                            "INDEX `fk_BookedRoom_Room1_idx` (`Room_number` ASC)," +
-//                            "CONSTRAINT `fk_BookedRoom_Booking1`" +
-//                            "FOREIGN KEY (`Booking_reference`)" +
-//                            "REFERENCES " + books + " (`reference`)" +
-//                            "ON DELETE CASCADE " +
-//                            "ON UPDATE CASCADE," +
-//                            "CONSTRAINT `fk_BookedRoom_Room1`" +
-//                            "FOREIGN KEY (`Room_number`)" +
-//                            "REFERENCES " + rooms + " (`number`)" +
-//                            "ON DELETE CASCADE " +
-//                            "ON UPDATE CASCADE);"
-//            );
-//        }
-//        catch (Exception ex){
-//            Logger.logException(ex);
-//        }
-    }
-
-    public Object executeQuery(QueryType type, String query)
-    {
-        // This method is to reduce the amount of copy paste that there was within this class.
-        Object result = null;
-        Connection connection = createConnection();
-        try
-        {
-            PreparedStatement command = connection.prepareStatement(query);
-            result = type == QueryType.READER ? command.executeQuery() : command.executeUpdate();
-        }
-        catch (Exception ex)
-        {
-            Logger.logException(ex);
-        }
-
-        return result;
-    }
-
-    public static Connection createConnection(){
-        Connection conn = null;
-        try {
-            conn = DriverManager.getConnection(App.config.DatabaseAddress, App.config.DatabaseUsername, App.config.DatabasePassword);
-        } catch (SQLException ex) {
-            Logger.logException(ex);
-        }
-
-        return conn;
-    }
-
-    public enum QueryType{
-        UPDATE,//INSERT, UPDATE, DELETE, CREATE TABLE, DROP TABLE
-        READER,//SELECT -> ResultSet
-        BOOL//ALL -> SELECT ? true : false
     }
 
     public void addAccount(String name, String middleName, String surname, String ssn, String eMail, String password, String phoneNumber) {
@@ -188,7 +67,7 @@ public class DatabaseManager {
                 " WHERE ssn = '" + ssn + "';");
     }
 
-    public void updatePassword(String password, String ssn) {
+    public void updatePassword(String password, String ssn) {//SHA ecnryption needed SHA1()
         executeQuery(QueryType.UPDATE, "UPDATE account SET password = '" + password + "'" +
                 "WHERE member_id = SELECT id FROM member WHERE ssn = '" + ssn + "';");
     }
@@ -196,5 +75,162 @@ public class DatabaseManager {
     public void updateEMail(String eMail, String ssn) {
         executeQuery(QueryType.UPDATE, "UPDATE account SET email = '" + eMail + "'" +
                 "WHERE member_id = SELECT id FROM member WHERE ssn = '" + ssn + "';");
+    }
+
+    public void saveTables(byte[][] weeks){
+        String query = "";
+        for(byte[] week : weeks){
+
+        }
+
+    }
+//    "CREATE TABLE IF NOT EXISTS " + member + " (\n" +
+//            "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
+//            "  `ssn` CHAR(13) NOT NULL,\n" +
+//            "  `name` VARCHAR(45) NOT NULL,\n" +
+//            "  `middlename` VARCHAR(45) NULL,\n" +
+//            "  `surname` VARCHAR(45) NOT NULL,\n" +
+//            "  `mobile` VARCHAR(45) NOT NULL,\n" +
+//            "  PRIMARY KEY (`id`));\n" +
+//            "CREATE TABLE IF NOT EXISTS " + account + " (\n" +
+//            "  `member_id` INT NOT NULL,\n" +
+//            "  `email` VARCHAR(128) NOT NULL,\n" +
+//            "  `password` VARCHAR(128) NOT NULL,\n" +
+//            "  INDEX `fk_account_member_idx` (`member_id` ASC),\n" +
+//            "  PRIMARY KEY (`member_id`),\n" +
+//            "  CONSTRAINT `fk_account_member`\n" +
+//            "    FOREIGN KEY (`member_id`)\n" +
+//            "    REFERENCES " + member + " (`id`)\n" +
+//            "    ON DELETE CASCADE\n" +
+//            "    ON UPDATE CASCADE);\n" +
+//            "CREATE TABLE IF NOT EXISTS " + leader + " (\n" +
+//            "  `member_id` INT NOT NULL,\n" +
+//            "  `keyNumber` VARCHAR(25) NOT NULL,\n" +
+//            "  `boardPosition` VARCHAR(45) NOT NULL,\n" +
+//            "  INDEX `fk_leader_member_idx` (`member_id` ASC),\n" +
+//            "  PRIMARY KEY (`member_id`),\n" +
+//            "  CONSTRAINT `fk_leader_member`\n" +
+//            "    FOREIGN KEY (`member_id`)\n" +
+//            "    REFERENCES " + member + " (`id`)\n" +
+//            "    ON DELETE CASCADE\n" +
+//            "    ON UPDATE CASCADE);\n" +
+//            "CREATE TABLE IF NOT EXISTS " + activity + " (\n" +
+//            "  `name` VARCHAR(45) NOT NULL,\n" +
+//            "  PRIMARY KEY (`name`));\n" +
+//            "  CREATE TABLE IF NOT EXISTS " + schedule + " (\n" +
+//            "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
+//            "  `week` BLOB NOT NULL,\n" +
+//            "  PRIMARY KEY (`id`));" +
+//            "  CREATE TABLE IF NOT EXISTS " + leader_has_activity + " (\n" +
+//            "  `leader_member_id` INT NOT NULL,\n" +
+//            "  `activity_name` VARCHAR(45) NOT NULL,\n" +
+//            "  PRIMARY KEY (`leader_member_id`, `activity_name`),\n" +
+//            "  INDEX `fk_leader_has_activity_activity_idx` (`activity_name` ASC),\n" +
+//            "  INDEX `fk_leader_has_activity_leader_idx` (`leader_member_id` ASC),\n" +
+//            "  CONSTRAINT `fk_leader_has_activity_leader`\n" +
+//            "    FOREIGN KEY (`leader_member_id`)\n" +
+//            "    REFERENCES " + leader + " (`member_id`)\n" +
+//            "    ON DELETE CASCADE\n" +
+//            "    ON UPDATE CASCADE,\n" +
+//            "  CONSTRAINT `fk_leader_has_activity_activity`\n" +
+//            "    FOREIGN KEY (`activity_name`)\n" +
+//            "    REFERENCES " + activity + " (`name`)\n" +
+//            "    ON DELETE NO ACTION\n" +
+//            "    ON UPDATE NO ACTION);"
+    public void checkSchema()
+    {
+        try {
+            executeQuery(QueryType.BOOL,
+                    "CREATE TABLE IF NOT EXISTS " + member + " (\n" +
+                            "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
+                            "  `ssn` CHAR(13) NOT NULL,\n" +
+                            "  `name` VARCHAR(45) NOT NULL,\n" +
+                            "  `middlename` VARCHAR(45) NULL,\n" +
+                            "  `surname` VARCHAR(45) NOT NULL,\n" +
+                            "  `mobile` VARCHAR(45) NOT NULL,\n" +
+                            "  PRIMARY KEY (`id`));\n" +
+                            "CREATE TABLE IF NOT EXISTS " + account + " (\n" +
+                            "  `member_id` INT NOT NULL,\n" +
+                            "  `email` VARCHAR(128) NOT NULL,\n" +
+                            "  `password` VARCHAR(128) NOT NULL,\n" +
+                            "  INDEX `fk_account_member_idx` (`member_id` ASC),\n" +
+                            "  PRIMARY KEY (`member_id`),\n" +
+                            "  CONSTRAINT `fk_account_member`\n" +
+                            "    FOREIGN KEY (`member_id`)\n" +
+                            "    REFERENCES " + member + " (`id`)\n" +
+                            "    ON DELETE CASCADE\n" +
+                            "    ON UPDATE CASCADE);\n" +
+                            "CREATE TABLE IF NOT EXISTS " + leader + " (\n" +
+                            "  `member_id` INT NOT NULL,\n" +
+                            "  `keyNumber` VARCHAR(25) NOT NULL,\n" +
+                            "  `boardPosition` VARCHAR(45) NOT NULL,\n" +
+                            "  INDEX `fk_leader_member_idx` (`member_id` ASC),\n" +
+                            "  PRIMARY KEY (`member_id`),\n" +
+                            "  CONSTRAINT `fk_leader_member`\n" +
+                            "    FOREIGN KEY (`member_id`)\n" +
+                            "    REFERENCES " + member + " (`id`)\n" +
+                            "    ON DELETE CASCADE\n" +
+                            "    ON UPDATE CASCADE);\n" +
+                            "CREATE TABLE IF NOT EXISTS " + activity + " (\n" +
+                            "  `name` VARCHAR(45) NOT NULL,\n" +
+                            "  PRIMARY KEY (`name`));\n" +
+                            "  CREATE TABLE IF NOT EXISTS " + schedule + " (\n" +
+                            "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
+                            "  `week` BLOB NOT NULL,\n" +
+                            "  PRIMARY KEY (`id`));" +
+                            "  CREATE TABLE IF NOT EXISTS " + leader_has_activity + " (\n" +
+                            "  `leader_member_id` INT NOT NULL,\n" +
+                            "  `activity_name` VARCHAR(45) NOT NULL,\n" +
+                            "  PRIMARY KEY (`leader_member_id`, `activity_name`),\n" +
+                            "  INDEX `fk_leader_has_activity_activity_idx` (`activity_name` ASC),\n" +
+                            "  INDEX `fk_leader_has_activity_leader_idx` (`leader_member_id` ASC),\n" +
+                            "  CONSTRAINT `fk_leader_has_activity_leader`\n" +
+                            "    FOREIGN KEY (`leader_member_id`)\n" +
+                            "    REFERENCES " + leader + " (`member_id`)\n" +
+                            "    ON DELETE CASCADE\n" +
+                            "    ON UPDATE CASCADE,\n" +
+                            "  CONSTRAINT `fk_leader_has_activity_activity`\n" +
+                            "    FOREIGN KEY (`activity_name`)\n" +
+                            "    REFERENCES " + activity + " (`name`)\n" +
+                            "    ON DELETE NO ACTION\n" +
+                            "    ON UPDATE NO ACTION);"
+            );
+        }
+        catch (Exception ex){
+            Logger.logException(ex, "Errors in query.");
+        }
+    }
+
+    public Object executeQuery(QueryType type, String query)
+    {
+        // This method is to reduce the amount of copy paste that there was within this class.
+        Object result = null;
+        try(PreparedStatement command = createConnection().prepareStatement(query))
+        {
+            result = type == QueryType.READER ? command.executeQuery() : command.executeUpdate();
+        }
+        catch (Exception ex)
+        {
+            Logger.logException(ex);
+        }
+
+        return result;
+    }
+
+    public static Connection createConnection(){
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection(App.config.DatabaseAddress, App.config.DatabaseUsername, App.config.DatabasePassword);
+        } catch (SQLException ex) {
+            Logger.logException(ex);
+        }
+
+        return conn;
+    }
+
+    public enum QueryType{
+        UPDATE,//INSERT, UPDATE, DELETE, CREATE TABLE, DROP TABLE
+        READER,//SELECT -> ResultSet
+        BOOL//ALL -> SELECT ? True : False
     }
 }

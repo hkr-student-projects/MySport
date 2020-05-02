@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.Database.DatabaseManager;
 import model.Logging.Logger;
+import model.People.User;
 import model.Tools.Block;
 import model.Tools.Config;
 import model.Tools.SceneSwitcher;
@@ -18,10 +19,11 @@ public class App extends Application {
     public static DatabaseManager databaseManager;
     public static App instance;
     private Stage stage;
+    private User session;
 
     static {
         config = new Config();
-//        databaseManager = new DatabaseManager();
+        databaseManager = new DatabaseManager();
     }
 
     @Override
@@ -37,5 +39,13 @@ public class App extends Application {
 
     public void setScene(Scene scene){
         this.stage.setScene(scene);
+    }
+
+    public User getSession() {
+        return session;
+    }
+
+    public void setSession(User session) {
+        this.session = session;
     }
 }
