@@ -24,16 +24,6 @@ public class EditAccount extends Menu implements Initializable {
         bindTab(this);
     }
 
-    @Override
-    protected void burgerOpenAction() {
-
-    }
-
-    @Override
-    protected void burgerCloseAction() {
-
-    }
-
     @FXML
     public void buttonNameSaveClick() {
         try {
@@ -120,5 +110,25 @@ public class EditAccount extends Menu implements Initializable {
     @FXML
     public void buttonReturnClick() {
         App.instance.setScene(SceneSwitcher.instance.getScene("Account"));
+    }
+
+    @Override
+    protected void onBurgerOpen() {
+
+    }
+
+    @Override
+    protected void onBurgerClose() {
+
+    }
+
+    @Override
+    protected void onSceneSwitch() {
+
+    }
+
+    @Override
+    protected void onAppClose() {
+
     }
 }
