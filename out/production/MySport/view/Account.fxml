@@ -28,7 +28,7 @@
                         <Font name="Helvetica Light" size="13.0" />
                      </font>
                   </Text>
-                  <JFXButton cacheShape="false" centerShape="false" focusTraversable="false" layoutX="60.0" layoutY="209.0" prefHeight="32.0" prefWidth="104.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="Edit" textFill="WHITE">
+                  <JFXButton fx:id="buttonEdit" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="60.0" layoutY="209.0" onAction="#buttonEditClick" prefHeight="32.0" prefWidth="104.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="Edit" textFill="WHITE">
                      <font>
                         <Font name="Arial" size="16.0" />
                      </font>
