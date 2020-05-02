@@ -37,10 +37,10 @@ public class DatabaseManager {
                 " '" + name + "'," +
                 " '" + middleName + "'," +
                 " '" + surname + "'," +
-                " '" + phoneNumber + "');");
-        executeQuery(QueryType.UPDATE, "INSERT INTO account (email, password) " +
-                "VALUES ('" + eMail + "'," +
-                " '" + password + "');");
+                " '" + phoneNumber + "');" +
+                "INSERT INTO account (email, password) " +
+                "VALUES ('" + eMail + "', SHA2('" + password + "', 256)));"//AES better with secret key
+        );
     }
 
     public void removeAccount(String ssn) {
@@ -78,11 +78,11 @@ public class DatabaseManager {
     }
 
     public void saveTables(byte[][] weeks){
-        String query = "";
+        String query = "TRUNCATE "+ schedule +"; INSERT INTO " + schedule + " (week) VALUES ";
         for(byte[] week : weeks){
 
         }
-
+        query += ";";
     }
 //    "CREATE TABLE IF NOT EXISTS " + member + " (\n" +
 //            "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
