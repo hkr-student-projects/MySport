@@ -3,7 +3,6 @@ package model.Tools;
 import model.Logging.Logger;
 
 import java.security.InvalidParameterException;
-import java.text.ParseException;
 import java.util.Formatter;
 
 public class Block {
@@ -55,8 +54,11 @@ public class Block {
 
     public byte readByte()
     {
-        if (this.block == null || this.step > this.block.length - 1)
+        if (this.block == null || this.step > this.block.length - 1){
+            System.out.println("ZERO");
             return 0;
+        }
+
         byte num = this.block[this.step];
         ++this.step;
         return num;
@@ -280,7 +282,7 @@ public class Block {
     }
 
     public int getSize(){
-        return this.size;
+        return block == null ? this.step : this.size;
     }
 }
 //

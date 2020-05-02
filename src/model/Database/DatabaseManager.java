@@ -2,10 +2,9 @@ package model.Database;
 
 import model.App;
 import model.Logging.Logger;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import model.Tools.ArrayList;
+
+import java.sql.*;
 
 
 public class DatabaseManager {
@@ -37,10 +36,10 @@ public class DatabaseManager {
                 " '" + name + "'," +
                 " '" + middleName + "'," +
                 " '" + surname + "'," +
-                " '" + phoneNumber + "');");
-        executeQuery(QueryType.UPDATE, "INSERT INTO account (email, password) " +
-                "VALUES ('" + eMail + "'," +
-                " '" + password + "');");
+                " '" + phoneNumber + "');" +
+                "INSERT INTO account (email, password) " +
+                "VALUES ('" + eMail + "', SHA2('" + password + "', 256)));"//AES better with secret key
+        );
     }
 
     public void removeAccount(String ssn) {
@@ -77,12 +76,53 @@ public class DatabaseManager {
                 "WHERE member_id = SELECT id FROM member WHERE ssn = '" + ssn + "';");
     }
 
-    public void saveTables(byte[][] weeks){
-        String query = "";
+    public void saveWeeks(byte[][] weeks){// currently in maintetance (testing) thats why weird look, planning to remake executeQuery()
+        System.out.println("saveWeeks weeks.length: " + weeks.length);
+        System.out.println("saveWeeks weeks[0].length: " + weeks[0].length);
+        executeQuery(QueryType.UPDATE, "TRUNCATE "+ schedule +";");
+        String query = "INSERT INTO " + schedule + " (week) VALUES (?);";
         for(byte[] week : weeks){
-
+            try(PreparedStatement command = createConnection().prepareStatement(query))
+            {
+                command.setBytes(1, week);
+                command.execute();
+            }
+            catch (Exception ex)
+            {
+                Logger.logException(ex);
+            }
         }
+    }
 
+    public byte[][] loadWeeks(){
+        ArrayList<byte[]> bytes = new ArrayList<>(8);
+        try (Connection conn = createConnection()){
+            PreparedStatement pst = conn.prepareStatement(
+                    "SELECT week FROM " + schedule + ";"
+            );
+            boolean isResult = pst.execute();
+            do {
+                try (ResultSet rs = pst.getResultSet()) {
+                    while (rs.next()) {
+                        Blob blob = rs.getBlob("week"); // creates the blob object from the result
+                        byte[] week = blob.getBytes(1L, (int)blob.length());
+                        bytes.add(week);
+                        blob.free();
+                    }
+                    isResult = pst.getMoreResults();
+                }
+            }
+            while (isResult);
+        }
+        catch(Exception ex){
+            Logger.logException(ex);
+        }
+        byte[][] weeks = new byte[bytes.size()][];
+        System.out.println("loadWeeks.bytes.get(0): " + bytes.get(0).length);
+        System.arraycopy(bytes.getContents(), 0, weeks, 0, bytes.size());
+        System.out.println("loadWeeks.weeks[0]: " + weeks[0].length);
+
+        return weeks;
     }
 //    "CREATE TABLE IF NOT EXISTS " + member + " (\n" +
 //            "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
@@ -207,7 +247,7 @@ public class DatabaseManager {
         Object result = null;
         try(PreparedStatement command = createConnection().prepareStatement(query))
         {
-            result = type == QueryType.READER ? command.executeQuery() : command.executeUpdate();
+            result = type == QueryType.READER ? command.executeQuery() : command.execute();
         }
         catch (Exception ex)
         {
