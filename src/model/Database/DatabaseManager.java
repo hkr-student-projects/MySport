@@ -120,59 +120,7 @@ public class DatabaseManager {
 
         return weeks;
     }
-//    "CREATE TABLE IF NOT EXISTS " + member + " (\n" +
-//            "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
-//            "  `ssn` CHAR(13) NOT NULL,\n" +
-//            "  `name` VARCHAR(45) NOT NULL,\n" +
-//            "  `middlename` VARCHAR(45) NULL,\n" +
-//            "  `surname` VARCHAR(45) NOT NULL,\n" +
-//            "  `mobile` VARCHAR(45) NOT NULL,\n" +
-//            "  PRIMARY KEY (`id`));\n" +
-//            "CREATE TABLE IF NOT EXISTS " + account + " (\n" +
-//            "  `member_id` INT NOT NULL,\n" +
-//            "  `email` VARCHAR(128) NOT NULL,\n" +
-//            "  `password` VARCHAR(128) NOT NULL,\n" +
-//            "  INDEX `fk_account_member_idx` (`member_id` ASC),\n" +
-//            "  PRIMARY KEY (`member_id`),\n" +
-//            "  CONSTRAINT `fk_account_member`\n" +
-//            "    FOREIGN KEY (`member_id`)\n" +
-//            "    REFERENCES " + member + " (`id`)\n" +
-//            "    ON DELETE CASCADE\n" +
-//            "    ON UPDATE CASCADE);\n" +
-//            "CREATE TABLE IF NOT EXISTS " + leader + " (\n" +
-//            "  `member_id` INT NOT NULL,\n" +
-//            "  `keyNumber` VARCHAR(25) NOT NULL,\n" +
-//            "  `boardPosition` VARCHAR(45) NOT NULL,\n" +
-//            "  INDEX `fk_leader_member_idx` (`member_id` ASC),\n" +
-//            "  PRIMARY KEY (`member_id`),\n" +
-//            "  CONSTRAINT `fk_leader_member`\n" +
-//            "    FOREIGN KEY (`member_id`)\n" +
-//            "    REFERENCES " + member + " (`id`)\n" +
-//            "    ON DELETE CASCADE\n" +
-//            "    ON UPDATE CASCADE);\n" +
-//            "CREATE TABLE IF NOT EXISTS " + activity + " (\n" +
-//            "  `name` VARCHAR(45) NOT NULL,\n" +
-//            "  PRIMARY KEY (`name`));\n" +
-//            "  CREATE TABLE IF NOT EXISTS " + schedule + " (\n" +
-//            "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
-//            "  `week` BLOB NOT NULL,\n" +
-//            "  PRIMARY KEY (`id`));" +
-//            "  CREATE TABLE IF NOT EXISTS " + leader_has_activity + " (\n" +
-//            "  `leader_member_id` INT NOT NULL,\n" +
-//            "  `activity_name` VARCHAR(45) NOT NULL,\n" +
-//            "  PRIMARY KEY (`leader_member_id`, `activity_name`),\n" +
-//            "  INDEX `fk_leader_has_activity_activity_idx` (`activity_name` ASC),\n" +
-//            "  INDEX `fk_leader_has_activity_leader_idx` (`leader_member_id` ASC),\n" +
-//            "  CONSTRAINT `fk_leader_has_activity_leader`\n" +
-//            "    FOREIGN KEY (`leader_member_id`)\n" +
-//            "    REFERENCES " + leader + " (`member_id`)\n" +
-//            "    ON DELETE CASCADE\n" +
-//            "    ON UPDATE CASCADE,\n" +
-//            "  CONSTRAINT `fk_leader_has_activity_activity`\n" +
-//            "    FOREIGN KEY (`activity_name`)\n" +
-//            "    REFERENCES " + activity + " (`name`)\n" +
-//            "    ON DELETE NO ACTION\n" +
-//            "    ON UPDATE NO ACTION);"
+    
     public void checkSchema()
     {
         try {

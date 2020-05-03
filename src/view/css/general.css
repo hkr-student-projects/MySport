@@ -28,9 +28,41 @@
     -fx-background-color: #763dee;
 }
 
-/*.pane:hover {*/
-/*    -fx-background-color: rgba(255,51,61,0.83);*/
-/*}*/
+.darkGrey {
+    -fx-background-color: transparent;
+}
+
+.darkGrey:hover {
+    -fx-text-fill: #434343;
+}
+
+.darkGrey:pressed {
+    -fx-text-fill: #9f9f9f;
+}
+
+.darkPurple {
+    -fx-background-color: transparent;
+}
+
+.darkPurple:hover {
+    -fx-text-fill: #9822ff;
+}
+
+.darkPurple:pressed {
+    -fx-text-fill: #8271b5;
+}
+
+.cursorHResize {
+    -fx-cursor: v_resize;
+}
+
+.cursorHand {
+    -fx-cursor: hand;
+}
+
+.cursorText{
+    -fx-cursor: text;
+}
 
 .pane {
     -fx-border-style: solid solid none none;

@@ -144,7 +144,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         tempPane = null;
     }
 
-    private void buildProps(Pane pane, int span){
+    private void buildProps(Pane pane, int span){//unite for newly created week
         buildTime(pane, span);
         String sp = "Leader.getSport()";
         pane.getProperties().put("sp", sp);
@@ -157,9 +157,11 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         pane.setOnMousePressed(e -> initY = (short)e.getSceneY());
         pane.setOnMouseDragged(e -> move(pane, (int) e.getSceneY()));
         pane.setOnMouseClicked(null);
+        pane.getStylesheets().add("/view/css/general.css");
+        pane.getStyleClass().add( "cursorHResize");
     }
 
-    private void buildTime(Pane pane, int span){
+    private void buildTime(Pane pane, int span){//unite for newly created week
         int[] cords = getNodeCords(pane);
         byte hourFrom = (byte) (7 + (cords[0] >> 2));
         byte minFrom = (byte) ((cords[0] % 4) * 15);
@@ -269,7 +271,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             Calendar.weeks.add(deserialize(week));
     }
 
-    private void loadTable(int offset){      //FIX!!!!!!!!
+    private void loadTable(int offset){
         tempPane = null;
         tempRow = -1;
         tempCol = -1;
@@ -279,16 +281,14 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         WeekProperties desiredWeek = null;
         int desiredDay = currentWeek.plusDays(offset).getDayOfYear();
         for(int i = 0; i < Calendar.weeks.size(); i++){
-            if(Calendar.weeks.get(i).isBetween(desiredDay)){//found timetable for desired week (prev or next)
+            if(Calendar.weeks.get(i).isBetween(desiredDay)){
                 desiredWeek = Calendar.weeks.get(i);
-                //desiredWeek.panes = Calendar.weeks.get(i).panes;
-                //desiredWeek.panes.setSize(Calendar.weeks.get(i).panes.size());
                 break;
             }
         }
         fillGrids(gridPane, gridPaneFast, true);
         if(desiredWeek != null)
-            for(int i = 0; i < desiredWeek.panes.size(); i++){
+            for(int i = 0; i < desiredWeek.panes.size(); i++){//unite for newly created week
                 WeekProperties.PaneProperties paneProp = desiredWeek.panes.get(i);
                 Pane pane = (Pane) getNode(paneProp.row, paneProp.col);
                 ObservableMap<Object, Object> props = pane.getProperties();
@@ -306,6 +306,8 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
                 pane.setOnMouseClicked(null);
                 pane.setOnMousePressed(e -> initY = (short)e.getSceneY());
                 pane.setOnMouseDragged(e -> move(pane, (int) e.getSceneY()));
+                pane.getStylesheets().add("/view/css/general.css");
+                pane.getStyleClass().add( "cursorHResize");
                 for(int j = 1; j < paneProp.span; j++)
                     gridPaneFast[paneProp.row + i][paneProp.col] = pane;
             }
@@ -533,11 +535,11 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
                 ((curr[0] < tempPaneCords[0]) & (prev[0] > tempPaneCords[0]));
     }
 
-    private Pane createPane(boolean trackable){
+    private Pane createPane(boolean trackFill){
         Pane p = new Pane();
         p.getStylesheets().add("/view/css/general.css");
         p.getStyleClass().add("pane");
-        if(trackable)
+        if(trackFill)
             p.setOnMouseClicked(e -> buildActivity(p));
 
         return p;
@@ -567,11 +569,11 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         //loadTable(currWeek.getMonth().getValue() + "-" + (byte)Math.ceil((currWeek.getDayOfMonth() / (float)currWeek.lengthOfMonth()) * 4.0));
     }
 
-    private void fillGrids(GridPane gridPane, Node[][] gridPaneFast, boolean trackable){
+    private void fillGrids(GridPane gridPane, Node[][] gridPaneFast, boolean hoverFill){
         gridPane.getChildren().clear();
         for(int col = 0; col < gridPane.getColumnConstraints().size(); col++){
             for(int row = 0; row < gridPane.getRowConstraints().size(); row++){
-                Pane p = createPane(trackable);
+                Pane p = createPane(hoverFill);
                 gridPane.add(p, col, row);
                 gridPaneFast[row][col] = p;
             }
