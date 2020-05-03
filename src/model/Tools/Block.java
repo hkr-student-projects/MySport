@@ -2,6 +2,7 @@ package model.Tools;
 
 import model.Logging.Logger;
 import java.security.InvalidParameterException;
+import java.text.ParseException;
 import java.util.Formatter;
 import static model.Tools.BitConverterKt.*;
 
