@@ -54,18 +54,18 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             fillWeek(0);
         }).start();
         prev.setOnMouseClicked(e -> {
-            loadTable(-7);//currentWeek unmodified
+            //loadTable(-7);//currentWeek unmodified
             fillWeek(-7);//currentWeek modified
             gridPane.getChildren().forEach(pane -> pane.setOnMouseClicked(e1 -> buildActivity(pane)));
         });
         next.setOnMouseClicked(e -> {
-            loadTable(7);//currentWeek unmodified
+            //loadTable(7);//currentWeek unmodified
             fillWeek(7);//currentWeek modified
             gridPane.getChildren().forEach(pane -> pane.setOnMouseClicked(e1 -> buildActivity(pane)));
         });
 //        fillGrids(this.gridPane, this.gridPaneFast);
         loadWeeksDB();
-        loadTable(0);
+        //loadTable(0);
         loadAsEditor();
     }
 

@@ -11,7 +11,10 @@ import java.util.ResourceBundle;
 
 public class Account extends Menu implements Initializable {
 
-    @FXML Button buttonEdit;
+    @FXML
+    Button buttonEdit;
+    @FXML
+    Button buttonCreate;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -39,7 +42,12 @@ public class Account extends Menu implements Initializable {
     }
 
     @FXML
-    public void buttonEditClick () {
+    public void buttonEditClick() {
         App.instance.setScene(SceneSwitcher.instance.getScene("EditAccount"));
+    }
+
+    @FXML
+    public void buttonCreateClick() {
+        App.instance.setScene(SceneSwitcher.instance.getScene("CreateAccount"));
     }
 }
