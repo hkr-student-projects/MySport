@@ -1,10 +1,9 @@
 package model.Tools;
 
 import model.Logging.Logger;
+
 import java.security.InvalidParameterException;
-import java.text.ParseException;
 import java.util.Formatter;
-import static model.Tools.BitConverterKt.*;
 
 public class Block {
     public static final int BUFFER_SIZE = Short.MAX_VALUE;
@@ -55,8 +54,11 @@ public class Block {
 
     public byte readByte()
     {
-        if (this.block == null || this.step > this.block.length - 1)
+        if (this.block == null || this.step > this.block.length - 1){
+            System.out.println("ZERO");
             return 0;
+        }
+
         byte num = this.block[this.step];
         ++this.step;
         return num;
@@ -91,7 +93,7 @@ public class Block {
     {
         if (this.block == null || this.step > this.block.length - 2)
             return 0;
-        short int16 = toInt16(this.block, this.step);
+        short int16 = BitConverterKt.toInt16(this.block, this.step);
         this.step += 2;
         return int16;
     }
@@ -100,7 +102,7 @@ public class Block {
     {
         if (this.block == null || this.step > this.block.length - 4)
             return 0;
-        int int32 = toInt32(this.block, this.step);
+        int int32 = BitConverterKt.toInt32(this.block, this.step);
         this.step += 4;
         return int32;
     }
@@ -119,7 +121,7 @@ public class Block {
     {
         if (this.block == null || this.step > this.block.length - 4)
             return 0.0f;
-        float single = toSingle(this.block, this.step);
+        float single = BitConverterKt.toSingle(this.block, this.step);
         this.step += 4;
         return single;
     }
@@ -280,7 +282,7 @@ public class Block {
     }
 
     public int getSize(){
-        return this.size;
+        return block == null ? this.step : this.size;
     }
 }
 //
