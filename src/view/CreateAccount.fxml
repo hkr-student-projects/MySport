@@ -124,7 +124,7 @@
             </VBox>
             <HBox layoutX="38.0" layoutY="385.0" prefHeight="63.0" prefWidth="362.0" spacing="150.0">
                <children>
-                  <JFXButton prefHeight="26.0" prefWidth="59.0" styleClass="loginLogo" text="Clear all" textFill="WHITE">
+                  <JFXButton prefHeight="27.0" prefWidth="75.0" styleClass="loginLogo" text="Clear all" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="40.0" top="65.0" />
                      </HBox.margin>
