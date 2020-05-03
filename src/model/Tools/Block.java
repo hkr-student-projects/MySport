@@ -1,10 +1,9 @@
 package model.Tools;
 
 import model.Logging.Logger;
-
 import java.security.InvalidParameterException;
-import java.text.ParseException;
 import java.util.Formatter;
+import static model.Tools.BitConverterKt.*;
 
 public class Block {
     public static final int BUFFER_SIZE = Short.MAX_VALUE;
@@ -91,7 +90,7 @@ public class Block {
     {
         if (this.block == null || this.step > this.block.length - 2)
             return 0;
-        short int16 = BitConverter.toInt16(this.block, this.step);
+        short int16 = toInt16(this.block, this.step);
         this.step += 2;
         return int16;
     }
@@ -100,7 +99,7 @@ public class Block {
     {
         if (this.block == null || this.step > this.block.length - 4)
             return 0;
-        int int32 = BitConverter.toInt32(this.block, this.step);
+        int int32 = toInt32(this.block, this.step);
         this.step += 4;
         return int32;
     }
@@ -119,7 +118,7 @@ public class Block {
     {
         if (this.block == null || this.step > this.block.length - 4)
             return 0.0f;
-        float single = BitConverter.toSingle(this.block, this.step);
+        float single = toSingle(this.block, this.step);
         this.step += 4;
         return single;
     }
@@ -205,27 +204,27 @@ public class Block {
 
     public void writeBoolean(boolean value)
     {
-        this.buffer[this.step] = BitConverter.getBytes(value);
+        this.buffer[this.step] = BitConverterKt.getBytes(value);
         ++this.step;
     }
 
     public void writeSingle(float value)
     {
-        byte[] bytes = BitConverter.getBytes(value);
+        byte[] bytes = BitConverterKt.getBytes(value);
         System.arraycopy(bytes, 0, this.buffer, this.step, bytes.length);
         this.step += 4;
     }
 
     public void writeInt16(short value)
     {
-        byte[] bytes = BitConverter.getBytes(value);
+        byte[] bytes = BitConverterKt.getBytes(value);
         System.arraycopy(bytes, 0, this.buffer, this.step, bytes.length);
         this.step += 2;
     }
 
     public void writeInt32(int value)
     {
-        byte[] bytes = BitConverter.getBytes(value);
+        byte[] bytes = BitConverterKt.getBytes(value);
         System.arraycopy(bytes, 0, this.buffer, this.step, bytes.length );
         this.step += 4;
     }
@@ -239,7 +238,7 @@ public class Block {
 
     public void writeInt64(long value)
     {
-        byte[] bytes = BitConverter.getBytes(value);
+        byte[] bytes = BitConverterKt.getBytes(value);
         System.arraycopy(bytes, 0, this.buffer, this.step, bytes.length );
         this.step += 4;
     }

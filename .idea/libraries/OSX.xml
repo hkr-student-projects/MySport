@@ -7,7 +7,10 @@
     <NATIVE>
       <root url="file://$PROJECT_DIR$/lib/OSX" />
     </NATIVE>
-    <SOURCES />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/lib/OSX" />
+    </SOURCES>
     <jarDirectory url="file://$PROJECT_DIR$/lib/OSX" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/OSX" recursive="false" type="SOURCES" />
   </library>
 </component>
