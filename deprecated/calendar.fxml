@@ -528,3 +528,50 @@
          </children></Pane>
    </children>
 </AnchorPane>
+
+        //    private WeekProperties createGrids(){
+        //        GridPane grid = new GridPane();
+        //        grid.setPrefHeight(975);
+        //        grid.setPrefWidth(777.0);
+        //        grid.setMaxWidth(777.0);
+        //        grid.setMinWidth(777.0);
+        //        grid.setLayoutX(75.0);
+        //        grid.setLayoutY(23.0);
+        //        grid.setAlignment(Pos.CENTER);
+        //        ColumnConstraints[] cc = new ColumnConstraints[7];//7 days in week
+        //        for(ColumnConstraints c : cc){
+        //            c = new ColumnConstraints();
+        //            c.setHgrow(Priority.NEVER);
+        //            c.setPrefWidth(111.0);
+        //            c.setMinWidth(111.0);
+        //            c.setHalignment(HPos.CENTER);
+        //            c.setPercentWidth(0.0);
+        //            c.setMaxWidth(111.0);
+        //        }
+        //        RowConstraints[] rc = new RowConstraints[65];//or get how 15 slots needed
+        //        for(RowConstraints r : rc){
+        //            r = new RowConstraints();
+        //            r.setMinHeight(15.0);
+        //            r.setPrefHeight(15.0);
+        //            r.setPercentHeight(0.0);
+        //            r.setValignment(VPos.CENTER);
+        //            r.setMaxHeight(15.0);
+        //            r.setVgrow(Priority.NEVER);
+        //        }
+        //        Node[][] gridFast = new Pane[rc.length][cc.length];
+        //        fillGrids(grid, gridFast);
+        //        grid.getRowConstraints().addAll(rc);
+        //        grid.getColumnConstraints().addAll(cc);
+        //
+        //        return new WeekProperties(grid, gridFast);
+        //    }
+        //  count
+        //  week: {year, mon, day}
+        // {
+        //  row;
+        //  col;
+        //  span;
+        //  color;
+        //  time: {hour from, min from, hour to, min to}
+        //  sport;
+        // }

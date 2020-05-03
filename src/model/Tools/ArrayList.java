@@ -119,6 +119,10 @@ public class ArrayList<T> {
         return size;
     }
 
+    public void setSize(int size){
+        this.size = size;
+    }
+
     public boolean isEmpty(){
         return size == 0;
     }

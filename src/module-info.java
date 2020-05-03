@@ -5,6 +5,7 @@ module MySport {
     requires json.simple;
     requires java.sql;
     requires mysql.connector.java;
+    requires kotlin.stdlib;
 
     opens controller;
     opens model;

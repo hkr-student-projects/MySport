@@ -37,7 +37,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     @FXML
     private Button prev, next, bug;
     private int tempRow, tempCol, initY;
-    private boolean flag = true, ctrl, modified = true;
+    private boolean flag = true, ctrl, modified = false;
     private final String color = "-fx-background-color: rgba(255,51,61,0.83)";
     private LocalDate currentWeek;
 
@@ -49,24 +49,33 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     public void initialize(URL url, ResourceBundle resourceBundle) {
         currentWeek = LocalDate.now();
         gridPaneFast = new Node[gridPane.getRowConstraints().size()][gridPane.getColumnConstraints().size()];
-        new Thread(() -> {
-            bindTab(this);
-            fillWeek(0);
-        }).start();
+        bindTab(this);
+        loadWeeksDB();
+        loadTable(0);
+        fillWeek(0);
+
+        loadAsEditor();
+
+        gridPane.setOnMousePressed(e -> modified = true);
         prev.setOnMouseClicked(e -> {
             //loadTable(-7);//currentWeek unmodified
             fillWeek(-7);//currentWeek modified
-            gridPane.getChildren().forEach(pane -> pane.setOnMouseClicked(e1 -> buildActivity(pane)));
+            //gridPane.getChildren().forEach(pane -> pane.setOnMouseClicked(e1 -> buildActivity(pane)));
+            modified = false;
         });
         next.setOnMouseClicked(e -> {
             //loadTable(7);//currentWeek unmodified
             fillWeek(7);//currentWeek modified
-            gridPane.getChildren().forEach(pane -> pane.setOnMouseClicked(e1 -> buildActivity(pane)));
+            //gridPane.getChildren().forEach(pane -> pane.setOnMouseClicked(e1 -> buildActivity(pane)));
+            modified = false;
         });
 //        fillGrids(this.gridPane, this.gridPaneFast);
+<<<<<<< HEAD
         loadWeeksDB();
         //loadTable(0);
         loadAsEditor();
+=======
+>>>>>>> c304969036a909c8407c44177ec5e1819cbd757a
     }
 
     @Override
@@ -141,7 +150,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         tempPane = null;
     }
 
-    private void buildProps(Pane pane, int span){
+    private void buildProps(Pane pane, int span){//unite for newly created week
         buildTime(pane, span);
         String sp = "Leader.getSport()";
         pane.getProperties().put("sp", sp);
@@ -154,9 +163,11 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         pane.setOnMousePressed(e -> initY = (short)e.getSceneY());
         pane.setOnMouseDragged(e -> move(pane, (int) e.getSceneY()));
         pane.setOnMouseClicked(null);
+        pane.getStylesheets().add("/view/css/general.css");
+        pane.getStyleClass().add( "cursorHResize");
     }
 
-    private void buildTime(Pane pane, int span){
+    private void buildTime(Pane pane, int span){//unite for newly created week
         int[] cords = getNodeCords(pane);
         byte hourFrom = (byte) (7 + (cords[0] >> 2));
         byte minFrom = (byte) ((cords[0] % 4) * 15);
@@ -194,11 +205,13 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             int var0;
             if(dif > 0){
                 if(ctrl){
-
+                    //moving sides
                 }
                 else {
-                    if(cords[0] == 0 || checkFreeSpace(cords, -1))
+                    if(cords[0] == 0 || checkFreeSpace(cords, -1)){
                         return;
+                    }
+
                     var0 = -1;
                     addBetween(cords[0] + span - 1, cords[0] + span - 1, cords[1]);//strict order
                     gridPane.getChildren().remove(pane);//strict order
@@ -210,11 +223,13 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             }
             else {
                 if(ctrl){
-
+                    //moving sides
                 }
                 else {
                     if(cords[0] + span == gridPane.getRowConstraints().size() || checkFreeSpace(cords, span))//grindPane.rows.count
+                    {
                         return;
+                    }
                     var0 = span;
                     addBetween(cords[0], cords[0], cords[1]);//strict order
                     gridPane.getChildren().remove(pane);//strict order
@@ -224,26 +239,24 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
                     GridPane.setRowSpan(pane, span);
                 }
             }
+            //generalize methods, put commons parts away
         }
     }
 
     private void saveWeeksDB() { //DATABASE SAVE
         byte[][] weeks = new byte[Calendar.weeks.size()][];
-        System.out.println(Calendar.weeks.size());
-        System.out.println("panes properties: "+Calendar.weeks.get(0).panes.size());
         for(int i = 0; i < Calendar.weeks.size(); i ++){
             weeks[i] = serialize(Calendar.weeks.get(i));
-            System.out.println(i + "weeks[i].length: "+weeks[i].length);
         }
         App.databaseManager.saveWeeks(weeks);
     }
 
     private void saveCurrentTable(){//modified true NOT DATABASE SAVE
         for(int i = 0; i < weeks.size(); i++)
-            if(currentWeek.getDayOfYear() == weeks.get(i).currentWeek.getDayOfYear())
+            if(weeks.get(i).isBetween(currentWeek.getDayOfYear()))
                 weeks.removeAt(i);
 
-        WeekProperties newWeek = new WeekProperties(currentWeek);
+        WeekProperties newWeek = new WeekProperties(currentWeek.getDayOfYear() - currentWeek.getDayOfWeek().getValue() + 1, currentWeek.getDayOfYear() + (7 - currentWeek.getDayOfWeek().getValue()));
         for(Node pane : gridPane.getChildren()) {//grabbing all baked panes
             ObservableMap<Object, Object> props = pane.getProperties();
             if (props.containsKey("span")) {
@@ -258,38 +271,31 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         weeks.add(newWeek);
     }
 
-
     private void loadWeeksDB() {
         byte[][] weeks = App.databaseManager.loadWeeks();
-        System.out.println("loadWeeksDB: weeks[0].length" + weeks[0].length);
         for(byte[] week : weeks)
             Calendar.weeks.add(deserialize(week));
     }
 
-    private void FIXloadTable(int offset){      //FIX!!!!!!!!
-        //tempPane = null;
+    private void loadTable(int offset){
+        tempPane = null;
         tempRow = -1;
         tempCol = -1;
         flag = true;
-        System.out.println("loadtab: " + Calendar.weeks.get(0).panes.size());
         if(modified)
             saveCurrentTable();
         WeekProperties desiredWeek = null;
         int desiredDay = currentWeek.plusDays(offset).getDayOfYear();
         for(int i = 0; i < Calendar.weeks.size(); i++){
-            System.out.println(desiredDay + "-" + Calendar.weeks.get(i).currentWeek.getDayOfYear());
-            if(desiredDay == Calendar.weeks.get(i).currentWeek.getDayOfYear()){//found timetable for desired week (prev or next)
+            if(Calendar.weeks.get(i).isBetween(desiredDay)){
                 desiredWeek = Calendar.weeks.get(i);
                 break;
             }
         }
-        fillGrids(gridPane, gridPaneFast);
-        System.out.println("desiredWeek==null? " + desiredWeek == null);
-        System.out.println(desiredWeek.panes.size());
+        fillGrids(gridPane, gridPaneFast, true);
         if(desiredWeek != null)
-            for(int i = 0; i < Calendar.weeks.get(i).panes.size(); i++){
-                System.out.println("interating disired unnull");
-                WeekProperties.PaneProperties paneProp = Calendar.weeks.get(i).panes.get(i);
+            for(int i = 0; i < desiredWeek.panes.size(); i++){//unite for newly created week
+                WeekProperties.PaneProperties paneProp = desiredWeek.panes.get(i);
                 Pane pane = (Pane) getNode(paneProp.row, paneProp.col);
                 ObservableMap<Object, Object> props = pane.getProperties();
                 ObservableList<Node> childs = pane.getChildren();
@@ -301,61 +307,21 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
                 childs.add(paneProp.time);
                 childs.add(paneProp.sport);
                 GridPane.setRowSpan(pane, paneProp.span);
-                deleteBetween(pane, paneProp.row + 1, paneProp.row + paneProp.span, paneProp.col);
+                deleteBetween(pane, paneProp.row + 1, paneProp.row + paneProp.span - 1, paneProp.col);
                 pane.setStyle(paneProp.color);
+                pane.setOnMouseClicked(null);
+                pane.setOnMousePressed(e -> initY = (short)e.getSceneY());
+                pane.setOnMouseDragged(e -> move(pane, (int) e.getSceneY()));
+                pane.getStylesheets().add("/view/css/general.css");
+                pane.getStyleClass().add( "cursorHResize");
+                for(int j = 1; j < paneProp.span; j++)
+                    gridPaneFast[paneProp.row + i][paneProp.col] = pane;
             }
     }
 
     public void loadAsEditor(){
         gridPane.getChildren().forEach(pane -> pane.setOnMouseClicked(e -> buildActivity(pane)));
     }
-
-//    private WeekProperties createGrids(){
-//        GridPane grid = new GridPane();
-//        grid.setPrefHeight(975);
-//        grid.setPrefWidth(777.0);
-//        grid.setMaxWidth(777.0);
-//        grid.setMinWidth(777.0);
-//        grid.setLayoutX(75.0);
-//        grid.setLayoutY(23.0);
-//        grid.setAlignment(Pos.CENTER);
-//        ColumnConstraints[] cc = new ColumnConstraints[7];//7 days in week
-//        for(ColumnConstraints c : cc){
-//            c = new ColumnConstraints();
-//            c.setHgrow(Priority.NEVER);
-//            c.setPrefWidth(111.0);
-//            c.setMinWidth(111.0);
-//            c.setHalignment(HPos.CENTER);
-//            c.setPercentWidth(0.0);
-//            c.setMaxWidth(111.0);
-//        }
-//        RowConstraints[] rc = new RowConstraints[65];//or get how 15 slots needed
-//        for(RowConstraints r : rc){
-//            r = new RowConstraints();
-//            r.setMinHeight(15.0);
-//            r.setPrefHeight(15.0);
-//            r.setPercentHeight(0.0);
-//            r.setValignment(VPos.CENTER);
-//            r.setMaxHeight(15.0);
-//            r.setVgrow(Priority.NEVER);
-//        }
-//        Node[][] gridFast = new Pane[rc.length][cc.length];
-//        fillGrids(grid, gridFast);
-//        grid.getRowConstraints().addAll(rc);
-//        grid.getColumnConstraints().addAll(cc);
-//
-//        return new WeekProperties(grid, gridFast);
-//    }
-    //  count
-    //  week: {year, mon, day}
-    // {
-    //  row;
-    //  col;
-    //  span;
-    //  color;
-    //  time: {hour from, min from, hour to, min to}
-    //  sport;
-    // }
 //  count
 //  week: {year, mon, day}
 // {
@@ -370,9 +336,8 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     public byte[] serialize(WeekProperties week) {
         Block block = new Block();
         block.writeByte((byte) week.panes.size());
-        block.writeInt16((short) week.currentWeek.getYear());
-        block.writeByte((byte) week.currentWeek.getMonthValue());
-        block.writeByte((byte) week.currentWeek.getDayOfMonth());
+        block.writeInt16((short) week.dayFrom);
+        block.writeInt16((short) week.dayTo);
         for(int i = 0; i < week.panes.size(); i++){
             WeekProperties.PaneProperties pane = week.panes.get(i);
             block.writeByte((byte) pane.row);
@@ -386,7 +351,6 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             block.writeString(pane.sport.getText());
         }
         byte[] bytes = new byte[block.getSize()];
-        System.out.println("block.getSize(): " + block.getSize());
         System.arraycopy(block.getBuffer(), 0, bytes, 0, block.getSize());
 
         return bytes;
@@ -404,10 +368,8 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     @Override
     public WeekProperties deserialize(byte[] bytes) {
         Block block = new Block(bytes);
-        System.out.println("block.length: " + block.block.length);
         byte count = block.readByte();
-        System.out.println("count: " + count);
-        WeekProperties week = new WeekProperties(block.readInt16(), block.readByte(), block.readByte());
+        WeekProperties week = new WeekProperties(block.readInt16(), block.readInt16());
         for (int i = 0; i < count; i++){
             byte row = block.readByte();
             byte col = block.readByte();
@@ -428,22 +390,18 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
 
             week.addProperty(new WeekProperties.PaneProperties(row, col, span, hf, mf, ht, mt, color, time, sport));
         }
-
-        System.out.println("week.panes: " + week.panes.size());
         return week;
     }
 
     public static class WeekProperties {
         ArrayList<PaneProperties> panes;
-        LocalDate currentWeek;
+        short dayFrom;
+        short dayTo;
 
-        private WeekProperties(LocalDate localDate){
-            this(localDate.getYear(), localDate.getMonthValue(), localDate.getDayOfMonth());
-        }
-
-        private WeekProperties(int year, int mon, int day){ //day of month
+        private WeekProperties(int dayFrom, int dayTo){
             panes = new ArrayList<>(32);
-            this.currentWeek = LocalDate.of(year, mon, day);
+            this.dayFrom = (short) dayFrom; //day of month
+            this.dayTo = (short) dayTo;
         }
 
         public void addProperty(PaneProperties paneProperty){
@@ -456,6 +414,10 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
                 if (prop.row == row && prop.col == col)
                     panes.removeAt(i);
             }
+        }
+
+        public boolean isBetween(int currentDay){
+            return currentDay >= dayFrom && currentDay <= dayTo;
         }
 
         public static class PaneProperties {
@@ -579,11 +541,11 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
                 ((curr[0] < tempPaneCords[0]) & (prev[0] > tempPaneCords[0]));
     }
 
-    private Pane createPane(boolean trackable){
+    private Pane createPane(boolean trackFill){
         Pane p = new Pane();
         p.getStylesheets().add("/view/css/general.css");
         p.getStyleClass().add("pane");
-        if(trackable)
+        if(trackFill)
             p.setOnMouseClicked(e -> buildActivity(p));
 
         return p;
@@ -613,11 +575,11 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         //loadTable(currWeek.getMonth().getValue() + "-" + (byte)Math.ceil((currWeek.getDayOfMonth() / (float)currWeek.lengthOfMonth()) * 4.0));
     }
 
-    private void fillGrids(GridPane gridPane, Node[][] gridPaneFast){
+    private void fillGrids(GridPane gridPane, Node[][] gridPaneFast, boolean hoverFill){
         gridPane.getChildren().clear();
         for(int col = 0; col < gridPane.getColumnConstraints().size(); col++){
             for(int row = 0; row < gridPane.getRowConstraints().size(); row++){
-                Pane p = createPane(false);
+                Pane p = createPane(hoverFill);
                 gridPane.add(p, col, row);
                 gridPaneFast[row][col] = p;
             }

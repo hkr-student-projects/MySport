@@ -26,7 +26,8 @@ public class SceneSwitcher {
                 String name = f.getName().substring(0, f.getName().length() - 5);
                 FXMLLoader loader = new FXMLLoader(f.toURI().toURL());
                 scenes.put(name, new Scene(loader.load(), 900, 600));
-                controllers.put(name, loader.getController());
+                if((loader.getController()) != null)
+                    controllers.put(name, loader.getController());
             }
         }
         catch (IOException e) {
