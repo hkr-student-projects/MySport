@@ -132,8 +132,4 @@ public class ArrayList<T> {
     {
         return avrg;
     }
-
-    public T[] getContents(){
-        return (T[]) this.content;
-    }
 }

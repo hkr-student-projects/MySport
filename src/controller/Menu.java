@@ -71,7 +71,7 @@ public abstract class Menu {
             App.instance.setScene(SceneSwitcher.instance.getScene("Settings"));
         });
         logout.setOnMouseClicked(e -> {
-            onAppClose();
+            new Thread(this::onAppClose).start();
             App.instance.setScene(SceneSwitcher.instance.getScene("Login"));
         });
     }

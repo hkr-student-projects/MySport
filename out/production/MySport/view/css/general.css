@@ -16,14 +16,6 @@
     -fx-background-color: #763dee;
 }
 
-.buttonInAcc:hover {
-    -fx-background-color: rgba(118, 61, 238, 0.68);
-}
-
-.buttonInAcc:pressed {
-    -fx-background-color: #4c2799;
-}
-
 .loginLogo {
     -fx-background-color: #763dee;
 }
