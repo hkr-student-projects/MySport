@@ -77,8 +77,6 @@ public class DatabaseManager {
     }
 
     public void saveWeeks(byte[][] weeks){// currently in maintetance (testing) thats why weird look, planning to remake executeQuery()
-        System.out.println("saveWeeks weeks.length: " + weeks.length);
-        System.out.println("saveWeeks weeks[0].length: " + weeks[0].length);
         executeQuery(QueryType.UPDATE, "TRUNCATE "+ schedule +";");
         String query = "INSERT INTO " + schedule + " (week) VALUES (?);";
         for(byte[] week : weeks){
@@ -118,9 +116,7 @@ public class DatabaseManager {
             Logger.logException(ex);
         }
         byte[][] weeks = new byte[bytes.size()][];
-        System.out.println("loadWeeks.bytes.get(0): " + bytes.get(0).length);
         System.arraycopy(bytes.getContents(), 0, weeks, 0, bytes.size());
-        System.out.println("loadWeeks.weeks[0]: " + weeks[0].length);
 
         return weeks;
     }
