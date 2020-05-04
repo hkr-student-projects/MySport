@@ -43,13 +43,14 @@ public class Login extends Menu implements Initializable {
                 return;
             }
             if(email.getText().isEmpty() || password.getText().isEmpty()){
-                redOutLines();
+                redLines();
                 return;
             }
             try {
                 if(verifyFields()){
                     email.setText("");
                     password.setText("");
+                    App.instance.setScene(SceneSwitcher.instance.getScene("Home"));
                 }
             } catch (SQLException ex) {
                 Logger.logException(ex);
@@ -62,29 +63,18 @@ public class Login extends Menu implements Initializable {
             error.setText("Incorrect email format");
             return false;
         }
-        ResultSet rs1 = (ResultSet) App.databaseManager.executeQuery(DatabaseManager.QueryType.READER,
-                "SELECT 1 FROM hotel.Account WHERE hotel.Account.email = '" + email.getText() + "' " +
-                        "AND hotel.Account.id IN (SELECT `hotel`.`Employee`.`account_id` FROM `hotel`.`Employee`);");
-        if(rs1.next()){
-            error.setText("You are an employee!");
+        DatabaseManager.AccountType acc = App.databaseManager.checkCredentials(email.getText(), password.getText());
+        if(acc == DatabaseManager.AccountType.NONE){
+            error.setText("Incorrect email or password");
             return false;
         }
 
-        ResultSet rs = (ResultSet) App.databaseManager.executeQuery(DatabaseManager.QueryType.READER,
-                "SELECT 1 FROM hotel.Account WHERE hotel.Account.email = '" + email.getText() + "' " +
-                        "AND hotel.Account.password = SHA2('" + password.getText() + "', 256);");
-        if(!rs.next()){
-            error.setText("Incorrect password or email");
-        }
-        else{
-            error.setText("");
-            return true;
-        }
 
-        return false;
+
+        return true;
     }
 
-    private void redOutLines(){
+    private void redLines(){
         //?change CSS class
         line0.setStroke(Paint.valueOf("#ff4c4c"));
         line0.setStrokeWidth(2);
