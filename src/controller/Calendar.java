@@ -58,13 +58,13 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
 
         gridPane.setOnMousePressed(e -> modified = true);
         prev.setOnMouseClicked(e -> {
-            //loadTable(-7);//currentWeek unmodified
+            loadTable(-7);//currentWeek unmodified
             fillWeek(-7);//currentWeek modified
             //gridPane.getChildren().forEach(pane -> pane.setOnMouseClicked(e1 -> buildActivity(pane)));
             modified = false;
         });
         next.setOnMouseClicked(e -> {
-            //loadTable(7);//currentWeek unmodified
+            loadTable(7);//currentWeek unmodified
             fillWeek(7);//currentWeek modified
             //gridPane.getChildren().forEach(pane -> pane.setOnMouseClicked(e1 -> buildActivity(pane)));
             modified = false;
