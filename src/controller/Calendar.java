@@ -70,12 +70,10 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             modified = false;
         });
 //        fillGrids(this.gridPane, this.gridPaneFast);
-<<<<<<< HEAD
+
         loadWeeksDB();
         //loadTable(0);
         loadAsEditor();
-=======
->>>>>>> c304969036a909c8407c44177ec5e1819cbd757a
     }
 
     @Override
