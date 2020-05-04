@@ -160,7 +160,7 @@
                         <Insets left="40.0" top="65.0" />
                      </HBox.margin>
                   </JFXButton>
-                  <JFXButton prefHeight="26.0" prefWidth="75.0" styleClass="loginLogo" text="Next" textFill="WHITE">
+                  <JFXButton onAction="#buttonNextClick" prefHeight="26.0" prefWidth="75.0" styleClass="loginLogo" text="Next" textFill="WHITE">
                      <HBox.margin>
                         <Insets top="65.0" />
                      </HBox.margin>

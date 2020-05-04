@@ -115,13 +115,13 @@
                 </Text>
                 <VBox layoutX="79.0" layoutY="67.0" prefHeight="128.0" prefWidth="183.0" spacing="30.0">
                <children>
-                  <TextField promptText="New password" style="-fx-background-color: transparent;" styleClass="cursorText" stylesheets="@css/general.css" />
+                  <TextField accessibleRole="PASSWORD_FIELD" promptText="New password" style="-fx-background-color: transparent;" styleClass="cursorText" stylesheets="@css/general.css" />
                   <Line endX="100.0" startX="-100.0">
                      <VBox.margin>
                         <Insets top="-30.0" />
                      </VBox.margin>
                   </Line>
-                  <TextField layoutX="10.0" layoutY="10.0" promptText="Repeat password" style="-fx-background-color: transparent;" styleClass="cursorText" stylesheets="@css/general.css">
+                  <TextField accessibleRole="PASSWORD_FIELD" layoutX="10.0" layoutY="10.0" promptText="Repeat password" style="-fx-background-color: transparent;" styleClass="cursorText" stylesheets="@css/general.css">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -134,7 +134,7 @@
                </children>
                 </VBox>
             <JFXButton layoutX="309.0" layoutY="183.0" styleClass="buttonInAcc" text="Confirm" textFill="WHITE" />
-            <JFXButton layoutX="79.0" layoutY="183.0" prefHeight="25.0" prefWidth="58.0" styleClass="buttonInAcc" text="Back" textFill="WHITE" />
+            <JFXButton layoutX="79.0" layoutY="183.0" onAction="#buttonBackClick" prefHeight="25.0" prefWidth="58.0" styleClass="buttonInAcc" text="Back" textFill="WHITE" />
             </children>
         </Pane>
         <ImageView fitHeight="178.0" fitWidth="183.0" layoutX="600.0" layoutY="66.0">
