@@ -63,11 +63,11 @@ public class Login extends Menu implements Initializable {
             error.setText("Incorrect email format");
             return false;
         }
-        DatabaseManager.AccountType acc = App.databaseManager.checkCredentials(email.getText(), password.getText());
-        if(acc == DatabaseManager.AccountType.NONE){
-            error.setText("Incorrect email or password");
-            return false;
-        }
+//        DatabaseManager.AccountType acc = App.databaseManager.checkCredentials(email.getText(), password.getText());
+//        if(acc == DatabaseManager.AccountType.NONE){
+//            error.setText("Incorrect email or password");
+//            return false;
+//        }
 
 
 
