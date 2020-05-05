@@ -78,9 +78,13 @@ public class Login implements Initializable {
     private boolean checkFormat() {
         if(email.getText().isBlank() || password.getText().isBlank() || !email.getText().matches("^[A-Za-z0-9+_.-]+@(.+)$")){
             error.setText("Incorrect email format");
-            redLines();
             return false;
         }
+//        DatabaseManager.AccountType acc = App.databaseManager.checkCredentials(email.getText(), password.getText());
+//        if(acc == DatabaseManager.AccountType.NONE){
+//            error.setText("Incorrect email or password");
+//            return false;
+//        }
 
         return true;
     }

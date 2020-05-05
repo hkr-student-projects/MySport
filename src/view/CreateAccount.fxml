@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTextField?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -32,7 +33,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button fx:id="account" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
+                <Button fx:id="account" mnemonicParsing="false" onAction="#buttonAccountClick" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
                     <graphic>
                         <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -112,24 +113,54 @@
                   <Font size="28.0" />
                </font>
             </Text>
-            <VBox layoutX="79.0" layoutY="90.0" prefHeight="268.0" prefWidth="183.0" spacing="30.0">
+            <VBox layoutX="79.0" layoutY="90.0" prefHeight="338.0" prefWidth="202.0" spacing="30.0">
                <children>
-                  <JFXTextField promptText="First name" styleClass="field" />
-                  <JFXTextField promptText="Middle name(optional)" styleClass="field" />
-                  <JFXTextField promptText="Last name" styleClass="field" />
-                  <JFXTextField prefHeight="19.0" prefWidth="135.0" promptText="SSN" styleClass="field" />
-                  <JFXTextField promptText="E-mail address" styleClass="field" />
-                  <JFXTextField promptText="Phone number" />
+                  <TextField fx:id="firstName" promptText="First name" style="-fx-background-color: transparent;" styleClass="cursorText" stylesheets="@css/general.css" />
+                  <Line endX="100.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets top="-30.0" />
+                     </VBox.margin>
+                  </Line>
+                  <TextField fx:id="middleName" layoutX="10.0" layoutY="10.0" promptText="Middle name(optional)" style="-fx-background-color: transparent;" styleClass="cursorText" stylesheets="@css/general.css" />
+                  <Line endX="100.0" layoutX="111.0" layoutY="37.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets top="-30.0" />
+                     </VBox.margin>
+                  </Line>
+                  <TextField fx:id="lastName" layoutX="10.0" layoutY="68.0" promptText="Last name" style="-fx-background-color: transparent;" styleClass="cursorText" stylesheets="@css/general.css" />
+                  <Line endX="100.0" layoutX="111.0" layoutY="95.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets top="-30.0" />
+                     </VBox.margin>
+                  </Line>
+                  <TextField fx:id="ssn" layoutX="10.0" layoutY="124.0" promptText="SSN" style="-fx-background-color: transparent;" styleClass="cursorText" stylesheets="@css/general.css" />
+                  <Line endX="100.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets top="-30.0" />
+                     </VBox.margin>
+                  </Line>
+                  <TextField fx:id="email" layoutX="10.0" layoutY="180.0" promptText="E-mail address" style="-fx-background-color: transparent;" styleClass="cursorText" stylesheets="@css/general.css" />
+                  <Line endX="100.0" layoutX="111.0" layoutY="154.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets top="-30.0" />
+                     </VBox.margin>
+                  </Line>
+                  <TextField fx:id="phoneNumber" layoutX="10.0" layoutY="244.0" promptText="Phone number" style="-fx-background-color: transparent;" styleClass="cursorText" stylesheets="@css/general.css" />
+                  <Line endX="100.0" layoutX="111.0" layoutY="271.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets top="-30.0" />
+                     </VBox.margin>
+                  </Line>
                </children>
             </VBox>
             <HBox layoutX="38.0" layoutY="385.0" prefHeight="63.0" prefWidth="362.0" spacing="150.0">
                <children>
-                  <JFXButton prefHeight="27.0" prefWidth="75.0" styleClass="loginLogo" text="Clear all" textFill="WHITE">
+                  <JFXButton onAction="#buttonClearAllClick" prefHeight="27.0" prefWidth="75.0" styleClass="loginLogo" text="Clear all" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="40.0" top="65.0" />
                      </HBox.margin>
                   </JFXButton>
-                  <JFXButton prefHeight="26.0" prefWidth="59.0" styleClass="loginLogo" text="Next" textFill="WHITE">
+                  <JFXButton onAction="#buttonNextClick" prefHeight="26.0" prefWidth="75.0" styleClass="loginLogo" text="Next" textFill="WHITE">
                      <HBox.margin>
                         <Insets top="65.0" />
                      </HBox.margin>
