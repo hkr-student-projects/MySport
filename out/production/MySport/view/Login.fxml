@@ -72,7 +72,7 @@
             <String fx:value="cursorHand" />
          </styleClass>
       </Button>
-      <Button cacheShape="false" centerShape="false" focusTraversable="false" layoutX="676.0" layoutY="549.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="77.0" scaleShape="false" stylesheets="@css/general.css" text="Sign up" textFill="#763dee">
+      <Button fx:id="signUp" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="676.0" layoutY="549.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="77.0" scaleShape="false" stylesheets="@css/general.css" text="Sign up" textFill="#763dee">
          <styleClass>
             <String fx:value="darkPurple" />
             <String fx:value="cursorHand" />

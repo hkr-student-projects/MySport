@@ -3,6 +3,7 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import model.App;
 import model.Database.DatabaseManager;
@@ -11,7 +12,7 @@ import model.Tools.SceneSwitcher;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CreateAccount extends Menu implements Initializable {
+public class CreateAccount implements Initializable {
 
     @FXML
     TextField firstName;
@@ -26,62 +27,24 @@ public class CreateAccount extends Menu implements Initializable {
     @FXML
     TextField phoneNumber;
     @FXML
-    TextField password;
+    PasswordField password;
     @FXML
     TextField passwordRepeat;
 
-    String accFirstName;
-    String accMiddleName;
-    String accLastName;
-    String accSsn;
-    String accEmail;
-    String accPhoneNumber;
-    String accPassword;
-
-
-    @Override
-    protected void onBurgerOpen() {
-
-    }
-
-    @Override
-    protected void onBurgerClose() {
-
-    }
-
-    @Override
-    protected void onSceneSwitch() {
-
-    }
-
-    @Override
-    protected void onAppClose() {
-
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        bindTab(this);
-
-    }
-
-    @FXML
-    public void buttonAccountClick() {
-        App.instance.setScene(SceneSwitcher.instance.getScene("Account"));
 
     }
 
     @FXML
     public void buttonClearAllClick() {
 
-        firstName.setText(null);
-        middleName.setText(null);
-        lastName.setText(null);
-        ssn.setText(null);
-        email.setText(null);
-        phoneNumber.setText(null);
-
-
+        firstName.setText("");
+        middleName.setText("");
+        lastName.setText("");
+        ssn.setText("");
+        email.setText("");
+        phoneNumber.setText("");
     }
 
     @FXML
@@ -96,7 +59,7 @@ public class CreateAccount extends Menu implements Initializable {
 //            e.printStackTrace();
 //        }
 
-        App.instance.setScene(SceneSwitcher.instance.getScene("CreateAccountNo2"));
+        //App.instance.setScene(SceneSwitcher.instance.getScene("CreateAccount-V2"));
 
     }
 
@@ -104,33 +67,16 @@ public class CreateAccount extends Menu implements Initializable {
     public Boolean validateInput() {
 
         if (!firstName.getText().isBlank()) {
-            if (!isNumber(firstName.getText())) {
-
-                if (firstName.getText().matches("[a-zA-Z ]*")) {
-
-                    accFirstName = firstName.getText();
-                    System.out.println("Successful first name saving");
-                    return true;
-
-
-                } else {
-
-                }
-
-            } else {
+            if (!isNumber(firstName.getText()))
+                return firstName.getText().matches("[a-zA-Z ]*");
+            else {
                 Alert alertBox = new Alert(Alert.AlertType.WARNING);
                 alertBox.setContentText("First name can't contain numbers!");
                 alertBox.setHeaderText("Warning!");
                 alertBox.showAndWait();
-
             }
-
-
-        } else {
-
         }
         return false;
-
     }
 
     public static boolean isNumber(String string) {
@@ -148,10 +94,13 @@ public class CreateAccount extends Menu implements Initializable {
 
     @FXML
     public void buttonBackClick() {
-        try {
-            App.instance.setScene(SceneSwitcher.instance.getScene("CreateAccount"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        App.instance.setScene(SceneSwitcher.instance.getScene("Login"));
+    }
+
+    @FXML
+    public void saveClick(){
+//        App.databaseManager.addAccount(firstName.getText(), middleName.getText(), lastName.getText(),
+//            ssn.getText(), email.getText(), password.getText(), phoneNumber.getText()
+//        );
     }
 }

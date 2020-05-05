@@ -24,7 +24,7 @@ public class Login implements Initializable {
     @FXML
     private PasswordField password;
     @FXML
-    private Button login;
+    private Button login, signUp;
     @FXML
     private Label error;
     @FXML
@@ -39,6 +39,9 @@ public class Login implements Initializable {
                 password.setText("");
                 error.setText("");
             }
+        });
+        signUp.setOnMouseClicked(e -> {
+            App.instance.setScene(SceneSwitcher.instance.getScene("CreateAccount"));
         });
         login.setOnMouseClicked(e -> {
             if(toggle.isSelected())

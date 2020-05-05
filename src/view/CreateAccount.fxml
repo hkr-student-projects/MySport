@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
@@ -17,103 +15,15 @@
 
 <AnchorPane cacheShape="false" centerShape="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #763dee;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateAccount">
     <children>
-        <Text fill="WHITE" layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="John Cena (Leader)" wrappingWidth="341.0">
-            <font>
-                <Font name="AppleGothic Regular" size="14.0" />
-            </font>
-        </Text>
-        <HBox fx:id="bar" alignment="CENTER_RIGHT" layoutX="400.0" layoutY="3.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="31.0" prefWidth="400.0" spacing="25.0" style="-fx-background-color: transparent;">
-            <children>
-                <Button fx:id="home" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
-                    <graphic>
-                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@img/home-icon_2.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
-                <Button fx:id="account" mnemonicParsing="false" onAction="#buttonAccountClick" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
-                    <graphic>
-                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@img/user-icon_1.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
-                <Button fx:id="mail" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
-                    <graphic>
-                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@img/mail-icon_14.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
-                <Button fx:id="forum" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
-                    <graphic>
-                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@img/forum-icon_1.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
-                <Button fx:id="calendar" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
-                    <graphic>
-                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@img/calendar-icon_4.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
-                <Button fx:id="settings" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
-                    <graphic>
-                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@img/settings-icon_10.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
-                <Button fx:id="logout" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
-                    <graphic>
-                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@img/power-off-icon_1.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
-            </children>
-            <opaqueInsets>
-                <Insets />
-            </opaqueInsets>
-        </HBox>
-        <Button fx:id="burger" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="857.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="31.0" prefWidth="31.0" scaleShape="false" stylesheets="@css/general.css">
-            <graphic>
-                <ImageView fitHeight="19.0" fitWidth="37.0" nodeOrientation="INHERIT" preserveRatio="true" smooth="false">
-                    <image>
-                        <Image url="@img/burger.png" />
-                    </image>
-                </ImageView>
-            </graphic>
-            <styleClass>
-                <String fx:value="burgerButton" />
-                <String fx:value="button" />
-            </styleClass>
-        </Button>
         <Pane cacheShape="false" centerShape="false" disable="true" layoutX="560.0" layoutY="66.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="303.0" style="-fx-background-color: white; -fx-background-radius: 33;" visible="false" />
-      <Pane layoutX="59.0" layoutY="81.0" prefHeight="499.0" prefWidth="438.0" styleClass="paneEvent" stylesheets="@css/general.css">
+      <Pane layoutX="64.0" layoutY="26.0" prefHeight="548.0" prefWidth="438.0" styleClass="paneEvent" stylesheets="@css/general.css">
          <children>
-            <Text fill="#763dee" layoutX="79.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New MySport account" wrappingWidth="280.7386169433594">
+            <Text fill="#5b5b5b" layoutX="55.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New MySport account" textAlignment="CENTER" wrappingWidth="327.7386169433594">
                <font>
-                  <Font size="28.0" />
+                  <Font name="Helvetica Light" size="23.0" />
                </font>
             </Text>
-            <VBox layoutX="79.0" layoutY="90.0" prefHeight="338.0" prefWidth="202.0" spacing="30.0">
+            <VBox layoutX="55.0" layoutY="63.0" prefHeight="362.0" prefWidth="202.0" spacing="30.0">
                <children>
                   <TextField fx:id="firstName" promptText="First name" style="-fx-background-color: transparent;" styleClass="cursorText" stylesheets="@css/general.css" />
                   <Line endX="100.0" startX="-100.0">
@@ -151,22 +61,13 @@
                         <Insets top="-30.0" />
                      </VBox.margin>
                   </Line>
+                  <PasswordField promptText="password" style="-fx-background-color: transparent;" />
+                  <Line endX="100.0" startX="-100.0" />
                </children>
             </VBox>
-            <HBox layoutX="38.0" layoutY="385.0" prefHeight="63.0" prefWidth="362.0" spacing="150.0">
-               <children>
-                  <JFXButton onAction="#buttonClearAllClick" prefHeight="27.0" prefWidth="75.0" styleClass="loginLogo" text="Clear all" textFill="WHITE">
-                     <HBox.margin>
-                        <Insets left="40.0" top="65.0" />
-                     </HBox.margin>
-                  </JFXButton>
-                  <JFXButton onAction="#buttonNextClick" prefHeight="26.0" prefWidth="75.0" styleClass="loginLogo" text="Next" textFill="WHITE">
-                     <HBox.margin>
-                        <Insets top="65.0" />
-                     </HBox.margin>
-                  </JFXButton>
-               </children>
-            </HBox>
+            <JFXButton layoutX="320.0" layoutY="490.0" onMouseClicked="#saveClick" prefHeight="26.0" prefWidth="75.0" styleClass="loginLogo" text="Save" textFill="WHITE" />
+            <JFXButton layoutX="215.0" layoutY="490.0" onAction="#buttonClearAllClick" prefHeight="27.0" prefWidth="75.0" styleClass="loginLogo" text="Clear all" textFill="WHITE" />
+            <JFXButton layoutX="43.0" layoutY="490.0" onMouseClicked="#buttonBackClick" prefHeight="26.0" prefWidth="75.0" styleClass="loginLogo" text="Back" textFill="WHITE" />
          </children>
       </Pane>
       <ImageView fitHeight="178.0" fitWidth="183.0" layoutX="600.0" layoutY="157.0">
@@ -174,7 +75,7 @@
             <Image url="@img/user-icon_5.png" />
          </image>
       </ImageView>
-      <Text fill="#763dee" layoutX="568.0" layoutY="357.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="5.0" text="MySport" wrappingWidth="247.6812744140625">
+      <Text fill="#763dee" layoutX="560.0" layoutY="369.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="5.0" text="MySport" wrappingWidth="303.0">
          <font>
             <Font size="64.0" />
          </font>

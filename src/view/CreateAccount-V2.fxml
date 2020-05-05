@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import com.jfoenix.controls.JFXButton?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
@@ -108,9 +107,9 @@
         <Pane cacheShape="false" centerShape="false" disable="true" layoutX="560.0" layoutY="66.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="303.0" style="-fx-background-color: white; -fx-background-radius: 33;" visible="false" />
         <Pane layoutX="59.0" layoutY="72.0" prefHeight="228.0" prefWidth="394.0" styleClass="paneEvent" stylesheets="@css/general.css">
             <children>
-                <Text fill="#763dee" layoutX="79.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter your password" wrappingWidth="280.7386169433594">
+                <Text fill="#545454" layoutX="57.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change password" textAlignment="CENTER" wrappingWidth="280.7386169433594">
                     <font>
-                        <Font size="28.0" />
+                        <Font name="Helvetica Light" size="21.0" />
                     </font>
                 </Text>
                 <VBox layoutX="79.0" layoutY="67.0" prefHeight="128.0" prefWidth="183.0" spacing="30.0">
@@ -133,8 +132,7 @@
                   </Line>
                </children>
                 </VBox>
-            <JFXButton layoutX="309.0" layoutY="183.0" styleClass="buttonInAcc" text="Confirm" textFill="WHITE" />
-            <JFXButton layoutX="79.0" layoutY="183.0" onAction="#buttonBackClick" prefHeight="25.0" prefWidth="58.0" styleClass="buttonInAcc" text="Back" textFill="WHITE" />
+            <JFXButton layoutX="159.0" layoutY="182.0" prefHeight="27.0" prefWidth="77.0" style="-fx-background-radius: 12;" styleClass="buttonInAcc" text="save" textFill="WHITE" />
             </children>
         </Pane>
         <ImageView fitHeight="178.0" fitWidth="183.0" layoutX="600.0" layoutY="66.0">
@@ -142,16 +140,16 @@
                 <Image url="@img/user-icon_5.png" />
             </image>
         </ImageView>
-        <Text fill="#763dee" layoutX="568.0" layoutY="264.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="5.0" text="MySport" wrappingWidth="247.6812744140625">
+        <Text fill="#763dee" layoutX="535.0" layoutY="258.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="5.0" text="MySport" textAlignment="CENTER" wrappingWidth="312.6812744140625">
             <font>
                 <Font size="64.0" />
             </font>
         </Text>
       <Pane layoutX="491.0" layoutY="344.0" prefHeight="228.0" prefWidth="394.0" styleClass="paneEvent" stylesheets="@css/general.css">
          <children>
-            <Text fill="#763dee" layoutX="101.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account details" wrappingWidth="191.93869018554688">
+            <Text fill="#545454" layoutX="57.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account details" textAlignment="CENTER" wrappingWidth="280.7386169433594">
                <font>
-                  <Font size="28.0" />
+                  <Font name="Helvetica Light" size="24.0" />
                </font>
             </Text>
             <HBox layoutX="38.0" layoutY="385.0" prefHeight="63.0" prefWidth="362.0" spacing="150.0" />
