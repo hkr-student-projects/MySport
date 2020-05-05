@@ -10,16 +10,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
 import model.App;
-import model.Database.DatabaseManager;
 import model.Logging.Logger;
 import model.Tools.SceneSwitcher;
 
 import java.net.URL;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class Login extends Menu implements Initializable {
+public class Login implements Initializable {
 
     @FXML
     private TextField email;
@@ -36,20 +34,39 @@ public class Login extends Menu implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        password.focusedProperty().addListener((obs, wasFocused, isNowFocused) -> {
+            if (isNowFocused){
+                password.setText("");
+                error.setText("");
+            }
+        });
         login.setOnMouseClicked(e -> {
             if(toggle.isSelected())
             {
                 App.instance.setScene(SceneSwitcher.instance.getScene("Home"));
                 return;
             }
-            if(email.getText().isEmpty() || password.getText().isEmpty()){
-                redLines();
-                return;
-            }
             try {
-                if(verifyFields()){
+                if(checkFormat()){
+                    int id;
+//                    Thread thread = new Thread(() -> {
+//                        try {
+//                            App.databaseManager.checkCredentials(email.getText(), password.getText());
+//                        } catch (SQLException throwables) {
+//                            throwables.printStackTrace();
+//                        }
+//                    });
+//                    thread.start();
+//                    thread.join();
+                    if((id = App.databaseManager.checkCredentials(email.getText(), password.getText())) == -1){
+                        error.setText("Incorrect email or password");
+                        redLines();
+                        return;
+                    }
                     email.setText("");
                     password.setText("");
+                    error.setText("");
+                    App.instance.setSession(App.databaseManager.getUser(id));
                     App.instance.setScene(SceneSwitcher.instance.getScene("Home"));
                 }
             } catch (SQLException ex) {
@@ -58,18 +75,12 @@ public class Login extends Menu implements Initializable {
         });
     }
 
-    private boolean verifyFields() throws SQLException {
-        if(!email.getText().matches("^[A-Za-z0-9+_.-]+@(.+)$")){
+    private boolean checkFormat() {
+        if(email.getText().isBlank() || password.getText().isBlank() || !email.getText().matches("^[A-Za-z0-9+_.-]+@(.+)$")){
             error.setText("Incorrect email format");
+            redLines();
             return false;
         }
-        DatabaseManager.AccountType acc = App.databaseManager.checkCredentials(email.getText(), password.getText());
-        if(acc == DatabaseManager.AccountType.NONE){
-            error.setText("Incorrect email or password");
-            return false;
-        }
-
-
 
         return true;
     }
@@ -86,27 +97,8 @@ public class Login extends Menu implements Initializable {
                 line0.setStrokeWidth(1);
                 line1.setStroke(Paint.valueOf("#000000"));
                 line1.setStrokeWidth(1);
+                error.setText("");
             }
         });
-    }
-
-    @Override
-    protected void onBurgerOpen() {
-
-    }
-
-    @Override
-    protected void onBurgerClose() {
-
-    }
-
-    @Override
-    protected void onSceneSwitch() {
-
-    }
-
-    @Override
-    protected void onAppClose() {
-
     }
 }

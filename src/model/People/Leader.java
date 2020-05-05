@@ -6,19 +6,27 @@ public class Leader extends Member {
 
     private String keyNumber;
     private String position;
-    private String leaderOf;
+    private String[] leaderOf;
 
-    public Leader(String name, String middleName, String surname, String ssn, Date birthDay, String eMail, String password, String phoneNumber, String keyNumber, String position, String leaderOf) {
-        super(name, middleName, surname, ssn, birthDay, eMail, password, phoneNumber);
+    public Leader(String name, String middleName, String surname, String ssn, Date birthDay, String mobile, String keyNumber, String boardPosition, String... leaderOf) {
+        super(name, middleName, surname, ssn, birthDay, mobile);
 
         this.keyNumber = keyNumber;
-        this.position = position;
+        this.position = boardPosition;
         this.leaderOf = leaderOf;
     }
 
-    public String getKeyNumber() {return keyNumber;}
+    public Leader(Member member, String keyNumber, String boardPosition, String... leaderOf){
+        this(member.getName(), member.getMiddlename(), member.getSurname(), member.getSsn(), (Date) member.getBirthday().clone(), member.getMobile(), keyNumber, boardPosition, leaderOf);
+    }
 
-    public String getPosition() {return position;}
+    public Member toMember(){
+        return new Member(this);
+    }
 
-    public String getLeaderOf() {return leaderOf;}
+    public String getKeyNumber() { return keyNumber; }
+
+    public String getPosition() { return position; }
+
+    public String[] getLeaderOf() { return leaderOf; }
 }

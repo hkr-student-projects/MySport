@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class ArrayList<T> {
 
     private static int avrg;
-    private Object[] content;
+    private Object[] contents;
     private int size;
 
     static {
@@ -13,7 +13,7 @@ public class ArrayList<T> {
     }
 
     public ArrayList(){
-        content = new Object[avrg];
+        contents = new Object[avrg];
         size = 0;
     }
 
@@ -25,9 +25,9 @@ public class ArrayList<T> {
 
     public ArrayList(int initialCapacity) {
         if (initialCapacity > 0)
-            content = new Object[initialCapacity];
+            contents = new Object[initialCapacity];
         else if (initialCapacity == 0)
-            content = new Object[avrg];
+            contents = new Object[avrg];
         else
             throw new IllegalArgumentException("Negative capacity provided: " + initialCapacity);
         size = 0;
@@ -37,20 +37,20 @@ public class ArrayList<T> {
         if(item == null)
             throw new NullPointerException("Parameter \"item\" is null");
         int last = size++;
-        if(content.length == size)
-            content = grow();
-        content[last] = item;
+        if(contents.length == size)
+            contents = grow();
+        contents[last] = item;
     }
 
     public void addWithKey(T item){
         int last = size++;
-        if(content.length == size)
-            content = grow();
-        content[last] = item;
+        if(contents.length == size)
+            contents = grow();
+        contents[last] = item;
     }
 
     private Object[] grow(){
-        return Arrays.copyOf(content, size + avrg);
+        return Arrays.copyOf(contents, size + avrg);
     }
 
     public void removeAt(int index){
@@ -67,27 +67,27 @@ public class ArrayList<T> {
 
     private void shiftElements(int index){
         if(size - 1 > index)// "to delete" exists before last element
-            System.arraycopy(content, index + 1, content, index, size - index - 1);// -1 because anyway I will place null value on the last element
-        content[--size] = null;
+            System.arraycopy(contents, index + 1, contents, index, size - index - 1);// -1 because anyway I will place null value on the last element
+        contents[--size] = null;
     }
 
     public void insertAt(T item, int index){ //insert item before index
         if(index < 0)
             return;
-        if(content.length == ++size)
-            content = grow();
-        System.arraycopy(content, index, content, index + 1, size - index);//here all after index are copied
-        content[index] = item;
+        if(contents.length == ++size)
+            contents = grow();
+        System.arraycopy(contents, index, contents, index + 1, size - index);//here all after index are copied
+        contents[index] = item;
     }
 
     private void shiftRight(int index){
         checkIndex(index);
-        if(content.length == size + 1)
-            content = grow();
+        if(contents.length == size + 1)
+            contents = grow();
         int temp;
         if((temp = size + 1) > index)
-            System.arraycopy(content, index + 1, content, index, size - 1 - index);
-        content[size = temp] = null;
+            System.arraycopy(contents, index + 1, contents, index, size - 1 - index);
+        contents[size = temp] = null;
     }
 
     public boolean contains(T item){
@@ -98,7 +98,7 @@ public class ArrayList<T> {
         if(item == null)
             return -1;
         for (int i = 0; i < size; i++)
-            if (item.equals(content[i]))
+            if (item.equals(contents[i]))
                 return i;
 
         return -1;
@@ -106,13 +106,13 @@ public class ArrayList<T> {
 
     public void clear(){
         for(int count = size, i = size = 0; i < count; i++){
-            content[i] = null;
+            contents[i] = null;
         }
     }
 
     public T get(int index){
         checkIndex(index);
-        return (T) content[index];
+        return (T) contents[index];
     }
 
     public int size(){
@@ -138,6 +138,10 @@ public class ArrayList<T> {
     }
 
     public T[] getContents(){
-        return (T[]) this.content;
+        return (T[]) this.contents;
+    }
+
+    public T[] toArray(){
+        return (T[]) Arrays.copyOf(contents, size);
     }
 }

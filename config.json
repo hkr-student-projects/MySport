@@ -5,6 +5,6 @@
     "DatabasePassword":"7EamYQySYE",
     "DatabaseName":"sql7336945",
     "lang":"en",
-    "DatabaseAddress":"jdbc:mysql://sql7.freemysqlhosting.net/sql7336945?&allowMultiQueries=true&serverTimezone=Europe/Stockholm&useSSL=false"
+    "DatabaseAddress":"jdbc:mysql://sql7.freemysqlhosting.net/sql7336945?&allowMultiQueries=true&serverTimezone=Europe/Stockholm&useSSL=true"
   }
 ]

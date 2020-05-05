@@ -109,7 +109,7 @@
          <content>
             <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="303.0" styleClass="paneEvent" stylesheets="@css/general.css">
                <children>
-                  <VBox cacheShape="false" centerShape="false" layoutX="-10.0" layoutY="41.0" prefHeight="638.0" prefWidth="312.0" spacing="25.0">
+                  <VBox alignment="TOP_CENTER" cacheShape="false" centerShape="false" layoutX="-10.0" layoutY="108.0" prefHeight="571.0" prefWidth="312.0" spacing="25.0">
                      <children>
                         <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="247.0" styleClass="sportEvent" stylesheets="@css/general.css">
                            <children>
@@ -186,6 +186,11 @@
                         <Insets left="5.0" />
                      </padding>
                   </VBox>
+                  <Text layoutX="73.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Today's agenda" textAlignment="CENTER" wrappingWidth="157.16357421875">
+                     <font>
+                        <Font name="Helvetica Light" size="20.0" />
+                     </font>
+                  </Text>
                </children>
             </Pane>
          </content>
