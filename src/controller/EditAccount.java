@@ -14,7 +14,6 @@ import java.util.ResourceBundle;
 
 public class EditAccount extends Menu implements Initializable {
 
-    DatabaseManager dbM = new DatabaseManager();
     @FXML Button buttonNameSave, buttonPasswordSave, buttonReturn, buttonPhoneNumberSave;
     @FXML TextField textFieldName, textFieldMiddleName, textFieldSurname, textFieldPassword, textFieldConfirmPassword, textFieldPhoneNumber;
 

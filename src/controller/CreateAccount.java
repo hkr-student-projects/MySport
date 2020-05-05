@@ -13,9 +13,6 @@ import java.util.ResourceBundle;
 
 public class CreateAccount extends Menu implements Initializable {
 
-    DatabaseManager databaseManager = new DatabaseManager();
-
-
     @FXML
     TextField firstName;
     @FXML
