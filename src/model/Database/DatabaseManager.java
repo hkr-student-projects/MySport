@@ -118,7 +118,7 @@ public class DatabaseManager {
                 new Object[] { id },
                 new int[] { Types.INTEGER }
         );
-        Member user = new Member(memberData.getString("name"), memberData.getString("middlename"),
+        Member user = new Member(memberData.getInt(1), memberData.getString("name"), memberData.getString("middlename"),
                 memberData.getString("surname"), memberData.getString("ssn"),
                 memberData.getDate("birthday"), memberData.getString("mobile")
         );

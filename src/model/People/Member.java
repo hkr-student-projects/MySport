@@ -4,12 +4,12 @@ import java.util.Date;
 
 public class Member extends User implements Cloneable {
 
-    public Member(String name, String middleName, String surname, String ssn, Date birthDay, String mobile) {
-        super(name, middleName, surname, ssn, birthDay, mobile);
+    public Member(int id, String name, String middleName, String surname, String ssn, Date birthDay, String mobile) {
+        super(id, name, middleName, surname, ssn, birthDay, mobile);
     }
 
     public Member(Leader leader){
-        this(leader.getName(), leader.getMiddlename(), leader.getSurname(), leader.getSsn(), (Date) leader.getBirthday().clone(), leader.getMobile());
+        this(leader.getId(), leader.getName(), leader.getMiddlename(), leader.getSurname(), leader.getSsn(), (Date) leader.getBirthday().clone(), leader.getMobile());
     }
 
     @Override

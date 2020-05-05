@@ -8,8 +8,8 @@ public class Leader extends Member {
     private String position;
     private String[] leaderOf;
 
-    public Leader(String name, String middleName, String surname, String ssn, Date birthDay, String mobile, String keyNumber, String boardPosition, String... leaderOf) {
-        super(name, middleName, surname, ssn, birthDay, mobile);
+    public Leader(int id, String name, String middleName, String surname, String ssn, Date birthDay, String mobile, String keyNumber, String boardPosition, String... leaderOf) {
+        super(id, name, middleName, surname, ssn, birthDay, mobile);
 
         this.keyNumber = keyNumber;
         this.position = boardPosition;
@@ -17,7 +17,7 @@ public class Leader extends Member {
     }
 
     public Leader(Member member, String keyNumber, String boardPosition, String... leaderOf){
-        this(member.getName(), member.getMiddlename(), member.getSurname(), member.getSsn(), (Date) member.getBirthday().clone(), member.getMobile(), keyNumber, boardPosition, leaderOf);
+        this(member.getId(), member.getName(), member.getMiddlename(), member.getSurname(), member.getSsn(), (Date) member.getBirthday().clone(), member.getMobile(), keyNumber, boardPosition, leaderOf);
     }
 
     public Member toMember(){

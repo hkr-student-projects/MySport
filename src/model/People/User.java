@@ -10,9 +10,11 @@ public abstract class User implements Cloneable {
     private Date birthday;
     private String ssn;
     private String mobile;
+    private int id;
 
-    protected User(String name, String middleName, String surname, String ssn, Date birthDay, String phoneNumber){
+    protected User(int id, String name, String middleName, String surname, String ssn, Date birthDay, String phoneNumber){
 
+        this.id = id;
         this.name = name;
         this.middlename = middleName;
         this.surname = surname;
@@ -50,5 +52,9 @@ public abstract class User implements Cloneable {
 
     public String getMobile() {
         return mobile;
+    }
+
+    public int getId() {
+        return id;
     }
 }
