@@ -3,6 +3,7 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -38,11 +39,12 @@
                   <TextField fx:id="textFieldSurname" layoutX="204.0" layoutY="227.0" promptText="Change surname" />
                   <Button fx:id="buttonNameSave" layoutX="204.0" layoutY="262.0" mnemonicParsing="false" onAction="#buttonNameSaveClick" prefHeight="25.0" prefWidth="149.0" styleClass="buttonInAcc" stylesheets="@css/general.css" text="Save changes" textFill="WHITE" />
                   <Button fx:id="buttonReturn" layoutX="18.0" layoutY="427.0" mnemonicParsing="false" onAction="#buttonReturnClick" styleClass="buttonInAcc" stylesheets="@css/general.css" text="Return" textFill="WHITE" />
-                  <TextField fx:id="textFieldPassword" layoutX="592.0" layoutY="190.0" promptText="New password" />
-                  <TextField fx:id="textFieldConfirmPassword" layoutX="592.0" layoutY="228.0" promptText="Confirm new password" />
                   <Button fx:id="buttonPasswordSave" layoutX="592.0" layoutY="264.0" mnemonicParsing="false" onAction="#buttonPasswordSaveClick" prefHeight="25.0" prefWidth="149.0" styleClass="buttonInAcc" stylesheets="@css/general.css" text="Save changes" textFill="WHITE" />
                   <TextField fx:id="textFieldPhoneNumber" layoutX="394.0" layoutY="228.0" promptText="New phone number" />
                   <Button fx:id="buttonPhoneNumberSave" layoutX="394.0" layoutY="264.0" mnemonicParsing="false" onAction="#buttonPhoneNumberSaveClick" prefHeight="25.0" prefWidth="149.0" styleClass="buttonInAcc" stylesheets="@css/general.css" text="Save changes" textFill="WHITE" />
+                  <PasswordField fx:id="passwordFieldPassword" layoutX="592.0" layoutY="188.0" promptText="New password" />
+                  <PasswordField fx:id="passwordFieldPasswordConfirm" layoutX="592.0" layoutY="227.0" promptText="Confirm new password" />
+                  <PasswordField fx:id="passwordFieldCurrentPassword" layoutX="592.0" layoutY="150.0" promptText="Current password" />
                     </children>
                 </Pane>
             </children>

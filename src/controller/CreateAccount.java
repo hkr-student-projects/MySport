@@ -15,21 +15,9 @@ import java.util.ResourceBundle;
 public class CreateAccount implements Initializable {
 
     @FXML
-    TextField firstName;
-    @FXML
-    TextField lastName;
-    @FXML
-    TextField middleName;
-    @FXML
-    TextField ssn;
-    @FXML
-    TextField email;
-    @FXML
-    TextField phoneNumber;
+    TextField firstName, lastName, middleName, ssn, email, phoneNumber, passwordRepeat;
     @FXML
     PasswordField password;
-    @FXML
-    TextField passwordRepeat;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

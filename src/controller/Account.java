@@ -12,9 +12,7 @@ import java.util.ResourceBundle;
 public class Account extends Menu implements Initializable {
 
     @FXML
-    Button buttonEdit;
-    @FXML
-    Button buttonCreate;
+    Button buttonEdit, buttonCreate;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

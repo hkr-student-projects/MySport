@@ -4,9 +4,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import model.App;
-import model.Database.DatabaseManager;
+import model.People.Leader;
 import model.Tools.SceneSwitcher;
 
 import java.net.URL;
@@ -15,7 +16,8 @@ import java.util.ResourceBundle;
 public class EditAccount extends Menu implements Initializable {
 
     @FXML Button buttonNameSave, buttonPasswordSave, buttonReturn, buttonPhoneNumberSave;
-    @FXML TextField textFieldName, textFieldMiddleName, textFieldSurname, textFieldPassword, textFieldConfirmPassword, textFieldPhoneNumber;
+    @FXML TextField textFieldName, textFieldMiddleName, textFieldSurname, textFieldPhoneNumber;
+    @FXML PasswordField passwordFieldPassword, passwordFieldConfirmPassword, passwordFieldCurrentPassword;
 
 
     @Override
@@ -35,7 +37,7 @@ public class EditAccount extends Menu implements Initializable {
                     return;
                 } else {
                     String name = textFieldName.getText();
-//                    dbM.updateName(name, Use log in to extract current users ssn );
+                    App.databaseManager.updateName(App.instance.getSession().getId(), name);
                 }
             } else if (!textFieldMiddleName.getText().isBlank()) {
                 if (textFieldMiddleName.getText().matches("[0-9]")) {
@@ -46,7 +48,7 @@ public class EditAccount extends Menu implements Initializable {
                     return;
                 } else {
                     String middleName = textFieldName.getText();
-//                    dbM.updateName(middleName, Use log in to extract current users ssn );
+                    App.databaseManager.updateName(App.instance.getSession().getId(), middleName);
                 }
             } else if (!textFieldSurname.getText().isBlank()) {
                 if (textFieldSurname.getText().matches("[0-9]")) {
@@ -57,7 +59,7 @@ public class EditAccount extends Menu implements Initializable {
                     return;
                 } else {
                     String surname = textFieldName.getText();
-//                    dbM.updateName(surname, Use log in to extract current users ssn );
+                    App.databaseManager.updateName(App.instance.getSession().getId(), surname);
                 }
             }
         } catch (Exception e) {
@@ -68,10 +70,19 @@ public class EditAccount extends Menu implements Initializable {
     @FXML
     public void buttonPasswordSaveClick() {
         try {
-            if (!textFieldPassword.getText().isBlank()) {
-                String password = textFieldPassword.getText();
-                if (password.equals(textFieldConfirmPassword.getText())){
-//                    dbM.updatePassword(password, use login to extract ssn from current user);
+            if (!passwordFieldPassword.getText().isBlank()) {
+                String password = passwordFieldPassword.getText();
+                String oldPassword = passwordFieldCurrentPassword.getText();
+                if (password.equals(passwordFieldConfirmPassword.getText())){
+                    if (!App.databaseManager.updatePassword(App.instance.getSession().getId(), oldPassword, password)) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setHeaderText("Error!");
+                        alert.setContentText("Some passwords may not match, please try again!");
+                        alert.showAndWait();
+                        return;
+                    } else {
+                        App.databaseManager.updatePassword(App.instance.getSession().getId(), oldPassword, password);
+                    }
                 }
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
