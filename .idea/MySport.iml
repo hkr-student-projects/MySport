@@ -10,5 +10,9 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="OSX" level="project" />
+    <orderEntry type="library" name="javax.mail" level="project" />
+    <orderEntry type="library" name="restfb-3.4.0" level="project" />
+    <orderEntry type="library" name="jbcrypt-0.4" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>
