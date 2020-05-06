@@ -6,6 +6,11 @@ module MySport {
     requires java.sql;
     requires mysql.connector.java;
     requires kotlin.stdlib;
+    requires java.mail;
+    requires javafx.web;
+    requires restfb;
+    requires jbcrypt;
+    requires javafx.media;
 
     opens controller;
     opens model;

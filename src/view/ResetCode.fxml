@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="459.0" prefWidth="600.0" style="-fx-background-color: #763dee;" stylesheets="@css/general.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ResetCode">
+   <children>
+      <Pane layoutX="203.0" layoutY="130.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 33px; -fx-background-color: #fff;">
+         <children>
+            <JFXTextField fx:id="resetCodeButton" alignment="CENTER" focusColor="#405aa800" layoutX="23.0" layoutY="47.0" prefHeight="27.0" prefWidth="155.0" promptText="Enter reset code">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </JFXTextField>
+            <JFXButton fx:id="resetButton" buttonType="RAISED" layoutX="68.0" layoutY="119.0" onAction="#handleResetCode" style="-fx-background-color: #763dee;" stylesheets="@css/general.css" text="Reset" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Arial" size="16.0" />
+               </font>
+            </JFXButton>
+         </children>
+         <effect>
+            <Glow />
+         </effect>
+      </Pane>
+   </children>
+</AnchorPane>
