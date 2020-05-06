@@ -2,6 +2,10 @@
     -fx-background-color: transparent;
 }
 
+.buttonTab{
+    -fx-background-color: transparent;
+}
+
 .buttonTab:hover {
     -fx-background-color: transparent;
     -fx-scale-x: 1.2;
@@ -50,6 +54,18 @@
 
 .darkPurple:pressed {
     -fx-text-fill: #8271b5;
+}
+
+.datePicker {
+    -fx-background-color: transparent;
+    -fx-text-box-border: transparent;
+    -fx-control-inner-background: transparent;
+    -fx-background-radius: 0;
+    -fx-stroke: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: BLACK;
+    -fx-text-alignment: center;
+    -fx-background-radius: 0;
 }
 
 .cursorHResize {

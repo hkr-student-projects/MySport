@@ -5,3 +5,4 @@ App.log
 config.json
 /out/
 *.class
+*.log

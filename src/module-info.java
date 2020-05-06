@@ -7,7 +7,7 @@ module MySport {
     requires mysql.connector.java;
     requires kotlin.stdlib;
 
-    opens controller;
+
     opens model;
     opens model.Logging;
     opens model.Localization;
@@ -17,4 +17,5 @@ module MySport {
     opens view;
     opens view.css;
     opens view.img;
+    opens controller;
 }

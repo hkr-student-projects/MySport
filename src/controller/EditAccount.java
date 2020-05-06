@@ -79,9 +79,6 @@ public class EditAccount extends Menu implements Initializable {
                         alert.setHeaderText("Error!");
                         alert.setContentText("Some passwords may not match, please try again!");
                         alert.showAndWait();
-                        return;
-                    } else {
-                        App.databaseManager.updatePassword(App.instance.getSession().getId(), oldPassword, password);
                     }
                 }
             } else {
@@ -89,7 +86,6 @@ public class EditAccount extends Menu implements Initializable {
                 alert.setHeaderText("Error! No password detected.");
                 alert.setContentText("Please enter a new password and confirm it by re-entering the new password before saving changes.");
                 alert.showAndWait();
-                return;
             }
         } catch (Exception e) {
             e.printStackTrace();
