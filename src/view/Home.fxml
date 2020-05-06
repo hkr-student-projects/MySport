@@ -14,9 +14,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane cacheShape="false" centerShape="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #763dee;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Home">
+<AnchorPane cacheShape="false" centerShape="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #763dee;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Home">
     <children>
-        <Text fill="WHITE" layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="John Cena (Leader)" wrappingWidth="341.0">
+        <Text fill="WHITE" layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.leader" wrappingWidth="341.0">
             <font>
                 <Font name="AppleGothic Regular" size="14.0" />
             </font>
@@ -113,7 +113,7 @@
                      <children>
                         <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="247.0" styleClass="sportEvent" stylesheets="@css/general.css">
                            <children>
-                              <Text fill="WHITE" layoutX="27.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volleyball">
+                              <Text fill="WHITE" layoutX="27.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.volleyball">
                                  <font>
                                     <Font name="Al Tarikh Regular" size="20.0" />
                                  </font>
@@ -127,7 +127,7 @@
                         </Pane>
                         <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="247.0" styleClass="sportEvent" stylesheets="@css/general.css">
                            <children>
-                              <Text fill="WHITE" layoutX="27.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Football">
+                              <Text fill="WHITE" layoutX="27.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.football">
                                  <font>
                                     <Font name="Al Tarikh Regular" size="20.0" />
                                  </font>
@@ -141,7 +141,7 @@
                         </Pane>
                         <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="247.0" styleClass="sportEvent" stylesheets="@css/general.css">
                            <children>
-                              <Text fill="WHITE" layoutX="27.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Boxing">
+                              <Text fill="WHITE" layoutX="27.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.boxing">
                                  <font>
                                     <Font name="Al Tarikh Regular" size="20.0" />
                                  </font>
@@ -155,7 +155,7 @@
                         </Pane>
                         <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="247.0" styleClass="sportEvent" stylesheets="@css/general.css">
                            <children>
-                              <Text fill="WHITE" layoutX="27.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Climbing">
+                              <Text fill="WHITE" layoutX="27.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.climbing">
                                  <font>
                                     <Font name="Al Tarikh Regular" size="20.0" />
                                  </font>
@@ -169,7 +169,7 @@
                         </Pane>
                         <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="247.0" styleClass="sportEvent" stylesheets="@css/general.css">
                            <children>
-                              <Text fill="WHITE" layoutX="27.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volleyball">
+                              <Text fill="WHITE" layoutX="27.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.volleyball">
                                  <font>
                                     <Font name="Al Tarikh Regular" size="20.0" />
                                  </font>
@@ -198,17 +198,17 @@
                      <children>
                           <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="151.0" prefWidth="440.0" style="-fx-background-color: white; -fx-background-radius: 33;">
                            <children>
-                              <Text layoutX="33.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Summary">
+                              <Text layoutX="33.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.summary">
                                  <font>
                                     <Font name="Helvetica Light" size="20.0" />
                                  </font>
                               </Text>
-                              <Text fill="#7c7c7c" layoutX="33.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Weekly or daily reports avaialble to track total hours spent on particular activity." wrappingWidth="409.0">
+                              <Text fill="#7c7c7c" layoutX="33.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.weeklyReport" wrappingWidth="409.0">
                                  <font>
                                     <Font name="Helvetica Light" size="13.0" />
                                  </font>
                               </Text>
-                              <JFXButton cacheShape="false" centerShape="false" focusTraversable="false" layoutX="300.0" layoutY="105.0" prefHeight="32.0" prefWidth="104.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="View" textFill="WHITE">
+                              <JFXButton cacheShape="false" centerShape="false" focusTraversable="false" layoutX="300.0" layoutY="105.0" prefHeight="32.0" prefWidth="104.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="%key.view" textFill="WHITE">
                                  <font>
                                     <Font name="Arial" size="16.0" />
                                  </font>
@@ -236,17 +236,17 @@
                         </Pane>
                         <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="151.0" prefWidth="440.0" style="-fx-background-color: white; -fx-background-radius: 33;">
                            <children>
-                              <Text layoutX="33.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Membership">
+                              <Text layoutX="33.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.membership">
                                  <font>
                                     <Font name="Helvetica Light" size="20.0" />
                                  </font>
                               </Text>
-                              <Text fill="#7c7c7c" layoutX="33.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prolong or track student board fees." wrappingWidth="409.0">
+                              <Text fill="#7c7c7c" layoutX="33.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.trackFees" wrappingWidth="409.0">
                                  <font>
                                     <Font name="Helvetica Light" size="13.0" />
                                  </font>
                               </Text>
-                              <JFXButton cacheShape="false" centerShape="false" focusTraversable="false" layoutX="300.0" layoutY="105.0" prefHeight="32.0" prefWidth="104.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="View" textFill="WHITE">
+                              <JFXButton cacheShape="false" centerShape="false" focusTraversable="false" layoutX="300.0" layoutY="105.0" prefHeight="32.0" prefWidth="104.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="%key.view" textFill="WHITE">
                                  <font>
                                     <Font name="Arial" size="16.0" />
                                  </font>
@@ -260,17 +260,17 @@
                         </Pane>
                         <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="151.0" prefWidth="440.0" style="-fx-background-color: white; -fx-background-radius: 33;">
                            <children>
-                              <Text layoutX="33.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Support &amp; FAQ">
+                              <Text layoutX="33.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.support">
                                  <font>
                                     <Font name="Helvetica Light" size="20.0" />
                                  </font>
                               </Text>
-                              <Text fill="#7c7c7c" layoutX="33.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Write us the problem you encountered in the applcication or find an answer in FAQ." wrappingWidth="409.0">
+                              <Text fill="#7c7c7c" layoutX="33.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.write" wrappingWidth="409.0">
                                  <font>
                                     <Font name="Helvetica Light" size="13.0" />
                                  </font>
                               </Text>
-                              <JFXButton cacheShape="false" centerShape="false" focusTraversable="false" layoutX="300.0" layoutY="105.0" prefHeight="32.0" prefWidth="104.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="View" textFill="WHITE">
+                              <JFXButton cacheShape="false" centerShape="false" focusTraversable="false" layoutX="300.0" layoutY="105.0" prefHeight="32.0" prefWidth="104.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="%key.view" textFill="WHITE">
                                  <font>
                                     <Font name="Arial" size="16.0" />
                                  </font>

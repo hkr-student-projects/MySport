@@ -14,9 +14,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane cacheShape="false" centerShape="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #763dee;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateAccount">
+<AnchorPane cacheShape="false" centerShape="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #763dee;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateAccount">
     <children>
-        <Text fill="WHITE" layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="John Cena (Leader)" wrappingWidth="341.0">
+        <Text fill="WHITE" layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.leader" wrappingWidth="341.0">
             <font>
                 <Font name="AppleGothic Regular" size="14.0" />
             </font>
@@ -107,29 +107,29 @@
         <Pane cacheShape="false" centerShape="false" disable="true" layoutX="560.0" layoutY="66.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="303.0" style="-fx-background-color: white; -fx-background-radius: 33;" visible="false" />
       <Pane layoutX="59.0" layoutY="81.0" prefHeight="499.0" prefWidth="438.0" styleClass="paneEvent" stylesheets="@css/general.css">
          <children>
-            <Text fill="#763dee" layoutX="79.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New MySport account" wrappingWidth="280.7386169433594">
+            <Text fill="#763dee" layoutX="79.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.nwacccnt" wrappingWidth="280.7386169433594">
                <font>
                   <Font size="28.0" />
                </font>
             </Text>
             <VBox layoutX="79.0" layoutY="90.0" prefHeight="268.0" prefWidth="183.0" spacing="30.0">
                <children>
-                  <JFXTextField promptText="First name" styleClass="field" />
-                  <JFXTextField promptText="Middle name(optional)" styleClass="field" />
-                  <JFXTextField promptText="Last name" styleClass="field" />
-                  <JFXTextField prefHeight="19.0" prefWidth="135.0" promptText="SSN" styleClass="field" />
-                  <JFXTextField promptText="E-mail address" styleClass="field" />
-                  <JFXTextField promptText="Phone number" />
+                  <JFXTextField promptText="%key.firstn" styleClass="field" />
+                  <JFXTextField promptText="%key.middlen" styleClass="field" />
+                  <JFXTextField promptText="%key.lastn" styleClass="field" />
+                  <JFXTextField prefHeight="19.0" prefWidth="135.0" promptText="%key.ssn" styleClass="field" />
+                  <JFXTextField promptText="%key.e_mail" styleClass="field" />
+                  <JFXTextField promptText="%key.phnnbr" />
                </children>
             </VBox>
             <HBox layoutX="38.0" layoutY="385.0" prefHeight="63.0" prefWidth="362.0" spacing="150.0">
                <children>
-                  <JFXButton prefHeight="27.0" prefWidth="75.0" styleClass="loginLogo" text="Clear all" textFill="WHITE">
+                  <JFXButton prefHeight="27.0" prefWidth="75.0" styleClass="loginLogo" text="%key.clear" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="40.0" top="65.0" />
                      </HBox.margin>
                   </JFXButton>
-                  <JFXButton prefHeight="26.0" prefWidth="59.0" styleClass="loginLogo" text="Next" textFill="WHITE">
+                  <JFXButton prefHeight="26.0" prefWidth="59.0" styleClass="loginLogo" text="%key.next" textFill="WHITE">
                      <HBox.margin>
                         <Insets top="65.0" />
                      </HBox.margin>

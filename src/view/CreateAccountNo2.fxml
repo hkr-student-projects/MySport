@@ -15,9 +15,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane cacheShape="false" centerShape="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #763dee;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateAccount">
+<AnchorPane cacheShape="false" centerShape="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #763dee;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateAccount">
     <children>
-        <Text fill="WHITE" layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="John Cena (Leader)" wrappingWidth="341.0">
+        <Text fill="WHITE" layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.leader" wrappingWidth="341.0">
             <font>
                 <Font name="AppleGothic Regular" size="14.0" />
             </font>
@@ -108,19 +108,19 @@
         <Pane cacheShape="false" centerShape="false" disable="true" layoutX="560.0" layoutY="66.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="303.0" style="-fx-background-color: white; -fx-background-radius: 33;" visible="false" />
         <Pane layoutX="59.0" layoutY="72.0" prefHeight="228.0" prefWidth="394.0" styleClass="paneEvent" stylesheets="@css/general.css">
             <children>
-                <Text fill="#763dee" layoutX="79.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter your password" wrappingWidth="280.7386169433594">
+                <Text fill="#763dee" layoutX="79.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.enterpw" wrappingWidth="280.7386169433594">
                     <font>
                         <Font size="28.0" />
                     </font>
                 </Text>
                 <VBox layoutX="79.0" layoutY="67.0" prefHeight="128.0" prefWidth="183.0" spacing="30.0">
                     <children>
-                        <JFXTextField promptText="New password" styleClass="field" />
-                        <JFXTextField promptText="Repeat password" styleClass="field" />
+                        <JFXTextField promptText="%key.nwpswd" styleClass="field" />
+                        <JFXTextField promptText="%key.repeat" styleClass="field" />
                     </children>
                 </VBox>
-            <JFXButton layoutX="309.0" layoutY="183.0" styleClass="buttonInAcc" text="Confirm" textFill="WHITE" />
-            <JFXButton layoutX="79.0" layoutY="183.0" prefHeight="25.0" prefWidth="58.0" styleClass="buttonInAcc" text="Back" textFill="WHITE" />
+            <JFXButton layoutX="262.0" layoutY="183.0" styleClass="buttonInAcc" text="%key.confirm" textFill="WHITE" />
+            <JFXButton layoutX="79.0" layoutY="183.0" prefHeight="31.0" prefWidth="75.0" styleClass="buttonInAcc" text="%key.back" textFill="WHITE" />
             </children>
         </Pane>
         <ImageView fitHeight="178.0" fitWidth="183.0" layoutX="600.0" layoutY="66.0">
@@ -133,30 +133,30 @@
                 <Font size="64.0" />
             </font>
         </Text>
-      <Pane layoutX="491.0" layoutY="344.0" prefHeight="228.0" prefWidth="394.0" styleClass="paneEvent" stylesheets="@css/general.css">
+      <Pane layoutX="495.0" layoutY="344.0" prefHeight="228.0" prefWidth="394.0" styleClass="paneEvent" stylesheets="@css/general.css">
          <children>
-            <Text fill="#763dee" layoutX="101.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account details" wrappingWidth="191.93869018554688">
+            <Text fill="#763dee" layoutX="101.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.account" wrappingWidth="191.93869018554688">
                <font>
                   <Font size="28.0" />
                </font>
             </Text>
             <HBox layoutX="38.0" layoutY="385.0" prefHeight="63.0" prefWidth="362.0" spacing="150.0" />
-            <Text layoutX="38.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Full name:">
+            <Text layoutX="38.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.fulln">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <Text layoutX="38.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail:">
+            <Text layoutX="38.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.eml">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <Text layoutX="38.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone number:">
+            <Text layoutX="38.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.phnnbr">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <Text layoutX="178.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="John Cena">
+            <Text layoutX="196.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="John Cena">
                <font>
                   <Font size="18.0" />
                </font>

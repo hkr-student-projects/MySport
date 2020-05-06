@@ -12,28 +12,28 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="anchorPane" cacheShape="false" centerShape="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #763dee;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Account">
+<AnchorPane fx:id="anchorPane" cacheShape="false" centerShape="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #763dee;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Account">
     <children>
       <HBox alignment="CENTER" layoutX="40.0" layoutY="69.0" prefHeight="479.0" prefWidth="811.0" spacing="25.0">
          <children>
               <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="287.0" prefWidth="225.0" style="-fx-background-color: white; -fx-background-radius: 33;">
                <children>
-                  <Text layoutX="65.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit profile">
+                  <Text layoutX="42.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.editProfile" textAlignment="CENTER">
                      <font>
                         <Font name="Helvetica Light" size="20.0" />
                      </font>
                   </Text>
-                  <Text fill="#7c7c7c" layoutX="33.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Configure your or delete members' accounts after their confirmation." wrappingWidth="158.17919921875">
+                  <Text fill="#7c7c7c" layoutX="33.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.config" wrappingWidth="158.17919921875">
                      <font>
                         <Font name="Helvetica Light" size="13.0" />
                      </font>
                   </Text>
-                  <JFXButton fx:id="buttonEdit" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="60.0" layoutY="209.0" onAction="#buttonEditClick" prefHeight="32.0" prefWidth="104.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="Edit" textFill="WHITE">
+                  <JFXButton fx:id="buttonEdit" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="60.0" layoutY="209.0" onAction="#buttonEditClick" prefHeight="32.0" prefWidth="104.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="%key.edit" textFill="WHITE">
                      <font>
                         <Font name="Arial" size="16.0" />
                      </font>
                   </JFXButton>
-                  <ImageView fitHeight="87.0" fitWidth="87.0" layoutX="69.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="73.0" fitWidth="87.0" layoutX="71.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@img/users-cog-icon_1.png" />
                      </image>
@@ -42,17 +42,17 @@
             </Pane>
             <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="287.0" prefWidth="225.0" style="-fx-background-color: white; -fx-background-radius: 33;">
                <children>
-                  <Text layoutX="24.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create new account">
+                  <Text layoutX="24.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.createAccount">
                      <font>
                         <Font name="Helvetica Light" size="20.0" />
                      </font>
                   </Text>
-                  <Text fill="#7c7c7c" layoutX="33.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You can create new sport member account here." wrappingWidth="158.17919921875">
+                  <Text fill="#7c7c7c" layoutX="33.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.createMbrAcc" wrappingWidth="158.17919921875">
                      <font>
                         <Font name="Helvetica Light" size="13.0" />
                      </font>
                   </Text>
-                  <JFXButton cacheShape="false" centerShape="false" focusTraversable="false" layoutX="60.0" layoutY="209.0" prefHeight="32.0" prefWidth="104.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="Create" textFill="WHITE">
+                  <JFXButton cacheShape="false" centerShape="false" focusTraversable="false" layoutX="60.0" layoutY="209.0" prefHeight="32.0" prefWidth="104.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="%key.create" textFill="WHITE">
                      <font>
                         <Font name="Arial" size="16.0" />
                      </font>
@@ -66,17 +66,17 @@
             </Pane>
             <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="287.0" prefWidth="225.0" style="-fx-background-color: white; -fx-background-radius: 33;">
                <children>
-                  <Text layoutX="34.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View all members">
+                  <Text layoutX="34.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.viewMembers">
                      <font>
                         <Font name="Helvetica Light" size="20.0" />
                      </font>
                   </Text>
-                  <Text fill="#7c7c7c" layoutX="33.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View all members in your sport(-s) you lead." wrappingWidth="158.17919921875">
+                  <Text fill="#7c7c7c" layoutX="33.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.viewMembersAsLeader" wrappingWidth="158.17919921875">
                      <font>
                         <Font name="Helvetica Light" size="13.0" />
                      </font>
                   </Text>
-                  <JFXButton cacheShape="false" centerShape="false" focusTraversable="false" layoutX="60.0" layoutY="209.0" prefHeight="32.0" prefWidth="104.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="View" textFill="WHITE">
+                  <JFXButton cacheShape="false" centerShape="false" focusTraversable="false" layoutX="60.0" layoutY="209.0" prefHeight="32.0" prefWidth="104.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="%key.view" textFill="WHITE">
                      <font>
                         <Font name="Arial" size="16.0" />
                      </font>

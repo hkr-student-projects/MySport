@@ -12,18 +12,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="anchorPane" cacheShape="false" centerShape="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #763dee;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EditAccount">
+<AnchorPane fx:id="anchorPane" cacheShape="false" centerShape="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #763dee;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EditAccount">
     <children>
         <HBox alignment="CENTER" layoutX="40.0" layoutY="69.0" prefHeight="479.0" prefWidth="811.0" spacing="25.0">
             <children>
                 <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="788.0" style="-fx-background-color: white; -fx-background-radius: 33;">
                     <children>
-                        <Text layoutX="14.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit profile">
+                        <Text layoutX="14.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.editProfile">
                             <font>
                                 <Font name="Helvetica Light" size="20.0" />
                             </font>
                         </Text>
-                        <Text fill="#7c7c7c" layoutX="14.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Configure your or delete members' accounts after their confirmation." wrappingWidth="158.17919921875">
+                        <Text fill="#7c7c7c" layoutX="14.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.config" wrappingWidth="158.17919921875">
                             <font>
                                 <Font name="Helvetica Light" size="13.0" />
                             </font>
@@ -33,21 +33,21 @@
                                 <Image url="@img/users-cog-icon_1.png" />
                             </image>
                         </ImageView>
-                  <TextField fx:id="textFieldName" layoutX="204.0" layoutY="150.0" promptText="Change name" />
-                  <TextField fx:id="textFieldMiddleName" layoutX="204.0" layoutY="188.0" promptText="Change middle name" />
-                  <TextField fx:id="textFieldSurname" layoutX="204.0" layoutY="227.0" promptText="Change surname" />
-                  <Button fx:id="buttonNameSave" layoutX="204.0" layoutY="262.0" mnemonicParsing="false" onAction="#buttonNameSaveClick" prefHeight="25.0" prefWidth="149.0" styleClass="buttonInAcc" stylesheets="@css/general.css" text="Save changes" textFill="WHITE" />
-                  <Button fx:id="buttonReturn" layoutX="18.0" layoutY="427.0" mnemonicParsing="false" onAction="#buttonReturnClick" styleClass="buttonInAcc" stylesheets="@css/general.css" text="Return" textFill="WHITE" />
-                  <TextField fx:id="textFieldPassword" layoutX="592.0" layoutY="190.0" promptText="New password" />
-                  <TextField fx:id="textFieldConfirmPassword" layoutX="592.0" layoutY="228.0" promptText="Confirm new password" />
-                  <Button fx:id="buttonPasswordSave" layoutX="592.0" layoutY="264.0" mnemonicParsing="false" onAction="#buttonPasswordSaveClick" prefHeight="25.0" prefWidth="149.0" styleClass="buttonInAcc" stylesheets="@css/general.css" text="Save changes" textFill="WHITE" />
-                  <TextField fx:id="textFieldPhoneNumber" layoutX="394.0" layoutY="228.0" promptText="New phone number" />
-                  <Button fx:id="buttonPhoneNumberSave" layoutX="394.0" layoutY="264.0" mnemonicParsing="false" onAction="#buttonPhoneNumberSaveClick" prefHeight="25.0" prefWidth="149.0" styleClass="buttonInAcc" stylesheets="@css/general.css" text="Save changes" textFill="WHITE" />
+                  <TextField fx:id="textFieldName" layoutX="204.0" layoutY="150.0" promptText="%key.changen" />
+                  <TextField fx:id="textFieldMiddleName" layoutX="204.0" layoutY="188.0" promptText="%key.changemn" />
+                  <TextField fx:id="textFieldSurname" layoutX="204.0" layoutY="227.0" promptText="%key.changesn" />
+                  <Button fx:id="buttonNameSave" layoutX="204.0" layoutY="262.0" mnemonicParsing="false" onAction="#buttonNameSaveClick" prefHeight="25.0" prefWidth="149.0" styleClass="buttonInAcc" stylesheets="@css/general.css" text="%key.savechngs" textFill="WHITE" />
+                  <Button fx:id="buttonReturn" layoutX="18.0" layoutY="427.0" mnemonicParsing="false" onAction="#buttonReturnClick" styleClass="buttonInAcc" stylesheets="@css/general.css" text="%key.return" textFill="WHITE" />
+                  <TextField fx:id="textFieldPassword" layoutX="592.0" layoutY="190.0" promptText="%key.nwpswd" />
+                  <TextField fx:id="textFieldConfirmPassword" layoutX="592.0" layoutY="228.0" promptText="%key.conpsswd" />
+                  <Button fx:id="buttonPasswordSave" layoutX="592.0" layoutY="264.0" mnemonicParsing="false" onAction="#buttonPasswordSaveClick" prefHeight="25.0" prefWidth="149.0" styleClass="buttonInAcc" stylesheets="@css/general.css" text="%key.savechngs" textFill="WHITE" />
+                  <TextField fx:id="textFieldPhoneNumber" layoutX="394.0" layoutY="228.0" promptText="%key.newphn" />
+                  <Button fx:id="buttonPhoneNumberSave" layoutX="394.0" layoutY="264.0" mnemonicParsing="false" onAction="#buttonPhoneNumberSaveClick" prefHeight="25.0" prefWidth="149.0" styleClass="buttonInAcc" stylesheets="@css/general.css" text="%key.savechngs" textFill="WHITE" />
                     </children>
                 </Pane>
             </children>
         </HBox>
-        <Text fill="WHITE" layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="John Cena (Leader)" wrappingWidth="341.0">
+        <Text fill="WHITE" layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.leader" wrappingWidth="341.0">
             <font>
                 <Font name="AppleGothic Regular" size="14.0" />
             </font>
