@@ -14,12 +14,12 @@
    <children>
       <Pane layoutX="172.0" layoutY="84.0" prefHeight="292.0" prefWidth="257.0" style="-fx-background-radius: 33px; -fx-background-color: #fff;">
          <children>
-            <JFXTextField fx:id="resetCodeButton" alignment="CENTER" focusColor="#405aa800" layoutX="49.0" layoutY="165.0" prefHeight="27.0" prefWidth="177.0" promptText="Enter reset code">
+            <JFXTextField fx:id="resetCodeButton" alignment="CENTER" focusColor="#405aa800" layoutX="49.0" layoutY="165.0" prefHeight="27.0" prefWidth="177.0" promptText="%key.enterresetcode">
                <font>
                   <Font name="Arial" size="15.0" />
                </font>
             </JFXTextField>
-            <JFXButton fx:id="resetButton" buttonType="RAISED" layoutX="97.0" layoutY="233.0" onAction="#handleResetCode" style="-fx-background-color: #763dee;" stylesheets="@css/general.css" text="Reset" textFill="WHITE">
+            <JFXButton fx:id="resetButton" buttonType="RAISED" layoutX="40.0" layoutY="228.0" onAction="#handleResetCode" prefHeight="32.0" prefWidth="186.0" style="-fx-background-color: #763dee;" stylesheets="@css/general.css" text="%key.reset" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
