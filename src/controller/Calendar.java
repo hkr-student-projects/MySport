@@ -18,6 +18,7 @@ import model.Tools.ArrayList;
 import model.Tools.Block;
 import model.Tools.Serializable;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

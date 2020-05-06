@@ -49,9 +49,8 @@ public class Login implements Initializable {
                 App.instance.setScene(SceneSwitcher.instance.getScene("Home"));
                 return;
             }
-            try {
-                if(checkFormat()){
-                    int id;
+            if(checkFormat()){
+                int id;
 //                    Thread thread = new Thread(() -> {
 //                        try {
 //                            App.databaseManager.checkCredentials(email.getText(), password.getText());
@@ -61,19 +60,16 @@ public class Login implements Initializable {
 //                    });
 //                    thread.start();
 //                    thread.join();
-                    if((id = App.databaseManager.checkCredentials(email.getText(), password.getText())) == -1){
-                        error.setText("Incorrect email or password");
-                        redLines();
-                        return;
-                    }
-                    email.setText("");
-                    password.setText("");
-                    error.setText("");
-                    App.instance.setSession(App.databaseManager.getUser(id));
-                    App.instance.setScene(SceneSwitcher.instance.getScene("Home"));
+                if((id = App.databaseManager.checkCredentials(email.getText(), password.getText())) == -1){
+                    error.setText("Incorrect email or password");
+                    redLines();
+                    return;
                 }
-            } catch (SQLException ex) {
-                Logger.logException(ex);
+                email.setText("");
+                password.setText("");
+                error.setText("");
+                App.instance.setSession(App.databaseManager.getUser(id));
+                App.instance.setScene(SceneSwitcher.instance.getScene("Home"));
             }
         });
     }

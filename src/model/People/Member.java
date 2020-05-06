@@ -1,15 +1,16 @@
 package model.People;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Member extends User implements Cloneable {
 
-    public Member(int id, String name, String middleName, String surname, String ssn, Date birthDay, String mobile) {
-        super(id, name, middleName, surname, ssn, birthDay, mobile);
+    public Member(int id, String name, String middleName, String surname, String ssn, String mobile, LocalDate birthDay) {
+        super(id, name, middleName, surname, ssn, mobile, birthDay);
     }
 
     public Member(Leader leader){
-        this(leader.getId(), leader.getName(), leader.getMiddlename(), leader.getSurname(), leader.getSsn(), (Date) leader.getBirthday().clone(), leader.getMobile());
+        this(leader.getId(), leader.getName(), leader.getMiddlename(), leader.getSurname(), leader.getSsn(), leader.getMobile(), LocalDate.of(leader.getBirthday().getYear(), leader.getBirthday().getMonth(), leader.getBirthday().getDayOfMonth()));
     }
 
     @Override

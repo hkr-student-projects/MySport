@@ -1,6 +1,5 @@
 package model.Database;
 
-import com.mysql.cj.x.protobuf.MysqlxDatatypes;
 import model.App;
 import model.Logging.Logger;
 import model.People.Member;
@@ -9,6 +8,8 @@ import model.Tools.ArrayList;
 
 import java.sql.*;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class DatabaseManager {
@@ -33,13 +34,13 @@ public class DatabaseManager {
         checkSchema();
     }
 
-    public void addAccount(String name, String middleName, String surname, String ssn, String email, String password, String mobile) {
-        executeQuery(QueryType.UPDATE, "INSERT INTO "+member+" (ssn, name, middlename, surname, mobile) " +
-                "VALUES (?, ?, ?, ?, ?);" +
+    public void addAccount(String name, String middlename, String surname, String ssn, String mobile, String email, String password, Date birthday) {
+        executeQuery(QueryType.UPDATE, "INSERT INTO "+member+" (name, middlename, surname, ssn, mobile, birthday) " +
+                "VALUES (?, ?, ?, ?, ?, ?);" +
                 "INSERT INTO "+account+" (email, password) " +
-                "VALUES (?, SHA2(?, 256)));",//AES better with secret key,
-                new String[] { ssn, name, middleName, surname, mobile, email, password },
-                Types.VARCHAR
+                "VALUES (?, SHA2(?, 256));",//AES better with secret key,
+                new Object[] { name, middlename, surname, ssn, mobile, birthday, email, password },
+                new int[] { Types.VARCHAR, Types.VARCHAR, Types.VARCHAR, Types.VARCHAR, Types.VARCHAR, Types.DATE, Types.VARCHAR, Types.VARCHAR }
         );
     }
 
@@ -75,15 +76,15 @@ public class DatabaseManager {
                 new int[] { Types.VARCHAR, Types.INTEGER }
         );
     }
-
-    public boolean updatePassword(int id, String oldPassword, String newPassword) throws SQLException {
+    @SuppressWarnings("Because QueryType is Reader")
+    public boolean updatePassword(int id, String oldPassword, String newPassword){
         boolean matches = false;
-        ResultSet result = (ResultSet)executeQuery(QueryType.READER,
+        Map<String, ArrayList<Object>> memberData = (Map<String, ArrayList<Object>>)executeQuery(QueryType.READER,
                 "SELECT 1 FROM "+account+" WHERE member_id = ? AND password = SHA2(?, 256);",
                 new Object[] { id, oldPassword },
                 new int[] { Types.INTEGER, Types.VARCHAR }
         );
-        if(result.next()){
+        if(memberData.size() != 0){
             executeQuery(QueryType.UPDATE, "UPDATE "+account+" SET password = SHA2(?, 256) WHERE member_id = ?;",
                     new Object[] { newPassword, id },
                     new int[] { Types.VARCHAR, Types.INTEGER }
@@ -93,16 +94,17 @@ public class DatabaseManager {
 
         return matches;
     }
-
-    public boolean updateEmail(int id, String oldEmail, String newEmail) throws SQLException {
+    @SuppressWarnings("Because QueryType is Reader")
+    public boolean updateEmail(int id, String oldEmail, String newEmail) {
         boolean matches = false;
-        ResultSet result = (ResultSet)executeQuery(QueryType.READER,
-                "SELECT 1 FROM "+member+" WHERE id = ? AND email = ?;",
+        Map<String, ArrayList<Object>> memberData = (Map<String, ArrayList<Object>> )executeQuery(QueryType.READER,
+                "SELECT member_id FROM "+account+" WHERE member_id = ? AND email = ?;",
                 new Object[] { id, oldEmail },
                 new int[] { Types.INTEGER, Types.VARCHAR }
         );
-        if(result.next()){
-            executeQuery(QueryType.UPDATE, "UPDATE "+member+" SET email = ? WHERE id = ?;",
+        ArrayList<Object> entries = memberData.get("member_id");
+        if(entries.size() != 0){
+            executeQuery(QueryType.UPDATE, "UPDATE "+account+" SET email = ? WHERE id = ?;",
                     new Object[] { newEmail, id },
                     new int[] { Types.VARCHAR, Types.INTEGER }
             );
@@ -111,50 +113,54 @@ public class DatabaseManager {
 
         return matches;
     }
-
-    public User getUser(int id) throws SQLException {
-        ResultSet memberData = (ResultSet)executeQuery(QueryType.READER,
+    @SuppressWarnings("Because QueryType is Reader")
+    public User getUser(int id) {
+        Map<String, ArrayList<Object>> memberData = (Map<String, ArrayList<Object>>)executeQuery(QueryType.READER,
                 "SELECT * FROM "+member+" WHERE id = ?;",
                 new Object[] { id },
                 new int[] { Types.INTEGER }
         );
-        Member user = new Member(memberData.getInt(1), memberData.getString("name"), memberData.getString("middlename"),
-                memberData.getString("surname"), memberData.getString("ssn"),
-                memberData.getDate("birthday"), memberData.getString("mobile")
+        Member member = new Member((int)memberData.get("id").get(0), (String)memberData.get("name").get(0), (String)memberData.get("middlename").get(0),
+                (String)memberData.get("surname").get(0), (String)memberData.get("ssn").get(0),
+                (String)memberData.get("mobile").get(0), ((java.sql.Date)memberData.get("birthday").get(0)).toLocalDate()
         );
-        ResultSet leaderData = (ResultSet)executeQuery(QueryType.READER,
+        Map<String, ArrayList<Object>> leaderData = (Map<String, ArrayList<Object>>)executeQuery(QueryType.READER,
                 "SELECT * FROM "+leader+" WHERE member_id = ?;",
                 new Object[] { id },
                 new int[] { Types.INTEGER }
         );
-        if(leaderData.next()){
-            ResultSet activities = (ResultSet)executeQuery(QueryType.READER,
+        ArrayList<Object> entries = leaderData.get("member_id");
+        if(entries.size() != 0){
+            Map<String, ArrayList<Object>> activities = (Map<String, ArrayList<Object>>)executeQuery(QueryType.READER,
                     "SELECT activity_name FROM "+leader_has_activity+" WHERE leader_member_id = ?",
                     new Object[] { id },
                     new int[] { Types.INTEGER }
             );
-            ArrayList<String> sports = new ArrayList<>(5);
-            while(activities.next())
-                sports.add(activities.getString(1));
+            ArrayList<Object> sports = activities.get("activity_name");
+            String[] arr = new String[sports.size()];
+            for(int i = 0; i < arr.length; i++)
+                arr[i] = (String) sports.get(i);
 
-            user = user.toLeader(leaderData.getString("key_number"), leaderData.getString("board_position"), sports.toArray());
+            member = member.toLeader((String)leaderData.get("key_number").get(0), (String)leaderData.get("board_position").get(0), arr);
         }
 
-
-        return user;
+        return member;
     }
 
-    public int checkCredentials(String email, String password) throws SQLException {
+    @SuppressWarnings("Because QueryType is Reader")
+    public int checkCredentials(String email, String password) {
         int id = -1;
-        PreparedStatement pst = (PreparedStatement)executeQuery(QueryType.READER,
+
+        Map<String, ArrayList<Object>> memberData = (Map<String, ArrayList<Object>>) executeQuery(QueryType.READER,
                 "SELECT member_id FROM "+account+" WHERE email = ? AND password = SHA2(?, 256);",
                 new Object[] { email, password },
                 new int[] { Types.VARCHAR, Types.VARCHAR }
         );
-        ResultSet result = pst.getResultSet();
-        if(result.next())
-            id = result.getInt(1);
-        pst.close();
+        ArrayList<Object> entries = memberData.get("member_id");
+        System.out.println(entries.size());
+        if(entries.size() != 0)
+            id = (int) entries.get(0);
+
         return id;
     }
 
@@ -163,29 +169,44 @@ public class DatabaseManager {
         executeQuery(QueryType.UPDATE, "INSERT INTO " + schedule + " (week) VALUES'" + " (?)".repeat(weeks.length) + "';", weeks, Types.BINARY);
     }
 
-    public byte[][] loadWeeks(){//fix in future
+    @SuppressWarnings("Because QueryType is Reader")
+    public byte[][] loadWeeks()  {//fix in future
         ArrayList<byte[]> bytes = new ArrayList<>(8);
-        try (Connection conn = createConnection()){
-            PreparedStatement pst = conn.prepareStatement(
-                    "SELECT week FROM " + schedule + ";"
-            );
-            boolean isResult = pst.execute();
-            do {
-                try (ResultSet rs = pst.getResultSet()) {
-                    while (rs.next()) {
-                        Blob blob = rs.getBlob("week"); // creates the blob object from the result
-                        byte[] week = blob.getBytes(1L, (int)blob.length());
-                        bytes.add(week);
-                        blob.free();
-                    }
-                    isResult = pst.getMoreResults();
-                }
+
+        Map<String, ArrayList<Object>> results = (Map<String, ArrayList<Object>>) executeQuery(QueryType.READER, "SELECT week FROM " + schedule + ";");
+        ArrayList<Object> entries = results.get("week");
+        for(int i = 0; i < entries.size(); i++){
+            Blob blob = (Blob) entries.get(i); // creates the blob object from the result
+            byte[] week = new byte[0];
+            try {
+                week = blob.getBytes(1L, (int)blob.length());
+                bytes.add(week);
+                blob.free();
+            } catch (SQLException e) {
+                Logger.logException(e);
             }
-            while (isResult);
         }
-        catch(Exception ex){
-            Logger.logException(ex);
-        }
+//        try (Connection conn = createConnection()){
+//            PreparedStatement pst = conn.prepareStatement(
+//                    "SELECT week FROM " + schedule + ";"
+//            );
+//            boolean isResult = pst.execute();
+//            do {
+//                try (ResultSet rs = pst.getResultSet()) {
+//                    while (rs.next()) {
+//                        Blob blob = rs.getBlob("week"); // creates the blob object from the result
+//                        byte[] week = blob.getBytes(1L, (int)blob.length());
+//                        bytes.add(week);
+//                        blob.free();
+//                    }
+//                    isResult = pst.getMoreResults();
+//                }
+//            }
+//            while (isResult);
+//        }
+//        catch(Exception ex){
+//            Logger.logException(ex);
+//        }
         byte[][] weeks = new byte[bytes.size()][];
         System.arraycopy(bytes.getContents(), 0, weeks, 0, bytes.size());
 
@@ -195,18 +216,17 @@ public class DatabaseManager {
     public void checkSchema()
     {
         try {
-            executeQuery(QueryType.BOOL,
-                    "CREATE TABLE IF NOT EXISTS "+member+" ("+
+            executeQuery(QueryType.BOOL, "CREATE TABLE IF NOT EXISTS "+member+" ("+
                             "`id` INT NOT NULL AUTO_INCREMENT," +
-                            "`ssn` CHAR(13) NOT NULL," +
                             "`name` VARCHAR(45) NOT NULL," +
-                            "`middlename` VARCHAR(45) NULL," +
-                            "`surname` VARCHAR(45) NOT NULL," +
+                            "`middlename` VARCHAR(45) NOT NULL," +
+                            "`surname` VARCHAR(45) NULL," +
+                            "`ssn` CHAR(13) NOT NULL," +
+                            "`mobile` VARCHAR(25) NOT NULL," +
                             "`birthday` DATE NOT NULL," +
-                            "`mobile` VARCHAR(45) NOT NULL," +
                             "PRIMARY KEY (`id`));" +
                             "CREATE TABLE IF NOT EXISTS "+account+" (\n" +
-                            "  `member_id` INT NOT NULL,\n" +
+                            "  `member_id` INT NOT NULL AUTO_INCREMENT,\n" +
                             "  `email` VARCHAR(128) NOT NULL,\n" +
                             "  `password` VARCHAR(128) NOT NULL,\n" +
                             "  INDEX `fk_account_member_idx` (`member_id` ASC),\n" +
@@ -217,7 +237,7 @@ public class DatabaseManager {
                             "    ON DELETE CASCADE\n" +
                             "    ON UPDATE CASCADE);\n" +
                             "CREATE TABLE IF NOT EXISTS "+leader+" (\n" +
-                            "  `member_id` INT NOT NULL,\n" +
+                            "  `member_id` INT NOT NULL AUTO_INCREMENT,\n" +
                             "  `key_number` VARCHAR(25) NOT NULL,\n" +
                             "  `board_position` VARCHAR(45) NOT NULL,\n" +
                             "  INDEX `fk_leader_member_idx` (`member_id` ASC),\n" +
@@ -256,7 +276,12 @@ public class DatabaseManager {
             Logger.logException(ex, "Errors in query.");
         }
     }
-    //STRICT ORDER
+
+    public Object executeQuery(QueryType type, String query)//java.sql.Types
+    {
+        return executeQuery(type, query, null, null);
+    }
+
     public Object executeQuery(QueryType type, String query, Object[] parameters, int commonType){//java.sql.Types
         int[] types = new int[parameters.length];
         Arrays.fill(types, commonType);
@@ -267,18 +292,27 @@ public class DatabaseManager {
     public Object executeQuery(QueryType type, String query, Object[] parameters, int[] types)//java.sql.Types
     {
         // This method is to reduce the amount of copy paste that there was within this class.
-        if(parameters.length != types.length)
+        if(parameters != null && parameters.length != types.length)
             throw new IllegalArgumentException("executeQuery(): parameters length is different to types length.");
-        Object result = null;
-        try
+
+        try(PreparedStatement command = createConnection().prepareStatement(query))
         {
-            PreparedStatement command = createConnection().prepareStatement(query);
-            for(int i = 0; i < parameters.length; i++)
-                command.setObject(i + 1, parameters[i], types[i]);
-            //result = type == QueryType.READER ? command.executeQuery() : type == QueryType.STATEMENT ? command : command.execute();// ?? open connection
+            if(parameters != null)
+                for(int i = 0; i < parameters.length; i++)
+                    command.setObject(i + 1, parameters[i], types[i]);
+
             if(type == QueryType.READER){
-                command.executeQuery();
-                return command;
+                ResultSet set = command.executeQuery();
+                ResultSetMetaData metaData = set.getMetaData();
+                Map<String, ArrayList<Object>> results = new HashMap<>(10);
+                int count = metaData.getColumnCount();
+                for(int i = 1; i < count + 1; i++)
+                    results.put(metaData.getColumnName(i), new ArrayList<>(30));
+                while (set.next())
+                    for(int i = 1; i < count + 1; i++)
+                        results.get(metaData.getColumnName(i)).add(set.getObject(i));
+
+                return results;
             }
             else if(type == QueryType.UPDATE){
                 return command.executeUpdate();
@@ -291,23 +325,7 @@ public class DatabaseManager {
             Logger.logException(ex);
         }
 
-        return result;
-    }
-
-    public Object executeQuery(QueryType type, String query)//java.sql.Types
-    {
-        // This method is to reduce the amount of copy paste that there was within this class.
-        Object result = null;
-        try(PreparedStatement command = createConnection().prepareStatement(query))
-        {
-            result = type == QueryType.READER ? command.executeQuery() : type == QueryType.STATEMENT ? command : command.execute();// ?? open connection
-        }
-        catch (SQLException ex)
-        {
-            Logger.logException(ex);
-        }
-
-        return result;
+        return null;
     }
 
     public static Connection createConnection(){
@@ -324,33 +342,17 @@ public class DatabaseManager {
     public enum QueryType {
         UPDATE,//INSERT, UPDATE, DELETE, CREATE TABLE, DROP TABLE
         READER,//SELECT -> ResultSet
-        STATEMENT,
         BOOL//ALL -> SELECT ? True : False
     }
-
-//    public enum AccountType { //there might be more people of different occupations in DB
-//
-//        MEMBER,
-//        LEADER,
-//        ADMIN,
-//        ACCOUNTANT,
-//        NONE;
-//
-//        int id;
-//        String name;
-//        String middlename;
-//        String surname;
-//        String ssn;
-//        String mobile;
-//
-//        AccountType() { }
-//        AccountType(int id, String name, String middename, String surname, String ssn, String mobile){
-//            this.id = id;
-//            this.name = name;
-//            this.middlename = middename;
-//            this.surname = surname;
-//            this.ssn = ssn;
-//            this.mobile = mobile;
-//        }
-//    }
 }
+
+//    private String[] getColumns(String query){
+//        String var0 = query.trim();
+//        int i = var0.indexOf("FROM");
+//        var0 = var0.substring(7, (i == -1 ? var0.indexOf("from") : i) - 1);
+//        String[] cols = var0.split(",");
+//        String[] colsFormatted = new String[cols.length];
+//        for(int j = 0; j < cols.length; j ++)
+//            colsFormatted[j] = cols[j].trim();
+//        return colsFormatted;
+//    }

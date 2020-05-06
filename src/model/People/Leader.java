@@ -1,5 +1,6 @@
 package model.People;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Leader extends Member {
@@ -8,8 +9,8 @@ public class Leader extends Member {
     private String position;
     private String[] leaderOf;
 
-    public Leader(int id, String name, String middleName, String surname, String ssn, Date birthDay, String mobile, String keyNumber, String boardPosition, String... leaderOf) {
-        super(id, name, middleName, surname, ssn, birthDay, mobile);
+    public Leader(int id, String name, String middleName, String surname, String ssn, String mobile, LocalDate birthDay, String keyNumber, String boardPosition, String... leaderOf) {
+        super(id, name, middleName, surname, ssn, mobile, birthDay);
 
         this.keyNumber = keyNumber;
         this.position = boardPosition;
@@ -17,7 +18,7 @@ public class Leader extends Member {
     }
 
     public Leader(Member member, String keyNumber, String boardPosition, String... leaderOf){
-        this(member.getId(), member.getName(), member.getMiddlename(), member.getSurname(), member.getSsn(), (Date) member.getBirthday().clone(), member.getMobile(), keyNumber, boardPosition, leaderOf);
+        this(member.getId(), member.getName(), member.getMiddlename(), member.getSurname(), member.getSsn(), member.getMobile(), LocalDate.of(member.getBirthday().getYear(), member.getBirthday().getMonth(), member.getBirthday().getDayOfMonth()), keyNumber, boardPosition, leaderOf);
     }
 
     public Member toMember(){

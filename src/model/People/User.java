@@ -1,5 +1,6 @@
 package model.People;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public abstract class User implements Cloneable {
@@ -7,12 +8,12 @@ public abstract class User implements Cloneable {
     private String name;
     private String surname;
     private String middlename;
-    private Date birthday;
+    private LocalDate birthday;
     private String ssn;
     private String mobile;
     private int id;
 
-    protected User(int id, String name, String middleName, String surname, String ssn, Date birthDay, String phoneNumber){
+    protected User(int id, String name, String middleName, String surname, String ssn, String phoneNumber, LocalDate birthDay){
 
         this.id = id;
         this.name = name;
@@ -35,7 +36,7 @@ public abstract class User implements Cloneable {
         return middlename;
     }
 
-    protected Date getBirthday() {
+    protected LocalDate getBirthday() {
         return birthday;
     }
 
@@ -46,7 +47,7 @@ public abstract class User implements Cloneable {
     @Override
     protected User clone() throws CloneNotSupportedException {
         User newUser = (User) super.clone();
-        newUser.birthday = (Date) birthday.clone();
+        newUser.birthday = LocalDate.of(birthday.getYear(), birthday.getMonth(), birthday.getDayOfMonth());
         return newUser;
     }
 
