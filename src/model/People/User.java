@@ -1,51 +1,61 @@
 package model.People;
 
+import java.time.LocalDate;
 import java.util.Date;
 
-public abstract class User {
+public abstract class User implements Cloneable {
 
     private String name;
     private String surname;
-    private String middleName;
-    private Date birthDay;
+    private String middlename;
+    private LocalDate birthday;
     private String ssn;
-    private String eMail;
-    private String password;
-    private String phoneNumber;
+    private String mobile;
+    private int id;
 
-    public User(String name, String middleName, String surname, String ssn, Date birthDay, String eMail, String password, String phoneNumber){
+    protected User(int id, String name, String middleName, String surname, String ssn, String phoneNumber, LocalDate birthDay){
 
+        this.id = id;
         this.name = name;
-        this.middleName = middleName;
+        this.middlename = middleName;
         this.surname = surname;
         this.ssn = ssn;
-        this.birthDay = birthDay;
-        this.eMail = eMail;
-        this.password = password;
-        this.phoneNumber = phoneNumber;
+        this.birthday = birthDay;
+        this.mobile = phoneNumber;
     }
 
-    public String getName() {
+    protected String getName() {
         return name;
     }
 
-    public String getSurname() {
+    protected String getSurname() {
         return surname;
     }
 
-    public String getMiddleName() {
-        return middleName;
+    protected String getMiddlename() {
+        return middlename;
     }
 
-    public Date getBirthDay() {
-        return birthDay;
+    protected LocalDate getBirthday() {
+        return birthday;
     }
 
-    public String getSsn() {
+    protected String getSsn() {
         return ssn;
     }
 
-    public String geteMail() {return eMail;}
+    @Override
+    protected User clone() throws CloneNotSupportedException {
+        User newUser = (User) super.clone();
+        newUser.birthday = LocalDate.of(birthday.getYear(), birthday.getMonth(), birthday.getDayOfMonth());
+        return newUser;
+    }
 
-    public String getPassword() {return password;}
+    public String getMobile() {
+        return mobile;
+    }
+
+    public int getId() {
+        return id;
+    }
 }

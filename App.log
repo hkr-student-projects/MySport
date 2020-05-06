@@ -1485,10 +1485,8 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 08:47:08 CEST] [Exception] Exception message: 
-/Users/Test/Documents/GitHub/MySport/src/view/Calendar.fxml
-
-[2020-05-03 08:47:08 CEST] [Exception] 
+[2020-05-02 15:29:59 CEST] [Exception] Exception message: Can not issue executeUpdate() or executeLargeUpdate() for SELECTs
+[2020-05-02 15:29:59 CEST] [Exception] 
 	at javafx.fxml.FXMLLoader.constructLoadException()
 	at javafx.fxml.FXMLLoader.loadImpl()
 	at javafx.fxml.FXMLLoader.loadImpl()
@@ -1501,10 +1499,37 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 08:47:43 CEST] [Exception] Exception message: 
+[2020-05-02 15:29:59 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate()
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.loadWeeks()
+	at controller.Calendar.loadWeeksDB()
+	at controller.Calendar.initialize()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-02 15:29:59 CEST] [Exception] Exception message: 
 /Users/Test/Documents/GitHub/MySport/src/view/Calendar.fxml
 
-[2020-05-03 08:47:43 CEST] [Exception] 
+[2020-05-02 15:47:21 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/view/Calendar.fxml
+
+[2020-05-02 15:47:21 CEST] [Exception] 
 	at javafx.fxml.FXMLLoader.constructLoadException()
 	at javafx.fxml.FXMLLoader.loadImpl()
 	at javafx.fxml.FXMLLoader.loadImpl()
@@ -1517,7 +1542,10 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 08:49:57 CEST] [Exception] 
+[2020-05-02 15:51:34 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/view/Calendar.fxml
+
+[2020-05-02 15:51:34 CEST] [Exception] 
 	at javafx.fxml.FXMLLoader.constructLoadException()
 	at javafx.fxml.FXMLLoader.loadImpl()
 	at javafx.fxml.FXMLLoader.loadImpl()
@@ -1530,13 +1558,10 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 08:49:57 CEST] [Exception] Exception message: 
+[2020-05-02 15:52:48 CEST] [Exception] Exception message: 
 /Users/Test/Documents/GitHub/MySport/src/view/Calendar.fxml
 
-[2020-05-03 08:50:41 CEST] [Exception] Exception message: 
-/Users/Test/Documents/GitHub/MySport/src/view/Calendar.fxml
-
-[2020-05-03 08:50:41 CEST] [Exception] 
+[2020-05-02 15:52:48 CEST] [Exception] 
 	at javafx.fxml.FXMLLoader.constructLoadException()
 	at javafx.fxml.FXMLLoader.loadImpl()
 	at javafx.fxml.FXMLLoader.loadImpl()
@@ -1549,10 +1574,10 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 08:51:49 CEST] [Exception] Exception message: 
+[2020-05-02 15:53:59 CEST] [Exception] Exception message: 
 /Users/Test/Documents/GitHub/MySport/src/view/Calendar.fxml
 
-[2020-05-03 08:51:49 CEST] [Exception] 
+[2020-05-02 15:53:59 CEST] [Exception] 
 	at javafx.fxml.FXMLLoader.constructLoadException()
 	at javafx.fxml.FXMLLoader.loadImpl()
 	at javafx.fxml.FXMLLoader.loadImpl()
@@ -1565,10 +1590,10 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 08:53:05 CEST] [Exception] Exception message: 
+[2020-05-02 15:55:10 CEST] [Exception] Exception message: 
 /Users/Test/Documents/GitHub/MySport/src/view/Calendar.fxml
 
-[2020-05-03 08:53:05 CEST] [Exception] 
+[2020-05-02 15:55:10 CEST] [Exception] 
 	at javafx.fxml.FXMLLoader.constructLoadException()
 	at javafx.fxml.FXMLLoader.loadImpl()
 	at javafx.fxml.FXMLLoader.loadImpl()
@@ -1581,10 +1606,10 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 08:53:36 CEST] [Exception] Exception message: 
+[2020-05-02 15:56:22 CEST] [Exception] Exception message: 
 /Users/Test/Documents/GitHub/MySport/src/view/Calendar.fxml
 
-[2020-05-03 08:53:36 CEST] [Exception] 
+[2020-05-02 15:56:22 CEST] [Exception] 
 	at javafx.fxml.FXMLLoader.constructLoadException()
 	at javafx.fxml.FXMLLoader.loadImpl()
 	at javafx.fxml.FXMLLoader.loadImpl()
@@ -1597,10 +1622,10 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 08:54:42 CEST] [Exception] Exception message: 
+[2020-05-02 15:57:41 CEST] [Exception] Exception message: 
 /Users/Test/Documents/GitHub/MySport/src/view/Calendar.fxml
 
-[2020-05-03 08:54:42 CEST] [Exception] 
+[2020-05-02 15:57:41 CEST] [Exception] 
 	at javafx.fxml.FXMLLoader.constructLoadException()
 	at javafx.fxml.FXMLLoader.loadImpl()
 	at javafx.fxml.FXMLLoader.loadImpl()
@@ -1613,10 +1638,10 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 08:56:02 CEST] [Exception] Exception message: 
+[2020-05-02 15:58:13 CEST] [Exception] Exception message: 
 /Users/Test/Documents/GitHub/MySport/src/view/Calendar.fxml
 
-[2020-05-03 08:56:02 CEST] [Exception] 
+[2020-05-02 15:58:13 CEST] [Exception] 
 	at javafx.fxml.FXMLLoader.constructLoadException()
 	at javafx.fxml.FXMLLoader.loadImpl()
 	at javafx.fxml.FXMLLoader.loadImpl()
@@ -1629,10 +1654,10 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 08:58:52 CEST] [Exception] Exception message: 
+[2020-05-02 16:17:49 CEST] [Exception] Exception message: 
 /Users/Test/Documents/GitHub/MySport/src/view/Calendar.fxml
 
-[2020-05-03 08:58:52 CEST] [Exception] 
+[2020-05-02 16:17:49 CEST] [Exception] 
 	at javafx.fxml.FXMLLoader.constructLoadException()
 	at javafx.fxml.FXMLLoader.loadImpl()
 	at javafx.fxml.FXMLLoader.loadImpl()
@@ -1645,10 +1670,10 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 09:03:39 CEST] [Exception] Exception message: 
-/Users/Test/Documents/GitHub/MySport/src/view/Calendar.fxml
+[2020-05-03 18:52:57 CEST] [Exception] Exception message: 
+/C:/Users/krist/Documents/GitHub/MySport/src/view/Calendar.fxml
 
-[2020-05-03 09:03:39 CEST] [Exception] 
+[2020-05-03 18:52:57 CEST] [Exception] 
 	at javafx.fxml.FXMLLoader.constructLoadException()
 	at javafx.fxml.FXMLLoader.loadImpl()
 	at javafx.fxml.FXMLLoader.loadImpl()
@@ -1661,75 +1686,19 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 09:07:35 CEST] [Exception] 
-	at javafx.fxml.FXMLLoader.constructLoadException()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.load()
-	at model.Tools.SceneSwitcher.<clinit>()
-	at model.App.start()
-	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
-	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
-	at java.security.AccessController.doPrivileged()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
-	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 09:07:35 CEST] [Exception] Exception message: 
-/Users/Test/Documents/GitHub/MySport/src/view/Calendar.fxml
-
-[2020-05-03 09:08:35 CEST] [Exception] Exception message: 
-/Users/Test/Documents/GitHub/MySport/src/view/Calendar.fxml
-
-[2020-05-03 09:08:35 CEST] [Exception] 
-	at javafx.fxml.FXMLLoader.constructLoadException()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.load()
-	at model.Tools.SceneSwitcher.<clinit>()
-	at model.App.start()
-	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
-	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
-	at java.security.AccessController.doPrivileged()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
-	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 09:11:05 CEST] [Exception] Exception message: 
-/Users/Test/Documents/GitHub/MySport/src/view/Calendar.fxml
-
-[2020-05-03 09:11:05 CEST] [Exception] 
-	at javafx.fxml.FXMLLoader.constructLoadException()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.load()
-	at model.Tools.SceneSwitcher.<clinit>()
-	at model.App.start()
-	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
-	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
-	at java.security.AccessController.doPrivileged()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
-	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 09:12:08 CEST] [Exception] 
-	at javafx.fxml.FXMLLoader.constructLoadException()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.load()
-	at model.Tools.SceneSwitcher.<clinit>()
-	at model.App.start()
-	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
-	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
-	at java.security.AccessController.doPrivileged()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
-	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 09:12:08 CEST] [Exception] Exception message: 
-/Users/Test/Documents/GitHub/MySport/src/view/Calendar.fxml
-
-[2020-05-03 10:45:35 CEST] [Exception] Exception message: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-[2020-05-03 10:45:35 CEST] [Exception] Exception message: null
-[2020-05-03 10:45:35 CEST] [Exception] 
+	at com.sun.glass.ui.win.WinApplication._runLoop()
+	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3()
+	at java.lang.Thread.run()
+[2020-05-05 06:53:10 CEST] [Exception] Exception message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''`sql7336945`.`member`' (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `ssn` CHAR(13) N' at line 1
+[2020-05-05 06:53:10 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute()
+	at model.Database.DatabaseManager.executeQuery()
 	at model.Database.DatabaseManager.executeQuery()
 	at model.Database.DatabaseManager.checkSchema()
 	at model.Database.DatabaseManager.<init>()
@@ -1745,44 +1714,16 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 10:45:35 CEST] [Exception] 
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
+[2020-05-05 06:53:11 CEST] [Exception] Exception message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''`sql7336945`.`member`' (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `ssn` CHAR(13) N' at line 1
+[2020-05-05 06:53:11 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
-	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
-	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
-	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
-	at java.sql.DriverManager.getConnection()
-	at java.sql.DriverManager.getConnection()
-	at model.Database.DatabaseManager.createConnection()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute()
 	at model.Database.DatabaseManager.executeQuery()
-	at model.Database.DatabaseManager.checkSchema()
-	at model.Database.DatabaseManager.<init>()
-	at model.App.<clinit>()
-	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
-	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
-	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
-	at java.lang.reflect.Constructor.newInstanceWithCaller()
-	at java.lang.reflect.Constructor.newInstance()
-	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
-	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
-	at java.security.AccessController.doPrivileged()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
-	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 10:45:36 CEST] [Exception] Exception message: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-[2020-05-03 10:45:36 CEST] [Exception] 
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
-	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
-	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
-	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
-	at java.sql.DriverManager.getConnection()
-	at java.sql.DriverManager.getConnection()
-	at model.Database.DatabaseManager.createConnection()
 	at model.Database.DatabaseManager.executeQuery()
 	at model.Database.DatabaseManager.checkSchema()
 	at model.Database.DatabaseManager.<init>()
@@ -1810,8 +1751,41 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 10:45:36 CEST] [Exception] Exception message: null
-[2020-05-03 10:45:36 CEST] [Exception] 
+[2020-05-05 07:00:46 CEST] [Exception] Exception message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''`sql7336945`.`member`' (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `ssn` CHAR(13) N' at line 1
+[2020-05-05 07:00:46 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute()
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
+	at java.lang.reflect.Constructor.newInstanceWithCaller()
+	at java.lang.reflect.Constructor.newInstance()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 07:00:48 CEST] [Exception] Exception message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''`sql7336945`.`member`' (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `ssn` CHAR(13) N' at line 1
+[2020-05-05 07:00:48 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute()
+	at model.Database.DatabaseManager.executeQuery()
 	at model.Database.DatabaseManager.executeQuery()
 	at model.Database.DatabaseManager.checkSchema()
 	at model.Database.DatabaseManager.<init>()
@@ -1839,54 +1813,16 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 10:45:37 CEST] [Exception] Exception message: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-[2020-05-03 10:45:37 CEST] [Exception] 
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
-	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
-	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
-	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
-	at java.sql.DriverManager.getConnection()
-	at java.sql.DriverManager.getConnection()
-	at model.Database.DatabaseManager.createConnection()
-	at model.Database.DatabaseManager.loadWeeks()
-	at controller.Calendar.loadWeeksDB()
-	at controller.Calendar.initialize()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.load()
-	at model.Tools.SceneSwitcher.<clinit>()
-	at model.App.start()
-	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
-	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
-	at java.security.AccessController.doPrivileged()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
-	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 10:45:37 CEST] [Exception] Exception message: null
-[2020-05-03 10:45:37 CEST] [Exception] 
-	at model.Database.DatabaseManager.loadWeeks()
-	at controller.Calendar.loadWeeksDB()
-	at controller.Calendar.initialize()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.load()
-	at model.Tools.SceneSwitcher.<clinit>()
-	at model.App.start()
-	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
-	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
-	at java.security.AccessController.doPrivileged()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
-	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 15:59:36 CEST] [Exception] Exception message: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-[2020-05-03 15:59:36 CEST] [Exception] Exception message: null
-[2020-05-03 15:59:36 CEST] [Exception] 
+[2020-05-05 07:01:57 CEST] [Exception] Exception message: Parameter index out of range (10 > number of parameters, which is 9).
+[2020-05-05 07:01:57 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.checkBounds()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.getCoreParameterIndex()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.setObject()
+	at model.Database.DatabaseManager.executeQuery()
 	at model.Database.DatabaseManager.executeQuery()
 	at model.Database.DatabaseManager.checkSchema()
 	at model.Database.DatabaseManager.<init>()
@@ -1902,44 +1838,16 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 15:59:36 CEST] [Exception] 
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
-	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
-	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
-	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
-	at java.sql.DriverManager.getConnection()
-	at java.sql.DriverManager.getConnection()
-	at model.Database.DatabaseManager.createConnection()
+[2020-05-05 07:01:59 CEST] [Exception] Exception message: Parameter index out of range (10 > number of parameters, which is 9).
+[2020-05-05 07:01:59 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.checkBounds()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.getCoreParameterIndex()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.setObject()
 	at model.Database.DatabaseManager.executeQuery()
-	at model.Database.DatabaseManager.checkSchema()
-	at model.Database.DatabaseManager.<init>()
-	at model.App.<clinit>()
-	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
-	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
-	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
-	at java.lang.reflect.Constructor.newInstanceWithCaller()
-	at java.lang.reflect.Constructor.newInstance()
-	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
-	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
-	at java.security.AccessController.doPrivileged()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
-	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 15:59:37 CEST] [Exception] Exception message: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-[2020-05-03 15:59:37 CEST] [Exception] 
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
-	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
-	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
-	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
-	at java.sql.DriverManager.getConnection()
-	at java.sql.DriverManager.getConnection()
-	at model.Database.DatabaseManager.createConnection()
 	at model.Database.DatabaseManager.executeQuery()
 	at model.Database.DatabaseManager.checkSchema()
 	at model.Database.DatabaseManager.<init>()
@@ -1967,8 +1875,41 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 15:59:37 CEST] [Exception] Exception message: null
-[2020-05-03 15:59:37 CEST] [Exception] 
+[2020-05-05 07:03:43 CEST] [Exception] Exception message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''`sql7336945`.`member`' (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `ssn` CHAR(13) N' at line 1
+[2020-05-05 07:03:43 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute()
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
+	at java.lang.reflect.Constructor.newInstanceWithCaller()
+	at java.lang.reflect.Constructor.newInstance()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 07:03:46 CEST] [Exception] Exception message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''`sql7336945`.`member`' (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `ssn` CHAR(13) N' at line 1
+[2020-05-05 07:03:46 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute()
+	at model.Database.DatabaseManager.executeQuery()
 	at model.Database.DatabaseManager.executeQuery()
 	at model.Database.DatabaseManager.checkSchema()
 	at model.Database.DatabaseManager.<init>()
@@ -1996,54 +1937,15 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 15:59:38 CEST] [Exception] Exception message: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-[2020-05-03 15:59:38 CEST] [Exception] 
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
+[2020-05-05 07:06:07 CEST] [Exception] Exception message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''`sql7336945`.`member`' (  `id` INT NOT NULL AUTO_INCREMENT,
+  `ssn` CHAR(13) NO' at line 1
+[2020-05-05 07:06:07 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
-	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
-	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
-	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
-	at java.sql.DriverManager.getConnection()
-	at java.sql.DriverManager.getConnection()
-	at model.Database.DatabaseManager.createConnection()
-	at model.Database.DatabaseManager.loadWeeks()
-	at controller.Calendar.loadWeeksDB()
-	at controller.Calendar.initialize()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.load()
-	at model.Tools.SceneSwitcher.<clinit>()
-	at model.App.start()
-	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
-	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
-	at java.security.AccessController.doPrivileged()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
-	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 15:59:38 CEST] [Exception] Exception message: null
-[2020-05-03 15:59:38 CEST] [Exception] 
-	at model.Database.DatabaseManager.loadWeeks()
-	at controller.Calendar.loadWeeksDB()
-	at controller.Calendar.initialize()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.load()
-	at model.Tools.SceneSwitcher.<clinit>()
-	at model.App.start()
-	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
-	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
-	at java.security.AccessController.doPrivileged()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
-	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 16:01:23 CEST] [Exception] Exception message: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-[2020-05-03 16:01:23 CEST] [Exception] Exception message: null
-[2020-05-03 16:01:23 CEST] [Exception] 
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute()
+	at model.Database.DatabaseManager.executeQuery()
 	at model.Database.DatabaseManager.executeQuery()
 	at model.Database.DatabaseManager.checkSchema()
 	at model.Database.DatabaseManager.<init>()
@@ -2059,44 +1961,15 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 16:01:23 CEST] [Exception] 
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
+[2020-05-05 07:06:08 CEST] [Exception] Exception message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''`sql7336945`.`member`' (  `id` INT NOT NULL AUTO_INCREMENT,
+  `ssn` CHAR(13) NO' at line 1
+[2020-05-05 07:06:08 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
-	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
-	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
-	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
-	at java.sql.DriverManager.getConnection()
-	at java.sql.DriverManager.getConnection()
-	at model.Database.DatabaseManager.createConnection()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute()
 	at model.Database.DatabaseManager.executeQuery()
-	at model.Database.DatabaseManager.checkSchema()
-	at model.Database.DatabaseManager.<init>()
-	at model.App.<clinit>()
-	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
-	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
-	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
-	at java.lang.reflect.Constructor.newInstanceWithCaller()
-	at java.lang.reflect.Constructor.newInstance()
-	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
-	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
-	at java.security.AccessController.doPrivileged()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
-	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 16:01:25 CEST] [Exception] Exception message: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-[2020-05-03 16:01:25 CEST] [Exception] 
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
-	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
-	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
-	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
-	at java.sql.DriverManager.getConnection()
-	at java.sql.DriverManager.getConnection()
-	at model.Database.DatabaseManager.createConnection()
 	at model.Database.DatabaseManager.executeQuery()
 	at model.Database.DatabaseManager.checkSchema()
 	at model.Database.DatabaseManager.<init>()
@@ -2124,8 +1997,39 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 16:01:25 CEST] [Exception] Exception message: null
-[2020-05-03 16:01:25 CEST] [Exception] 
+[2020-05-05 07:07:16 CEST] [Exception] Exception message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''`sql7336945`.`member`' (  `id` INT NOT NULL AUTO_INCREMENT,
+  `ssn` CHAR(13) NO' at line 1
+[2020-05-05 07:07:16 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute()
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
+	at java.lang.reflect.Constructor.newInstanceWithCaller()
+	at java.lang.reflect.Constructor.newInstance()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 07:07:17 CEST] [Exception] Exception message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''`sql7336945`.`member`' (  `id` INT NOT NULL AUTO_INCREMENT,
+  `ssn` CHAR(13) NO' at line 1
+[2020-05-05 07:07:17 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute()
+	at model.Database.DatabaseManager.executeQuery()
 	at model.Database.DatabaseManager.executeQuery()
 	at model.Database.DatabaseManager.checkSchema()
 	at model.Database.DatabaseManager.<init>()
@@ -2153,54 +2057,14 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 16:01:25 CEST] [Exception] Exception message: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-[2020-05-03 16:01:25 CEST] [Exception] 
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
+[2020-05-05 07:08:45 CEST] [Exception] Exception message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''`sql7336945`.`member`' (`id` INT NOT NULL AUTO_INCREMENT,`ssn` CHAR(13) NOT NUL' at line 1
+[2020-05-05 07:08:45 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
-	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
-	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
-	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
-	at java.sql.DriverManager.getConnection()
-	at java.sql.DriverManager.getConnection()
-	at model.Database.DatabaseManager.createConnection()
-	at model.Database.DatabaseManager.loadWeeks()
-	at controller.Calendar.loadWeeksDB()
-	at controller.Calendar.initialize()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.load()
-	at model.Tools.SceneSwitcher.<clinit>()
-	at model.App.start()
-	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
-	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
-	at java.security.AccessController.doPrivileged()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
-	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 16:01:25 CEST] [Exception] Exception message: null
-[2020-05-03 16:01:25 CEST] [Exception] 
-	at model.Database.DatabaseManager.loadWeeks()
-	at controller.Calendar.loadWeeksDB()
-	at controller.Calendar.initialize()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.load()
-	at model.Tools.SceneSwitcher.<clinit>()
-	at model.App.start()
-	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
-	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
-	at java.security.AccessController.doPrivileged()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
-	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 16:03:43 CEST] [Exception] Exception message: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-[2020-05-03 16:03:43 CEST] [Exception] Exception message: null
-[2020-05-03 16:03:43 CEST] [Exception] 
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute()
+	at model.Database.DatabaseManager.executeQuery()
 	at model.Database.DatabaseManager.executeQuery()
 	at model.Database.DatabaseManager.checkSchema()
 	at model.Database.DatabaseManager.<init>()
@@ -2216,44 +2080,14 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 16:03:43 CEST] [Exception] 
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
+[2020-05-05 07:08:47 CEST] [Exception] Exception message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''`sql7336945`.`member`' (`id` INT NOT NULL AUTO_INCREMENT,`ssn` CHAR(13) NOT NUL' at line 1
+[2020-05-05 07:08:47 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
-	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
-	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
-	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
-	at java.sql.DriverManager.getConnection()
-	at java.sql.DriverManager.getConnection()
-	at model.Database.DatabaseManager.createConnection()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute()
 	at model.Database.DatabaseManager.executeQuery()
-	at model.Database.DatabaseManager.checkSchema()
-	at model.Database.DatabaseManager.<init>()
-	at model.App.<clinit>()
-	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
-	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
-	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
-	at java.lang.reflect.Constructor.newInstanceWithCaller()
-	at java.lang.reflect.Constructor.newInstance()
-	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
-	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
-	at java.security.AccessController.doPrivileged()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
-	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 16:03:44 CEST] [Exception] Exception message: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-[2020-05-03 16:03:44 CEST] [Exception] 
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
-	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
-	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
-	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
-	at java.sql.DriverManager.getConnection()
-	at java.sql.DriverManager.getConnection()
-	at model.Database.DatabaseManager.createConnection()
 	at model.Database.DatabaseManager.executeQuery()
 	at model.Database.DatabaseManager.checkSchema()
 	at model.Database.DatabaseManager.<init>()
@@ -2281,8 +2115,37 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 16:03:44 CEST] [Exception] Exception message: null
-[2020-05-03 16:03:44 CEST] [Exception] 
+[2020-05-05 07:10:04 CEST] [Exception] Exception message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''`sql7336945`.`member`' (`id` INT NOT NULL AUTO_INCREMENT,`ssn` CHAR(13) NOT NUL' at line 1
+[2020-05-05 07:10:04 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute()
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
+	at java.lang.reflect.Constructor.newInstanceWithCaller()
+	at java.lang.reflect.Constructor.newInstance()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 07:10:05 CEST] [Exception] Exception message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''`sql7336945`.`member`' (`id` INT NOT NULL AUTO_INCREMENT,`ssn` CHAR(13) NOT NUL' at line 1
+[2020-05-05 07:10:05 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute()
+	at model.Database.DatabaseManager.executeQuery()
 	at model.Database.DatabaseManager.executeQuery()
 	at model.Database.DatabaseManager.checkSchema()
 	at model.Database.DatabaseManager.<init>()
@@ -2310,63 +2173,14 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 16:03:44 CEST] [Exception] Exception message: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-[2020-05-03 16:03:44 CEST] [Exception] 
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
+[2020-05-05 07:10:37 CEST] [Exception] Exception message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''sql7336945.member' (`id` INT NOT NULL AUTO_INCREMENT,`ssn` CHAR(13) NOT NULL,`n' at line 1
+[2020-05-05 07:10:37 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
-	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
-	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
-	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
-	at java.sql.DriverManager.getConnection()
-	at java.sql.DriverManager.getConnection()
-	at model.Database.DatabaseManager.createConnection()
-	at model.Database.DatabaseManager.loadWeeks()
-	at controller.Calendar.loadWeeksDB()
-	at controller.Calendar.initialize()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.load()
-	at model.Tools.SceneSwitcher.<clinit>()
-	at model.App.start()
-	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
-	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
-	at java.security.AccessController.doPrivileged()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
-	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 16:03:44 CEST] [Exception] Exception message: null
-[2020-05-03 16:03:44 CEST] [Exception] 
-	at model.Database.DatabaseManager.loadWeeks()
-	at controller.Calendar.loadWeeksDB()
-	at controller.Calendar.initialize()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.load()
-	at model.Tools.SceneSwitcher.<clinit>()
-	at model.App.start()
-	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
-	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
-	at java.security.AccessController.doPrivileged()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
-	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 16:44:41 CEST] [Exception] Exception message: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-[2020-05-03 16:44:41 CEST] [Exception] Exception message: null
-[2020-05-03 16:44:41 CEST] [Exception] 
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
-	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
-	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
-	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
-	at java.sql.DriverManager.getConnection()
-	at java.sql.DriverManager.getConnection()
-	at model.Database.DatabaseManager.createConnection()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute()
+	at model.Database.DatabaseManager.executeQuery()
 	at model.Database.DatabaseManager.executeQuery()
 	at model.Database.DatabaseManager.checkSchema()
 	at model.Database.DatabaseManager.<init>()
@@ -2382,35 +2196,14 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 16:44:41 CEST] [Exception] 
-	at model.Database.DatabaseManager.executeQuery()
-	at model.Database.DatabaseManager.checkSchema()
-	at model.Database.DatabaseManager.<init>()
-	at model.App.<clinit>()
-	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
-	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
-	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
-	at java.lang.reflect.Constructor.newInstanceWithCaller()
-	at java.lang.reflect.Constructor.newInstance()
-	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
-	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
-	at java.security.AccessController.doPrivileged()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
-	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 16:44:43 CEST] [Exception] Exception message: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-[2020-05-03 16:44:43 CEST] [Exception] 
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
+[2020-05-05 07:10:38 CEST] [Exception] Exception message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''sql7336945.member' (`id` INT NOT NULL AUTO_INCREMENT,`ssn` CHAR(13) NOT NULL,`n' at line 1
+[2020-05-05 07:10:38 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
-	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
-	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
-	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
-	at java.sql.DriverManager.getConnection()
-	at java.sql.DriverManager.getConnection()
-	at model.Database.DatabaseManager.createConnection()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute()
+	at model.Database.DatabaseManager.executeQuery()
 	at model.Database.DatabaseManager.executeQuery()
 	at model.Database.DatabaseManager.checkSchema()
 	at model.Database.DatabaseManager.<init>()
@@ -2438,51 +2231,125 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 16:44:43 CEST] [Exception] Exception message: null
-[2020-05-03 16:44:43 CEST] [Exception] 
-	at model.Database.DatabaseManager.executeQuery()
-	at model.Database.DatabaseManager.checkSchema()
-	at model.Database.DatabaseManager.<init>()
-	at controller.EditAccount.<init>()
-	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
-	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
-	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
-	at java.lang.reflect.Constructor.newInstanceWithCaller()
-	at java.lang.reflect.ReflectAccess.newInstance()
-	at jdk.internal.reflect.ReflectionFactory.newInstance()
-	at java.lang.Class.newInstance()
-	at javafx.fxml.FXMLLoader$ValueElement.processAttribute()
-	at javafx.fxml.FXMLLoader$InstanceDeclarationElement.processAttribute()
-	at javafx.fxml.FXMLLoader$Element.processStartElement()
-	at javafx.fxml.FXMLLoader$ValueElement.processStartElement()
-	at javafx.fxml.FXMLLoader.processStartElement()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.load()
-	at model.Tools.SceneSwitcher.<clinit>()
-	at model.App.start()
-	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
-	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
-	at java.security.AccessController.doPrivileged()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
-	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 16:44:43 CEST] [Exception] Exception message: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-[2020-05-03 16:44:43 CEST] [Exception] 
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
+[2020-05-05 07:20:52 CEST] [Exception] Exception message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''`sql7336945`.`account`' WHERE email = 'dan@mysport.se' AND password = SHA2('bol' at line 1
+[2020-05-05 07:20:52 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
-	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
-	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
-	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
-	at java.sql.DriverManager.getConnection()
-	at java.sql.DriverManager.getConnection()
-	at model.Database.DatabaseManager.createConnection()
-	at model.Database.DatabaseManager.loadWeeks()
-	at controller.Calendar.loadWeeksDB()
-	at controller.Calendar.initialize()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery()
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkCredentials()
+	at controller.Login.lambda$initialize$0()
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent()
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent()
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent()
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent()
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent()
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent()
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent()
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent()
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent()
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent()
+	at com.sun.javafx.event.EventUtil.fireEventImpl()
+	at com.sun.javafx.event.EventUtil.fireEvent()
+	at javafx.event.Event.fireEvent()
+	at javafx.scene.Scene$ClickGenerator.postProcess()
+	at javafx.scene.Scene$ClickGenerator.access$8200()
+	at javafx.scene.Scene$MouseHandler.process()
+	at javafx.scene.Scene$MouseHandler.access$1200()
+	at javafx.scene.Scene.processMouseEvent()
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent()
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run()
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2()
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock()
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent()
+	at com.sun.glass.ui.View.handleMouseEvent()
+	at com.sun.glass.ui.View.notifyMouse()
+	at com.sun.glass.ui.mac.MacView.notifyMouse()
+[2020-05-05 07:22:42 CEST] [Exception] Exception message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '_binary'¬í\0t\0`sql7336945`.`account`' WHERE email = 'dan@mysport.se' AND pa' at line 1
+[2020-05-05 07:22:42 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal()
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery()
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkCredentials()
+	at controller.Login.lambda$initialize$0()
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent()
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent()
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent()
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent()
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent()
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent()
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent()
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent()
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent()
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent()
+	at com.sun.javafx.event.EventUtil.fireEventImpl()
+	at com.sun.javafx.event.EventUtil.fireEvent()
+	at javafx.event.Event.fireEvent()
+	at javafx.scene.Scene$ClickGenerator.postProcess()
+	at javafx.scene.Scene$ClickGenerator.access$8200()
+	at javafx.scene.Scene$MouseHandler.process()
+	at javafx.scene.Scene$MouseHandler.access$1200()
+	at javafx.scene.Scene.processMouseEvent()
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent()
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run()
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2()
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock()
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent()
+	at com.sun.glass.ui.View.handleMouseEvent()
+	at com.sun.glass.ui.View.notifyMouse()
+	at com.sun.glass.ui.mac.MacView.notifyMouse()
+[2020-05-05 07:28:40 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException()
+	at com.mysql.cj.jdbc.result.ResultSetImpl.checkClosed()
+	at com.mysql.cj.jdbc.result.ResultSetImpl.next()
+	at model.Database.DatabaseManager.checkCredentials()
+	at controller.Login.lambda$initialize$0()
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent()
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent()
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent()
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent()
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent()
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent()
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent()
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent()
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent()
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent()
+	at com.sun.javafx.event.EventUtil.fireEventImpl()
+	at com.sun.javafx.event.EventUtil.fireEvent()
+	at javafx.event.Event.fireEvent()
+	at javafx.scene.Scene$ClickGenerator.postProcess()
+	at javafx.scene.Scene$ClickGenerator.access$8200()
+	at javafx.scene.Scene$MouseHandler.process()
+	at javafx.scene.Scene$MouseHandler.access$1200()
+	at javafx.scene.Scene.processMouseEvent()
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent()
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run()
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2()
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock()
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent()
+	at com.sun.glass.ui.View.handleMouseEvent()
+	at com.sun.glass.ui.View.notifyMouse()
+	at com.sun.glass.ui.mac.MacView.notifyMouse()
+[2020-05-05 07:28:40 CEST] [Exception] Exception message: Operation not allowed after ResultSet closed
+[2020-05-05 08:16:52 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/view/CreateAccount.fxml
+
+[2020-05-05 08:16:52 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
 	at javafx.fxml.FXMLLoader.loadImpl()
 	at javafx.fxml.FXMLLoader.loadImpl()
 	at javafx.fxml.FXMLLoader.load()
@@ -2494,27 +2361,11 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 16:44:43 CEST] [Exception] Exception message: null
-[2020-05-03 16:44:43 CEST] [Exception] 
-	at model.Database.DatabaseManager.loadWeeks()
-	at controller.Calendar.loadWeeksDB()
-	at controller.Calendar.initialize()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.load()
-	at model.Tools.SceneSwitcher.<clinit>()
-	at model.App.start()
-	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
-	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
-	at java.security.AccessController.doPrivileged()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
-	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 16:45:02 CEST] [Exception] Exception message: Communications link failure
+[2020-05-05 11:34:47 CEST] [Exception] Exception message: Communications link failure
 
 The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-[2020-05-03 16:45:02 CEST] [Exception] Exception message: null
-[2020-05-03 16:45:02 CEST] [Exception] 
+[2020-05-05 11:34:47 CEST] [Exception] Exception message: Errors in query.
+[2020-05-05 11:34:47 CEST] [Exception] 
 	at model.Database.DatabaseManager.executeQuery()
 	at model.Database.DatabaseManager.checkSchema()
 	at model.Database.DatabaseManager.<init>()
@@ -2530,7 +2381,7 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 16:45:02 CEST] [Exception] 
+[2020-05-05 11:34:47 CEST] [Exception] 
 	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
 	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
@@ -2555,79 +2406,10 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 16:45:03 CEST] [Exception] Exception message: Communications link failure
+[2020-05-05 11:34:49 CEST] [Exception] Exception message: Communications link failure
 
 The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-[2020-05-03 16:45:03 CEST] [Exception] 
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
-	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
-	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
-	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
-	at java.sql.DriverManager.getConnection()
-	at java.sql.DriverManager.getConnection()
-	at model.Database.DatabaseManager.createConnection()
-	at model.Database.DatabaseManager.executeQuery()
-	at model.Database.DatabaseManager.checkSchema()
-	at model.Database.DatabaseManager.<init>()
-	at controller.EditAccount.<init>()
-	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
-	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
-	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
-	at java.lang.reflect.Constructor.newInstanceWithCaller()
-	at java.lang.reflect.ReflectAccess.newInstance()
-	at jdk.internal.reflect.ReflectionFactory.newInstance()
-	at java.lang.Class.newInstance()
-	at javafx.fxml.FXMLLoader$ValueElement.processAttribute()
-	at javafx.fxml.FXMLLoader$InstanceDeclarationElement.processAttribute()
-	at javafx.fxml.FXMLLoader$Element.processStartElement()
-	at javafx.fxml.FXMLLoader$ValueElement.processStartElement()
-	at javafx.fxml.FXMLLoader.processStartElement()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.load()
-	at model.Tools.SceneSwitcher.<clinit>()
-	at model.App.start()
-	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
-	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
-	at java.security.AccessController.doPrivileged()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
-	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 16:45:03 CEST] [Exception] Exception message: null
-[2020-05-03 16:45:03 CEST] [Exception] 
-	at model.Database.DatabaseManager.executeQuery()
-	at model.Database.DatabaseManager.checkSchema()
-	at model.Database.DatabaseManager.<init>()
-	at controller.EditAccount.<init>()
-	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
-	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
-	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
-	at java.lang.reflect.Constructor.newInstanceWithCaller()
-	at java.lang.reflect.ReflectAccess.newInstance()
-	at jdk.internal.reflect.ReflectionFactory.newInstance()
-	at java.lang.Class.newInstance()
-	at javafx.fxml.FXMLLoader$ValueElement.processAttribute()
-	at javafx.fxml.FXMLLoader$InstanceDeclarationElement.processAttribute()
-	at javafx.fxml.FXMLLoader$Element.processStartElement()
-	at javafx.fxml.FXMLLoader$ValueElement.processStartElement()
-	at javafx.fxml.FXMLLoader.processStartElement()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.load()
-	at model.Tools.SceneSwitcher.<clinit>()
-	at model.App.start()
-	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
-	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
-	at java.security.AccessController.doPrivileged()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
-	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 16:45:04 CEST] [Exception] Exception message: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-[2020-05-03 16:45:04 CEST] [Exception] 
+[2020-05-05 11:34:49 CEST] [Exception] 
 	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
 	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
@@ -2651,8 +2433,8 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 16:45:04 CEST] [Exception] Exception message: null
-[2020-05-03 16:45:04 CEST] [Exception] 
+[2020-05-05 11:34:49 CEST] [Exception] Exception message: null
+[2020-05-05 11:34:49 CEST] [Exception] 
 	at model.Database.DatabaseManager.loadWeeks()
 	at controller.Calendar.loadWeeksDB()
 	at controller.Calendar.initialize()
@@ -2667,11 +2449,54 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 16:51:18 CEST] [Exception] Exception message: Communications link failure
+[2020-05-05 11:34:49 CEST] [Exception] Exception message: Communications link failure
 
 The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-[2020-05-03 16:51:18 CEST] [Exception] Exception message: null
-[2020-05-03 16:51:18 CEST] [Exception] 
+[2020-05-05 11:34:49 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
+	at java.sql.DriverManager.getConnection()
+	at java.sql.DriverManager.getConnection()
+	at model.Database.DatabaseManager.createConnection()
+	at model.Database.DatabaseManager.loadWeeks()
+	at controller.Calendar.loadWeeksDB()
+	at controller.Calendar.initialize()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 11:34:49 CEST] [Exception] Exception message: null
+[2020-05-05 11:34:49 CEST] [Exception] 
+	at model.Database.DatabaseManager.loadWeeks()
+	at controller.Calendar.loadWeeksDB()
+	at controller.Calendar.initialize()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 11:40:48 CEST] [Exception] Exception message: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+[2020-05-05 11:40:48 CEST] [Exception] Exception message: Errors in query.
+[2020-05-05 11:40:48 CEST] [Exception] 
 	at model.Database.DatabaseManager.executeQuery()
 	at model.Database.DatabaseManager.checkSchema()
 	at model.Database.DatabaseManager.<init>()
@@ -2687,7 +2512,7 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 16:51:18 CEST] [Exception] 
+[2020-05-05 11:40:48 CEST] [Exception] 
 	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
 	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
@@ -2712,79 +2537,10 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 16:51:19 CEST] [Exception] Exception message: Communications link failure
+[2020-05-05 11:40:50 CEST] [Exception] Exception message: Communications link failure
 
 The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-[2020-05-03 16:51:19 CEST] [Exception] 
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
-	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
-	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
-	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
-	at java.sql.DriverManager.getConnection()
-	at java.sql.DriverManager.getConnection()
-	at model.Database.DatabaseManager.createConnection()
-	at model.Database.DatabaseManager.executeQuery()
-	at model.Database.DatabaseManager.checkSchema()
-	at model.Database.DatabaseManager.<init>()
-	at controller.EditAccount.<init>()
-	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
-	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
-	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
-	at java.lang.reflect.Constructor.newInstanceWithCaller()
-	at java.lang.reflect.ReflectAccess.newInstance()
-	at jdk.internal.reflect.ReflectionFactory.newInstance()
-	at java.lang.Class.newInstance()
-	at javafx.fxml.FXMLLoader$ValueElement.processAttribute()
-	at javafx.fxml.FXMLLoader$InstanceDeclarationElement.processAttribute()
-	at javafx.fxml.FXMLLoader$Element.processStartElement()
-	at javafx.fxml.FXMLLoader$ValueElement.processStartElement()
-	at javafx.fxml.FXMLLoader.processStartElement()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.load()
-	at model.Tools.SceneSwitcher.<clinit>()
-	at model.App.start()
-	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
-	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
-	at java.security.AccessController.doPrivileged()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
-	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 16:51:19 CEST] [Exception] Exception message: null
-[2020-05-03 16:51:19 CEST] [Exception] 
-	at model.Database.DatabaseManager.executeQuery()
-	at model.Database.DatabaseManager.checkSchema()
-	at model.Database.DatabaseManager.<init>()
-	at controller.EditAccount.<init>()
-	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
-	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
-	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
-	at java.lang.reflect.Constructor.newInstanceWithCaller()
-	at java.lang.reflect.ReflectAccess.newInstance()
-	at jdk.internal.reflect.ReflectionFactory.newInstance()
-	at java.lang.Class.newInstance()
-	at javafx.fxml.FXMLLoader$ValueElement.processAttribute()
-	at javafx.fxml.FXMLLoader$InstanceDeclarationElement.processAttribute()
-	at javafx.fxml.FXMLLoader$Element.processStartElement()
-	at javafx.fxml.FXMLLoader$ValueElement.processStartElement()
-	at javafx.fxml.FXMLLoader.processStartElement()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.loadImpl()
-	at javafx.fxml.FXMLLoader.load()
-	at model.Tools.SceneSwitcher.<clinit>()
-	at model.App.start()
-	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
-	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
-	at java.security.AccessController.doPrivileged()
-	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
-	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 16:51:20 CEST] [Exception] Exception message: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-[2020-05-03 16:51:20 CEST] [Exception] 
+[2020-05-05 11:40:50 CEST] [Exception] 
 	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
 	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
@@ -2808,11 +2564,1104 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
-[2020-05-03 16:51:20 CEST] [Exception] Exception message: null
-[2020-05-03 16:51:20 CEST] [Exception] 
+[2020-05-05 11:40:50 CEST] [Exception] Exception message: null
+[2020-05-05 11:40:50 CEST] [Exception] 
 	at model.Database.DatabaseManager.loadWeeks()
 	at controller.Calendar.loadWeeksDB()
 	at controller.Calendar.initialize()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 11:40:50 CEST] [Exception] Exception message: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+[2020-05-05 11:40:50 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
+	at java.sql.DriverManager.getConnection()
+	at java.sql.DriverManager.getConnection()
+	at model.Database.DatabaseManager.createConnection()
+	at model.Database.DatabaseManager.loadWeeks()
+	at controller.Calendar.loadWeeksDB()
+	at controller.Calendar.initialize()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 11:40:50 CEST] [Exception] Exception message: null
+[2020-05-05 11:40:50 CEST] [Exception] 
+	at model.Database.DatabaseManager.loadWeeks()
+	at controller.Calendar.loadWeeksDB()
+	at controller.Calendar.initialize()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 15:56:31 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/view/Settings.fxml:17
+
+[2020-05-05 15:56:31 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.access$700()
+	at javafx.fxml.FXMLLoader$ValueElement.processAttribute()
+	at javafx.fxml.FXMLLoader$InstanceDeclarationElement.processAttribute()
+	at javafx.fxml.FXMLLoader$Element.processStartElement()
+	at javafx.fxml.FXMLLoader$ValueElement.processStartElement()
+	at javafx.fxml.FXMLLoader.processStartElement()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 15:57:38 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/view/Settings.fxml:17
+
+[2020-05-05 15:57:38 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.access$700()
+	at javafx.fxml.FXMLLoader$ValueElement.processAttribute()
+	at javafx.fxml.FXMLLoader$InstanceDeclarationElement.processAttribute()
+	at javafx.fxml.FXMLLoader$Element.processStartElement()
+	at javafx.fxml.FXMLLoader$ValueElement.processStartElement()
+	at javafx.fxml.FXMLLoader.processStartElement()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 15:58:56 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/view/Settings.fxml:17
+
+[2020-05-05 15:58:56 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.access$700()
+	at javafx.fxml.FXMLLoader$ValueElement.processAttribute()
+	at javafx.fxml.FXMLLoader$InstanceDeclarationElement.processAttribute()
+	at javafx.fxml.FXMLLoader$Element.processStartElement()
+	at javafx.fxml.FXMLLoader$ValueElement.processStartElement()
+	at javafx.fxml.FXMLLoader.processStartElement()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 15:59:37 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/view/Settings.fxml:17
+
+[2020-05-05 15:59:37 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.access$700()
+	at javafx.fxml.FXMLLoader$ValueElement.processAttribute()
+	at javafx.fxml.FXMLLoader$InstanceDeclarationElement.processAttribute()
+	at javafx.fxml.FXMLLoader$Element.processStartElement()
+	at javafx.fxml.FXMLLoader$ValueElement.processStartElement()
+	at javafx.fxml.FXMLLoader.processStartElement()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:16:57 CEST] [Exception] Exception message: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+[2020-05-05 16:16:57 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
+	at java.sql.DriverManager.getConnection()
+	at java.sql.DriverManager.getConnection()
+	at model.Database.DatabaseManager.createConnection()
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
+	at java.lang.reflect.Constructor.newInstanceWithCaller()
+	at java.lang.reflect.Constructor.newInstance()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:16:57 CEST] [Exception] Exception message: Errors in query.
+[2020-05-05 16:16:57 CEST] [Exception] 
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
+	at java.lang.reflect.Constructor.newInstanceWithCaller()
+	at java.lang.reflect.Constructor.newInstance()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:16:57 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/view/Settings.fxml:17
+
+[2020-05-05 16:16:57 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.access$700()
+	at javafx.fxml.FXMLLoader$ValueElement.processAttribute()
+	at javafx.fxml.FXMLLoader$InstanceDeclarationElement.processAttribute()
+	at javafx.fxml.FXMLLoader$Element.processStartElement()
+	at javafx.fxml.FXMLLoader$ValueElement.processStartElement()
+	at javafx.fxml.FXMLLoader.processStartElement()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:17:34 CEST] [Exception] Exception message: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+[2020-05-05 16:17:34 CEST] [Exception] Exception message: Errors in query.
+[2020-05-05 16:17:34 CEST] [Exception] 
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
+	at java.lang.reflect.Constructor.newInstanceWithCaller()
+	at java.lang.reflect.Constructor.newInstance()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:17:34 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
+	at java.sql.DriverManager.getConnection()
+	at java.sql.DriverManager.getConnection()
+	at model.Database.DatabaseManager.createConnection()
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
+	at java.lang.reflect.Constructor.newInstanceWithCaller()
+	at java.lang.reflect.Constructor.newInstance()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:17:34 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/view/Settings.fxml:17
+
+[2020-05-05 16:17:34 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.access$700()
+	at javafx.fxml.FXMLLoader$ValueElement.processAttribute()
+	at javafx.fxml.FXMLLoader$InstanceDeclarationElement.processAttribute()
+	at javafx.fxml.FXMLLoader$Element.processStartElement()
+	at javafx.fxml.FXMLLoader$ValueElement.processStartElement()
+	at javafx.fxml.FXMLLoader.processStartElement()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:19:04 CEST] [Exception] Exception message: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+[2020-05-05 16:19:04 CEST] [Exception] Exception message: Errors in query.
+[2020-05-05 16:19:04 CEST] [Exception] 
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
+	at java.lang.reflect.Constructor.newInstanceWithCaller()
+	at java.lang.reflect.Constructor.newInstance()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:19:04 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
+	at java.sql.DriverManager.getConnection()
+	at java.sql.DriverManager.getConnection()
+	at model.Database.DatabaseManager.createConnection()
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
+	at java.lang.reflect.Constructor.newInstanceWithCaller()
+	at java.lang.reflect.Constructor.newInstance()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:19:05 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/view/Settings.fxml:17
+
+[2020-05-05 16:19:05 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.access$700()
+	at javafx.fxml.FXMLLoader$ValueElement.processAttribute()
+	at javafx.fxml.FXMLLoader$InstanceDeclarationElement.processAttribute()
+	at javafx.fxml.FXMLLoader$Element.processStartElement()
+	at javafx.fxml.FXMLLoader$ValueElement.processStartElement()
+	at javafx.fxml.FXMLLoader.processStartElement()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:22:54 CEST] [Exception] Exception message: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+[2020-05-05 16:22:54 CEST] [Exception] Exception message: Errors in query.
+[2020-05-05 16:22:54 CEST] [Exception] 
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
+	at java.lang.reflect.Constructor.newInstanceWithCaller()
+	at java.lang.reflect.Constructor.newInstance()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:22:54 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
+	at java.sql.DriverManager.getConnection()
+	at java.sql.DriverManager.getConnection()
+	at model.Database.DatabaseManager.createConnection()
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
+	at java.lang.reflect.Constructor.newInstanceWithCaller()
+	at java.lang.reflect.Constructor.newInstance()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:22:55 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/view/Settings.fxml:17
+
+[2020-05-05 16:22:55 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.access$700()
+	at javafx.fxml.FXMLLoader$ValueElement.processAttribute()
+	at javafx.fxml.FXMLLoader$InstanceDeclarationElement.processAttribute()
+	at javafx.fxml.FXMLLoader$Element.processStartElement()
+	at javafx.fxml.FXMLLoader$ValueElement.processStartElement()
+	at javafx.fxml.FXMLLoader.processStartElement()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:25:50 CEST] [Exception] Exception message: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+[2020-05-05 16:25:50 CEST] [Exception] Exception message: Errors in query.
+[2020-05-05 16:25:50 CEST] [Exception] 
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
+	at java.lang.reflect.Constructor.newInstanceWithCaller()
+	at java.lang.reflect.Constructor.newInstance()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:25:50 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
+	at java.sql.DriverManager.getConnection()
+	at java.sql.DriverManager.getConnection()
+	at model.Database.DatabaseManager.createConnection()
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
+	at java.lang.reflect.Constructor.newInstanceWithCaller()
+	at java.lang.reflect.Constructor.newInstance()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:25:51 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/view/Settings.fxml:17
+
+[2020-05-05 16:25:51 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.access$700()
+	at javafx.fxml.FXMLLoader$ValueElement.processAttribute()
+	at javafx.fxml.FXMLLoader$InstanceDeclarationElement.processAttribute()
+	at javafx.fxml.FXMLLoader$Element.processStartElement()
+	at javafx.fxml.FXMLLoader$ValueElement.processStartElement()
+	at javafx.fxml.FXMLLoader.processStartElement()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:28:27 CEST] [Exception] Exception message: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+[2020-05-05 16:28:27 CEST] [Exception] Exception message: Errors in query.
+[2020-05-05 16:28:27 CEST] [Exception] 
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
+	at java.lang.reflect.Constructor.newInstanceWithCaller()
+	at java.lang.reflect.Constructor.newInstance()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:28:27 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
+	at java.sql.DriverManager.getConnection()
+	at java.sql.DriverManager.getConnection()
+	at model.Database.DatabaseManager.createConnection()
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
+	at java.lang.reflect.Constructor.newInstanceWithCaller()
+	at java.lang.reflect.Constructor.newInstance()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:28:27 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/view/Settings.fxml:17
+
+[2020-05-05 16:28:27 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.access$700()
+	at javafx.fxml.FXMLLoader$ValueElement.processAttribute()
+	at javafx.fxml.FXMLLoader$InstanceDeclarationElement.processAttribute()
+	at javafx.fxml.FXMLLoader$Element.processStartElement()
+	at javafx.fxml.FXMLLoader$ValueElement.processStartElement()
+	at javafx.fxml.FXMLLoader.processStartElement()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:29:27 CEST] [Exception] Exception message: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+[2020-05-05 16:29:27 CEST] [Exception] Exception message: Errors in query.
+[2020-05-05 16:29:27 CEST] [Exception] 
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
+	at java.lang.reflect.Constructor.newInstanceWithCaller()
+	at java.lang.reflect.Constructor.newInstance()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:29:27 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
+	at java.sql.DriverManager.getConnection()
+	at java.sql.DriverManager.getConnection()
+	at model.Database.DatabaseManager.createConnection()
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
+	at java.lang.reflect.Constructor.newInstanceWithCaller()
+	at java.lang.reflect.Constructor.newInstance()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:29:28 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/view/Settings.fxml:17
+
+[2020-05-05 16:29:28 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.access$700()
+	at javafx.fxml.FXMLLoader$ValueElement.processAttribute()
+	at javafx.fxml.FXMLLoader$InstanceDeclarationElement.processAttribute()
+	at javafx.fxml.FXMLLoader$Element.processStartElement()
+	at javafx.fxml.FXMLLoader$ValueElement.processStartElement()
+	at javafx.fxml.FXMLLoader.processStartElement()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:29:58 CEST] [Exception] Exception message: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+[2020-05-05 16:29:58 CEST] [Exception] Exception message: Errors in query.
+[2020-05-05 16:29:58 CEST] [Exception] 
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
+	at java.lang.reflect.Constructor.newInstanceWithCaller()
+	at java.lang.reflect.Constructor.newInstance()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:29:58 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
+	at java.sql.DriverManager.getConnection()
+	at java.sql.DriverManager.getConnection()
+	at model.Database.DatabaseManager.createConnection()
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
+	at java.lang.reflect.Constructor.newInstanceWithCaller()
+	at java.lang.reflect.Constructor.newInstance()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:29:59 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/view/Settings.fxml
+
+[2020-05-05 16:29:59 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:30:44 CEST] [Exception] Exception message: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+[2020-05-05 16:30:44 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
+	at java.sql.DriverManager.getConnection()
+	at java.sql.DriverManager.getConnection()
+	at model.Database.DatabaseManager.createConnection()
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
+	at java.lang.reflect.Constructor.newInstanceWithCaller()
+	at java.lang.reflect.Constructor.newInstance()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:30:44 CEST] [Exception] Exception message: Errors in query.
+[2020-05-05 16:30:44 CEST] [Exception] 
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
+	at java.lang.reflect.Constructor.newInstanceWithCaller()
+	at java.lang.reflect.Constructor.newInstance()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:30:44 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/view/EditProfile.fxml:16
+
+[2020-05-05 16:30:44 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.access$700()
+	at javafx.fxml.FXMLLoader$ValueElement.processAttribute()
+	at javafx.fxml.FXMLLoader$InstanceDeclarationElement.processAttribute()
+	at javafx.fxml.FXMLLoader$Element.processStartElement()
+	at javafx.fxml.FXMLLoader$ValueElement.processStartElement()
+	at javafx.fxml.FXMLLoader.processStartElement()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:32:09 CEST] [Exception] Exception message: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+[2020-05-05 16:32:09 CEST] [Exception] Exception message: Errors in query.
+[2020-05-05 16:32:09 CEST] [Exception] 
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
+	at java.lang.reflect.Constructor.newInstanceWithCaller()
+	at java.lang.reflect.Constructor.newInstance()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:32:09 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
+	at java.sql.DriverManager.getConnection()
+	at java.sql.DriverManager.getConnection()
+	at model.Database.DatabaseManager.createConnection()
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
+	at java.lang.reflect.Constructor.newInstanceWithCaller()
+	at java.lang.reflect.Constructor.newInstance()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:32:10 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/view/Settings.fxml:17
+
+[2020-05-05 16:32:10 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.access$700()
+	at javafx.fxml.FXMLLoader$ValueElement.processAttribute()
+	at javafx.fxml.FXMLLoader$InstanceDeclarationElement.processAttribute()
+	at javafx.fxml.FXMLLoader$Element.processStartElement()
+	at javafx.fxml.FXMLLoader$ValueElement.processStartElement()
+	at javafx.fxml.FXMLLoader.processStartElement()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:33:17 CEST] [Exception] Exception message: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+[2020-05-05 16:33:17 CEST] [Exception] Exception message: Errors in query.
+[2020-05-05 16:33:17 CEST] [Exception] 
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
+	at java.lang.reflect.Constructor.newInstanceWithCaller()
+	at java.lang.reflect.Constructor.newInstance()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:33:17 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
+	at java.sql.DriverManager.getConnection()
+	at java.sql.DriverManager.getConnection()
+	at model.Database.DatabaseManager.createConnection()
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
+	at java.lang.reflect.Constructor.newInstanceWithCaller()
+	at java.lang.reflect.Constructor.newInstance()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:33:17 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/view/Settings.fxml:17
+
+[2020-05-05 16:33:17 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.access$700()
+	at javafx.fxml.FXMLLoader$ValueElement.processAttribute()
+	at javafx.fxml.FXMLLoader$InstanceDeclarationElement.processAttribute()
+	at javafx.fxml.FXMLLoader$Element.processStartElement()
+	at javafx.fxml.FXMLLoader$ValueElement.processStartElement()
+	at javafx.fxml.FXMLLoader.processStartElement()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:34:26 CEST] [Exception] Exception message: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+[2020-05-05 16:34:26 CEST] [Exception] Exception message: Errors in query.
+[2020-05-05 16:34:26 CEST] [Exception] 
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
+	at java.lang.reflect.Constructor.newInstanceWithCaller()
+	at java.lang.reflect.Constructor.newInstance()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:34:26 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
+	at java.sql.DriverManager.getConnection()
+	at java.sql.DriverManager.getConnection()
+	at model.Database.DatabaseManager.createConnection()
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
+	at java.lang.reflect.Constructor.newInstanceWithCaller()
+	at java.lang.reflect.Constructor.newInstance()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:34:27 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/view/CreateAccount.fxml:43
+
+[2020-05-05 16:34:27 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:35:22 CEST] [Exception] Exception message: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+[2020-05-05 16:35:22 CEST] [Exception] Exception message: Errors in query.
+[2020-05-05 16:35:22 CEST] [Exception] 
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
+	at java.lang.reflect.Constructor.newInstanceWithCaller()
+	at java.lang.reflect.Constructor.newInstance()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:35:22 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
+	at java.sql.DriverManager.getConnection()
+	at java.sql.DriverManager.getConnection()
+	at model.Database.DatabaseManager.createConnection()
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
+	at java.lang.reflect.Constructor.newInstanceWithCaller()
+	at java.lang.reflect.Constructor.newInstance()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:35:23 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/view/CreateAccount.fxml:43
+
+[2020-05-05 16:35:23 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:38:15 CEST] [Exception] Exception message: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+[2020-05-05 16:38:15 CEST] [Exception] Exception message: Errors in query.
+[2020-05-05 16:38:15 CEST] [Exception] 
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
+	at java.lang.reflect.Constructor.newInstanceWithCaller()
+	at java.lang.reflect.Constructor.newInstance()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:38:15 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
+	at java.sql.DriverManager.getConnection()
+	at java.sql.DriverManager.getConnection()
+	at model.Database.DatabaseManager.createConnection()
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0()
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance()
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance()
+	at java.lang.reflect.Constructor.newInstanceWithCaller()
+	at java.lang.reflect.Constructor.newInstance()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:38:16 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/view/CreateAccount.fxml:43
+
+[2020-05-05 16:38:16 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:38:54 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/view/CreateAccount.fxml:43
+
+[2020-05-05 16:38:54 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:39:39 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/view/CreateAccount.fxml:43
+
+[2020-05-05 16:39:39 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-05 16:40:24 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/view/CreateAccount.fxml:43
+
+[2020-05-05 16:40:24 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
 	at javafx.fxml.FXMLLoader.loadImpl()
 	at javafx.fxml.FXMLLoader.loadImpl()
 	at javafx.fxml.FXMLLoader.load()

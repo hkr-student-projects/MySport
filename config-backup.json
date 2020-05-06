@@ -1,0 +1,10 @@
+[
+  {
+    "DatabaseUsername":"sql7338230",
+    "DatabasePort":3306,
+    "DatabasePassword":"7EamYQySYE",
+    "DatabaseName":"sql7338230",
+    "lang":"en",
+    "DatabaseAddress":"jdbc:mysql://sql7.freemysqlhosting.net/sql7338230?&allowMultiQueries=true&serverTimezone=Europe/Stockholm&useSSL=true"
+  }
+]

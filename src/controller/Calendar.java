@@ -18,6 +18,7 @@ import model.Tools.ArrayList;
 import model.Tools.Block;
 import model.Tools.Serializable;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -70,6 +71,10 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             modified = false;
         });
 //        fillGrids(this.gridPane, this.gridPaneFast);
+
+        loadWeeksDB();
+        //loadTable(0);
+        loadAsEditor();
     }
 
     @Override

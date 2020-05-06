@@ -19,7 +19,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="anchorPane" cacheShape="false" centerShape="false" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Login">
+
+<AnchorPane fx:id="anchorPane" cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: White;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Login">
+
    <children>
       <Pane prefHeight="600.0" prefWidth="450.0" styleClass="loginLogo" stylesheets="@css/general.css">
          <children>
@@ -76,7 +78,9 @@
             <String fx:value="cursorHand" />
          </styleClass>
       </Button>
+
       <Button cacheShape="false" centerShape="false" focusTraversable="false" layoutX="679.0" layoutY="560.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="128.0" scaleShape="false" stylesheets="@css/general.css" text="%key.signUp" textFill="#763dee">
+
          <styleClass>
             <String fx:value="darkPurple" />
             <String fx:value="cursorHand" />
@@ -87,7 +91,9 @@
             <Font size="14.0" />
          </font>
       </Label>
+
       <JFXToggleButton fx:id="toggle" layoutX="779.0" layoutY="-15.0" text="%key.test_mode" textAlignment="CENTER" toggleColor="#763dee" toggleLineColor="#a187e1" unToggleLineColor="#979797">
+
          <font>
             <Font name="Arial" size="13.0" />
          </font>

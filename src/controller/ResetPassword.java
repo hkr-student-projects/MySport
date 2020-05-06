@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.text.Text;
 import model.Database.UserDAO;
+import model.Mailer.Mailer;
 import model.Tools.SceneSwitcher;
 import model.Util.Utilities;
 

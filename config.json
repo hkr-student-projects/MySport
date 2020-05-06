@@ -1,10 +1,10 @@
 [
   {
-    "DatabaseUsername":"sql7336945",
+    "DatabaseUsername":"root",
     "DatabasePort":3306,
-    "DatabasePassword":"7EamYQySYE",
-    "DatabaseName":"sql7336945",
+    "DatabasePassword":"91rasuho",
+    "DatabaseName":"mysport",
     "lang":"en",
-    "DatabaseAddress":"jdbc:mysql://sql7.freemysqlhosting.net/sql7336945?&allowMultiQueries=true&serverTimezone=Europe/Stockholm&useSSL=false"
+    "DatabaseAddress":"jdbc:mysql://localhost/hotel?&allowMultiQueries=true&serverTimezone=Europe/Stockholm&useSSL=false"
   }
 ]

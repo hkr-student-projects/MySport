@@ -1,15 +1,12 @@
 package model;
 
-import controller.Calendar;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.Database.DatabaseManager;
-import model.Logging.Logger;
 import model.People.User;
-import model.Tools.Block;
 import model.Tools.Config;
 import model.Tools.SceneSwitcher;
 

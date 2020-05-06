@@ -4,9 +4,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import model.App;
-import model.Database.DatabaseManager;
+import model.Logging.Logger;
+import model.People.Leader;
 import model.Tools.SceneSwitcher;
 
 import java.net.URL;
@@ -14,9 +16,9 @@ import java.util.ResourceBundle;
 
 public class EditAccount extends Menu implements Initializable {
 
-    DatabaseManager dbM = new DatabaseManager();
     @FXML Button buttonNameSave, buttonPasswordSave, buttonReturn, buttonPhoneNumberSave;
-    @FXML TextField textFieldName, textFieldMiddleName, textFieldSurname, textFieldPassword, textFieldConfirmPassword, textFieldPhoneNumber;
+    @FXML TextField textFieldName, textFieldMiddleName, textFieldSurname, textFieldPhoneNumber;
+    @FXML PasswordField passwordFieldPassword, passwordFieldConfirmPassword, passwordFieldCurrentPassword;
 
 
     @Override
@@ -29,60 +31,49 @@ public class EditAccount extends Menu implements Initializable {
         try {
             if (!textFieldName.getText().isBlank()) {
                 if (textFieldName.getText().matches("[0-9]")) {
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setHeaderText("Error! Numbers detected!");
-                    alert.setContentText("Re-enter new name without numbers.");
-                    alert.showAndWait();
-                    return;
+                    alert("Error! Numbers detected!", "Re-enter new name without numbers.");
                 } else {
                     String name = textFieldName.getText();
-//                    dbM.updateName(name, Use log in to extract current users ssn );
+                    App.databaseManager.updateName(App.instance.getSession().getId(), name);
                 }
             } else if (!textFieldMiddleName.getText().isBlank()) {
                 if (textFieldMiddleName.getText().matches("[0-9]")) {
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setHeaderText("Error! Numbers detected!");
-                    alert.setContentText("Re-enter new middle name without numbers.");
-                    alert.showAndWait();
-                    return;
+                    alert("Error! Numbers detected!", "Re-enter new middle name without numbers.");
                 } else {
                     String middleName = textFieldName.getText();
-//                    dbM.updateName(middleName, Use log in to extract current users ssn );
+                    App.databaseManager.updateName(App.instance.getSession().getId(), middleName);
                 }
             } else if (!textFieldSurname.getText().isBlank()) {
                 if (textFieldSurname.getText().matches("[0-9]")) {
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setHeaderText("Error! Numbers detected!");
-                    alert.setContentText("Re-enter new surname without numbers.");
-                    alert.showAndWait();
-                    return;
+                    alert("Error! Numbers detected!", "Re-enter new surname without numbers.");
                 } else {
                     String surname = textFieldName.getText();
-//                    dbM.updateName(surname, Use log in to extract current users ssn );
+                    App.databaseManager.updateName(App.instance.getSession().getId(), surname);
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log(e.getMessage());
         }
     }
 
     @FXML
     public void buttonPasswordSaveClick() {
         try {
-            if (!textFieldPassword.getText().isBlank()) {
-                String password = textFieldPassword.getText();
-                if (password.equals(textFieldConfirmPassword.getText())){
-//                    dbM.updatePassword(password, use login to extract ssn from current user);
+            if (!passwordFieldPassword.getText().isBlank()) {
+                String password = passwordFieldPassword.getText();
+                String oldPassword = passwordFieldCurrentPassword.getText();
+                if (password.equals(passwordFieldConfirmPassword.getText())){
+                    if (!App.databaseManager.updatePassword(App.instance.getSession().getId(), oldPassword, password)) {
+                        alert("Error!","Some passwords may not match, please try again!");
+                    }
+                } else {
+                    alert("Error!", "Passwords do not match, please try again.");
                 }
             } else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setHeaderText("Error! No password detected.");
-                alert.setContentText("Please enter a new password and confirm it by re-entering the new password before saving changes.");
-                alert.showAndWait();
-                return;
+                alert("Error! No password detected", "Please enter a new password and confirm it by re-entering the new password before saving changes.");
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log(e.getMessage());
         }
     }
 
@@ -91,18 +82,14 @@ public class EditAccount extends Menu implements Initializable {
         try {
             if (!textFieldPhoneNumber.getText().isBlank()){
                 if (!textFieldPhoneNumber.getText().matches("[0-9]+")){
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setHeaderText("Error! Phone number not detected.");
-                    alert.setContentText("Please enter a valid phone number.");
-                    alert.showAndWait();
-                    return;
+                    alert("Error! Phone number not detected", "Please enter a valid phone number.");
                 } else {
                     String phoneNumber = textFieldPhoneNumber.getText();
-//                    dbM.updatePhoneNumber(phoneNumber, use log in to get ssn of current user );
+                    App.databaseManager.updatePhoneNumber(App.instance.getSession().getId(), phoneNumber);
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log(e.getMessage());
         }
     }
 
@@ -130,5 +117,12 @@ public class EditAccount extends Menu implements Initializable {
     @Override
     protected void onAppClose() {
 
+    }
+
+    private void alert(String header, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }

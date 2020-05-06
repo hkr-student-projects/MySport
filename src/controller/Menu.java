@@ -46,18 +46,18 @@ public abstract class Menu {
             onSceneSwitch();
             App.instance.setScene(SceneSwitcher.instance.getScene("Account"));
         });
-        mail.setOnMouseClicked(e -> {
-            if(caller instanceof Mail)
-                return;
-            onSceneSwitch();
-            App.instance.setScene(SceneSwitcher.instance.getScene("Mail"));
-        });
-        forum.setOnMouseClicked(e -> {
-            if(caller instanceof Forum)
-                return;
-            onSceneSwitch();
-            App.instance.setScene(SceneSwitcher.instance.getScene("Forum"));
-        });
+//        mail.setOnMouseClicked(e -> {
+//            if(caller instanceof Mail)
+//                return;
+//            onSceneSwitch();
+//            App.instance.setScene(SceneSwitcher.instance.getScene("Mail"));
+//        });
+//        forum.setOnMouseClicked(e -> {
+//            if(caller instanceof Forum)
+//                return;
+//            onSceneSwitch();
+//            App.instance.setScene(SceneSwitcher.instance.getScene("Forum"));
+//        });
         calendar.setOnMouseClicked(e -> {
             if(caller instanceof Calendar)
                 return;
