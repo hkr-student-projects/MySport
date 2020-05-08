@@ -14,40 +14,42 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #763dee;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Settings">
+
     <children>
         <Pane cacheShape="false" centerShape="false" layoutX="281.0" layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="459.0" prefWidth="341.0" style="-fx-background-color: white; -fx-background-radius: 33;">
          <children>
-            <Text layoutX="128.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Settings">
+            <Text layoutX="80.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.settings" textAlignment="CENTER" wrappingWidth="167.064453125">
                <font>
                   <Font name="Helvetica Light" size="20.0" />
                </font>
             </Text>
-            <Text fill="#7c7c7c" layoutX="55.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit language or style in your profile." wrappingWidth="231.17919921875">
+            <Text fill="#7c7c7c" layoutX="55.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.editLang" wrappingWidth="231.17919921875">
                <font>
                   <Font name="Helvetica Light" size="13.0" />
                </font>
             </Text>
-            <Text fill="#464646" layoutX="55.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Language:" wrappingWidth="99.236328125">
+            <Text fill="#464646" layoutX="55.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.lang" wrappingWidth="99.236328125">
                <font>
                   <Font name="AppleGothic Regular" size="16.0" />
                </font>
             </Text>
-            <Text fill="#464646" layoutX="55.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Background:" wrappingWidth="129.236328125">
+            <Text fill="#464646" layoutX="55.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.background" wrappingWidth="129.236328125">
                <font>
                   <Font name="AppleGothic Regular" size="16.0" />
                </font>
             </Text>
-            <JFXButton cacheShape="false" centerShape="false" focusTraversable="false" layoutX="119.0" layoutY="388.0" prefHeight="32.0" prefWidth="104.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="Save" textFill="WHITE">
+            <JFXButton cacheShape="false" centerShape="false" focusTraversable="false" layoutX="119.0" layoutY="388.0" prefHeight="32.0" prefWidth="104.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="%key.save" textFill="WHITE">
                <font>
                   <Font name="Arial" size="16.0" />
                </font>
             </JFXButton>
-            <JFXComboBox layoutX="164.0" layoutY="122.0" />
+            <JFXComboBox fx:id="comboBox" layoutX="164.0" layoutY="122.0" />
             <ColorPicker layoutX="164.0" layoutY="229.0" style="-fx-background-color: transparent;" />
          </children>
       </Pane>
-        <Text fill="WHITE" layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="John Cena (Leader)" wrappingWidth="341.0">
+        <Text fill="WHITE" layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.leader" wrappingWidth="341.0">
             <font>
                 <Font name="AppleGothic Regular" size="14.0" />
             </font>
