@@ -1,5 +1,6 @@
 package controller;
 
+import com.jfoenix.controls.JFXComboBox;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -7,17 +8,14 @@ import model.App;
 import model.Tools.SceneSwitcher;
 
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class Account extends Menu implements Initializable {
+public class About extends Menu implements Initializable {
 
     @FXML
-    Button buttonEdit, buttonCreate;
+    public Button buttonReturn;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        bindTab(this);
-    }
 
     @Override
     protected void onBurgerOpen() {
@@ -39,13 +37,12 @@ public class Account extends Menu implements Initializable {
 
     }
 
-    @FXML
-    public void buttonEditClick() {
-        App.instance.setScene(SceneSwitcher.instance.getScene("EditProfile"));
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
 
-    @FXML
-    public void buttonCreateClick() {
-        App.instance.setScene(SceneSwitcher.instance.getScene("CreateAccount"));
+    public void buttonReturnClick() {
+        App.instance.setScene(SceneSwitcher.instance.getScene("Settings"));
     }
 }
