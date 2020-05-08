@@ -59,7 +59,7 @@ public class EditAccount extends Menu implements Initializable {
     @FXML
     public void buttonPasswordSaveClick() {
         try {
-            if (!passwordFieldPassword.getText().isBlank() && passwordFieldPassword.getText().length() <5) {
+            if (!passwordFieldPassword.getText().isBlank() && passwordFieldPassword.getText().length() <=5) {
                 String password = passwordFieldPassword.getText();
                 String oldPassword = passwordFieldCurrentPassword.getText();
                 if (password.equals(passwordFieldConfirmPassword.getText())){
