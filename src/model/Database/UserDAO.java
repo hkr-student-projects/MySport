@@ -174,7 +174,7 @@ public class UserDAO {
         }
         return email;
     }
-    // update password for user email
+    //update password for user email
     public void updateUserPassword(String email, String password){
         String sql = "UPDATE userlogon SET password = ? where email = ?";
         try {
