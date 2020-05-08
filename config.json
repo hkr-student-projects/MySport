@@ -5,6 +5,6 @@
     "DatabasePassword":"91rasuho",
     "DatabaseName":"mysport",
     "lang":"en",
-    "DatabaseAddress":"jdbc:mysql://localhost/hotel?&allowMultiQueries=true&serverTimezone=Europe/Stockholm&useSSL=false"
+    "DatabaseAddress":"jdbc:mysql://localhost/mysport?&allowMultiQueries=true&serverTimezone=Europe/Stockholm&useSSL=false"
   }
 ]
