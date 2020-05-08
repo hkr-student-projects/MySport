@@ -59,7 +59,7 @@ public class EditAccount extends Menu implements Initializable {
     @FXML
     public void buttonPasswordSaveClick() {
         try {
-            if (!passwordFieldPassword.getText().isBlank()) {
+            if (!passwordFieldPassword.getText().isBlank() && passwordFieldPassword.getText().length() <=5) {
                 String password = passwordFieldPassword.getText();
                 String oldPassword = passwordFieldCurrentPassword.getText();
                 if (password.equals(passwordFieldConfirmPassword.getText())){
@@ -70,7 +70,7 @@ public class EditAccount extends Menu implements Initializable {
                     alert("Error!", "Passwords do not match, please try again.");
                 }
             } else {
-                alert("Error! No password detected", "Please enter a new password and confirm it by re-entering the new password before saving changes.");
+                alert("Error!", "Please enter a new password that is at least 5 symbols long and confirm it by re-entering the new password before saving changes.");
             }
         } catch (Exception e) {
             Logger.log(e.getMessage());
