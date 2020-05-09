@@ -370,7 +370,6 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             block.writeByte((byte) pane.col);
             block.writeByte((byte) pane.span);
             block.writeColor(getRGBAColor(pane.color).split(","));
-            block.writeColor(getRGBAColor(pane.color).split(","));
             block.writeString(pane.hf);
             block.writeString(pane.mf);
             block.writeString(pane.ht);
