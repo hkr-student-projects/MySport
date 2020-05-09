@@ -38,8 +38,12 @@ public class App extends Application {
         this.stage.setScene(scene);
     }
 
+    public Stage getStage(){
+        return this.stage;
+    }
+
     public User getSession() {
-        return session;
+        return this.session;
     }
 
     public void setSession(User session) {

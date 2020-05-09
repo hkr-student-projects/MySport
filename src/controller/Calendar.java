@@ -4,12 +4,15 @@ import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -21,6 +24,7 @@ import model.App;
 import model.Tools.ArrayList;
 import model.Tools.Block;
 import model.Tools.Serializable;
+
 import java.net.URL;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -38,7 +42,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     @FXML
     private HBox options, dates;
     @FXML
-    private Button prev, next, bug;
+    private Button prev, next, adjust;
     @FXML
     private Pane dimming;
     @FXML
@@ -59,15 +63,12 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //new Thread(this::loadWeeksDB).start();
+        new Thread(this::loadWeeksDB).start();
         currentWeek = LocalDate.now();
-        //sportColor.setValue(Color.color(255, 51, 61, 0.83));
         gridPaneFast = new Node[gridPane.getRowConstraints().size()][gridPane.getColumnConstraints().size()];
         bindTab(this);
         loadTable(0);
         fillWeek(0);
-
-        //loadAsEditor(new String[] { "Volleyball", "Football", "Boxing" }); color is disabled thats why null pointer
 
         gridPane.setOnMousePressed(e -> modified = true);
         prev.setOnMouseClicked(e -> {
@@ -80,6 +81,8 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             fillWeek(7);//currentWeek modified
             modified = false;
         });
+
+        loadAsEditor(new String[] { "Chess", "Striptease" });
     }
 
     @Override
@@ -152,6 +155,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         buildProps((Pane)tempPane, span);
         prevPane = null;
         tempPane = null;
+        saveCurrentTable();
     }
 
     private void buildProps(Pane pane, int span){//unite for newly created week
@@ -248,10 +252,12 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     }
 
     private void saveWeeksDB() { //DATABASE SAVE
+        if(weeks.size() == 0)
+            return;
         byte[][] weeks = new byte[Calendar.weeks.size()][];
-        for(int i = 0; i < Calendar.weeks.size(); i ++){
+        for(int i = 0; i < Calendar.weeks.size(); i ++)
             weeks[i] = serialize(Calendar.weeks.get(i));
-        }
+
         App.databaseManager.saveWeeks(weeks);
     }
 
@@ -325,7 +331,21 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     }
 
     public void loadAsEditor(String[] sports){
-        this.sportList.setItems(FXCollections.observableList(List.of(sports)));
+        adjust.setDisable(false);
+        adjust.setVisible(true);
+        adjust.setOnMouseClicked(e -> {
+            dimming.setDisable(false);
+            dimming.setVisible(true);
+            App.instance.getStage().getScene().setOnKeyPressed(key -> {
+                if(key.getCode() == KeyCode.ESCAPE)
+                {
+                    dimming.setDisable(true);
+                    dimming.setVisible(false);
+                }
+            });
+        });
+        sportColor.setValue(Color.color(255 / 255.0, 51 / 255.0, 61 / 255.0, 0.83));
+        this.sportList.setItems(FXCollections.observableArrayList(List.of(sports)));//dont use FXCollections.observableList because of unknown css exception
         gridPane.getChildren().forEach(pane -> pane.setOnMouseClicked(e -> buildActivity(pane)));
     }
 //  count
@@ -595,7 +615,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
 
     private String getBackgroundColor(){
         Color color = sportColor.getValue();
-        return getBackgroundColor((int)color.getRed(), (int)color.getGreen(), (int)color.getBlue(), color.getOpacity());
+        return getBackgroundColor((int)color.getRed() * 255, (int)color.getGreen() * 255, (int)color.getBlue() * 255, color.getOpacity() * 255);
     }
 
     private String getBackgroundColor(int r, int g, int b, double o){

@@ -132,11 +132,11 @@ public class DatabaseManager {
         ArrayList<Object> entries = leaderData.get("member_id");
         if(entries.size() != 0){
             Map<String, ArrayList<Object>> activities = (Map<String, ArrayList<Object>>)executeQuery(QueryType.READER,
-                    "SELECT activity_name FROM "+leader_has_activity+" WHERE leader_member_id = ?",
+                    "SELECT name FROM "+activity+" JOIN "+leader_has_activity+" ON leader_member_id = ? AND activity_id = id",
                     new Object[] { id },
                     new int[] { Types.INTEGER }
             );
-            ArrayList<Object> sports = activities.get("activity_name");
+            ArrayList<Object> sports = activities.get("name");
             String[] arr = new String[sports.size()];
             for(int i = 0; i < arr.length; i++)
                 arr[i] = (String) sports.get(i);
@@ -165,8 +165,8 @@ public class DatabaseManager {
     }
 
     public void saveWeeks(byte[][] weeks){//do not want to unite because of need to create new array of objects
-        executeQuery(QueryType.UPDATE, "TRUNCATE ?;", new String[] { schedule }, new int[] { Types.VARCHAR });
-        executeQuery(QueryType.UPDATE, "INSERT INTO " + schedule + " (week) VALUES'" + " (?)".repeat(weeks.length) + "';", weeks, Types.BINARY);
+        executeQuery(QueryType.UPDATE, "TRUNCATE " + schedule + ";");
+        executeQuery(QueryType.UPDATE, "INSERT INTO " + schedule + " (week) VALUES (?)"+ ",(?)".repeat(weeks.length - 1) +";", weeks, Types.BINARY);
     }
 
     @SuppressWarnings("Because QueryType is Reader")
@@ -248,17 +248,18 @@ public class DatabaseManager {
                             "    ON DELETE CASCADE\n" +
                             "    ON UPDATE CASCADE);\n" +
                             "CREATE TABLE IF NOT EXISTS "+activity+" (\n" +
+                            "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
                             "  `name` VARCHAR(45) NOT NULL,\n" +
-                            "  PRIMARY KEY (`name`));\n" +
+                            "  PRIMARY KEY (`id`));\n" +
                             "  CREATE TABLE IF NOT EXISTS "+schedule+" (\n" +
                             "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
                             "  `week` BLOB NOT NULL,\n" +
                             "  PRIMARY KEY (`id`));" +
                             "  CREATE TABLE IF NOT EXISTS "+leader_has_activity+" (\n" +
                             "  `leader_member_id` INT NOT NULL,\n" +
-                            "  `activity_name` VARCHAR(45) NOT NULL,\n" +
-                            "  PRIMARY KEY (`leader_member_id`, `activity_name`),\n" +
-                            "  INDEX `fk_leader_has_activity_activity_idx` (`activity_name` ASC),\n" +
+                            "  `activity_id` INT NOT NULL,\n" +
+                            "  PRIMARY KEY (`leader_member_id`, `activity_id`),\n" +
+                            "  INDEX `fk_leader_has_activity_activity_idx` (`activity_id` ASC),\n" +
                             "  INDEX `fk_leader_has_activity_leader_idx` (`leader_member_id` ASC),\n" +
                             "  CONSTRAINT `fk_leader_has_activity_leader`\n" +
                             "    FOREIGN KEY (`leader_member_id`)\n" +
@@ -266,10 +267,10 @@ public class DatabaseManager {
                             "    ON DELETE CASCADE\n" +
                             "    ON UPDATE CASCADE,\n" +
                             "  CONSTRAINT `fk_leader_has_activity_activity`\n" +
-                            "    FOREIGN KEY (`activity_name`)\n" +
-                            "    REFERENCES "+activity+" (`name`)\n" +
-                            "    ON DELETE NO ACTION\n" +
-                            "    ON UPDATE NO ACTION);"
+                            "    FOREIGN KEY (`activity_id`)\n" +
+                            "    REFERENCES "+activity+" (`id`)\n" +
+                            "    ON DELETE CASCADE\n" +
+                            "    ON UPDATE CASCADE);"
             );
         }
         catch (Exception ex){

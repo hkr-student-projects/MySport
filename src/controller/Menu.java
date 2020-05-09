@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import model.App;
+import model.Tools.ArrayList;
 import model.Tools.SceneSwitcher;
 
 public abstract class Menu {
