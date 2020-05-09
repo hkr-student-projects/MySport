@@ -176,8 +176,8 @@ public class DatabaseManager {
         Map<String, ArrayList<Object>> results = (Map<String, ArrayList<Object>>) executeQuery(QueryType.READER, "SELECT week FROM " + schedule + ";");
         ArrayList<Object> entries = results.get("week");
         for(int i = 0; i < entries.size(); i++){
-            Blob blob = (Blob) entries.get(i); // creates the blob object from the result
-            byte[] week = new byte[0];
+            Blob blob = (Blob) entries.get(i);
+            byte[] week;
             try {
                 week = blob.getBytes(1L, (int)blob.length());
                 bytes.add(week);
@@ -211,6 +211,30 @@ public class DatabaseManager {
         System.arraycopy(bytes.getContents(), 0, weeks, 0, bytes.size());
 
         return weeks;
+    }
+    private Object getObject(ResultSet set, int col, int type) throws SQLException {
+        switch (type){
+            case -7 :
+            case -6 :
+            case 5 :
+            case 4 :
+                return set.getInt(col);
+            case -1 :
+            case 1 :
+            case 12 :
+                return set.getString(col);
+            case 91 :
+                return set.getDate(col);
+            case 2004 :
+            case -2 :
+            case -3 :
+            case -4 :
+                return set.getBlob(col);
+            case 0:
+                return null;
+            default:
+                return set.getObject(col);
+        }
     }
     
     public void checkSchema()
@@ -313,7 +337,7 @@ public class DatabaseManager {
                     results.put(metaData.getColumnName(i), new ArrayList<>(30));
                 while (set.next())
                     for(int i = 1; i < count + 1; i++)
-                        results.get(metaData.getColumnName(i)).add(set.getObject(i));
+                        results.get(metaData.getColumnName(i)).add(getObject(set, i, metaData.getColumnType(i)));
 
                 result = results;
             }

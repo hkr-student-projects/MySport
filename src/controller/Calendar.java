@@ -63,7 +63,8 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        new Thread(this::loadWeeksDB).start();
+        //new Thread(this::loadWeeksDB).start();
+        loadWeeksDB();
         currentWeek = LocalDate.now();
         gridPaneFast = new Node[gridPane.getRowConstraints().size()][gridPane.getColumnConstraints().size()];
         bindTab(this);
@@ -81,8 +82,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             fillWeek(7);//currentWeek modified
             modified = false;
         });
-
-        loadAsEditor(new String[] { "Chess", "Striptease" });
+        
     }
 
     @Override
