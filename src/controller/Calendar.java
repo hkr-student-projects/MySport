@@ -614,7 +614,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
 
     private String getBackgroundColor(){
         Color color = sportColor.getValue();
-        return getBackgroundColor((int)color.getRed() * 255, (int)color.getGreen() * 255, (int)color.getBlue() * 255, color.getOpacity() * 255);
+        return getBackgroundColor((int)color.getRed() * 255, (int)color.getGreen() * 255, (int)color.getBlue() * 255, color.getOpacity());
     }
 
     private String getBackgroundColor(int r, int g, int b, double o){
