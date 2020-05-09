@@ -2,12 +2,14 @@ package model.Tools;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import model.App;
 import model.Logging.Logger;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ResourceBundle;
 
 public class SceneSwitcher {
 
@@ -25,6 +27,7 @@ public class SceneSwitcher {
             for(File f : files) {
                 String name = f.getName().substring(0, f.getName().length() - 5);
                 FXMLLoader loader = new FXMLLoader(f.toURI().toURL());
+                loader.setResources(ResourceBundle.getBundle("resources/lang_"+ App.config.languageCode +""));
                 scenes.put(name, new Scene(loader.load(), 900, 600));
                 if((loader.getController()) != null)
                     controllers.put(name, loader.getController());

@@ -294,8 +294,10 @@ public class DatabaseManager {
         // This method is to reduce the amount of copy paste that there was within this class.
         if(parameters != null && parameters.length != types.length)
             throw new IllegalArgumentException("executeQuery(): parameters length is different to types length.");
-
-        try(PreparedStatement command = createConnection().prepareStatement(query))
+        Object result = null;
+        try(Connection connection = createConnection();
+            PreparedStatement command = connection.prepareStatement(query)
+        )
         {
             if(parameters != null)
                 for(int i = 0; i < parameters.length; i++)
@@ -312,23 +314,23 @@ public class DatabaseManager {
                     for(int i = 1; i < count + 1; i++)
                         results.get(metaData.getColumnName(i)).add(set.getObject(i));
 
-                return results;
+                result = results;
             }
             else if(type == QueryType.UPDATE){
-                return command.executeUpdate();
+                result = command.executeUpdate();
             }
             else
-                return command.execute();
+                result = command.execute();
         }
         catch (SQLException ex)
         {
             Logger.logException(ex);
         }
 
-        return null;
+        return result;
     }
 
-    public static Connection createConnection(){
+    private static Connection createConnection(){
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(App.config.DatabaseAddress, App.config.DatabaseUsername, App.config.DatabasePassword);

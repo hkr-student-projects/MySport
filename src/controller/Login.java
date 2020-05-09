@@ -38,8 +38,7 @@ import java.util.ResourceBundle;
 
 import static com.restfb.logging.RestFBLogger.CLIENT_LOGGER;
 
-public class Login extends Menu implements Initializable {
-
+public class Login implements Initializable {
 
     @FXML
     private TextField email;
@@ -61,11 +60,6 @@ public class Login extends Menu implements Initializable {
     private Stage stage;
 
     private static final String SUCCESS_URL = "https://www.facebook.com/connect/login_success.html";
-
-
-
-
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -140,26 +134,6 @@ public class Login extends Menu implements Initializable {
         });
     }
 
-
-    @Override
-    protected void onBurgerOpen() {
-
-    }
-
-    @Override
-    protected void onBurgerClose() {
-
-    }
-
-    @Override
-    protected void onSceneSwitch() {
-
-    }
-
-    @Override
-    protected void onAppClose() {
-
-    }
     public void handleFBLoginButton(ActionEvent event) {
         System.out.println("In handle button");
         WebView webView = new WebView();
@@ -218,7 +192,7 @@ public class Login extends Menu implements Initializable {
             user = client.fetchObject("me", User.class, Parameter.with("fields", "name,email"));
 
         }
-        catch (FacebookException ex)
+        catch (FacebookException ignored)
         {
         }
         if(stage != null) {
@@ -251,16 +225,12 @@ public class Login extends Menu implements Initializable {
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
 
     }
-
-
 
     public void handleLoginButton(ActionEvent actionEvent) {
     }

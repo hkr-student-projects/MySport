@@ -14,7 +14,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #763dee;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Settings">
 
     <children>
@@ -40,13 +39,18 @@
                   <Font name="AppleGothic Regular" size="16.0" />
                </font>
             </Text>
-            <JFXButton cacheShape="false" centerShape="false" focusTraversable="false" layoutX="119.0" layoutY="388.0" prefHeight="32.0" prefWidth="104.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="%key.save" textFill="WHITE">
+            <JFXButton cacheShape="false" centerShape="false" focusTraversable="false" layoutX="184.0" layoutY="388.0" prefHeight="32.0" prefWidth="104.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="%key.save" textFill="WHITE">
                <font>
                   <Font name="Arial" size="16.0" />
                </font>
             </JFXButton>
             <JFXComboBox fx:id="comboBox" layoutX="164.0" layoutY="122.0" />
             <ColorPicker layoutX="164.0" layoutY="229.0" style="-fx-background-color: transparent;" />
+            <JFXButton fx:id="buttonAbout" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="53.0" layoutY="388.0" onAction="#buttonAboutClick" prefHeight="32.0" prefWidth="104.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="%key.about" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="16.0" />
+               </font>
+            </JFXButton>
          </children>
       </Pane>
         <Text fill="WHITE" layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.leader" wrappingWidth="341.0">

@@ -1,15 +1,19 @@
 package controller;
 
+import com.jfoenix.controls.JFXComboBox;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -18,10 +22,10 @@ import model.Tools.ArrayList;
 import model.Tools.Block;
 import model.Tools.Serializable;
 import java.net.URL;
-import java.sql.SQLException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class Calendar extends Menu implements Initializable, Serializable<Calendar.WeekProperties> {
@@ -31,15 +35,22 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     private Text month;
     @FXML
     private GridPane gridPane;
-    private Node[][] gridPaneFast;
-    private Node tempPane, prevPane;
     @FXML
     private HBox options, dates;
     @FXML
     private Button prev, next, bug;
+    @FXML
+    private Pane dimming;
+    @FXML
+    private JFXComboBox<String> sportList;
+    @FXML
+    private ColorPicker sportColor;
+    private ArrayList<Node> leaderPanes;
+    private Node[][] gridPaneFast;
+    private Node tempPane, prevPane;
     private int tempRow, tempCol, initY;
     private boolean flag = true, ctrl, modified = false;
-    private final String color = "-fx-background-color: rgba(255,51,61,0.83)";
+    //private final String defaultColor = "-fx-background-color: rgba(255,51,61,0.83)";
     private LocalDate currentWeek;
 
     static {
@@ -48,33 +59,27 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //new Thread(this::loadWeeksDB).start();
         currentWeek = LocalDate.now();
+        //sportColor.setValue(Color.color(255, 51, 61, 0.83));
         gridPaneFast = new Node[gridPane.getRowConstraints().size()][gridPane.getColumnConstraints().size()];
         bindTab(this);
-        loadWeeksDB();
         loadTable(0);
         fillWeek(0);
 
-        loadAsEditor();
+        //loadAsEditor(new String[] { "Volleyball", "Football", "Boxing" }); color is disabled thats why null pointer
 
         gridPane.setOnMousePressed(e -> modified = true);
         prev.setOnMouseClicked(e -> {
             loadTable(-7);//currentWeek unmodified
             fillWeek(-7);//currentWeek modified
-            //gridPane.getChildren().forEach(pane -> pane.setOnMouseClicked(e1 -> buildActivity(pane)));
             modified = false;
         });
         next.setOnMouseClicked(e -> {
             loadTable(7);//currentWeek unmodified
             fillWeek(7);//currentWeek modified
-            //gridPane.getChildren().forEach(pane -> pane.setOnMouseClicked(e1 -> buildActivity(pane)));
             modified = false;
         });
-//        fillGrids(this.gridPane, this.gridPaneFast);
-
-        loadWeeksDB();
-        //loadTable(0);
-        loadAsEditor();
     }
 
     @Override
@@ -133,7 +138,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             bakePane(Math.abs(extendBy) + 1);
         }
         else {
-            pane.setStyle(color);
+            pane.setStyle(getBackgroundColor());
             int[] cords = getNodeCords(pane);
             tempRow = cords[0];
             tempCol = cords[1];
@@ -151,7 +156,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
 
     private void buildProps(Pane pane, int span){//unite for newly created week
         buildTime(pane, span);
-        String sp = "Leader.getSport()";
+        String sp = sportList.getValue();
         pane.getProperties().put("sp", sp);
         Text activity = new Text(10, 40, sp);
         activity.setFill(Paint.valueOf("#FFFFFF"));
@@ -271,6 +276,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     }
 
     private void loadWeeksDB() {
+        leaderPanes = new ArrayList<>(30);
         byte[][] weeks = App.databaseManager.loadWeeks();
         for(byte[] week : weeks)
             Calendar.weeks.add(deserialize(week));
@@ -318,7 +324,8 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             }
     }
 
-    public void loadAsEditor(){
+    public void loadAsEditor(String[] sports){
+        this.sportList.setItems(FXCollections.observableList(List.of(sports)));
         gridPane.getChildren().forEach(pane -> pane.setOnMouseClicked(e -> buildActivity(pane)));
     }
 //  count
@@ -335,13 +342,14 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     public byte[] serialize(WeekProperties week) {
         Block block = new Block();
         block.writeByte((byte) week.panes.size());
-        block.writeInt16((short) week.dayFrom);
-        block.writeInt16((short) week.dayTo);
+        block.writeInt16(week.dayFrom);
+        block.writeInt16(week.dayTo);
         for(int i = 0; i < week.panes.size(); i++){
             WeekProperties.PaneProperties pane = week.panes.get(i);
             block.writeByte((byte) pane.row);
             block.writeByte((byte) pane.col);
             block.writeByte((byte) pane.span);
+            block.writeColor(getRGBAColor(pane.color).split(","));
             block.writeColor(getRGBAColor(pane.color).split(","));
             block.writeString(pane.hf);
             block.writeString(pane.mf);
@@ -382,8 +390,8 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             Text time = new Text(10, 20, tm);
             time.setFill(Paint.valueOf("#FFFFFF"));
             time.setFont(new Font("Helvetica Light", 11.0));
-            String sp = block.readString();
-            Text sport = new Text(10, 40, sp);
+            String sportName = block.readString();
+            Text sport = new Text(10, 40, sportName);
             sport.setFill(Paint.valueOf("#FFFFFF"));
             sport.setFont(new Font("Helvetica Light", 11.0));
 
@@ -480,7 +488,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
                         int[] prevCords = getNodeCords(prevPane);
                         resetColorBetween(curCords, prevCords);
                     }
-                    p.setStyle(color);
+                    p.setStyle(getBackgroundColor());
                     tempRow = curCords[0];
                     tempCol = curCords[1];
                     checkColorBetween(tempCords, curCords);
@@ -516,7 +524,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         for(int i = start[0]; i < end[0] + 1; i++){
             Node node = getNode(i, end[1]);
             if(node.getStyle().isBlank())
-                node.setStyle(color);
+                node.setStyle(getBackgroundColor());
         }
     }
 
@@ -583,6 +591,15 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
                 gridPaneFast[row][col] = p;
             }
         }
+    }
+
+    private String getBackgroundColor(){
+        Color color = sportColor.getValue();
+        return getBackgroundColor((int)color.getRed(), (int)color.getGreen(), (int)color.getBlue(), color.getOpacity());
+    }
+
+    private String getBackgroundColor(int r, int g, int b, double o){
+        return String.format("-fx-background-color: rgba(%s,%s,%s,%s)", r, g, b, o);
     }
 }
 // row: 15px, 4 rows per hour, textfield: 22px, spacing: 4(15px) - 2(22px / 2)

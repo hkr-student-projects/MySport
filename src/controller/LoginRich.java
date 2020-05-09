@@ -17,7 +17,7 @@ import javafx.scene.media.MediaView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Login2 implements Initializable {
+public class LoginRich implements Initializable {
     @FXML private MediaView mediaView;
     @FXML private JFXButton loginButton;
     @FXML private JFXPasswordField passwordTestField;
