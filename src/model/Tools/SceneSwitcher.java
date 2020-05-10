@@ -2,6 +2,7 @@ package model.Tools;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import model.App;
 import model.Logging.Logger;
 
@@ -13,7 +14,8 @@ import java.util.ResourceBundle;
 
 public class SceneSwitcher {
 
-    private static Map<String, Scene> scenes;
+    private static Map<String, AnchorPane> roots;
+    public static Map<String, Scene> scenes;
     private static Map<String, Object> controllers;
     public static SceneSwitcher instance = new SceneSwitcher();
 
@@ -21,14 +23,16 @@ public class SceneSwitcher {
         try {
             File[] files = new File("src/view").listFiles((dir, name) ->
                     name.toLowerCase().endsWith(".fxml"));
-            assert files != null;
+            roots = new HashMap<>(files.length);
             scenes = new HashMap<>(files.length);
             controllers = new HashMap<>(files.length);
             for(File f : files) {
                 String name = f.getName().substring(0, f.getName().length() - 5);
                 FXMLLoader loader = new FXMLLoader(f.toURI().toURL());
                 loader.setResources(ResourceBundle.getBundle("resources/lang_"+ App.config.languageCode +""));
-                scenes.put(name, new Scene(loader.load(), 900, 600));
+                AnchorPane pane = loader.load();
+                roots.put(name, pane);
+                scenes.put(name, new Scene(pane, 900, 600));
                 if((loader.getController()) != null)
                     controllers.put(name, loader.getController());
             }
@@ -38,6 +42,9 @@ public class SceneSwitcher {
         }
     }
 
+    public AnchorPane getRoot(String name){
+        return roots.get(name);
+    }
     public Scene getScene(String name){
         return scenes.get(name);
     }

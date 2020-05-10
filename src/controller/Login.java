@@ -1,38 +1,22 @@
 package controller;
 
 import com.jfoenix.controls.JFXToggleButton;
-import com.restfb.DefaultFacebookClient;
-import com.restfb.FacebookClient;
-import com.restfb.Parameter;
-import com.restfb.Version;
-import com.restfb.exception.FacebookException;
-import com.restfb.scope.ScopeBuilder;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
-import javafx.scene.text.Text;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import model.App;
 import model.People.Leader;
 import model.People.User;
 import model.Tools.SceneSwitcher;
-import java.io.File;
-import java.io.IOException;
+
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import static com.restfb.logging.RestFBLogger.CLIENT_LOGGER;
 
 public class Login implements Initializable {
 
@@ -91,7 +75,7 @@ public class Login implements Initializable {
                 User user = App.databaseManager.getUser(id);
                 App.instance.setSession(App.databaseManager.getUser(id));
                 if(user instanceof Leader)
-                    new Thread(() -> ((Calendar)SceneSwitcher.instance.getController("Calendar")).loadAsEditor(((Leader)user).getLeaderOf())).start();
+                    new Thread(() -> ((Calendar)SceneSwitcher.instance.getController("Calendar")).loadUser(((Leader)user).getLeaderOf())).start();
                 App.instance.setScene(SceneSwitcher.instance.getScene("Home"));
             }
         });

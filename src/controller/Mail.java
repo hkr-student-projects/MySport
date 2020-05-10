@@ -22,7 +22,7 @@ public class Mail extends Menu implements Initializable {
     }
 
     @Override
-    protected void onSceneSwitch() {
+    protected void onBeforeSceneSwitch() {
 
     }
 

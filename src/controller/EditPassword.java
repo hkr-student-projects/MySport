@@ -23,7 +23,7 @@ public class EditPassword extends Menu implements Initializable {
     }
 
     @Override
-    protected void onSceneSwitch() {
+    protected void onBeforeSceneSwitch() {
 
     }
 

@@ -1,10 +1,10 @@
 package controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import model.App;
-import model.Tools.ArrayList;
 import model.Tools.SceneSwitcher;
 
 public abstract class Menu {
@@ -18,7 +18,7 @@ public abstract class Menu {
 
     protected abstract void onBurgerClose();
 
-    protected abstract void onSceneSwitch();
+    protected abstract void onBeforeSceneSwitch();
 
     protected abstract void onAppClose();
 
@@ -38,13 +38,13 @@ public abstract class Menu {
         home.setOnMouseClicked(e -> {
             if(caller instanceof Home)
                 return;
-            onSceneSwitch();
+            onBeforeSceneSwitch();
             App.instance.setScene(SceneSwitcher.instance.getScene("Home"));
         });
         account.setOnMouseClicked(e -> {
             if(caller instanceof Account)
                 return;
-            onSceneSwitch();
+            onBeforeSceneSwitch();
             App.instance.setScene(SceneSwitcher.instance.getScene("Account"));
         });
 //        mail.setOnMouseClicked(e -> {
@@ -62,13 +62,13 @@ public abstract class Menu {
         calendar.setOnMouseClicked(e -> {
             if(caller instanceof Calendar)
                 return;
-            onSceneSwitch();
+            onBeforeSceneSwitch();
             App.instance.setScene(SceneSwitcher.instance.getScene("Calendar"));
         });
         settings.setOnMouseClicked(e -> {
             if(caller instanceof Settings)
                 return;
-            onSceneSwitch();
+            onBeforeSceneSwitch();
             App.instance.setScene(SceneSwitcher.instance.getScene("Settings"));
         });
         logout.setOnMouseClicked(e -> {
