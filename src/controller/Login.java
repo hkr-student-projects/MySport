@@ -65,23 +65,17 @@ public class Login implements Initializable {
                 error.setText("");
             }
         });
-        signUp.setOnMouseClicked(e -> {
-            App.instance.setScene(SceneSwitcher.instance.getScene("CreateAccount"));
-        });
+        signUp.setOnMouseClicked(e -> App.instance.setScene(SceneSwitcher.instance.getScene("CreateAccount")));
         login.setOnMouseClicked(e -> {
             if(toggle.isSelected())
             {
                 App.instance.setScene(SceneSwitcher.instance.getScene("Home"));
                 return;
             }
-            if(checkFormat()){
+            if(checkEmail() && checkPassword()){
                 int id;
 //                    Thread thread = new Thread(() -> {
-//                        try {
-//                            App.databaseManager.checkCredentials(email.getText(), password.getText());
-//                        } catch (SQLException throwables) {
-//                            throwables.printStackTrace();
-//                        }
+//                        id = App.databaseManager.checkCredentials(email.getText(), password.getText());
 //                    });
 //                    thread.start();
 //                    thread.join();
@@ -93,26 +87,37 @@ public class Login implements Initializable {
                 email.setText("");
                 password.setText("");
                 error.setText("");
+                redLines();
                 User user = App.databaseManager.getUser(id);
                 App.instance.setSession(App.databaseManager.getUser(id));
                 if(user instanceof Leader)
-                    ((Calendar)SceneSwitcher.instance.getController("Calendar")).loadAsEditor(((Leader)user).getLeaderOf());
+                    new Thread(() -> ((Calendar)SceneSwitcher.instance.getController("Calendar")).loadAsEditor(((Leader)user).getLeaderOf())).start();
                 App.instance.setScene(SceneSwitcher.instance.getScene("Home"));
             }
         });
     }
 
-    private boolean checkFormat() {
-        if(email.getText().isBlank() || password.getText().isBlank() || !email.getText().matches("^[A-Za-z0-9+_.-]+@(.+)$")){
+    private boolean checkEmail() {
+        if(email.getText().isBlank()){
+            error.setText("Email is empty");
+            return false;
+        }
+        else if(!email.getText().matches("^[A-Za-z0-9+_.-]+@(.+)$")){
             error.setText("Incorrect email format");
             return false;
         }
-//        DatabaseManager.AccountType acc = App.databaseManager.checkCredentials(email.getText(), password.getText());
-//        if(acc == DatabaseManager.AccountType.NONE){
-//            error.setText("Incorrect email or password");
-//            return false;
-//        }
+        return true;
+    }
 
+    private boolean checkPassword(){
+        if(password.getText().isBlank()){
+            error.setText("Password is empty");
+            return false;
+        }
+        else if(password.getText().length() < 5){
+            error.setText("Incorrect password length");
+            return false;
+        }
         return true;
     }
 
@@ -131,6 +136,13 @@ public class Login implements Initializable {
                 error.setText("");
             }
         });
+    }
+
+    private void resetLines(){
+        line0.setStroke(Paint.valueOf("#000000"));
+        line0.setStrokeWidth(1);
+        line1.setStroke(Paint.valueOf("#000000"));
+        line1.setStrokeWidth(1);
     }
 }
 

@@ -21,6 +21,7 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import model.App;
+import model.People.Leader;
 import model.Tools.ArrayList;
 import model.Tools.Block;
 import model.Tools.Serializable;
@@ -53,7 +54,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     private Node[][] gridPaneFast;
     private Node tempPane, prevPane;
     private int tempRow, tempCol, initY;
-    private boolean flag = true, ctrl, modified = false;
+    private boolean flag = true, editor = false, modified = false;
     //private final String defaultColor = "-fx-background-color: rgba(255,51,61,0.83)";
     private LocalDate currentWeek;
 
@@ -63,14 +64,14 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //new Thread(this::loadWeeksDB).start();
-        loadWeeksDB();
-        currentWeek = LocalDate.now();
+        new Thread(() -> {
+            currentWeek = LocalDate.now();
+            loadWeeksDB();
+            loadTable(0);
+            fillWeek(0);
+            bindTab(this);
+        }).start();
         gridPaneFast = new Node[gridPane.getRowConstraints().size()][gridPane.getColumnConstraints().size()];
-        bindTab(this);
-        loadTable(0);
-        fillWeek(0);
-
         gridPane.setOnMousePressed(e -> modified = true);
         prev.setOnMouseClicked(e -> {
             loadTable(-7);//currentWeek unmodified
@@ -82,7 +83,6 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             fillWeek(7);//currentWeek modified
             modified = false;
         });
-        
     }
 
     @Override
@@ -212,7 +212,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             int span = (int)pane.getProperties().get("span");
             int var0;
             if(dif > 0){
-                if(ctrl){
+                if(false){
                     //moving sides
                 }
                 else {
@@ -230,7 +230,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
                 }
             }
             else {
-                if(ctrl){
+                if(false){
                     //moving sides
                 }
                 else {
@@ -322,15 +322,18 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
                 pane.setStyle(paneProp.color);
                 pane.setOnMouseClicked(null);
                 pane.setOnMousePressed(e -> initY = (short)e.getSceneY());
-                pane.setOnMouseDragged(e -> move(pane, (int) e.getSceneY()));
+                if(editor){
+                    pane.getStyleClass().add( "cursorHResize");
+                    pane.setOnMouseDragged(e -> move(pane, (int)e.getSceneY()));
+                }
                 pane.getStylesheets().add("/view/css/general.css");
-                pane.getStyleClass().add( "cursorHResize");
                 for(int j = 1; j < paneProp.span; j++)
                     gridPaneFast[paneProp.row + i][paneProp.col] = pane;
             }
     }
 
     public void loadAsEditor(String[] sports){
+        editor = true;
         adjust.setDisable(false);
         adjust.setVisible(true);
         adjust.setOnMouseClicked(e -> {

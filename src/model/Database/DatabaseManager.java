@@ -94,6 +94,13 @@ public class DatabaseManager {
 
         return matches;
     }
+
+    public boolean existsEmail(String email){
+        return (boolean) executeQuery(QueryType.BOOL, "SELECT email FROM "+account+" WHERE email = ?",
+            new String[] { email }, new int[] { Types.VARCHAR }
+        );
+    }
+
     @SuppressWarnings("Because QueryType is Reader")
     public boolean updateEmail(int id, String oldEmail, String newEmail) {
         boolean matches = false;
@@ -157,7 +164,6 @@ public class DatabaseManager {
                 new int[] { Types.VARCHAR, Types.VARCHAR }
         );
         ArrayList<Object> entries = memberData.get("member_id");
-        System.out.println(entries.size());
         if(entries.size() != 0)
             id = (int) entries.get(0);
 
@@ -240,7 +246,7 @@ public class DatabaseManager {
     public void checkSchema()
     {
         try {
-            executeQuery(QueryType.BOOL, "CREATE TABLE IF NOT EXISTS "+member+" ("+
+            executeQuery(QueryType.UDP, "CREATE TABLE IF NOT EXISTS "+member+" ("+
                             "`id` INT NOT NULL AUTO_INCREMENT," +
                             "`name` VARCHAR(45) NOT NULL," +
                             "`middlename` VARCHAR(45) NOT NULL," +
@@ -344,8 +350,10 @@ public class DatabaseManager {
             else if(type == QueryType.UPDATE){
                 result = command.executeUpdate();
             }
+            else if(type == QueryType.BOOL)
+                result = command.executeQuery().next();
             else
-                result = command.execute();
+                command.execute();
         }
         catch (SQLException ex)
         {
@@ -369,7 +377,8 @@ public class DatabaseManager {
     public enum QueryType {
         UPDATE,//INSERT, UPDATE, DELETE, CREATE TABLE, DROP TABLE
         READER,//SELECT -> ResultSet
-        BOOL//ALL -> SELECT ? True : False
+        BOOL,//SELECT -> Exists selection or not
+        UDP
     }
 }
 
