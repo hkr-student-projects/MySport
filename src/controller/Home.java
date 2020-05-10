@@ -28,7 +28,7 @@ public class Home extends Menu implements Initializable {
     }
 
     @Override
-    protected void onAppClose() {
+    protected void onBeforeLogout() {
 
     }
 }

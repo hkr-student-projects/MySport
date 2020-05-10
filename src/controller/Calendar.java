@@ -19,8 +19,6 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import model.App;
-import model.People.Leader;
-import model.People.Member;
 import model.People.User;
 import model.Tools.ArrayList;
 import model.Tools.Block;
@@ -108,8 +106,11 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     }
 
     @Override
-    protected void onAppClose() {
+    protected void onBeforeLogout() {
+        if(modified)
+            saveCurrentTable();
         saveWeeksDB();
+        unloadUser();
     }
 
     private void buildActivity(Node pane){//works only if editable true (loadWeek -> fillGrid -> createPane (trackable))
@@ -187,6 +188,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             props.put("jns", jns);
             join.setDisable(true);
             join.setVisible(false);
+            modified = true;
         }).start());
 
         pane.getChildren().addAll(activity, joins, join);
@@ -297,10 +299,11 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             ObservableMap<Object, Object> props = pane.getProperties();
             if (props.containsKey("span")) {
                 int[] cords = getNodeCords(pane);
+                System.out.println((int) pane.getProperties().get("jns"));
                 newWeek.addProperty(new WeekProperties.PaneProperties(
                         cords[0], cords[1], (int) pane.getProperties().get("span"), (int) pane.getProperties().get("jns"),
                         (String) props.get("hf"), (String)props.get("mf"), (String)props.get("ht"), (String)props.get("mt"), pane.getStyle(),
-                        (Text) ((Pane) pane).getChildren().get(0), (Text) ((Pane) pane).getChildren().get(1), (Text) ((Pane) pane).getChildren().get(2)
+                        (Text) ((Pane) pane).getChildren().get(0), (Text) ((Pane) pane).getChildren().get(1), (Text) ((Pane) pane).getChildren().get(2), (Button) ((Pane) pane).getChildren().get(3)
                 ));
             }
         }
@@ -342,8 +345,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
                 props.put("ht", paneProp.ht);
                 props.put("mt", paneProp.mt);
                 props.put("jns", paneProp.jns);
-                childs.add(paneProp.time);
-                childs.add(paneProp.sport);
+                childs.addAll(paneProp.time, paneProp.activity, paneProp.joins, paneProp.join);
                 GridPane.setRowSpan(pane, paneProp.span);
                 deleteBetween(pane, paneProp.row + 1, paneProp.row + paneProp.span - 1, paneProp.col);
                 pane.setStyle(paneProp.color);
@@ -385,7 +387,8 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             block.writeString(pane.mf);
             block.writeString(pane.ht);
             block.writeString(pane.mt);
-            block.writeString(pane.sport.getText());
+            block.writeString(pane.activity.getText());
+            System.out.println("ser: " + pane.jns);
             block.writeInt16((short) pane.jns);
         }
         byte[] bytes = new byte[block.getSize()];
@@ -426,11 +429,31 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             sport.setFill(Paint.valueOf("#FFFFFF"));
             sport.setFont(new Font("Helvetica Light", 11.0));
             short jns = block.readInt16();
-            Text joins = new Text(90, 15 * (span - 1) - 1, String.valueOf(jns));
+            Text joins = new Text(90, 15 * (span - 1) - 1, String.valueOf(jns) + "+");
+            System.out.println("des: " + jns);
             joins.setFill(Paint.valueOf("#FFFFFF"));
             joins.setFont(new Font("Helvetica Light", 11.0));
+            Button join = new Button("Join");
+            join.getStylesheets().add("/view/css/general.css");
+            join.getStyleClass().addAll("joinButton", "cursorHand");
+            join.setPrefWidth(30);
+            join.setPrefHeight(30);
+            join.setFont(new Font("Helvetica Light", 8));
+            join.setLayoutX(10);
+            join.setLayoutY(15 * (span - 1) - 20);
+            join.setOnMouseClicked(e -> new Thread(() -> {
+                Pane p = (Pane) join.getParent();
+                Text t = (Text) p.getChildren().get(2);
+                ObservableMap<Object, Object> props = p.getProperties();
+                int jns1 = (int) props.get("jns");
+                t.setText(++jns1 + "+");
+                props.remove("jns");
+                props.put("jns", jns1);
+                join.setDisable(true);
+                join.setVisible(false);
+            }).start());
 
-            week.addProperty(new WeekProperties.PaneProperties(row, col, span, jns, hf, mf, ht, mt, color, time, sport, joins));
+            week.addProperty(new WeekProperties.PaneProperties(row, col, span, jns, hf, mf, ht, mt, color, time, sport, joins, join));
         }
         return week;
     }
@@ -464,10 +487,11 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
 
         public static class PaneProperties {
             int row, col, span, jns;
-            Text time, sport, joins;
+            Text time, activity, joins;
             String color, hf, mf, ht, mt;
+            Button join;
 
-            private PaneProperties(int row, int col, int span, int jns, String hf, String mf, String ht, String mt, String color, Text time, Text sport, Text joins){
+            private PaneProperties(int row, int col, int span, int jns, String hf, String mf, String ht, String mt, String color, Text time, Text activity, Text joins, Button join){
                 this.row = row;
                 this.col = col;
                 this.span = span;
@@ -477,8 +501,10 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
                 this.mt = mt;
                 this.color = color;
                 this.time = time;
-                this.sport = sport;
+                this.activity = activity;
                 this.joins = joins;
+                this.join = join;
+                this.jns = jns;
             }
         }
     }
@@ -662,6 +688,17 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         sportColor.setValue(Color.color(255 / 255.0, 51 / 255.0, 61 / 255.0, 0.83));
         this.sportList.setItems(FXCollections.observableArrayList(List.of((sports))));//dont use FXCollections.observableList because of unknown css exception
         gridPane.getChildren().forEach(pane -> pane.setOnMouseClicked(e -> buildActivity(pane)));
+    }
+
+    public void unloadUser(){
+        sessionName.setText("");
+        editor = false;
+        adjust.setDisable(true);
+        adjust.setVisible(false);
+        adjust.setOnMouseClicked(null);
+        sportColor.setValue(null);
+        this.sportList.getItems().clear();//dont use FXCollections.observableList because of unknown css exception
+        gridPane.getChildren().forEach(pane -> pane.setOnMouseClicked(null));
     }
 }
 // row: 15px, 4 rows per hour, textfield: 22px, spacing: 4(15px) - 2(22px / 2)

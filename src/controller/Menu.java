@@ -1,7 +1,6 @@
 package controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import model.App;
@@ -20,7 +19,7 @@ public abstract class Menu {
 
     protected abstract void onBeforeSceneSwitch();
 
-    protected abstract void onAppClose();
+    protected abstract void onBeforeLogout();
 
     protected void toggleTab(){
         tab.setDisable(flag);
@@ -72,7 +71,7 @@ public abstract class Menu {
             App.instance.setScene(SceneSwitcher.instance.getScene("Settings"));
         });
         logout.setOnMouseClicked(e -> {
-            onAppClose();
+            onBeforeLogout();
             App.instance.setScene(SceneSwitcher.instance.getScene("Login"));
         });
     }

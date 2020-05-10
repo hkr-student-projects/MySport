@@ -77,6 +77,7 @@ public class Login implements Initializable {
                 if(user instanceof Leader)
                     new Thread(() -> ((Calendar)SceneSwitcher.instance.getController("Calendar")).loadUser(((Leader)user).getLeaderOf())).start();
                 App.instance.setScene(SceneSwitcher.instance.getScene("Home"));
+                resetLines();
             }
         });
     }

@@ -27,7 +27,7 @@ public class Mail extends Menu implements Initializable {
     }
 
     @Override
-    protected void onAppClose() {
+    protected void onBeforeLogout() {
 
     }
 }

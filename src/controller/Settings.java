@@ -46,7 +46,7 @@ public class Settings extends Menu implements Initializable {
     }
 
     @Override
-    protected void onAppClose() {
+    protected void onBeforeLogout() {
 
     }
     private void loadLangBundle(String lang){
