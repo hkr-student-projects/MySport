@@ -10,7 +10,7 @@ import java.util.Date;
 public class LoggerQueue {
 
     public static LoggerQueue Resource = new LoggerQueue();
-    private static Object lock = new Object();
+    private static final Object lock = new Object();
     private ArrayDeque<LogEntry> logEntryQueue = new ArrayDeque<>();
 
     public void enqueue(LogEntry le)
@@ -24,7 +24,7 @@ public class LoggerQueue {
     public synchronized void processLog(){
 
         while (true){
-            Boolean flag = false;
+            boolean flag = false;
 
             if(logEntryQueue.size() <= 0)
                 break;

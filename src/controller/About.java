@@ -28,12 +28,12 @@ public class About extends Menu implements Initializable {
     }
 
     @Override
-    protected void onSceneSwitch() {
+    protected void onBeforeSceneSwitch() {
 
     }
 
     @Override
-    protected void onAppClose() {
+    protected void onBeforeLogout() {
 
     }
 

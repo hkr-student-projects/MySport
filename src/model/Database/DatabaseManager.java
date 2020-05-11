@@ -94,6 +94,13 @@ public class DatabaseManager {
 
         return matches;
     }
+
+    public boolean existsEmail(String email){
+        return (boolean) executeQuery(QueryType.BOOL, "SELECT email FROM "+account+" WHERE email = ?",
+            new String[] { email }, new int[] { Types.VARCHAR }
+        );
+    }
+
     @SuppressWarnings("Because QueryType is Reader")
     public boolean updateEmail(int id, String oldEmail, String newEmail) {
         boolean matches = false;
@@ -132,11 +139,11 @@ public class DatabaseManager {
         ArrayList<Object> entries = leaderData.get("member_id");
         if(entries.size() != 0){
             Map<String, ArrayList<Object>> activities = (Map<String, ArrayList<Object>>)executeQuery(QueryType.READER,
-                    "SELECT activity_name FROM "+leader_has_activity+" WHERE leader_member_id = ?",
+                    "SELECT name FROM "+activity+" JOIN "+leader_has_activity+" ON leader_member_id = ? AND activity_id = id",
                     new Object[] { id },
                     new int[] { Types.INTEGER }
             );
-            ArrayList<Object> sports = activities.get("activity_name");
+            ArrayList<Object> sports = activities.get("name");
             String[] arr = new String[sports.size()];
             for(int i = 0; i < arr.length; i++)
                 arr[i] = (String) sports.get(i);
@@ -157,7 +164,6 @@ public class DatabaseManager {
                 new int[] { Types.VARCHAR, Types.VARCHAR }
         );
         ArrayList<Object> entries = memberData.get("member_id");
-        System.out.println(entries.size());
         if(entries.size() != 0)
             id = (int) entries.get(0);
 
@@ -165,8 +171,8 @@ public class DatabaseManager {
     }
 
     public void saveWeeks(byte[][] weeks){//do not want to unite because of need to create new array of objects
-        executeQuery(QueryType.UPDATE, "TRUNCATE ?;", new String[] { schedule }, new int[] { Types.VARCHAR });
-        executeQuery(QueryType.UPDATE, "INSERT INTO " + schedule + " (week) VALUES'" + " (?)".repeat(weeks.length) + "';", weeks, Types.BINARY);
+        executeQuery(QueryType.UPDATE, "TRUNCATE " + schedule + ";");
+        executeQuery(QueryType.UPDATE, "INSERT INTO " + schedule + " (week) VALUES (?)"+ ",(?)".repeat(weeks.length - 1) +";", weeks, Types.BINARY);
     }
 
     @SuppressWarnings("Because QueryType is Reader")
@@ -176,8 +182,8 @@ public class DatabaseManager {
         Map<String, ArrayList<Object>> results = (Map<String, ArrayList<Object>>) executeQuery(QueryType.READER, "SELECT week FROM " + schedule + ";");
         ArrayList<Object> entries = results.get("week");
         for(int i = 0; i < entries.size(); i++){
-            Blob blob = (Blob) entries.get(i); // creates the blob object from the result
-            byte[] week = new byte[0];
+            Blob blob = (Blob) entries.get(i);
+            byte[] week;
             try {
                 week = blob.getBytes(1L, (int)blob.length());
                 bytes.add(week);
@@ -212,11 +218,35 @@ public class DatabaseManager {
 
         return weeks;
     }
+    private Object getObject(ResultSet set, int col, int type) throws SQLException {
+        switch (type){
+            case -7 :
+            case -6 :
+            case 5 :
+            case 4 :
+                return set.getInt(col);
+            case -1 :
+            case 1 :
+            case 12 :
+                return set.getString(col);
+            case 91 :
+                return set.getDate(col);
+            case 2004 :
+            case -2 :
+            case -3 :
+            case -4 :
+                return set.getBlob(col);
+            case 0:
+                return null;
+            default:
+                return set.getObject(col);
+        }
+    }
     
     public void checkSchema()
     {
         try {
-            executeQuery(QueryType.BOOL, "CREATE TABLE IF NOT EXISTS "+member+" ("+
+            executeQuery(QueryType.UDP, "CREATE TABLE IF NOT EXISTS "+member+" ("+
                             "`id` INT NOT NULL AUTO_INCREMENT," +
                             "`name` VARCHAR(45) NOT NULL," +
                             "`middlename` VARCHAR(45) NOT NULL," +
@@ -248,17 +278,18 @@ public class DatabaseManager {
                             "    ON DELETE CASCADE\n" +
                             "    ON UPDATE CASCADE);\n" +
                             "CREATE TABLE IF NOT EXISTS "+activity+" (\n" +
+                            "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
                             "  `name` VARCHAR(45) NOT NULL,\n" +
-                            "  PRIMARY KEY (`name`));\n" +
+                            "  PRIMARY KEY (`id`));\n" +
                             "  CREATE TABLE IF NOT EXISTS "+schedule+" (\n" +
                             "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
                             "  `week` BLOB NOT NULL,\n" +
                             "  PRIMARY KEY (`id`));" +
                             "  CREATE TABLE IF NOT EXISTS "+leader_has_activity+" (\n" +
                             "  `leader_member_id` INT NOT NULL,\n" +
-                            "  `activity_name` VARCHAR(45) NOT NULL,\n" +
-                            "  PRIMARY KEY (`leader_member_id`, `activity_name`),\n" +
-                            "  INDEX `fk_leader_has_activity_activity_idx` (`activity_name` ASC),\n" +
+                            "  `activity_id` INT NOT NULL,\n" +
+                            "  PRIMARY KEY (`leader_member_id`, `activity_id`),\n" +
+                            "  INDEX `fk_leader_has_activity_activity_idx` (`activity_id` ASC),\n" +
                             "  INDEX `fk_leader_has_activity_leader_idx` (`leader_member_id` ASC),\n" +
                             "  CONSTRAINT `fk_leader_has_activity_leader`\n" +
                             "    FOREIGN KEY (`leader_member_id`)\n" +
@@ -266,10 +297,10 @@ public class DatabaseManager {
                             "    ON DELETE CASCADE\n" +
                             "    ON UPDATE CASCADE,\n" +
                             "  CONSTRAINT `fk_leader_has_activity_activity`\n" +
-                            "    FOREIGN KEY (`activity_name`)\n" +
-                            "    REFERENCES "+activity+" (`name`)\n" +
-                            "    ON DELETE NO ACTION\n" +
-                            "    ON UPDATE NO ACTION);"
+                            "    FOREIGN KEY (`activity_id`)\n" +
+                            "    REFERENCES "+activity+" (`id`)\n" +
+                            "    ON DELETE CASCADE\n" +
+                            "    ON UPDATE CASCADE);"
             );
         }
         catch (Exception ex){
@@ -294,8 +325,10 @@ public class DatabaseManager {
         // This method is to reduce the amount of copy paste that there was within this class.
         if(parameters != null && parameters.length != types.length)
             throw new IllegalArgumentException("executeQuery(): parameters length is different to types length.");
-
-        try(PreparedStatement command = createConnection().prepareStatement(query))
+        Object result = null;
+        try(Connection connection = createConnection();
+            PreparedStatement command = connection.prepareStatement(query)
+        )
         {
             if(parameters != null)
                 for(int i = 0; i < parameters.length; i++)
@@ -310,25 +343,27 @@ public class DatabaseManager {
                     results.put(metaData.getColumnName(i), new ArrayList<>(30));
                 while (set.next())
                     for(int i = 1; i < count + 1; i++)
-                        results.get(metaData.getColumnName(i)).add(set.getObject(i));
+                        results.get(metaData.getColumnName(i)).add(getObject(set, i, metaData.getColumnType(i)));
 
-                return results;
+                result = results;
             }
             else if(type == QueryType.UPDATE){
-                return command.executeUpdate();
+                result = command.executeUpdate();
             }
+            else if(type == QueryType.BOOL)
+                result = command.executeQuery().next();
             else
-                return command.execute();
+                command.execute();
         }
         catch (SQLException ex)
         {
             Logger.logException(ex);
         }
 
-        return null;
+        return result;
     }
 
-    public static Connection createConnection(){
+    private static Connection createConnection(){
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(App.config.DatabaseAddress, App.config.DatabaseUsername, App.config.DatabasePassword);
@@ -342,7 +377,8 @@ public class DatabaseManager {
     public enum QueryType {
         UPDATE,//INSERT, UPDATE, DELETE, CREATE TABLE, DROP TABLE
         READER,//SELECT -> ResultSet
-        BOOL//ALL -> SELECT ? True : False
+        BOOL,//SELECT -> Exists selection or not
+        UDP
     }
 }
 

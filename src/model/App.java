@@ -9,6 +9,7 @@ import model.Database.DatabaseManager;
 import model.People.User;
 import model.Tools.Config;
 import model.Tools.SceneSwitcher;
+import model.Tools.ThreadResult;
 
 public class App extends Application {
 
@@ -38,8 +39,12 @@ public class App extends Application {
         this.stage.setScene(scene);
     }
 
+    public Stage getStage(){
+        return this.stage;
+    }
+
     public User getSession() {
-        return session;
+        return this.session;
     }
 
     public void setSession(User session) {

@@ -24,23 +24,23 @@ public abstract class User implements Cloneable {
         this.mobile = phoneNumber;
     }
 
-    protected String getName() {
+    public String getName() {
         return name;
     }
 
-    protected String getSurname() {
+    public String getSurname() {
         return surname;
     }
 
-    protected String getMiddlename() {
-        return middlename;
+    public String getMiddlename() {
+        return middlename == null ? "" : " " + middlename;
     }
 
-    protected LocalDate getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    protected String getSsn() {
+    public String getSsn() {
         return ssn;
     }
 
@@ -58,4 +58,5 @@ public abstract class User implements Cloneable {
     public int getId() {
         return id;
     }
+
 }

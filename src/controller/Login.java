@@ -1,45 +1,24 @@
 package controller;
 
 import com.jfoenix.controls.JFXToggleButton;
-import com.restfb.DefaultFacebookClient;
-import com.restfb.FacebookClient;
-import com.restfb.Parameter;
-import com.restfb.Version;
-import com.restfb.exception.FacebookException;
-import com.restfb.scope.ScopeBuilder;
-import com.restfb.types.User;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
-import javafx.scene.text.Text;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import model.App;
-import model.Logging.Logger;
+import model.People.Leader;
+import model.People.User;
 import model.Tools.SceneSwitcher;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-
-import static com.restfb.logging.RestFBLogger.CLIENT_LOGGER;
-
-public class Login extends Menu implements Initializable {
-
+public class Login implements Initializable {
 
     @FXML
     private TextField email;
@@ -62,11 +41,6 @@ public class Login extends Menu implements Initializable {
 
     private static final String SUCCESS_URL = "https://www.facebook.com/connect/login_success.html";
 
-
-
-
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         password.focusedProperty().addListener((obs, wasFocused, isNowFocused) -> {
@@ -75,23 +49,17 @@ public class Login extends Menu implements Initializable {
                 error.setText("");
             }
         });
-        signUp.setOnMouseClicked(e -> {
-            App.instance.setScene(SceneSwitcher.instance.getScene("CreateAccount"));
-        });
+        signUp.setOnMouseClicked(e -> App.instance.setScene(SceneSwitcher.instance.getScene("CreateAccount")));
         login.setOnMouseClicked(e -> {
             if(toggle.isSelected())
             {
                 App.instance.setScene(SceneSwitcher.instance.getScene("Home"));
                 return;
             }
-            if(checkFormat()){
+            if(checkEmail() && checkPassword()){
                 int id;
 //                    Thread thread = new Thread(() -> {
-//                        try {
-//                            App.databaseManager.checkCredentials(email.getText(), password.getText());
-//                        } catch (SQLException throwables) {
-//                            throwables.printStackTrace();
-//                        }
+//                        id = App.databaseManager.checkCredentials(email.getText(), password.getText());
 //                    });
 //                    thread.start();
 //                    thread.join();
@@ -103,23 +71,38 @@ public class Login extends Menu implements Initializable {
                 email.setText("");
                 password.setText("");
                 error.setText("");
+                redLines();
+                User user = App.databaseManager.getUser(id);
                 App.instance.setSession(App.databaseManager.getUser(id));
+                if(user instanceof Leader)
+                    new Thread(() -> ((Calendar)SceneSwitcher.instance.getController("Calendar")).loadUser(((Leader)user).getLeaderOf())).start();
                 App.instance.setScene(SceneSwitcher.instance.getScene("Home"));
+                resetLines();
             }
         });
     }
 
-    private boolean checkFormat() {
-        if(email.getText().isBlank() || password.getText().isBlank() || !email.getText().matches("^[A-Za-z0-9+_.-]+@(.+)$")){
+    private boolean checkEmail() {
+        if(email.getText().isBlank()){
+            error.setText("Email is empty");
+            return false;
+        }
+        else if(!email.getText().matches("^[A-Za-z0-9+_.-]+@(.+)$")){
             error.setText("Incorrect email format");
             return false;
         }
-//        DatabaseManager.AccountType acc = App.databaseManager.checkCredentials(email.getText(), password.getText());
-//        if(acc == DatabaseManager.AccountType.NONE){
-//            error.setText("Incorrect email or password");
-//            return false;
-//        }
+        return true;
+    }
 
+    private boolean checkPassword(){
+        if(password.getText().isBlank()){
+            error.setText("Password is empty");
+            return false;
+        }
+        else if(password.getText().length() < 5){
+            error.setText("Incorrect password length");
+            return false;
+        }
         return true;
     }
 
@@ -140,129 +123,11 @@ public class Login extends Menu implements Initializable {
         });
     }
 
-
-    @Override
-    protected void onBurgerOpen() {
-
-    }
-
-    @Override
-    protected void onBurgerClose() {
-
-    }
-
-    @Override
-    protected void onSceneSwitch() {
-
-    }
-
-    @Override
-    protected void onAppClose() {
-
-    }
-    public void handleFBLoginButton(ActionEvent event) {
-        System.out.println("In handle button");
-        WebView webView = new WebView();
-        WebEngine webEngine = webView.getEngine();
-        System.out.println("In startLogin");
-        /*
-        // create the scene
-        stage.setTitle("Facebook Login Example");
-        // use quite a wide window to handle cookies popup nicely
-        stage.setScene(new Scene(new VBox(webView), 1000, 600, Color.web("#666970")));
-        stage.show();
-        */
-
-        // obtain Facebook access token by loading login page
-        stage = new Stage();
-        DefaultFacebookClient facebookClient = new DefaultFacebookClient(Version.LATEST);
-        String loginDialogUrl = facebookClient.getLoginDialogUrl(appId, SUCCESS_URL, new ScopeBuilder());
-        System.out.println(loginDialogUrl);
-        webEngine.load(loginDialogUrl + "&display=popup&response_type=code");
-        webEngine.locationProperty().addListener((property, oldValue, newValue) -> {
-                    if (newValue.startsWith(SUCCESS_URL)) {
-                        // extract access token
-                        CLIENT_LOGGER.debug(newValue);
-                        int codeOffset = newValue.indexOf("code=");
-                        String code = newValue.substring(codeOffset + "code=".length());
-                        FacebookClient.AccessToken accessToken = facebookClient.obtainUserAccessToken(
-                                appId, appSecret, SUCCESS_URL, code);
-
-                        // trigger further code's execution
-                        consumeAccessToken(accessToken);
-
-                        // close the app as goal was reached
-                        stage.close();
-                        try {
-                            goToScreen2(accessToken.getAccessToken());
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-
-                    } else if ("https://www.facebook.com/dialog/close".equals(newValue)) {
-                        throw new IllegalStateException("dialog closed");
-                    }
-                }
-        );
-
-        Scene scene = new Scene(webView);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void goToScreen2(String accessToken) throws Exception{
-        FacebookClient client = new DefaultFacebookClient(accessToken, Version.LATEST);
-        User user = null;
-        try
-        {
-            user = client.fetchObject("me", User.class, Parameter.with("fields", "name,email"));
-
-        }
-        catch (FacebookException ex)
-        {
-        }
-        if(stage != null) {
-            URL url = new File("src/view/Account.fxml").toURI().toURL();
-            Parent root = FXMLLoader.load(url);
-            Text lblData = (Text) root.lookup("#welcomeLabel");
-            if(user != null && lblData != null) {
-                lblData.setText("Welcome " + user.getName());
-            }
-
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        }
-    }
-
-
-    private static void consumeAccessToken(FacebookClient.AccessToken accessToken) {
-        CLIENT_LOGGER.debug("Access token: " + accessToken.getAccessToken());
-        CLIENT_LOGGER.debug("Expires: " + accessToken.getExpires());
-    }
-
-    public void handleForgotPasswordAction(ActionEvent actionEvent) {
-        //show a screen to receive the user's email address
-        if(stage != null) {
-            URL url = null;
-            try {
-                url = new File("src/view/ResetCode.fxml").toURI().toURL();
-                Parent root = FXMLLoader.load(url);
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
-
-
-
-    public void handleLoginButton(ActionEvent actionEvent) {
+    private void resetLines(){
+        line0.setStroke(Paint.valueOf("#000000"));
+        line0.setStrokeWidth(1);
+        line1.setStroke(Paint.valueOf("#000000"));
+        line1.setStrokeWidth(1);
     }
 }
 

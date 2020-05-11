@@ -19,13 +19,13 @@ public class Settings extends Menu implements Initializable {
     private ResourceBundle resourceBundle;
     private Locale locale;
     public Button buttonAbout;
-    ObservableList list = FXCollections.observableArrayList("English", "Swedish", "Norwegian");
+    private ObservableList<String> langs = FXCollections.observableArrayList("English", "Swedish", "Norwegian");
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         comboBox = new JFXComboBox<>();
-        comboBox.setItems(list);
+        comboBox.setItems(langs);
 
         bindTab(this);
     }
@@ -41,12 +41,12 @@ public class Settings extends Menu implements Initializable {
     }
 
     @Override
-    protected void onSceneSwitch() {
+    protected void onBeforeSceneSwitch() {
 
     }
 
     @Override
-    protected void onAppClose() {
+    protected void onBeforeLogout() {
 
     }
     private void loadLangBundle(String lang){
