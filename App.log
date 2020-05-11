@@ -8102,3 +8102,35 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at controller.Calendar.loadWeeksDB()
 	at controller.Calendar.lambda$initialize$0()
 	at java.lang.Thread.run()
+[2020-05-11 21:03:51 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/view/Calendar.fxml
+
+[2020-05-11 21:03:51 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-11 21:04:51 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/view/Calendar.fxml
+
+[2020-05-11 21:04:51 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()

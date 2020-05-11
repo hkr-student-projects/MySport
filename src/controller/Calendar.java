@@ -1,12 +1,9 @@
 package controller;
 
 import com.jfoenix.controls.JFXComboBox;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -14,8 +11,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -27,6 +22,7 @@ import model.App;
 import model.People.User;
 import model.Tools.ArrayList;
 import model.Tools.Block;
+import model.Tools.SceneSwitcher;
 import model.Tools.Serializable;
 
 import java.net.URL;
@@ -35,6 +31,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ResourceBundle;
+import model.Tools.EventType;
 
 public class Calendar extends Menu implements Initializable, Serializable<Calendar.WeekProperties> {
 
@@ -59,7 +56,6 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     private boolean flag = true, editor = false, modified = false, altDown = false;
     private LocalDate currentWeek;
     private static ArrayList<WeekProperties> weeks;
-    private KeyCode key;
 
     static {
         weeks = new ArrayList<>();
@@ -67,8 +63,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //App.instance.getStage().getScene().setOnKeyPressed(e -> { if((key = e.getCode()) == KeyCode.ALT) altDown = true; });
-        //App.instance.getStage().getScene().setOnKeyReleased(e -> { if(e.getCode() == KeyCode.ALT) altDown = false; });
+
         new Thread(() -> {
             currentWeek = LocalDate.now();
             loadWeeksDB();
@@ -87,6 +82,12 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             loadTable(7);//currentWeek unmodified
             fillWeek(7);//currentWeek modified
             modified = false;
+        });
+        SceneSwitcher.instance.addListener("Calendar", EventType.ON_KEY_PRESSED, e -> {
+             if(e.getCode() == KeyCode.ALT) altDown = true;
+        });
+        SceneSwitcher.instance.addListener("Calendar", EventType.ON_KEY_RELEASED, e -> {
+            if(e.getCode() == KeyCode.ALT) altDown = false;
         });
         //loadUser(new String[] { "Chess", "Volleyball" });
     }
@@ -186,18 +187,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         join.setFont(new Font("Helvetica Light", 8));
         join.setLayoutX(10);
         join.setLayoutY(15 * (span - 1) - 20);
-        join.setOnMouseClicked(e -> new Thread(() -> {
-            Pane p = (Pane) join.getParent();
-            Text t = (Text) p.getChildren().get(2);
-            ObservableMap<Object, Object> props = p.getProperties();
-            int jns = (int) props.get("jns");
-            t.setText(++jns + "+");
-            props.remove("jns");
-            props.put("jns", jns);
-            join.setDisable(true);
-            join.setVisible(false);
-            modified = true;
-        }).start());
+        join.setOnMouseClicked(e -> switchAction(join));
 
         pane.getChildren().addAll(activity, joins, join);
         ObservableMap<Object, Object> props = pane.getProperties();
@@ -206,11 +196,34 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         props.put("sp", sp);
         props.put("jns", 0);
 
+        setPaneEntered(pane);
         pane.setOnMousePressed(e -> initY = (short)e.getSceneY());
         pane.setOnMouseDragged(e -> move(pane, (int) e.getSceneY()));
         pane.setOnMouseClicked(null);
         pane.getStylesheets().add("/view/css/general.css");
         pane.getStyleClass().addAll("cursorHResize", "hoverScale", "bakedPane");
+    }
+
+    private void switchAction(Button button){
+        modified = true;
+        Pane p = (Pane) button.getParent();
+        Text t = (Text) p.getChildren().get(2);
+        ObservableMap<Object, Object> props = p.getProperties();
+        int jns = (int) props.get("jns");
+        if(button.getText().equals("Join")){
+            t.setText(++jns + "+");
+            props.remove("jns");
+            props.put("jns", jns);
+            button.setText("Out");
+            button.setDisable(true);
+            button.setVisible(false);
+        }
+        else{
+            t.setText(--jns + "+");
+            props.remove("jns");
+            props.put("jns", jns);
+            button.setText("Join");
+        }
     }
 
     private void buildTime(Pane pane, int span){//unite method with for deserialization week method
@@ -307,7 +320,6 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             ObservableMap<Object, Object> props = pane.getProperties();
             if (props.containsKey("span")) {
                 int[] cords = getNodeCords(pane);
-                System.out.println((int) pane.getProperties().get("jns"));
                 newWeek.addProperty(new WeekProperties.PaneProperties(
                         cords[0], cords[1], (int) pane.getProperties().get("span"), (int) pane.getProperties().get("jns"),
                         (String) props.get("hf"), (String)props.get("mf"), (String)props.get("ht"), (String)props.get("mt"), pane.getStyle(),
@@ -364,12 +376,25 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
                     pane.setOnMouseDragged(e -> move(pane, (int)e.getSceneY()));
                 }
                 pane.getStyleClass().addAll("hoverScale", "bakedPane");
+                setPaneEntered(pane);
                 for(int j = 1; j < paneProp.span; j++)
                     gridPaneFast[paneProp.row + i][paneProp.col] = pane;
             }
     }
 
-//  count
+    private void setPaneEntered(Pane pane) {
+        pane.setOnMouseEntered(e -> {
+            Button b = (Button) pane.getChildren().get(3);
+            if(altDown && b.isDisable())
+            {
+                b.setDisable(false);
+                b.setVisible(true);
+                b.setOnMouseClicked(e1 -> switchAction(b));
+            }
+        });
+    }
+
+    //  count
 //  week: {year, mon, day}
 // {
 //  row;
@@ -396,7 +421,6 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             block.writeString(pane.ht);
             block.writeString(pane.mt);
             block.writeString(pane.activity.getText());
-            System.out.println("ser: " + pane.jns);
             block.writeInt16((short) pane.jns);
         }
         byte[] bytes = new byte[block.getSize()];
@@ -448,17 +472,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             join.setFont(new Font("Helvetica Light", 8));
             join.setLayoutX(10);
             join.setLayoutY(15 * (span - 1) - 20);
-            join.setOnMouseClicked(e -> new Thread(() -> {
-                Pane p = (Pane) join.getParent();
-                Text t = (Text) p.getChildren().get(2);
-                ObservableMap<Object, Object> props = p.getProperties();
-                int jns1 = (int) props.get("jns");
-                t.setText(++jns1 + "+");
-                props.remove("jns");
-                props.put("jns", jns1);
-                join.setDisable(true);
-                join.setVisible(false);
-            }).start());
+            join.setOnMouseClicked(e -> switchAction(join));
 
             week.addProperty(new WeekProperties.PaneProperties(row, col, span, jns, hf, mf, ht, mt, color, time, sport, joins, join));
         }
@@ -682,13 +696,15 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             dimming.setVisible(true);
             sportContainer.setDisable(false);
             sportContainer.setVisible(true);
-            App.instance.getStage().getScene().setOnKeyPressed(keyEvent -> {
-                if(key == KeyCode.ESCAPE)
+            SceneSwitcher.instance.addListener("Calendar", EventType.ON_KEY_PRESSED, keyEvent -> {
                 {
-                    dimming.setDisable(true);
-                    dimming.setVisible(false);
-                    sportContainer.setDisable(true);
-                    sportContainer.setVisible(false);
+                    if(keyEvent.getCode() == KeyCode.ESCAPE)
+                    {
+                        dimming.setDisable(true);
+                        dimming.setVisible(false);
+                        sportContainer.setDisable(true);
+                        sportContainer.setVisible(false);
+                    }
                 }
             });
         });
