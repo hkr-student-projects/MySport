@@ -1,9 +1,12 @@
 package controller;
 
 import com.jfoenix.controls.JFXComboBox;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -11,6 +14,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -51,9 +56,10 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     private Node[][] gridPaneFast;
     private Node tempPane, prevPane;
     private int tempRow, tempCol, initY;
-    private boolean flag = true, editor = false, modified = false;
+    private boolean flag = true, editor = false, modified = false, altDown = false;
     private LocalDate currentWeek;
     private static ArrayList<WeekProperties> weeks;
+    private KeyCode key;
 
     static {
         weeks = new ArrayList<>();
@@ -61,6 +67,8 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //App.instance.getStage().getScene().setOnKeyPressed(e -> { if((key = e.getCode()) == KeyCode.ALT) altDown = true; });
+        //App.instance.getStage().getScene().setOnKeyReleased(e -> { if(e.getCode() == KeyCode.ALT) altDown = false; });
         new Thread(() -> {
             currentWeek = LocalDate.now();
             loadWeeksDB();
@@ -430,7 +438,6 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             sport.setFont(new Font("Helvetica Light", 11.0));
             short jns = block.readInt16();
             Text joins = new Text(90, 15 * (span - 1) - 1, String.valueOf(jns) + "+");
-            System.out.println("des: " + jns);
             joins.setFill(Paint.valueOf("#FFFFFF"));
             joins.setFont(new Font("Helvetica Light", 11.0));
             Button join = new Button("Join");
@@ -675,8 +682,8 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             dimming.setVisible(true);
             sportContainer.setDisable(false);
             sportContainer.setVisible(true);
-            App.instance.getStage().getScene().setOnKeyPressed(key -> {
-                if(key.getCode() == KeyCode.ESCAPE)
+            App.instance.getStage().getScene().setOnKeyPressed(keyEvent -> {
+                if(key == KeyCode.ESCAPE)
                 {
                     dimming.setDisable(true);
                     dimming.setVisible(false);
