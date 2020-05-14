@@ -19,9 +19,15 @@ public class Config{
     public String DatabasePassword;
     public String DatabaseName;
     public int DatabasePort;
+    private String name;
 
     public Config(){
-        File f = new File("config.json");
+        this("config");
+    }
+
+    public Config(String name){
+        this.name = name;
+        File f = new File(name + ".json");
         if(!f.exists()){
             loadDefaults();
         }
@@ -98,7 +104,7 @@ public class Config{
     }
 
     public void writeConfig(){
-        try (FileWriter file = new FileWriter("config.json", false)) {
+        try (FileWriter file = new FileWriter(this.name + ".json", false)) {
             file.write(serialize());
             file.flush();
         } catch (IOException ex) {

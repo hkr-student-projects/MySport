@@ -8269,3 +8269,49 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at controller.Calendar.loadWeeksDB()
 	at controller.Calendar.lambda$initialize$0()
 	at java.lang.Thread.run()
+[2020-05-14 22:12:40 CEST] [Exception] Exception message: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+[2020-05-14 22:12:40 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
+	at java.sql.DriverManager.getConnection()
+	at java.sql.DriverManager.getConnection()
+	at model.Database.DatabaseManager.createConnection()
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at model.Main.main()
+[2020-05-14 22:12:40 CEST] [Exception] Exception message: Errors in query.
+[2020-05-14 22:12:40 CEST] [Exception] 
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.checkSchema()
+	at model.Database.DatabaseManager.<init>()
+	at model.App.<clinit>()
+	at model.Main.main()
+[2020-05-14 22:12:43 CEST] [Exception] Exception message: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+[2020-05-14 22:12:43 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
+	at java.sql.DriverManager.getConnection()
+	at java.sql.DriverManager.getConnection()
+	at model.Database.DatabaseManager.createConnection()
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.executeQuery()
+	at model.Database.DatabaseManager.loadWeeks()
+	at controller.Calendar.loadWeeksDB()
+	at controller.Calendar.lambda$initialize$0()
+	at java.lang.Thread.run()

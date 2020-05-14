@@ -192,32 +192,12 @@ public class DatabaseManager {
                 Logger.logException(e);
             }
         }
-//        try (Connection conn = createConnection()){
-//            PreparedStatement pst = conn.prepareStatement(
-//                    "SELECT week FROM " + schedule + ";"
-//            );
-//            boolean isResult = pst.execute();
-//            do {
-//                try (ResultSet rs = pst.getResultSet()) {
-//                    while (rs.next()) {
-//                        Blob blob = rs.getBlob("week"); // creates the blob object from the result
-//                        byte[] week = blob.getBytes(1L, (int)blob.length());
-//                        bytes.add(week);
-//                        blob.free();
-//                    }
-//                    isResult = pst.getMoreResults();
-//                }
-//            }
-//            while (isResult);
-//        }
-//        catch(Exception ex){
-//            Logger.logException(ex);
-//        }
         byte[][] weeks = new byte[bytes.size()][];
         System.arraycopy(bytes.getContents(), 0, weeks, 0, bytes.size());
 
         return weeks;
     }
+
     private Object getObject(ResultSet set, int col, int type) throws SQLException {
         switch (type){
             case -7 :
@@ -308,7 +288,7 @@ public class DatabaseManager {
         }
     }
 
-    public Object executeQuery(QueryType type, String query)//java.sql.Types
+    public Object executeQuery(QueryType type, String query)
     {
         return executeQuery(type, query, null, null);
     }
@@ -351,7 +331,7 @@ public class DatabaseManager {
                 result = command.executeUpdate();
             }
             else if(type == QueryType.BOOL)
-                result = command.executeQuery().next();
+                result = command.executeQuery().next();//returns true if there is at least 1 selection result
             else
                 command.execute();
         }
@@ -381,7 +361,6 @@ public class DatabaseManager {
         UDP
     }
 }
-
 //    private String[] getColumns(String query){
 //        String var0 = query.trim();
 //        int i = var0.indexOf("FROM");
