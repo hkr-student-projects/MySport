@@ -1,13 +1,18 @@
 package model;
 
 import com.mongodb.client.result.UpdateResult;
+import com.mysql.cj.log.Log;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import model.Database.MongoManager;
 import model.Database.MySqlManager;
+import model.Logging.Logger;
 import model.People.User;
 import model.Tools.Config;
+import model.Tools.SceneSwitcher;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -34,17 +39,13 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-//        primaryStage.getIcons().add(new Image("view/img/jarIcon.png"));
-//        primaryStage.setScene(SceneSwitcher.instance.getScene("Login"));
-//        primaryStage.initStyle(StageStyle.UTILITY);
-//        primaryStage.setResizable(false);
-//        primaryStage.show();
-//        stage = primaryStage;
-//        instance = this;
-        //mongoManager.addActivity(LocalDate.now().plusDays(2), new MongoManager.Activity("Boxing", "Hus 8", 5, 930, 1005, new ArrayList<>(List.of(1, 2, 3)), new ArrayList<>(List.of(2, 3, 5))));
-        //mongoManager.addActivity(LocalDate.now().plusDays(2), new MongoManager.Activity("Football", "Hus 8", 5, 930, 1005, new ArrayList<>(List.of(7)), new ArrayList<>(List.of(6, 7, 8))));
-        UpdateResult i = mongoManager.removeActivity(LocalDate.now().plusDays(2), "Boxing");
-        System.out.println("deleted: " + i.getModifiedCount());
+        primaryStage.getIcons().add(new Image("view/img/jarIcon.png"));
+        primaryStage.setScene(SceneSwitcher.instance.getScene("Login"));
+        primaryStage.initStyle(StageStyle.UTILITY);
+        primaryStage.setResizable(false);
+        primaryStage.show();
+        stage = primaryStage;
+        instance = this;
     }
 
     public void setScene(Scene scene){

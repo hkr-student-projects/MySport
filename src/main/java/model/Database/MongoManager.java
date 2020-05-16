@@ -44,7 +44,6 @@ public class MongoManager {
             collection.updateOne(Filters.eq("_id", date.getDayOfMonth()),// "_id" is day
                     Updates.addToSet("activities", activity
             ));
-            System.out.println("updated");
             //printAll(collection);
         }
     }
