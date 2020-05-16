@@ -63,7 +63,7 @@ public class Login implements Initializable {
 //                    });
 //                    thread.start();
 //                    thread.join();
-                if((id = App.databaseManager.checkCredentials(email.getText(), password.getText())) == -1){
+                if((id = App.mySqlManager.checkCredentials(email.getText(), password.getText())) == -1){
                     error.setText("Incorrect email or password");
                     redLines();
                     return;
@@ -72,8 +72,8 @@ public class Login implements Initializable {
                 password.setText("");
                 error.setText("");
                 redLines();
-                User user = App.databaseManager.getUser(id);
-                App.instance.setSession(App.databaseManager.getUser(id));
+                User user = App.mySqlManager.getUser(id);
+                App.instance.setSession(App.mySqlManager.getUser(id));
                 if(user instanceof Leader)
                     new Thread(() -> ((Calendar)SceneSwitcher.instance.getController("Calendar")).loadUser(((Leader)user).getLeaderOf())).start();
                 App.instance.setScene(SceneSwitcher.instance.getScene("Home"));

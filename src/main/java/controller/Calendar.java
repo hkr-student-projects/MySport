@@ -307,7 +307,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         for(int i = 0; i < Calendar.weeks.size(); i ++)
             weeks[i] = serialize(Calendar.weeks.get(i));
 
-        App.databaseManager.saveWeeks(weeks);
+        App.mySqlManager.saveWeeks(weeks);
     }
 
     private void saveCurrentTable(){//modified true NOT DATABASE SAVE
@@ -332,7 +332,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
 
     private void loadWeeksDB() {
         leaderPanes = new ArrayList<>(30);
-        byte[][] weeks = App.databaseManager.loadWeeks();
+        byte[][] weeks = App.mySqlManager.loadWeeks();
         for(byte[] week : weeks)
             Calendar.weeks.add(deserialize(week));
     }

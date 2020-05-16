@@ -85,7 +85,7 @@ public class CreateAccount implements Initializable {
     }
 
     private boolean existsEmail(String email){
-        return App.databaseManager.existsEmail(email);
+        return App.mySqlManager.existsEmail(email);
     }
 
     private void resetLine(Line line){
@@ -149,7 +149,7 @@ public class CreateAccount implements Initializable {
                 & fieldCheck(surname, naming, line2) & fieldCheck(ssn,"\\d{8}\\-\\d{4}", line3) & fieldCheck(mobile, "\\+\\d{3}\\-\\d{3}\\-\\d{2}\\-\\d{2}", line4)
                 & emailFormat & passwordCheck() & dateCheck()
         ){
-            new Thread(() -> App.databaseManager.addAccount(firstname.getText(), middlename.getText(), surname.getText(), ssn.getText(), mobile.getText(), email.getText(), password.getText(), Date.valueOf(birthday.getValue()))).start();
+            new Thread(() -> App.mySqlManager.addAccount(firstname.getText(), middlename.getText(), surname.getText(), ssn.getText(), mobile.getText(), email.getText(), password.getText(), Date.valueOf(birthday.getValue()))).start();
             App.instance.setScene(SceneSwitcher.instance.getScene("Login"));
         }
     }

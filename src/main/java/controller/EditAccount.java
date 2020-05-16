@@ -8,7 +8,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import model.App;
 import model.Logging.Logger;
-import model.People.Leader;
 import model.Tools.SceneSwitcher;
 
 import java.net.URL;
@@ -34,21 +33,21 @@ public class EditAccount extends Menu implements Initializable {
                     alert("Error! Numbers detected!", "Re-enter new name without numbers.");
                 } else {
                     String name = textFieldName.getText();
-                    App.databaseManager.updateName(App.instance.getSession().getId(), name);
+                    App.mySqlManager.updateName(App.instance.getSession().getId(), name);
                 }
             } else if (!textFieldMiddleName.getText().isBlank()) {
                 if (textFieldMiddleName.getText().matches("[0-9]")) {
                     alert("Error! Numbers detected!", "Re-enter new middle name without numbers.");
                 } else {
                     String middleName = textFieldName.getText();
-                    App.databaseManager.updateName(App.instance.getSession().getId(), middleName);
+                    App.mySqlManager.updateName(App.instance.getSession().getId(), middleName);
                 }
             } else if (!textFieldSurname.getText().isBlank()) {
                 if (textFieldSurname.getText().matches("[0-9]")) {
                     alert("Error! Numbers detected!", "Re-enter new surname without numbers.");
                 } else {
                     String surname = textFieldName.getText();
-                    App.databaseManager.updateName(App.instance.getSession().getId(), surname);
+                    App.mySqlManager.updateName(App.instance.getSession().getId(), surname);
                 }
             }
         } catch (Exception e) {
@@ -63,7 +62,7 @@ public class EditAccount extends Menu implements Initializable {
                 String password = passwordFieldPassword.getText();
                 String oldPassword = passwordFieldCurrentPassword.getText();
                 if (password.equals(passwordFieldConfirmPassword.getText())){
-                    if (!App.databaseManager.updatePassword(App.instance.getSession().getId(), oldPassword, password)) {
+                    if (!App.mySqlManager.updatePassword(App.instance.getSession().getId(), oldPassword, password)) {
                         alert("Error!","Some passwords may not match, please try again!");
                     }
                 } else {
@@ -85,7 +84,7 @@ public class EditAccount extends Menu implements Initializable {
                     alert("Error! Phone number not detected", "Please enter a valid phone number.");
                 } else {
                     String phoneNumber = textFieldPhoneNumber.getText();
-                    App.databaseManager.updatePhoneNumber(App.instance.getSession().getId(), phoneNumber);
+                    App.mySqlManager.updatePhoneNumber(App.instance.getSession().getId(), phoneNumber);
                 }
             }
         } catch (Exception e) {

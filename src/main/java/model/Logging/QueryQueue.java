@@ -40,7 +40,7 @@ public class QueryQueue {
 
     private void executeMethod(Method method, Object[] args){
         try {
-            method.invoke(App.databaseManager, args);
+            method.invoke(App.mySqlManager, args);
         }
         catch (Exception e){
             Logger.logException(e);
