@@ -284,7 +284,7 @@
                         </Pane>
                         <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="151.0" prefWidth="440.0" style="-fx-background-color: white; -fx-background-radius: 33;">
                            <children>
-                              <Text layoutX="33.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About">
+                              <Text layoutX="33.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.about">
                                  <font>
                                     <Font name="Helvetica Light" size="20.0" />
                                  </font>
@@ -294,7 +294,7 @@
                                     <Font name="Helvetica Light" size="13.0" />
                                  </font>
                               </Text>
-                              <JFXButton cacheShape="false" centerShape="false" focusTraversable="false" layoutX="300.0" layoutY="105.0" prefHeight="32.0" prefWidth="104.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="View" textFill="WHITE">
+                              <JFXButton fx:id="buttonAboutView" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="300.0" layoutY="105.0" onAction="#buttonAboutViewClick" prefHeight="32.0" prefWidth="104.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="View" textFill="WHITE">
                                  <font>
                                     <Font name="Arial" size="16.0" />
                                  </font>
