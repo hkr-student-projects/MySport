@@ -1,6 +1,7 @@
 package model;
 
 import com.mongodb.client.result.UpdateResult;
+import com.mysql.cj.log.Log;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -8,6 +9,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.Database.MongoManager;
 import model.Database.MySqlManager;
+import model.Logging.Logger;
 import model.People.User;
 import model.Tools.Config;
 import model.Tools.SceneSwitcher;
@@ -44,10 +46,6 @@ public class App extends Application {
         primaryStage.show();
         stage = primaryStage;
         instance = this;
-        //UpdateResult i = mongoManager.addParticipant(LocalDate.now().plusDays(1), "Football", 909, true);
-        //UpdateResult i = mongoManager.removeActivity(LocalDate.now().plusDays(1), "Boxing");
-        //mongoManager.addActivity(LocalDate.now(), new MongoManager.Activity("Volleyball", "Hus 5", 4, 44, 55, new ArrayList<>(List.of(55)), new ArrayList<>(List.of(55))));
-        //System.out.println("updated: " + i.getModifiedCount());
     }
 
     public void setScene(Scene scene){

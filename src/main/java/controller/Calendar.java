@@ -49,6 +49,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     private JFXComboBox<String> sportList;
     @FXML
     private ColorPicker sportColor;
+    private ArrayList<Node> leaderPanes;
     private Node[][] gridPaneFast;
     private Node tempPane, prevPane;
     private int tempRow, tempCol, initY;
@@ -330,7 +331,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     }
 
     private void loadWeeksDB() {
-        //leaderPanes = new ArrayList<>(30);
+        leaderPanes = new ArrayList<>(30);
         byte[][] weeks = App.mySqlManager.loadWeeks();
         for(byte[] week : weeks)
             Calendar.weeks.add(deserialize(week));
