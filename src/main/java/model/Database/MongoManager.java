@@ -1,13 +1,17 @@
 package model.Database;
 
+import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.Logger;
+import ch.qos.logback.classic.LoggerContext;
 import com.mongodb.BasicDBObject;
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.model.Aggregates;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Indexes;
 import com.mongodb.client.model.Updates;
 import com.mongodb.client.result.UpdateResult;
 import eu.dozd.mongo.MongoMapper;
@@ -16,9 +20,6 @@ import eu.dozd.mongo.annotation.Id;
 import org.bson.codecs.configuration.CodecRegistries;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
-
-import ch.qos.logback.classic.Level;
-import ch.qos.logback.classic.LoggerContext;
 import org.slf4j.LoggerFactory;
 
 import java.time.LocalDate;
@@ -56,14 +57,32 @@ public class MongoManager {
         }
     }
 
-    public UpdateResult removeActivity(LocalDate date, String name){
-        BasicDBObject fields = new BasicDBObject("activities",
-                new BasicDBObject( "_id", name));// where _id = name
-        BasicDBObject pull = new BasicDBObject("$pull", fields);
+    public UpdateResult removeActivity(LocalDate date, String sport){
+        BasicDBObject selectID = new BasicDBObject("activities",
+                new BasicDBObject( "_id", sport));
+        BasicDBObject pull = new BasicDBObject("$pull", selectID);
         try(MongoClient client = getClient()) {
             return getCollection(client, date).updateOne(
                     Filters.eq("_id", date.getDayOfMonth()),
                     pull
+            );
+        }
+    }
+
+
+
+//    DBObject listItem = new BasicDBObject("scores", new BasicDBObject("type","quiz").append("score",99));
+//    DBObject updateQuery = new BasicDBObject("$push", listItem);
+//    myCol.update(findQuery, updateQuery);
+
+
+
+    public UpdateResult addParticipant(LocalDate date, String sport, int id, boolean isLeader){
+        String table = isLeader ? "leaders" : "members";
+        try(MongoClient client = getClient()) {
+            return getCollection(client, date).updateOne(
+                    BasicDBObject.parse("{ _id: "+date.getDayOfMonth()+", \"activities._id\": \""+sport+"\" }"),
+                    BasicDBObject.parse("{ $push: {\"activities.$."+table+"\": "+id+"}}")
             );
         }
     }
@@ -82,9 +101,11 @@ public class MongoManager {
     }
 
     private static MongoClient getClient(){
-        CodecRegistry pojoMapperRegistry = CodecRegistries.fromProviders(MongoMapper.getProviders());
-        CodecRegistry pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(), pojoMapperRegistry,
-                fromProviders(PojoCodecProvider.builder().automatic(true).build()));
+        CodecRegistry pojoCodecRegistry = fromRegistries(
+                MongoClientSettings.getDefaultCodecRegistry(),
+                fromProviders(MongoMapper.getProviders()),
+                fromProviders(PojoCodecProvider.builder().automatic(true).build())
+        );
         MongoClientSettings settings = MongoClientSettings.builder()
                 .codecRegistry(pojoCodecRegistry)
                 .applyConnectionString(new ConnectionString("mongodb+srv://admin:azino777@mysport-4hkzu.mongodb.net/test?retryWrites=true&w=majority"))
@@ -223,3 +244,10 @@ public class MongoManager {
 // Database = year
 // Collection = Month
 // Document = Day
+
+//db.games.update({'_id': 73}, {$pull: {'goals': {'goal': 4}}})
+//BasicDBObject query = new BasicDBObject("_id", 73);
+//    BasicDBObject fields = new BasicDBObject("goals", 
+//        new BasicDBObject( "goal", 4));
+//    BasicDBObject update = new BasicDBObject("$pull",fields);
+//    games.update( query, update );
