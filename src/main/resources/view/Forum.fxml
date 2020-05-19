@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #763dee;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Forum">
+
+    <children>
+        <Pane cacheShape="false" centerShape="false" layoutX="60.0" layoutY="90.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="783.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+         <children>
+            <Pane layoutX="84.0" layoutY="29.0" prefHeight="50.0" prefWidth="630.0" style="-fx-background-color: #763dee; -fx-background-radius: 15;">
+               <children>
+                  <Text fill="WHITE" layoutX="172.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="363.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Topics">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="542.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Users">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/forum-icon_1.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <VBox layoutX="83.0" layoutY="79.0" prefHeight="386.0" prefWidth="631.0">
+               <children>
+                  <Line endX="533.0" endY="-1.52587890625E-5" startX="-97.0" startY="-1.52587890625E-5" />
+                  <Pane prefHeight="43.0" prefWidth="606.0" style="-fx-background-color: #763dee; -fx-background-radius: 15;">
+                     <children>
+                        <Text fill="WHITE" layoutX="152.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First category">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="380.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="553.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <Button layoutX="6.0" layoutY="7.0" mnemonicParsing="false" stylesheets="@css/general.css">
+                           <graphic>
+                              <Circle fill="WHITE" radius="11.0" stroke="WHITE" strokeType="INSIDE">
+                                 <cursor>
+                                    <Cursor fx:constant="OPEN_HAND" />
+                                 </cursor>
+                              </Circle>
+                           </graphic>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Pane>
+                  <Pane prefHeight="43.0" prefWidth="606.0" style="-fx-background-color: #763dee; -fx-background-radius: 15;">
+                     <children>
+                        <Text fill="WHITE" layoutX="152.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Second category">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="380.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="553.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <Button layoutX="6.0" layoutY="7.0" mnemonicParsing="false" stylesheets="@css/general.css">
+                           <graphic>
+                              <Circle fill="WHITE" radius="11.0" stroke="WHITE" strokeType="INSIDE">
+                                 <cursor>
+                                    <Cursor fx:constant="OPEN_HAND" />
+                                 </cursor>
+                              </Circle>
+                           </graphic>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </Pane>
+                  <Pane layoutX="10.0" layoutY="93.0" prefHeight="43.0" prefWidth="606.0" style="-fx-background-color: #763dee; -fx-background-radius: 15;">
+                     <children>
+                        <Text fill="WHITE" layoutX="152.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Third category">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="380.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="553.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <Button layoutX="7.0" layoutY="7.0" mnemonicParsing="false" stylesheets="@css/general.css">
+                           <graphic>
+                              <Circle fill="WHITE" radius="11.0" stroke="WHITE" strokeType="INSIDE">
+                                 <cursor>
+                                    <Cursor fx:constant="OPEN_HAND" />
+                                 </cursor>
+                              </Circle>
+                           </graphic>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Pane>
+                  <Button fx:id="newCategory" mnemonicParsing="false" prefHeight="26.0" prefWidth="89.0" style="-fx-background-color: #763dee;" stylesheets="@css/general.css" text="New category" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets left="525.0" top="140.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </VBox>
+         </children>
+        </Pane>
+        <Text fill="WHITE" layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.leader" wrappingWidth="341.0">
+            <font>
+                <Font name="AppleGothic Regular" size="14.0" />
+            </font>
+        </Text>
+        <HBox alignment="CENTER_RIGHT" layoutX="400.0" layoutY="3.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="31.0" prefWidth="400.0" spacing="25.0" style="-fx-background-color: transparent;">
+            <children>
+                <Button fx:id="home" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
+                    <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@img/home-icon_2.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="account" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
+                    <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@img/user-icon_1.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="mail" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
+                    <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@img/mail-icon_14.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="forum" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
+                    <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@img/forum-icon_1.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="calendar" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
+                    <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@img/calendar-icon_4.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="settings" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
+                    <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@img/settings-icon_10.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="logout" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
+                    <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@img/power-off-icon_1.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+        </HBox>
+        <Button fx:id="burger" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="857.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="31.0" prefWidth="31.0" scaleShape="false" stylesheets="@css/general.css">
+            <graphic>
+                <ImageView fitHeight="19.0" fitWidth="37.0" nodeOrientation="INHERIT" preserveRatio="true" smooth="false">
+                    <image>
+                        <Image url="@img/burger.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <styleClass>
+                <String fx:value="burgerButton" />
+                <String fx:value="button" />
+            </styleClass>
+        </Button>
+      <Text fill="WHITE" layoutX="364.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MySport forum">
+         <font>
+            <Font name="Constantia" size="26.0" />
+         </font>
+      </Text>
+    </children>
+</AnchorPane>

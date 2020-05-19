@@ -41,7 +41,7 @@ public class Account extends Menu implements Initializable {
 
     @FXML
     public void buttonEditClick() {
-        App.instance.setScene(SceneSwitcher.instance.getScene("EditProfile"));
+        App.instance.setScene(SceneSwitcher.instance.getScene("EditAccount"));
     }
 
     @FXML

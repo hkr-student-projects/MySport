@@ -2,12 +2,10 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import model.App;
 import model.Logging.Logger;
+import model.People.User;
 import model.Tools.SceneSwitcher;
 
 import java.net.URL;
@@ -19,35 +17,38 @@ public class EditAccount extends Menu implements Initializable {
     @FXML TextField textFieldName, textFieldMiddleName, textFieldSurname, textFieldPhoneNumber;
     @FXML PasswordField passwordFieldPassword, passwordFieldConfirmPassword, passwordFieldCurrentPassword;
 
-
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        bindTab(this);
-    }
+    public void initialize(URL url, ResourceBundle resourceBundle) { bindTab(this); }
 
     @FXML
     public void buttonNameSaveClick() {
         try {
             if (!textFieldName.getText().isBlank()) {
-                if (textFieldName.getText().matches("[0-9]")) {
+                if (!textFieldName.getText().matches("[A-Za-zöÖäÄåÅ]+")) {
                     alert("Error! Numbers detected!", "Re-enter new name without numbers.");
                 } else {
                     String name = textFieldName.getText();
                     App.mySqlManager.updateName(App.instance.getSession().getId(), name);
+                    confirm("Name saved!", "New name: " + name + " has been saved!");
+                    textFieldName.clear();
                 }
             } else if (!textFieldMiddleName.getText().isBlank()) {
-                if (textFieldMiddleName.getText().matches("[0-9]")) {
+                if (!textFieldMiddleName.getText().matches("[A-Za-zöÖäÄåÅ]+")) {
                     alert("Error! Numbers detected!", "Re-enter new middle name without numbers.");
                 } else {
-                    String middleName = textFieldName.getText();
-                    App.mySqlManager.updateName(App.instance.getSession().getId(), middleName);
+                    String middleName = textFieldMiddleName.getText();
+                    App.mySqlManager.updateMiddleName(App.instance.getSession().getId(), middleName);
+                    confirm("Middle-name saved!", "New Middle-name: " + middleName +" has been saved!" );
+                    textFieldMiddleName.clear();
                 }
             } else if (!textFieldSurname.getText().isBlank()) {
-                if (textFieldSurname.getText().matches("[0-9]")) {
+                if (!textFieldSurname.getText().matches("[A-Za-zöÖäÄåÅ]+")) {
                     alert("Error! Numbers detected!", "Re-enter new surname without numbers.");
                 } else {
-                    String surname = textFieldName.getText();
-                    App.mySqlManager.updateName(App.instance.getSession().getId(), surname);
+                    String surname = textFieldSurname.getText();
+                    App.mySqlManager.updateSurname(App.instance.getSession().getId(), surname);
+                    confirm("Surname saved!", "New Surname: " + surname + " has been saved!");
+                    textFieldSurname.clear();
                 }
             }
         } catch (Exception e) {
@@ -85,6 +86,7 @@ public class EditAccount extends Menu implements Initializable {
                 } else {
                     String phoneNumber = textFieldPhoneNumber.getText();
                     App.mySqlManager.updatePhoneNumber(App.instance.getSession().getId(), phoneNumber);
+                    confirm("Phone number saved!", "New phone number: " + phoneNumber + " has been saved!");
                 }
             }
         } catch (Exception e) {
@@ -118,8 +120,16 @@ public class EditAccount extends Menu implements Initializable {
 
     }
 
+
     private void alert(String header, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
+    private void confirm(String header, String content){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setHeaderText(header);
         alert.setContentText(content);
         alert.showAndWait();

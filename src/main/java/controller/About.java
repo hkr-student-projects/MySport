@@ -38,9 +38,7 @@ public class About extends Menu implements Initializable {
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
+    public void initialize(URL url, ResourceBundle resourceBundle) { bindTab(this); }
 
     public void buttonReturnClick() {
         App.instance.setScene(SceneSwitcher.instance.getScene("Settings"));
