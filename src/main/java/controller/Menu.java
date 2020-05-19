@@ -52,12 +52,12 @@ public abstract class Menu {
 //            onSceneSwitch();
 //            App.instance.setScene(SceneSwitcher.instance.getScene("Mail"));
 //        });
-//        forum.setOnMouseClicked(e -> {
-//            if(caller instanceof Forum)
-//                return;
-//            onSceneSwitch();
-//            App.instance.setScene(SceneSwitcher.instance.getScene("Forum"));
-//        });
+        forum.setOnMouseClicked(e -> {
+            if(caller instanceof Forum)
+                return;
+            onBeforeSceneSwitch();
+            App.instance.setScene(SceneSwitcher.instance.getScene("Forum"));
+        });
         calendar.setOnMouseClicked(e -> {
             if(caller instanceof Calendar)
                 return;
