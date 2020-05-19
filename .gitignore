@@ -2,7 +2,6 @@
 .DS_Store
 /deprecated/
 App.log
-config.json
 /out/
 *.class
 *.log
