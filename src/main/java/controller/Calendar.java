@@ -18,12 +18,16 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+
 import model.App;
+import model.People.Leader;
 import model.People.User;
 import model.Tools.ArrayList;
-import model.Tools.Block;
+import model.Tools.Decomposition.Block;
+import model.Tools.EventType;
 import model.Tools.SceneSwitcher;
 import model.Tools.Serializable;
+import model.Tools.Tags.*;
 
 import java.net.URL;
 import java.time.DayOfWeek;
@@ -31,7 +35,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ResourceBundle;
-import model.Tools.EventType;
 
 public class Calendar extends Menu implements Initializable, Serializable<Calendar.WeekProperties> {
 
@@ -62,7 +65,6 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         new Thread(() -> {
             currentWeek = LocalDate.now();
             loadWeeksDB();
@@ -164,20 +166,81 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         buildProps((Pane)tempPane, span);
         prevPane = null;
         tempPane = null;
+        tempCol = -1;
+        tempRow = -1;
         saveCurrentTable();
     }
 
-    private void buildProps(Pane pane, int span){//unite for newly created week
+    private void buildProps(Pane pane, int span){//unite this method with method for newly created week
         buildTime(pane, span);
-
         String sp = sportList.getValue() == null ? sportList.getItems().get(0) : sportList.getValue();
+        addChildProps(pane, span, 0, sp);
+        addChilds(pane,
+                buildSport(sp),
+                buildJoins(span, 0),
+                buildJoin(span)
+        );
+    }
 
-        Text activity = new Text(10, 40, sp);
-        activity.setFill(Paint.valueOf("#FFFFFF"));
-        activity.setFont(new Font("Helvetica Light", 11.0));
-        Text joins = new Text(90, 15 * (span - 1) - 1, "0+");
+    @Related(to = { "Baked pane", "Calendar.buildProps()", "Calendar.loadWeek()" })
+    private void addChilds(Pane pane, Node... nodes){
+        setPaneEntered(pane);
+        pane.getChildren().addAll(nodes);
+        pane.setOnMousePressed(e -> initY = (short)e.getSceneY());
+        if(editor){
+            pane.setOnMouseDragged(e -> move(pane, (int)e.getSceneY()));
+            pane.getStyleClass().add( "cursorHResize");
+        }
+        pane.setOnMouseClicked(null);
+        pane.getStyleClass().addAll("hoverScale", "bakedPane");
+    }
+
+    @Related(to = { "Baked pane", "Calendar.buildProps()", "Calendar.loadWeek()" })
+    private void addTimeProps(Pane pane, String hf, String mf, String ht, String mt){
+        ObservableMap<Object, Object> props = pane.getProperties();
+        props.put("hf", hf);
+        props.put("mf", mf);
+        props.put("ht", ht);
+        props.put("mt", mt);
+    }
+
+    @Related(to = { "Baked pane", "Calendar.buildProps()", "Calendar.loadWeek()" })
+    private void addChildProps(Pane pane, int span, int jns, String sp){//sp = sport
+        ObservableMap<Object, Object> props = pane.getProperties();
+        props.put("span", span);
+        props.put("jns", jns);
+        props.put("sp", sp);
+    }
+
+    @Related(to = { "Baked pane", "Calendar.buildProps()", "Calendar.loadWeek()" })
+    private Text buildTime(String time){//baked time
+        Text text = new Text(10, 20, time);
+        text.setFill(Paint.valueOf("#FFFFFF"));
+        text.setFont(new Font("Helvetica Light", 11.0));
+
+        return text;
+    }
+
+    @Related(to = { "Baked pane", "Calendar.buildProps()", "Calendar.loadWeek()" })
+    private Text buildSport(String name){//baked sport
+        Text sport = new Text(10, 40, name);
+        sport.setFill(Paint.valueOf("#FFFFFF"));
+        sport.setFont(new Font("Helvetica Light", 11.0));
+
+        return sport;
+    }
+
+    @Related(to = { "Baked pane", "Calendar.buildProps()", "Calendar.loadWeek()" })
+    private Text buildJoins(int span, int jns){//baked sport
+        Text joins = new Text(90, 15 * (span - 1) - 1, jns + "+");
         joins.setFill(Paint.valueOf("#FFFFFF"));
         joins.setFont(new Font("Helvetica Light", 11.0));
+
+        return joins;
+    }
+
+    @Related(to = { "Baked pane", "Calendar.buildProps()", "Calendar.loadWeek()" })
+    private Button buildJoin(int span){//baked sport
         Button join = new Button("Join");
         join.getStylesheets().add("/view/css/general.css");
         join.getStyleClass().addAll("joinButton", "cursorHand");
@@ -188,28 +251,19 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         join.setLayoutY(15 * (span - 1) - 20);
         join.setOnMouseClicked(e -> switchAction(join));
 
-        pane.getChildren().addAll(activity, joins, join);
-        ObservableMap<Object, Object> props = pane.getProperties();
-
-        props.put("span", span);
-        props.put("sp", sp);
-        props.put("jns", 0);
-
-        setPaneEntered(pane);
-        pane.setOnMousePressed(e -> initY = (short)e.getSceneY());
-        pane.setOnMouseDragged(e -> move(pane, (int) e.getSceneY()));
-        pane.setOnMouseClicked(null);
-        pane.getStylesheets().add("/view/css/general.css");
-        pane.getStyleClass().addAll("cursorHResize", "hoverScale", "bakedPane");
+        return join;
     }
 
+    @Related(to = { "Calendar.buildJoin()" })
     private void switchAction(Button button){
         modified = true;
+        boolean flag = button.getText().equals("Join");
         Pane p = (Pane) button.getParent();
         Text t = (Text) p.getChildren().get(2);
         ObservableMap<Object, Object> props = p.getProperties();
         int jns = (int) props.get("jns");
-        if(button.getText().equals("Join")){
+        joinActivity(flag, ((Text) p.getChildren().get(1)).getText());
+        if(flag){
             t.setText(++jns + "+");
             props.remove("jns");
             props.put("jns", jns);
@@ -225,6 +279,20 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         }
     }
 
+    private void joinActivity(boolean join, String sport){
+        if(join)
+            App.mongoManager.addParticipant(
+                    this.currentWeek, sport, App.instance.getSession().getId(),
+                    App.instance.getSession() instanceof Leader
+            );
+        else
+            App.mongoManager.removeParticipant(
+                    this.currentWeek, sport, App.instance.getSession().getId(),
+                    App.instance.getSession() instanceof Leader
+            );
+    }
+
+    @Related(to = {"Calendar.move()"})
     private void buildTime(Pane pane, int span){//unite method with for deserialization week method
         int[] cords = getNodeCords(pane);
         byte hourFrom = (byte) (7 + (cords[0] >> 2));
@@ -239,23 +307,17 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         String h1 = (hourTo < 10 ? "0" : "") + hourTo;
         String m1 = minTo + (minTo == 0 ? "0" : "");
 
-        ObservableMap<Object, Object> props = pane.getProperties();
-
         String time = String.format("%s:%s - %s:%s", h0, m0, h1, m1);
-        Text text = new Text(10, 20, time);
-        text.setFill(Paint.valueOf("#FFFFFF"));
-        text.setFont(new Font("Helvetica Light", 11.0));
-        props.put("hf", h0);
-        props.put("mf", m0);
-        props.put("ht", h1);
-        props.put("mt", m1);
+        addTimeProps(pane, h0, m0, h1, m1);
+
         if(pane.getChildren().size() != 0)
             ((Text)(pane.getChildren().get(0))).setText(time);
         else
-            pane.getChildren().add(text);
+            pane.getChildren().add(buildTime(time));
     }
 
-    private void move(Pane pane, int sceneY){//in Maintenance, that's why strange look
+    @Unfinished
+    private void move(Pane pane, int sceneY){
         int dif = initY - sceneY;
         if(Math.abs(dif) > 15){
             int[] cords = getNodeCords(pane);
@@ -353,31 +415,17 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         }
         fillGrids(gridPane, gridPaneFast, editor);
         if(desiredWeek != null)
-            for(int i = 0; i < desiredWeek.panes.size(); i++){//unite for newly created week
+            for(int i = 0; i < desiredWeek.panes.size(); i++){
                 WeekProperties.PaneProperties paneProp = desiredWeek.panes.get(i);
                 Pane pane = (Pane) getNode(paneProp.row, paneProp.col);
-                ObservableMap<Object, Object> props = pane.getProperties();
-                ObservableList<Node> childs = pane.getChildren();
-                props.put("span", paneProp.span);
-                props.put("hf", paneProp.hf);
-                props.put("mf", paneProp.mf);
-                props.put("ht", paneProp.ht);
-                props.put("mt", paneProp.mt);
-                props.put("jns", paneProp.jns);
-                childs.addAll(paneProp.time, paneProp.activity, paneProp.joins, paneProp.join);
-                GridPane.setRowSpan(pane, paneProp.span);
-                deleteBetween(pane, paneProp.row + 1, paneProp.row + paneProp.span - 1, paneProp.col);
                 pane.setStyle(paneProp.color);
-                pane.setOnMouseClicked(null);
-                pane.setOnMousePressed(e -> initY = (short)e.getSceneY());
-                if(editor){
-                    pane.getStyleClass().add( "cursorHResize");
-                    pane.setOnMouseDragged(e -> move(pane, (int)e.getSceneY()));
-                }
-                pane.getStyleClass().addAll("hoverScale", "bakedPane");
-                setPaneEntered(pane);
                 for(int j = 1; j < paneProp.span; j++)
                     gridPaneFast[paneProp.row + i][paneProp.col] = pane;
+                GridPane.setRowSpan(pane, paneProp.span);
+                deleteBetween(pane, paneProp.row + 1, paneProp.row + paneProp.span - 1, paneProp.col);
+                addChildProps(pane, paneProp.span, paneProp.jns, paneProp.activity.getText());
+                addTimeProps(pane, paneProp.hf, paneProp.mf, paneProp.ht, paneProp.mt);
+                addChilds(pane, paneProp.time, paneProp.activity, paneProp.joins, paneProp.join);
             }
     }
 
@@ -392,7 +440,6 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             }
         });
     }
-
     //  count
 //  week: {year, mon, day}
 // {
@@ -451,30 +498,17 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             String mf = block.readString();
             String ht = block.readString();
             String mt = block.readString();
-            String tm = String.format("%s:%s - %s:%s", hf, mf, ht, mt);
-            Text time = new Text(10, 20, tm);
-            time.setFill(Paint.valueOf("#FFFFFF"));
-            time.setFont(new Font("Helvetica Light", 11.0));
             String sportName = block.readString();
-            Text sport = new Text(10, 40, sportName);
-            sport.setFill(Paint.valueOf("#FFFFFF"));
-            sport.setFont(new Font("Helvetica Light", 11.0));
             short jns = block.readInt16();
-            Text joins = new Text(90, 15 * (span - 1) - 1, String.valueOf(jns) + "+");
-            joins.setFill(Paint.valueOf("#FFFFFF"));
-            joins.setFont(new Font("Helvetica Light", 11.0));
-            Button join = new Button("Join");
-            join.getStylesheets().add("/view/css/general.css");
-            join.getStyleClass().addAll("joinButton", "cursorHand");
-            join.setPrefWidth(30);
-            join.setPrefHeight(30);
-            join.setFont(new Font("Helvetica Light", 8));
-            join.setLayoutX(10);
-            join.setLayoutY(15 * (span - 1) - 20);
-            join.setOnMouseClicked(e -> switchAction(join));
 
-            week.addProperty(new WeekProperties.PaneProperties(row, col, span, jns, hf, mf, ht, mt, color, time, sport, joins, join));
+            week.addProperty(new WeekProperties.PaneProperties(row, col, span, jns, hf, mf, ht, mt, color,
+                    buildTime(String.format("%s:%s - %s:%s", hf, mf, ht, mt)),
+                    buildSport(sportName),
+                    buildJoins(span, jns),
+                    buildJoin(span)
+            ));
         }
+
         return week;
     }
 
@@ -501,6 +535,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             }
         }
 
+        @Related(to = { "Calendar.saveCurrentTable", "Calendar.loadTable" })
         public boolean isBetween(int currentDay){
             return currentDay >= dayFrom && currentDay <= dayTo;
         }
@@ -537,6 +572,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         return gridPaneFast[cords[0] + span][cords[1]].getProperties().containsKey("span");
     }
 
+    @Related(to = { "Calendar.move()" })
     private void addBetween(int start, int end, int col){
         if(end < start){
             int temp = start;
@@ -550,6 +586,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         }
     }
 
+    @Related(to = { "Calendar.move()" })
     private void deleteBetween(Node extendee, int startRow, int endRow, int col) {
         for(int i = startRow; i <= endRow; i++){
             gridPane.getChildren().remove(getNode(i, col));
@@ -559,24 +596,22 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
 
     private void nodeTrackMouse(boolean flag){
         if(flag){
-            gridPane.getChildren().forEach(p -> {
-                p.setOnMouseEntered(e -> {
-                    int[] curCords = getNodeCords(p);
-                    int[] tempCords = getNodeCords(tempPane);
-                    if(curCords[1] != tempCords[1])
-                        return;
-                    if(prevPane != null && !prevPane.getProperties().containsKey("span") &&
-                            isAfter(getNodeCords(p), getNodeCords(prevPane))) {
-                        int[] prevCords = getNodeCords(prevPane);
-                        resetColorBetween(curCords, prevCords);
-                    }
-                    p.setStyle(getBackgroundColor());
-                    tempRow = curCords[0];
-                    tempCol = curCords[1];
-                    checkColorBetween(tempCords, curCords);
-                    prevPane = p;
-                });
-            });
+            gridPane.getChildren().forEach(p -> p.setOnMouseEntered(e -> {
+                int[] curCords = getNodeCords(p);
+                int[] tempCords = getNodeCords(tempPane);
+                if(curCords[1] != tempCords[1])
+                    return;
+                if(prevPane != null && !prevPane.getProperties().containsKey("span") &&
+                        isAfter(getNodeCords(p), getNodeCords(prevPane))) {
+                    int[] prevCords = getNodeCords(prevPane);
+                    resetColorBetween(curCords, prevCords);
+                }
+                p.setStyle(getBackgroundColor());
+                tempRow = curCords[0];
+                tempCol = curCords[1];
+                checkColorBetween(tempCords, curCords);
+                prevPane = p;
+            }));
         }
         else gridPane.getChildren().forEach(p -> {
             p.setOnMouseEntered(null);
@@ -622,6 +657,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         }
     }
 
+    @Related(to = { "Calendar.nodeTrackMouse()" })
     private boolean isAfter(int[] curr, int[] prev){
         int[] tempPaneCords = getNodeCords(tempPane);
         //return (base[0] > tempPaneCords[0] ? check[0] > base[0] : check[0] < base[0]) & check[1] == base[1];
