@@ -67,10 +67,10 @@ public class Logger {
 
     public static void logException(Exception ex, String message){
         writeConsole("Exception message: " + message, ELogType.Exception);
-        String exm = "";
+        StringBuilder exm = new StringBuilder();
         for(StackTraceElement se : ex.getStackTrace())
-            exm += "\n\tat " + se.getClassName() + "." + se.getMethodName() + "()";
-        writeConsole(exm, ELogType.Exception);
+            exm.append("\n\tat ").append(se.getClassName()).append(".").append(se.getMethodName()).append("()");
+        writeConsole(exm.toString(), ELogType.Exception);
     }
 
    private static void writeConsole(String message, ELogType logType){

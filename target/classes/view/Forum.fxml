@@ -138,7 +138,7 @@
             <Button layoutX="680.0" layoutY="411.0" mnemonicParsing="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="New category" textFill="WHITE" />
          </children>
         </Pane>
-        <Text fill="WHITE" layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.leader" wrappingWidth="341.0">
+        <Text fx:id="sessionName" fill="WHITE" layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.leader" wrappingWidth="341.0">
             <font>
                 <Font name="AppleGothic Regular" size="14.0" />
             </font>
@@ -228,7 +228,7 @@
         </Button>
       <Text fill="WHITE" layoutX="364.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MySport forum">
          <font>
-            <Font name="Constantia" size="26.0" />
+            <Font name="AppleGothic Regular" size="26.0" />
          </font>
       </Text>
     </children>

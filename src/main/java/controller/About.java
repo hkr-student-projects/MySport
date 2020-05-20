@@ -1,6 +1,5 @@
 package controller;
 
-import com.jfoenix.controls.JFXComboBox;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -8,7 +7,6 @@ import model.App;
 import model.Tools.SceneSwitcher;
 
 import java.net.URL;
-import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class About extends Menu implements Initializable {

@@ -3,10 +3,15 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 import model.App;
+import model.People.Leader;
+import model.People.User;
 import model.Tools.SceneSwitcher;
 
 public abstract class Menu {
+    @FXML
+    protected Text sessionName;
     @FXML
     protected HBox tab;
     @FXML
@@ -20,6 +25,11 @@ public abstract class Menu {
     protected abstract void onBeforeSceneSwitch();
 
     protected abstract void onBeforeLogout();
+
+    protected void buildSessionName(){
+        User user = App.instance.getSession();
+        sessionName.setText(user.getName() + user.getMiddlename() + " " + user.getSurname() + (user.getClass() == Leader.class ? " (Leader)" : " (Member)"));
+    }
 
     protected void toggleTab(){
         tab.setDisable(flag);

@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+@Deprecated(since = "06.05.2020")
 public class Localization {
 
 //    private static String[] _bookingStage;

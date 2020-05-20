@@ -111,4 +111,8 @@ public class Config{
             Logger.logException(ex);
         }
     }
+
+    public String setLanguageCode(Language language){
+        return this.languageCode = language.getCode();
+    }
 }

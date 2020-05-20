@@ -6,25 +6,21 @@ import ch.qos.logback.classic.LoggerContext;
 import com.mongodb.BasicDBObject;
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.model.Aggregates;
+import com.mongodb.client.*;
 import com.mongodb.client.model.Filters;
-import com.mongodb.client.model.Indexes;
 import com.mongodb.client.model.Updates;
 import com.mongodb.client.result.UpdateResult;
 import eu.dozd.mongo.MongoMapper;
 import eu.dozd.mongo.annotation.Entity;
 import eu.dozd.mongo.annotation.Id;
-import org.bson.codecs.configuration.CodecRegistries;
+import model.Tools.Tags.Legacy;
+import org.bson.Document;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
 import org.slf4j.LoggerFactory;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.function.Consumer;
 
 import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
 import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
@@ -37,23 +33,55 @@ public class MongoManager {
         rootLogger.setLevel(Level.OFF);
     }
 
+    @Legacy(reason = "Codec needed for converting Document to Day")
+    public int getParticipants(LocalDate date, String sport){
+        int sum = 0;
+        try(MongoClient client = getClient()){
+            MongoCollection<Day> collection = getCollection(client, date);
+            Day day = collection.find(
+                    BasicDBObject.parse("{ _id: "+ date.getDayOfMonth()+", \"activities._id\": \""+sport+"\" }")
+            ).first();
+            ArrayList list = day.getActivities();
+            for(Object o : list){
+                Document d = (Document) o;
+                if(d.getString("_id").equals(sport)){
+                    sum = d.getList("members", Integer.class).size() + d.getList("leaders", Integer.class).size();
+                    break;
+                }
+            }
+        }
+
+        return sum;
+    }
+
     public void addActivity(LocalDate date, Activity activity){
         try(MongoClient client = getClient()) {
             MongoCollection<Day> collection = getCollection(client, date);
             if (collection.find(Filters.eq("_id", date.getDayOfMonth())).first() == null)
                 insertDay(collection, date.getDayOfMonth());
-            collection.updateOne(Filters.eq("_id", date.getDayOfMonth()),// "_id" is day
+            collection.updateOne(Filters.eq("_id", date.getDayOfMonth()),
                     Updates.addToSet("activities", activity
             ));
-            //printAll(collection);
         }
     }
 
-    public long removeDay(LocalDate date){
+    public UpdateResult addParticipant(LocalDate date, String sport, int id, boolean isLeader){
+        String table = isLeader ? "leaders" : "members";
         try(MongoClient client = getClient()) {
-            return getCollection(client, date).deleteOne(Filters.eq(
-                    "_id", date.getDayOfMonth())
-            ).getDeletedCount();
+            return getCollection(client, date).updateOne(
+                    BasicDBObject.parse("{ _id: "+date.getDayOfMonth()+", \"activities._id\": \""+sport+"\" }"),
+                    BasicDBObject.parse("{ $push: {\"activities.$."+table+"\": "+id+"}}")
+            );
+        }
+    }
+
+    public UpdateResult removeParticipant(LocalDate date, String sport, int id, boolean isLeader){
+        String table = isLeader ? "leaders" : "members";
+        try(MongoClient client = getClient()) {
+            return getCollection(client, date).updateOne(
+                    BasicDBObject.parse("{ _id: "+date.getDayOfMonth()+", \"activities._id\": \""+sport+"\" }"),
+                    BasicDBObject.parse("{ $pull: {\"activities.$."+table+"\": "+id+"}}")
+            );
         }
     }
 
@@ -69,28 +97,17 @@ public class MongoManager {
         }
     }
 
-
-
-//    DBObject listItem = new BasicDBObject("scores", new BasicDBObject("type","quiz").append("score",99));
-//    DBObject updateQuery = new BasicDBObject("$push", listItem);
-//    myCol.update(findQuery, updateQuery);
-
-
-
-    public UpdateResult addParticipant(LocalDate date, String sport, int id, boolean isLeader){
-        String table = isLeader ? "leaders" : "members";
+    public long removeDay(LocalDate date){
         try(MongoClient client = getClient()) {
-            return getCollection(client, date).updateOne(
-                    BasicDBObject.parse("{ _id: "+date.getDayOfMonth()+", \"activities._id\": \""+sport+"\" }"),
-                    BasicDBObject.parse("{ $push: {\"activities.$."+table+"\": "+id+"}}")
-            );
+            return getCollection(client, date).deleteOne(Filters.eq(
+                    "_id", date.getDayOfMonth())
+            ).getDeletedCount();
         }
     }
 
-    public void printAll(MongoCollection<Day> collection){
-        Consumer<Day> consumer = System.out::println;
-        collection.find().forEach(consumer);
-    }
+//    public void printAll(MongoCollection<Day> collection){
+//        collection.find().forEach(System.out::println);
+//    }
 
     private void insertDay(MongoCollection<Day> collection, int dayOfMonth){
         collection.insertOne(new Day(dayOfMonth, new ArrayList<>(5)));

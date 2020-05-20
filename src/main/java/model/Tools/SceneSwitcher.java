@@ -1,5 +1,6 @@
 package model.Tools;
 
+import com.mysql.cj.log.Log;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,6 +10,8 @@ import model.Logging.Logger;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.net.MalformedURLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -17,42 +20,26 @@ public class SceneSwitcher {
 
     private static Map<String, Map<EventType, ArrayList<EventHandler<? super KeyEvent>>>> sceneEventHandlers;// A trick for having multiple listeners (handlers) of: onKeyPressed, onKeyReleased, onMouseCLicked etc. events on every scene (each scene has several events (onMouseCLicked, onKeyPressed etc.), each event has many listeners (with a help of this trick (before it was only possible to have 1 listener per event))).
     public static Map<String, Scene> scenes;
-    private static Map<String, Object> controllers;
+    public static Map<String, Object> controllers;
+    public static Map<String, FXMLLoader> loaders;
     public static SceneSwitcher instance = new SceneSwitcher();
 
     static {
-        try {
-            File[] files = new File("src/main/resources/view").listFiles((dir, name) ->
-                    name.toLowerCase().endsWith(".fxml"));
-            scenes = new HashMap<>(files.length);
-            controllers = new HashMap<>(files.length);
-            sceneEventHandlers = new HashMap<>(files.length);
-            for(File f : files) {
-                String name = f.getName().substring(0, f.getName().length() - 5);
-                FXMLLoader loader = new FXMLLoader(f.toURI().toURL());
-                loader.setResources(ResourceBundle.getBundle("lang_"+ App.config.languageCode +""));
-                Map<EventType, ArrayList<EventHandler<? super KeyEvent>>> events = new HashMap<>(3);
-                events.put(EventType.ON_KEY_PRESSED, new ArrayList<>(5));// 5 is the apx. number of listeners of onKeyPressed event on "name" scene
-                events.put(EventType.ON_KEY_RELEASED, new ArrayList<>(5));// 5 is the apx. number of listeners of onKeyReleased event on "name" scene
-                //events.put(EventType.ON_MOUSE_CLICKED, new ArrayList<>(5));// 5 is the apx. number of listeners of onMouseClicked event on "name" scene
-                sceneEventHandlers.put(name, events);
-                scenes.put(name, new Scene(loader.load(), 900, 600));
-
-                if((loader.getController()) != null)
-                    controllers.put(name, loader.getController());
-            }
-        }
-        catch (IOException e) {
-            Logger.logException(e);
-        }
+        load(true, "se");
         bindListeners();
     }
 
     public Scene getScene(String name){
         return scenes.get(name);
     }
+
     public <T> T getController(String name){ return (T)controllers.get(name); }
-    public void addListener(String sceneName, EventType eventName, EventHandler<? super KeyEvent> handler){
+
+    public FXMLLoader getLoader(String name){
+        return loaders.get(name);
+    }
+
+    public static void addListener(String sceneName, EventType eventName, EventHandler<? super KeyEvent> handler){
         //get events and their listeners of particular scene
         //get current listeners of particular event
         //add new listener for particular scene
@@ -61,6 +48,45 @@ public class SceneSwitcher {
 
     public void removeListener(String sceneName, EventType eventName, EventHandler<? super KeyEvent> handler){
         sceneEventHandlers.get(sceneName).get(eventName).remove(handler);
+    }
+
+    public static void changeLanguage(Language lang){
+        load(true, lang.getCode());
+    }
+
+    private static void load(boolean eventLoad, String lang){
+        File[] files = new File("src/main/resources/view").listFiles((dir, name) ->
+                name.toLowerCase().endsWith(".fxml"));
+        scenes = new HashMap<>(files.length);
+        controllers = new HashMap<>(files.length);
+        loaders = new HashMap<>(files.length);
+        sceneEventHandlers = new HashMap<>(files.length);
+
+        for (File f : files) {
+            String name = f.getName().substring(0, f.getName().length() - 5);
+            FXMLLoader loader = null;
+            try {
+                loader = new FXMLLoader(f.toURI().toURL());
+            } catch (MalformedURLException e) {
+                Logger.logException(e);
+            }
+            loader.setResources(ResourceBundle.getBundle("lang_" + lang + ""));
+            Map<EventType, ArrayList<EventHandler<? super KeyEvent>>> events = new HashMap<>(3);
+            if(eventLoad){
+                events.put(EventType.ON_KEY_PRESSED, new ArrayList<>(5));// 5 is the apx. number of listeners of onKeyPressed event on "name" scene
+                events.put(EventType.ON_KEY_RELEASED, new ArrayList<>(5));
+            }
+            loaders.put(name, loader);
+            sceneEventHandlers.put(name, events);
+            try {
+                scenes.put(name, new Scene(loader.load(), 900, 600));
+            } catch (IOException e) {
+                Logger.logException(e);
+            }
+
+            if ((loader.getController()) != null)
+                controllers.put(name, loader.getController());
+        }
     }
 
     private static void bindListeners(){//find a way to iterate
