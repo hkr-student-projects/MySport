@@ -1,7 +1,7 @@
-model/Tools/Tags/Related.class
-model/Tools/Tags/Unfinished.class
-model/Tools/Tags/Legacy.class
-model/Tools/Decomposition/BitConverter.class
-controller/Forum2.class
-model/Tools/Language.class
-model/Tools/Decomposition/Block.class
+model\Tools\Decomposition\BitConverter.class
+model\Tools\Tags\Unfinished.class
+model\Tools\Decomposition\Block.class
+model\Tools\Tags\Legacy.class
+model\Tools\Tags\Related.class
+controller\Forum2.class
+model\Tools\Language.class

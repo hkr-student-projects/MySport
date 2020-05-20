@@ -33,10 +33,11 @@ public class Settings extends Menu implements Initializable {
     public Button buttonAbout;
 
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        comboBox.setItems(langs);
+        comboBox.setItems(FXCollections.observableArrayList("English", "Swedish", "Norwegian"));
 
         bindTab(this);
     }
