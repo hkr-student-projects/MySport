@@ -20,7 +20,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 import model.App;
+import model.Database.MongoManager;
 import model.People.Leader;
+import model.People.Member;
 import model.People.User;
 import model.Tools.ArrayList;
 import model.Tools.Decomposition.Block;
@@ -39,7 +41,7 @@ import java.util.ResourceBundle;
 public class Calendar extends Menu implements Initializable, Serializable<Calendar.WeekProperties> {
 
     @FXML
-    private Text month, sessionName;
+    private Text month;
     @FXML
     private GridPane gridPane;
     @FXML
@@ -84,10 +86,10 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             fillWeek(7);//currentWeek modified
             modified = false;
         });
-        SceneSwitcher.instance.addListener("Calendar", EventType.ON_KEY_PRESSED, e -> {
+        SceneSwitcher.addListener("Calendar", EventType.ON_KEY_PRESSED, e -> {
              if(e.getCode() == KeyCode.ALT) altDown = true;
         });
-        SceneSwitcher.instance.addListener("Calendar", EventType.ON_KEY_RELEASED, e -> {
+        SceneSwitcher.addListener("Calendar", EventType.ON_KEY_RELEASED, e -> {
             if(e.getCode() == KeyCode.ALT) altDown = false;
         });
         //loadUser(new String[] { "Chess", "Volleyball" });
@@ -174,6 +176,18 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     private void buildProps(Pane pane, int span){//unite this method with method for newly created week
         buildTime(pane, span);
         String sp = sportList.getValue() == null ? sportList.getItems().get(0) : sportList.getValue();
+        new Thread(() -> App.mongoManager.addActivity(
+                LocalDate.of(
+                        this.currentWeek.getYear(),
+                        this.currentWeek.getMonthValue(),
+                        this.currentWeek.getDayOfYear()
+                ),
+                new MongoManager.Activity(
+                        sp, "Hus 7", 0, 930, 1005,
+                        new java.util.ArrayList<>(),
+                        new java.util.ArrayList<>()
+                )
+        )).start();
         addChildProps(pane, span, 0, sp);
         addChilds(pane,
                 buildSport(sp),
@@ -184,7 +198,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
 
     @Related(to = { "Baked pane", "Calendar.buildProps()", "Calendar.loadWeek()" })
     private void addChilds(Pane pane, Node... nodes){
-        setPaneEntered(pane);
+        setEntered(pane);
         pane.getChildren().addAll(nodes);
         pane.setOnMousePressed(e -> initY = (short)e.getSceneY());
         if(editor){
@@ -279,16 +293,17 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         }
     }
 
+    @Related(to = { "Calendar.switchAction()" })
     private void joinActivity(boolean join, String sport){
         if(join)
             App.mongoManager.addParticipant(
                     this.currentWeek, sport, App.instance.getSession().getId(),
-                    App.instance.getSession() instanceof Leader
+                    App.instance.getSession().getClass() == Leader.class
             );
         else
             App.mongoManager.removeParticipant(
                     this.currentWeek, sport, App.instance.getSession().getId(),
-                    App.instance.getSession() instanceof Leader
+                    App.instance.getSession().getClass() == Leader.class
             );
     }
 
@@ -429,7 +444,8 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             }
     }
 
-    private void setPaneEntered(Pane pane) {
+    @Related(to = { "Baked pane" })
+    private void setEntered(Pane pane) {
         pane.setOnMouseEntered(e -> {
             Button b = (Button) pane.getChildren().get(3);
             if(altDown && b.isDisable())
@@ -720,9 +736,10 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         return String.format("-fx-background-color: rgba(%s,%s,%s,%s)", r, g, b, o);
     }
 
-    public void loadUser(String[] sports){
+    public void loadUser(){
         User user = App.instance.getSession();
-        sessionName.setText(user.getName() + user.getMiddlename() + " " + user.getSurname());
+        if(user.getClass() == Member.class)
+            return;
         editor = true;
         adjust.setDisable(false);
         adjust.setVisible(true);
@@ -744,7 +761,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             });
         });
         sportColor.setValue(Color.color(255 / 255.0, 51 / 255.0, 61 / 255.0, 0.83));
-        this.sportList.setItems(FXCollections.observableArrayList(List.of((sports))));//dont use FXCollections.observableList because of unknown css exception
+        this.sportList.setItems(FXCollections.observableArrayList(List.of(((Leader)user).getLeaderOf())));//dont use FXCollections.observableList because of unknown css exception
         gridPane.getChildren().forEach(pane -> pane.setOnMouseClicked(e -> buildActivity(pane)));
     }
 

@@ -9,10 +9,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
-import javafx.stage.Stage;
 import model.App;
-import model.People.Leader;
 import model.People.User;
+import model.Tools.Language;
 import model.Tools.SceneSwitcher;
 
 import java.net.URL;
@@ -35,12 +34,6 @@ public class Login implements Initializable {
     @FXML
     private Line line0, line1;
 
-    private String appId = "2864933576924620";
-    private String appSecret = "5b11cb850b5100f411224c64f188360f";
-    private Stage stage;
-
-    private static final String SUCCESS_URL = "https://www.facebook.com/connect/login_success.html";
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         password.focusedProperty().addListener((obs, wasFocused, isNowFocused) -> {
@@ -58,11 +51,6 @@ public class Login implements Initializable {
             }
             if(checkEmail() && checkPassword()){
                 int id;
-//                    Thread thread = new Thread(() -> {
-//                        id = App.databaseManager.checkCredentials(email.getText(), password.getText());
-//                    });
-//                    thread.start();
-//                    thread.join();
                 if((id = App.mySqlManager.checkCredentials(email.getText(), password.getText())) == -1){
                     error.setText("Incorrect email or password");
                     redLines();
@@ -72,10 +60,14 @@ public class Login implements Initializable {
                 password.setText("");
                 error.setText("");
                 redLines();
-                User user = App.mySqlManager.getUser(id);
                 App.instance.setSession(App.mySqlManager.getUser(id));
-                if(user instanceof Leader)
-                    new Thread(() -> ((Calendar)SceneSwitcher.instance.getController("Calendar")).loadUser(((Leader)user).getLeaderOf())).start();
+                new Thread(
+                        () -> ((Calendar)SceneSwitcher.instance.getController("Calendar")).loadUser()
+                ).start();
+                SceneSwitcher.controllers.forEach((n, c) -> {
+                    if(c instanceof Menu)
+                        ((Menu)c).buildSessionName();
+                });
                 App.instance.setScene(SceneSwitcher.instance.getScene("Home"));
                 resetLines();
             }
