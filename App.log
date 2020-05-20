@@ -8519,3 +8519,43 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-20 18:03:31 CEST] [Exception] Exception message: 
+/C:/Users/krist/Documents/GitHub/MySport/src/main/resources/view/Settings.fxml
+
+[2020-05-20 18:03:31 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+	at com.sun.glass.ui.win.WinApplication._runLoop()
+	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3()
+	at java.lang.Thread.run()
+[2020-05-20 18:04:54 CEST] [Exception] Exception message: 
+/C:/Users/krist/Documents/GitHub/MySport/src/main/resources/view/Settings.fxml
+
+[2020-05-20 18:04:54 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+	at com.sun.glass.ui.win.WinApplication._runLoop()
+	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3()
+	at java.lang.Thread.run()
