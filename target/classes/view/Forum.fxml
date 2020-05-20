@@ -4,14 +4,13 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -22,17 +21,17 @@
          <children>
             <Pane layoutX="84.0" layoutY="29.0" prefHeight="50.0" prefWidth="630.0" style="-fx-background-color: #763dee; -fx-background-radius: 15;">
                <children>
-                  <Text fill="WHITE" layoutX="172.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category">
+                  <Text fill="WHITE" layoutX="180.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Text>
-                  <Text fill="WHITE" layoutX="363.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Topics">
+                  <Text fill="WHITE" layoutX="371.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Topics">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Text>
-                  <Text fill="WHITE" layoutX="542.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Users">
+                  <Text fill="WHITE" layoutX="548.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Users">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -44,115 +43,99 @@
                   </ImageView>
                </children>
             </Pane>
-            <VBox layoutX="83.0" layoutY="79.0" prefHeight="386.0" prefWidth="631.0">
-               <children>
-                  <Line endX="533.0" endY="-1.52587890625E-5" startX="-97.0" startY="-1.52587890625E-5" />
-                  <Pane prefHeight="43.0" prefWidth="606.0" style="-fx-background-color: #763dee; -fx-background-radius: 15;">
+            <ScrollPane layoutX="95.0" layoutY="111.0" prefHeight="272.0" prefWidth="630.0" style="-fx-background-color: transparent;" styleClass="scrollPaneCalendar" stylesheets="@css/general.css">
+               <content>
+                  <Pane prefHeight="600.0" prefWidth="606.0">
                      <children>
-                        <Text fill="WHITE" layoutX="152.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First category">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Text>
-                        <Text fill="WHITE" layoutX="380.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Text>
-                        <Text fill="WHITE" layoutX="553.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Text>
-                        <Button layoutX="6.0" layoutY="7.0" mnemonicParsing="false" stylesheets="@css/general.css">
-                           <graphic>
-                              <Circle fill="WHITE" radius="11.0" stroke="WHITE" strokeType="INSIDE">
-                                 <cursor>
-                                    <Cursor fx:constant="OPEN_HAND" />
-                                 </cursor>
-                              </Circle>
-                           </graphic>
-                        </Button>
+                        <Pane prefHeight="43.0" prefWidth="606.0" style="-fx-background-color: #763dee; -fx-background-radius: 15;">
+                           <children>
+                              <Text fill="WHITE" layoutX="152.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First category">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="380.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="553.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Text>
+                              <Button layoutX="6.0" layoutY="7.0" mnemonicParsing="false" stylesheets="@css/general.css">
+                                 <graphic>
+                                    <Circle fill="WHITE" radius="11.0" stroke="WHITE" strokeType="INSIDE">
+                                       <cursor>
+                                          <Cursor fx:constant="OPEN_HAND" />
+                                       </cursor>
+                                    </Circle>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </Pane>
+                        <Pane layoutY="43.0" prefHeight="43.0" prefWidth="606.0" style="-fx-background-color: #763dee; -fx-background-radius: 15;">
+                           <children>
+                              <Text fill="WHITE" layoutX="152.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Second category">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="380.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="553.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Text>
+                              <Button layoutX="6.0" layoutY="7.0" mnemonicParsing="false" stylesheets="@css/general.css">
+                                 <graphic>
+                                    <Circle fill="WHITE" radius="11.0" stroke="WHITE" strokeType="INSIDE">
+                                       <cursor>
+                                          <Cursor fx:constant="OPEN_HAND" />
+                                       </cursor>
+                                    </Circle>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </Pane>
+                        <Pane layoutY="86.0" prefHeight="43.0" prefWidth="606.0" style="-fx-background-color: #763dee; -fx-background-radius: 15;">
+                           <children>
+                              <Text fill="WHITE" layoutX="152.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Third category">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="380.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="553.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Text>
+                              <Button layoutX="7.0" layoutY="7.0" mnemonicParsing="false" stylesheets="@css/general.css">
+                                 <graphic>
+                                    <Circle fill="WHITE" radius="11.0" stroke="WHITE" strokeType="INSIDE">
+                                       <cursor>
+                                          <Cursor fx:constant="OPEN_HAND" />
+                                       </cursor>
+                                    </Circle>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </Pane>
                      </children>
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin>
                   </Pane>
-                  <Pane prefHeight="43.0" prefWidth="606.0" style="-fx-background-color: #763dee; -fx-background-radius: 15;">
-                     <children>
-                        <Text fill="WHITE" layoutX="152.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Second category">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Text>
-                        <Text fill="WHITE" layoutX="380.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Text>
-                        <Text fill="WHITE" layoutX="553.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Text>
-                        <Button layoutX="6.0" layoutY="7.0" mnemonicParsing="false" stylesheets="@css/general.css">
-                           <graphic>
-                              <Circle fill="WHITE" radius="11.0" stroke="WHITE" strokeType="INSIDE">
-                                 <cursor>
-                                    <Cursor fx:constant="OPEN_HAND" />
-                                 </cursor>
-                              </Circle>
-                           </graphic>
-                        </Button>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="15.0" />
-                     </VBox.margin>
-                  </Pane>
-                  <Pane layoutX="10.0" layoutY="93.0" prefHeight="43.0" prefWidth="606.0" style="-fx-background-color: #763dee; -fx-background-radius: 15;">
-                     <children>
-                        <Text fill="WHITE" layoutX="152.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Third category">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Text>
-                        <Text fill="WHITE" layoutX="380.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Text>
-                        <Text fill="WHITE" layoutX="553.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Text>
-                        <Button layoutX="7.0" layoutY="7.0" mnemonicParsing="false" stylesheets="@css/general.css">
-                           <graphic>
-                              <Circle fill="WHITE" radius="11.0" stroke="WHITE" strokeType="INSIDE">
-                                 <cursor>
-                                    <Cursor fx:constant="OPEN_HAND" />
-                                 </cursor>
-                              </Circle>
-                           </graphic>
-                        </Button>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin>
-                  </Pane>
-                  <Button fx:id="newCategory" mnemonicParsing="false" prefHeight="26.0" prefWidth="89.0" style="-fx-background-color: #763dee;" stylesheets="@css/general.css" text="New category" textFill="WHITE">
-                     <VBox.margin>
-                        <Insets left="525.0" top="140.0" />
-                     </VBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="OPEN_HAND" />
-                     </cursor>
-                  </Button>
-               </children>
-               <padding>
-                  <Insets top="20.0" />
-               </padding>
-            </VBox>
+               </content>
+            </ScrollPane>
+            <Button layoutX="680.0" layoutY="411.0" mnemonicParsing="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="New category" textFill="WHITE" />
          </children>
         </Pane>
         <Text fill="WHITE" layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.leader" wrappingWidth="341.0">

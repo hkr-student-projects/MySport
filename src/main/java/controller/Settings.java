@@ -24,7 +24,7 @@ public class Settings extends Menu implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        comboBox = new JFXComboBox<>();
+
         comboBox.setItems(langs);
 
         bindTab(this);

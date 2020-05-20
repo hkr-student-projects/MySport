@@ -19,6 +19,7 @@ model\Database\MySqlManager$QueryType.class
 controller\Calendar$WeekProperties$PaneProperties.class
 controller\ResetCode.class
 controller\Settings.class
+controller\Support.class
 model\Logging\ELogType.class
 model\Mailer\Mailer.class
 controller\LoginRich.class

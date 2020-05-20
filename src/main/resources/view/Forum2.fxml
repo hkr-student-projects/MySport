@@ -34,11 +34,11 @@
                         </ImageView>
                     </children>
                 </Pane>
-                <VBox layoutX="83.0" layoutY="79.0" prefHeight="386.0" prefWidth="440.0">
+                <VBox layoutX="83.0" layoutY="79.0" prefHeight="386.0" prefWidth="439.0">
                     <children>
                         <Pane prefHeight="43.0" prefWidth="606.0" style="-fx-background-color: #763dee; -fx-background-radius: 15;">
                             <children>
-                                <Text fill="WHITE" layoutX="81.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First topic">
+                                <Text fill="WHITE" layoutX="44.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First topic">
                                     <font>
                                         <Font size="16.0" />
                                     </font>
@@ -57,12 +57,12 @@
                                 <Insets top="20.0" />
                             </padding>
                             <VBox.margin>
-                                <Insets left="40.0" right="400.0" top="20.0" />
+                                <Insets right="200.0" top="20.0" />
                             </VBox.margin>
                         </Pane>
                         <Pane prefHeight="43.0" prefWidth="606.0" style="-fx-background-color: #763dee; -fx-background-radius: 15;">
                             <children>
-                                <Text fill="WHITE" layoutX="70.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Second topic">
+                                <Text fill="WHITE" layoutX="44.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Second topic">
                                     <font>
                                         <Font size="16.0" />
                                     </font>
@@ -78,7 +78,7 @@
                                 </Button>
                             </children>
                             <VBox.margin>
-                                <Insets left="40.0" right="400.0" top="15.0" />
+                                <Insets right="200.0" top="15.0" />
                             </VBox.margin>
                      <opaqueInsets>
                         <Insets />
@@ -86,7 +86,7 @@
                         </Pane>
                         <Pane layoutX="10.0" layoutY="93.0" prefHeight="43.0" prefWidth="606.0" style="-fx-background-color: #763dee; -fx-background-radius: 15;">
                             <children>
-                                <Text fill="WHITE" layoutX="77.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Third topic">
+                                <Text fill="WHITE" layoutX="45.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Third topic">
                                     <font>
                                         <Font size="16.0" />
                                     </font>
@@ -105,28 +105,20 @@
                                 <Insets top="20.0" />
                             </padding>
                             <VBox.margin>
-                                <Insets left="40.0" right="400.0" top="15.0" />
+                                <Insets right="200.0" top="15.0" />
                             </VBox.margin>
                         </Pane>
-                  <Line endX="533.0" endY="-1.52587890625E-5" startX="-97.0" startY="-1.52587890625E-5">
-                     <VBox.margin>
-                        <Insets top="100.0" />
-                     </VBox.margin>
-                  </Line>
-                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="89.0" style="-fx-background-color: #763dee;" stylesheets="@css/general.css" text="New topic" textFill="WHITE">
-                            <VBox.margin>
-                                <Insets left="525.0" top="50.0" />
-                            </VBox.margin>
-                            <cursor>
-                                <Cursor fx:constant="OPEN_HAND" />
-                            </cursor>
-                        </Button>
                     </children>
                     <padding>
                         <Insets top="20.0" />
                     </padding>
                 </VBox>
-                <Line endX="533.0" endY="-1.52587890625E-5" layoutX="180.0" layoutY="78.0" startX="-97.0" startY="-1.52587890625E-5" />
+                <Line endX="531.2000732421875" endY="-1.52587890625E-5" layoutX="180.0" layoutY="78.0" startX="-97.0" startY="-1.52587890625E-5" />
+                  <Button layoutX="680.0" layoutY="409.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="89.0" style="-fx-background-color: #763dee;" stylesheets="@css/general.css" text="New topic" textFill="WHITE">
+                      <cursor>
+                          <Cursor fx:constant="OPEN_HAND" />
+                      </cursor>
+                  </Button>
             </children>
         </Pane>
         <Text fill="WHITE" layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.leader" wrappingWidth="341.0">

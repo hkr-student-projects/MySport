@@ -98,7 +98,7 @@ public class MySqlManager {
     public boolean existsEmail(String email){
         return (boolean) executeQuery(QueryType.BOOL, "SELECT email FROM "+account+" WHERE email = ?",
             new String[] { email }, new int[] { Types.VARCHAR }
-        );
+            );
     }
 
     @SuppressWarnings("Because QueryType is Reader")
@@ -359,6 +359,10 @@ public class MySqlManager {
         READER,//SELECT -> ResultSet
         BOOL,//SELECT -> Exists selection or not
         UDP
+    }
+
+    public Map<String, ArrayList<String>> getEmail(){
+        return (Map<String, ArrayList<String>>) executeQuery(QueryType.READER, "SELECT email FROM "+account);
     }
 }
 //    private String[] getColumns(String query){
