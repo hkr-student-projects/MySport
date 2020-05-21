@@ -48,7 +48,6 @@ public class Settings extends Menu implements Initializable {
             ThreadResult<String, Boolean> checkLanguage = new ThreadResult<>(this::language, label.getText());
             Thread thread = new Thread(checkLanguage);
             thread.start();
-            
         });
     }
 

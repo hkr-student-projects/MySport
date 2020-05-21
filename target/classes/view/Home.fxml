@@ -275,7 +275,7 @@
                                     <Font name="Helvetica Light" size="13.0" />
                                  </font>
                               </Text>
-                              <JFXButton cacheShape="false" centerShape="false" focusTraversable="false" layoutX="300.0" layoutY="105.0" prefHeight="32.0" prefWidth="104.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="%key.view" textFill="WHITE">
+                              <JFXButton cacheShape="false" centerShape="false" focusTraversable="false" layoutX="300.0" layoutY="105.0" onAction="#buttonSupportViewClick" prefHeight="32.0" prefWidth="104.0" scaleShape="false" styleClass="buttonInAcc" stylesheets="@css/general.css" text="%key.view" textFill="WHITE">
                                  <font>
                                     <Font name="Arial" size="16.0" />
                                  </font>

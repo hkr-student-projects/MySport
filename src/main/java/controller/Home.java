@@ -2,6 +2,7 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import model.App;
 import model.Tools.SceneSwitcher;
@@ -11,7 +12,8 @@ import java.util.ResourceBundle;
 
 public class Home extends Menu implements Initializable {
 
-    @FXML Button buttonAboutView;
+    @FXML
+    Button buttonAboutView, supportView;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -19,7 +21,14 @@ public class Home extends Menu implements Initializable {
     }
 
     @FXML
-    public void buttonAboutViewClick(){ App.instance.setScene(SceneSwitcher.instance.getScene("About")); }
+    public void buttonAboutViewClick() {
+        App.instance.setScene(SceneSwitcher.instance.getScene("About"));
+    }
+
+    @FXML
+    public void buttonSupportViewClick() {
+        App.instance.setScene(SceneSwitcher.instance.getScene("Support"));
+    }
 
     @Override
     protected void onBurgerOpen() {
