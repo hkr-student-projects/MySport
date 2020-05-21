@@ -17,7 +17,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import model.App;
 import model.People.Leader;
+import model.Tools.Language;
 import model.Tools.SceneSwitcher;
+import model.Tools.ThreadResult;
 
 import java.io.File;
 import java.net.URL;
@@ -38,6 +40,35 @@ public class Settings extends Menu implements Initializable {
         ObservableList<Label> list = getLanguages();
         comboBox.setItems(list);
         bindTab(this);
+
+        comboBox.setOnAction(e -> {
+
+            Label label = (Label) comboBox.getValue();
+
+            ThreadResult<String, Boolean> checkLanguage = new ThreadResult<>(this::language, label.getText());
+            Thread thread = new Thread(checkLanguage);
+            thread.start();
+            
+        });
+    }
+
+    private Boolean language(String currentLabel) {
+        switch (currentLabel) {
+            case "English":
+                SceneSwitcher.changeLanguage(Language.EN);
+                return true;
+
+            case "Swedish":
+                SceneSwitcher.changeLanguage(Language.SE);
+                return true;
+
+            case "Norwegian":
+                SceneSwitcher.changeLanguage(Language.NO);
+                return true;
+
+        }
+
+        return false;
     }
 
     @Override
