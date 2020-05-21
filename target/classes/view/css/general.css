@@ -2,7 +2,7 @@
     -fx-background-color: transparent;
 }
 
-.buttonTab{
+.buttonTab {
     -fx-background-color: transparent;
     /*transition: 0.2s;*/
 }
@@ -29,7 +29,7 @@
     -fx-background-color: #4c2799;
 }
 
-.joinButton{
+.joinButton {
     -fx-background-color: transparent;
     -fx-background-radius: 30;
     -fx-border-radius: 30;
@@ -37,11 +37,11 @@
     -fx-border-color: #FFFFFF;
 }
 
-.joinButton:hover{
+.joinButton:hover {
     -fx-background-color: rgba(255, 255, 255, 0.51);
 }
 
-.joinButton:pressed{
+.joinButton:pressed {
     -fx-background-color: rgba(255, 255, 255, 0.77);
 }
 
@@ -93,7 +93,7 @@
     -fx-cursor: hand;
 }
 
-.cursorText{
+.cursorText {
     -fx-cursor: text;
 }
 
@@ -103,13 +103,13 @@
     -fx-border-width: 0.5;
 }
 
-.bakedPane{
+.bakedPane {
     -fx-opacity: 0.83;
 }
 
 .paneEvent {
-	-fx-background-radius: 33;
-	-fx-background-color: white;
+    -fx-background-radius: 33;
+    -fx-background-color: white;
 }
 
 .hoverScale:hover {
@@ -118,17 +118,23 @@
 }
 
 .sportEvent {
-	-fx-background-radius: 3;
-	-fx-background-color: #763dee;
+    -fx-background-radius: 3;
+    -fx-background-color: #763dee;
 }
 
-.field{
+.field {
     -fx-background-color: transparent;
     -fx-text-fill: #727272;
 }
 
+.fieldPurpleBorder {
+    -fx-background-color: transparent;
+    -fx-border-color: #763dee;
+}
+
+
 .fieldTodayRed {
-    -fx-background-color: rgba(255,51,61,0.83);
+    -fx-background-color: rgba(255, 51, 61, 0.83);
     -fx-text-fill: #FFFFFF;
 }
 
@@ -145,8 +151,8 @@
     -fx-background-color: transparent;
 }
 
-.scroll-bar:horizontal, .scroll-bar:vertical{
-    -fx-background-color:transparent;
+.scroll-bar:horizontal, .scroll-bar:vertical {
+    -fx-background-color: transparent;
 }
 
 .increment-button, .decrement-button {
@@ -155,7 +161,7 @@
 }
 
 .scroll-bar:horizontal .track,
-.scroll-bar:vertical .track{
+.scroll-bar:vertical .track {
     -fx-background-color: transparent;
     -fx-border-color: transparent;
     -fx-background-radius: 0em;

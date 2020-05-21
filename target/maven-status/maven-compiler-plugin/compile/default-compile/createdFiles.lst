@@ -1,7 +1,9 @@
+controller\FAQ.class
 model\Tools\Decomposition\BitConverter.class
 model\Tools\Tags\Unfinished.class
 model\Tools\Decomposition\Block.class
 model\Tools\Tags\Legacy.class
 model\Tools\Tags\Related.class
 controller\Forum2.class
+controller\ContactForm.class
 model\Tools\Language.class

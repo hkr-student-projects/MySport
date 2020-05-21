@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
@@ -9,11 +10,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane cacheShape="false" centerShape="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #763dee;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Support">
+<AnchorPane cacheShape="false" centerShape="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #763dee;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FAQ">
     <children>
         <Text fill="WHITE" layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.leader" wrappingWidth="341.0">
             <font>
@@ -104,64 +104,29 @@
             </styleClass>
         </Button>
         <Pane cacheShape="false" centerShape="false" disable="true" layoutX="560.0" layoutY="66.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="303.0" style="-fx-background-color: white; -fx-background-radius: 33;" visible="false" />
-          <Pane cacheShape="false" centerShape="false" layoutX="76.0" layoutY="126.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="446.0" prefWidth="478.0" styleClass="paneEvent" stylesheets="@css/general.css">
-         <children>
-            <Text fill="#763dee" layoutX="163.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Popular topics">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
-            <Text fill="#763dee" layoutX="182.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact us">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
-            <Line endX="14.79998779296875" layoutX="38.0" layoutY="135.0" startX="-21.20000457763672" />
-            <Line endX="14.79998779296875" layoutX="38.0" layoutY="315.0" startX="-21.20000457763672" />
-            <Line endX="14.79998779296875" layoutX="448.0" layoutY="314.0" startX="-21.20000457763672" />
-            <Line endX="14.79998779296875" layoutX="448.0" layoutY="135.0" startX="-21.20000457763672" />
-            <Button layoutX="61.0" layoutY="104.0" maxHeight="62.0" maxWidth="357.0" mnemonicParsing="false" onAction="#faqButtonClick" prefHeight="36.0" prefWidth="357.0" style="-fx-background-color: transparent; -fx-background-radius: 25;">
-               <graphic>
-                  <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="341.0" style="-fx-background-color: #763dee;" styleClass="paneEvent" stylesheets="@css/general.css">
-                     <children>
-                        <Text fill="WHITE" layoutX="147.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FAQs">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </Pane>
-               </graphic>
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-            </Button>
-            <Button layoutX="61.0" layoutY="285.0" mnemonicParsing="false" onAction="#contactFormButtonClick" style="-fx-background-color: transparent; -fx-background-radius: 25;">
-               <graphic>
-                  <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="341.0" style="-fx-background-color: #763dee;" styleClass="paneEvent" stylesheets="@css/general.css">
-                     <children>
-                        <Text fill="WHITE" layoutX="112.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact form">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </Pane>
-               </graphic>
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-            </Button>
-         </children></Pane>
-      <Text fill="WHITE" layoutX="181.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How can we help you?">
-         <font>
-            <Font size="27.0" />
-         </font>
-      </Text>
-      <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="636.0" layoutY="249.0">
-         <image>
-            <Image url="@img/jarIcon.png" />
-         </image>
-      </ImageView>
+        <Pane cacheShape="false" centerShape="false" layoutX="76.0" layoutY="126.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="446.0" prefWidth="478.0" styleClass="paneEvent" stylesheets="@css/general.css">
+            <children>
+                <Button layoutX="61.0" layoutY="104.0" maxHeight="62.0" maxWidth="357.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="357.0" style="-fx-background-color: transparent; -fx-background-radius: 25;">
+                    <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                    </cursor>
+                </Button>
+                <Button layoutX="61.0" layoutY="285.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-background-radius: 25;">
+                    <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                    </cursor>
+                </Button>
+            <JFXButton layoutX="14.0" layoutY="19.0" onAction="#returnButtonPress" style="-fx-background-color: #763dee;" text="Return" textFill="WHITE" />
+            </children></Pane>
+        <Text fill="WHITE" layoutX="284.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FAQs">
+            <font>
+                <Font size="27.0" />
+            </font>
+        </Text>
+        <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="636.0" layoutY="249.0">
+            <image>
+                <Image url="@img/jarIcon.png" />
+            </image>
+        </ImageView>
     </children>
 </AnchorPane>

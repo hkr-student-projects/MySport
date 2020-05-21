@@ -2,11 +2,7 @@ package controller;
 
 import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableMap;
-import javafx.event.Event;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -14,9 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
 import model.App;
-import model.People.Leader;
 import model.Tools.Language;
 import model.Tools.SceneSwitcher;
 import model.Tools.ThreadResult;
@@ -31,7 +25,8 @@ public class Settings extends Menu implements Initializable {
     @FXML
     private JFXComboBox comboBox;
     private Locale locale;
-    public Button buttonAbout;
+    @FXML
+    public Button buttonAbout, saveButton;
 
 
     @Override

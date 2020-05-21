@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane cacheShape="false" centerShape="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #763dee;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Home">
+<AnchorPane cacheShape="false" centerShape="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #763dee;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Support">
     <children>
         <Text fill="WHITE" layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.leader" wrappingWidth="341.0">
             <font>
@@ -120,7 +120,7 @@
             <Line endX="14.79998779296875" layoutX="38.0" layoutY="315.0" startX="-21.20000457763672" />
             <Line endX="14.79998779296875" layoutX="448.0" layoutY="314.0" startX="-21.20000457763672" />
             <Line endX="14.79998779296875" layoutX="448.0" layoutY="135.0" startX="-21.20000457763672" />
-            <Button layoutX="61.0" layoutY="104.0" maxHeight="62.0" maxWidth="357.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="357.0" style="-fx-background-color: transparent; -fx-background-radius: 25;">
+            <Button layoutX="61.0" layoutY="104.0" maxHeight="62.0" maxWidth="357.0" mnemonicParsing="false" onAction="#faqButtonClick" prefHeight="36.0" prefWidth="357.0" style="-fx-background-color: transparent; -fx-background-radius: 25;">
                <graphic>
                   <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="341.0" style="-fx-background-color: #763dee;" styleClass="paneEvent" stylesheets="@css/general.css">
                      <children>
@@ -136,7 +136,7 @@
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </Button>
-            <Button layoutX="61.0" layoutY="285.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-background-radius: 25;">
+            <Button layoutX="61.0" layoutY="285.0" mnemonicParsing="false" onAction="#contactFormButtonClick" style="-fx-background-color: transparent; -fx-background-radius: 25;">
                <graphic>
                   <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="341.0" style="-fx-background-color: #763dee;" styleClass="paneEvent" stylesheets="@css/general.css">
                      <children>

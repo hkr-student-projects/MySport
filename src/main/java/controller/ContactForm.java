@@ -3,16 +3,22 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import model.App;
 import model.Tools.SceneSwitcher;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Support extends Menu implements Initializable {
+public class ContactForm extends Menu implements Initializable {
 
     @FXML
-    private Button faq, contactForm;
+    private Button clear, send, goBack;
+    @FXML
+    private TextField name, email;
+    @FXML
+    private TextArea message;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -21,13 +27,15 @@ public class Support extends Menu implements Initializable {
     }
 
     @FXML
-    public void contactFormButtonClick() {
-        App.instance.setScene(SceneSwitcher.instance.getScene("ContactForm"));
+    public void clearFields() {
+        name.setText(null);
+        email.setText(null);
+        message.setText(null);
     }
 
     @FXML
-    public void faqButtonClick() {
-        App.instance.setScene(SceneSwitcher.instance.getScene("FAQ"));
+    public void returnButtonPress() {
+        App.instance.setScene(SceneSwitcher.instance.getScene("Support"));
     }
 
     @Override
