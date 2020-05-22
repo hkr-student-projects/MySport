@@ -36,13 +36,13 @@
             </JFXHamburger>
             <AnchorPane fx:id="chatPane1" layoutX="7.0" layoutY="40.0" prefHeight="547.0" prefWidth="427.0">
                <children>
-                  <TextArea fx:id="txtMsg" accessibleRole="PARENT" layoutX="21.0" layoutY="507.0" prefHeight="30.0" prefWidth="337.0" promptText="%key.msg" wrapText="true" />
+                  <TextArea fx:id="txtMsg" accessibleRole="PARENT" layoutX="21.0" layoutY="507.0" prefHeight="30.0" prefWidth="337.0" promptText="%key.msg" styleClass="text-area" stylesheets="@css/general.css" wrapText="true" />
                   <ScrollPane fx:id="scrollPane" accessibleRole="PARENT" hbarPolicy="NEVER" layoutX="14.0" layoutY="14.0" prefHeight="453.0" prefWidth="399.0" vvalue="1.0">
                      <content>
                         <VBox fx:id="chatBox" alignment="TOP_RIGHT" prefHeight="451.0" prefWidth="398.0" />
                      </content>
                   </ScrollPane>
-                  <Button fx:id="btnSend" accessibleRole="PARENT" layoutX="366.0" layoutY="507.0" mnemonicParsing="false" onAction="#sendAction" prefHeight="30.0" prefWidth="34.0" style="-fx-background-color: #763DEE;" />
+                  <Button fx:id="btnSend" accessibleRole="PARENT" layoutX="366.0" layoutY="507.0" mnemonicParsing="false" onAction="#sendAction" prefHeight="30.0" prefWidth="34.0" style="-fx-background-color: #763DEE;" stylesheets="@css/general.css" />
                   <TextFlow fx:id="emojiList" layoutX="91.0" layoutY="397.0" prefHeight="91.0" prefWidth="260.0" visible="false">
                      <children>
                         <Text fill="#ffc72e" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="🎂🍹🌍💪🤳👈✌👌👍✋👎🙏🤜💛🕶🌷" />
