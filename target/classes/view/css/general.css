@@ -2,9 +2,8 @@
     -fx-background-color: transparent;
 }
 
-.buttonTab {
+.buttonTab{
     -fx-background-color: transparent;
-    /*transition: 0.2s;*/
 }
 
 .buttonTab:hover {
@@ -29,7 +28,7 @@
     -fx-background-color: #4c2799;
 }
 
-.joinButton {
+.joinButton{
     -fx-background-color: transparent;
     -fx-background-radius: 30;
     -fx-border-radius: 30;
@@ -37,11 +36,11 @@
     -fx-border-color: #FFFFFF;
 }
 
-.joinButton:hover {
+.joinButton:hover{
     -fx-background-color: rgba(255, 255, 255, 0.51);
 }
 
-.joinButton:pressed {
+.joinButton:pressed{
     -fx-background-color: rgba(255, 255, 255, 0.77);
 }
 
@@ -93,7 +92,7 @@
     -fx-cursor: hand;
 }
 
-.cursorText {
+.cursorText{
     -fx-cursor: text;
 }
 
@@ -103,13 +102,13 @@
     -fx-border-width: 0.5;
 }
 
-.bakedPane {
+.bakedPane{
     -fx-opacity: 0.83;
 }
 
 .paneEvent {
-    -fx-background-radius: 33;
-    -fx-background-color: white;
+	-fx-background-radius: 33;
+	-fx-background-color: white;
 }
 
 .hoverScale:hover {
@@ -118,23 +117,17 @@
 }
 
 .sportEvent {
-    -fx-background-radius: 3;
-    -fx-background-color: #763dee;
+	-fx-background-radius: 3;
+	-fx-background-color: #763dee;
 }
 
-.field {
+.field{
     -fx-background-color: transparent;
     -fx-text-fill: #727272;
 }
 
-.fieldPurpleBorder {
-    -fx-background-color: transparent;
-    -fx-border-color: #763dee;
-}
-
-
 .fieldTodayRed {
-    -fx-background-color: rgba(255, 51, 61, 0.83);
+    -fx-background-color: rgba(255,51,61,0.83);
     -fx-text-fill: #FFFFFF;
 }
 
@@ -151,8 +144,8 @@
     -fx-background-color: transparent;
 }
 
-.scroll-bar:horizontal, .scroll-bar:vertical {
-    -fx-background-color: transparent;
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color:transparent;
 }
 
 .increment-button, .decrement-button {
@@ -161,7 +154,7 @@
 }
 
 .scroll-bar:horizontal .track,
-.scroll-bar:vertical .track {
+.scroll-bar:vertical .track{
     -fx-background-color: transparent;
     -fx-border-color: transparent;
     -fx-background-radius: 0em;
@@ -176,4 +169,136 @@
 .scroll-bar > .increment-button > .increment-arrow,
 .scroll-bar > .decrement-button > .decrement-arrow {
     -fx-background-color: transparent;
+}
+
+#emojiList{
+    -fx-font-size: 16px;
+    -fx-padding: 2;
+    -fx-text-fill: chocolate;
+    -fx-background-color: rgba(255,255,255,0.7);
+}
+
+#btnEmoji{
+    -fx-min-width: 15px;
+    -fx-min-height: 15px;
+    -fx-padding: 2;
+    -fx-background-color: transparent;
+    -fx-font-size: 16px;
+    -fx-text-fill: chocolate;
+    -fx-shape: "M 95.250002,86.845238 A 17.008928,17.386906 0 0 1 78.241074,104.23214 17.008928,
+    17.386906 0 0 1 61.232145,86.845238 17.008928,17.386906 0 0 1 78.241074,69.458332 17.008928,
+    17.386906 0 0 1 95.250002,86.845238 Z";
+}
+
+#btnSend{
+    /*-fx-background-radius: 50%;*/
+    /*-fx-background-color: rgba(0,0,0,0.3);*/
+    /*-fx-border-color: transparent;*/
+    -fx-background-color: white;
+    /*-fx-effect: dropshadow(gaussian, rgba(255,255,255,0.5) ,0.5, 0.5, 0, 0);*/
+    -fx-shape: "m 138.55021,89.698036 v 0 l 1.27487,-1.138164 -1.2721,-1.016698 c 4.08005,1.020056 4.33904,0.732386 -0.003,2.154862 z";
+}
+
+#btnSend:hover{
+    /*-fx-border-color: white;*/
+    /*-fx-background-color: rgba(0,0,0,0.3);*/
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5) , 0.5, 0.5, 2, 2);
+}
+
+
+.chatBox{
+    -fx-padding: 20px;
+    -fx-background-insets: -25px;
+}
+
+
+#scrollPane{
+    -fx-background-color: transparent;
+}
+#scrollPane >.viewport{
+    -fx-background-color: transparent;
+}
+
+#scrollPane .scroll-bar:vertical{
+    -fx-background-color:inherit;
+
+}
+
+#scrollPane .scroll-bar:vertical .track{
+    -fx-background-color:transparent;
+    -fx-border-color:transparent;
+    -fx-background-radius: 0em;
+
+}
+#scrollPane .scroll-bar:vertical .increment-button,
+#scrollPane .scroll-bar:vertical .decrement-button{
+    -fx-background-color:transparent;
+    -fx-background-radius: 0em;
+    -fx-padding:0 0 10 0;
+
+}
+
+#scrollPane  .scroll-bar .increment-arrow,
+#scrollPane  .scroll-bar .decrement-arrow {
+    -fx-shape: " ";
+    -fx-padding:0;
+}
+#scrollPane .scroll-bar:vertical .thumb {
+    -fx-background-color:transparent;
+
+}
+#scrollPane:hover .scroll-bar:vertical .thumb{
+    -fx-background-color:rgba(0,0,0,0.6);
+    -fx-background-insets: 4, 0, 0;
+    -fx-background-radius: 2em;
+}
+
+text-area .content {
+    -fx-background-color: transparent, white, transparent, white;
+    -fx-text-alignment: center;
+}
+
+.text-area:focused .content {
+    -fx-background-color: transparent, white, transparent, white;
+}
+
+
+#txtMsg{
+    -fx-padding: 0 19;
+    -fx-background-color: transparent, white, transparent,white;
+    -fx-background-insets: 0, 6, 0;
+    -fx-background-radius: 8em;
+}
+#txtMsg .scroll-pane{
+    -fx-background-color: transparent;
+}
+#txtMsg .scroll-pane >.viewport , #txtMsg >.viewport{
+    -fx-background-color: transparent;
+}
+
+#txtMsg .scroll-pane .scroll-bar:vertical, #txtMsg .scroll-bar:vertical{
+    -fx-background-color:inherit;
+}
+
+#txtMsg .scroll-pane .scroll-bar:vertical .track{
+    -fx-background-color:transparent;
+    -fx-border-color:transparent;
+    -fx-background-radius: 0em;
+
+}
+#txtMsg .scroll-pane .scroll-bar:vertical .increment-button,
+#txtMsg .scroll-pane .scroll-bar:vertical .decrement-button{
+    -fx-background-color:transparent;
+    -fx-background-radius: 0em;
+    -fx-padding:0 0 10 0;
+
+}
+
+#txtMsg .scroll-pane  .scroll-bar .increment-arrow,
+#txtMsg .scroll-pane  .scroll-bar .decrement-arrow {
+    -fx-shape: " ";
+    -fx-padding:0;
+}
+#txtMsg .scroll-pane .scroll-bar:vertical .thumb {
+    -fx-background-color:transparent;
 }
