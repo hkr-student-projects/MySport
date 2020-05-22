@@ -2,7 +2,7 @@ package model.client.viewModel;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import models.Message;
+import model.client.models.Message;
 
 
 public class MessageRowData {
