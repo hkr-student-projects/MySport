@@ -1,0 +1,63 @@
+
+.button{
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #EED334;
+    -fx-border-color: #FFFFFF;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-font-size: 12pt;
+}
+
+.button:hover, .button:focused{
+    -fx-border-color: #FFFF8D;
+    -fx-background-color: #FFFF8D;
+    -fx-text-fill: #2A2E37;
+}
+
+.text-field
+{
+    -fx-text-fill: #B2B2B2;
+    -fx-font-size : 12pt;
+    -jfx-focus-color: #FFFF8D;
+    -fx-text-fill: derive(#FFFF8D, 20%);
+}
+
+.wrong-credentials
+{
+    -jfx-unfocus-color: #ef5350;
+    -jfx-focus-color: #ef5350;
+    -fx-border-color: #ef5350;
+}
+.tab-pane {
+    -fx-tab-max-height: 0 ;
+    -fx-tab-min-height: 0 ;
+}
+.tab-pane .tab-header-area {
+    visibility: hidden ;
+}
+
+.datePicker {
+    -fx-background-color: transparent;
+    -fx-text-box-border: transparent;
+    -fx-control-inner-background: transparent;
+    -fx-background-radius: 0;
+    -fx-stroke: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: BLACK;
+    -fx-text-alignment: center;
+    -fx-background-radius: 0;
+
+}
+.darkGrey {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.darkGrey:hover {
+    -fx-text-fill: #434343;
+    -fx-border-color: transparent;
+}
+
+.darkGrey:pressed {
+    -fx-text-fill: #9f9f9f;
+}

@@ -3,13 +3,21 @@ package controller;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import model.App;
 import model.Tools.Language;
 import model.Tools.SceneSwitcher;
@@ -22,6 +30,8 @@ import java.util.*;
 public class Settings extends Menu implements Initializable {
     @FXML
     private AnchorPane anchorPane;
+    @FXML
+    private ColorPicker colorPicker;
     @FXML
     private JFXComboBox comboBox;
     private Locale locale;
@@ -99,6 +109,11 @@ public class Settings extends Menu implements Initializable {
         }
 
         return FXCollections.observableArrayList(labels);
+    }
+    @FXML
+    void changeBackgroundColor(ActionEvent event) {
+        Color selectedColor = colorPicker.getValue();
+        anchorPane.setBackground(new Background(new BackgroundFill(Paint.valueOf(selectedColor.toString()), CornerRadii.EMPTY, Insets.EMPTY)));
     }
 
     public void buttonAboutClick() {
