@@ -147,7 +147,7 @@
                   <TextArea fx:id="message" prefHeight="99.0" prefWidth="267.0" styleClass="fieldPurpleBorder" />
                </children>
             </VBox>
-            <JFXButton fx:id="send" layoutX="373.0" layoutY="388.0" style="-fx-background-color: #763dee;" text="Send" textFill="WHITE" />
+            <JFXButton fx:id="send" layoutX="373.0" layoutY="388.0" onAction="#sendEmail" style="-fx-background-color: #763dee;" text="Send" textFill="WHITE" />
             <JFXButton fx:id="clear" layoutX="106.0" layoutY="388.0" onAction="#clearFields" style="-fx-background-color: #763dee;" text="Clear" textFill="WHITE" />
             <JFXButton layoutX="14.0" layoutY="14.0" onAction="#returnButtonPress" style="-fx-background-color: #763dee;" text="Return" textFill="WHITE" />
          </children></Pane>
