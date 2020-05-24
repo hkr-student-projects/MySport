@@ -6,6 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.text.Text;
+import model.App;
+import model.Tools.SceneSwitcher;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -36,8 +38,8 @@ public class ResetPassword implements Initializable {
 //            dao.saveToken(email, number, future);
 //
 //            Mailer.sendMail(email, number, "Reset password request");
-//            SceneSwitcher.instance.getScene("ResetCode");
-//
+
+  App.instance.setScene(SceneSwitcher.instance.getScene("ResetCode"));
 //        }
     }
 

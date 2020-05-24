@@ -21,7 +21,9 @@ model\Database\MySqlManager.class
 controller\Menu.class
 model\client\observable\listeners\LocalListener.class
 model\Localization\Localization.class
+model\PasswordUnmasking\PeekablePasswordFieldSkin$2.class
 model\Tools\Expression.class
+model\PasswordUnmasking\PeekablePasswordField.class
 model\Logging\QueryQueue.class
 controller\ResetPassword.class
 model\client\models\Conversation.class
@@ -29,6 +31,7 @@ model\Database\MySqlManager$QueryType.class
 controller\Calendar$WeekProperties$PaneProperties.class
 controller\Forum2.class
 controller\ResetCode.class
+model\PasswordUnmasking\PeekablePasswordFieldSkin$1.class
 controller\Settings.class
 controller\Support.class
 model\Logging\ELogType.class
@@ -57,6 +60,7 @@ model\Logging\Logger$1.class
 controller\LoginRich$1.class
 model\client\viewModel\MessageRowData.class
 controller\Calendar.class
+model\PasswordUnmasking\PeekablePasswordFieldSkin.class
 model\Tools\ArrayList.class
 controller\Home.class
 model\server\repository\ChatDAO.class

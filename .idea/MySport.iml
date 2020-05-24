@@ -89,5 +89,6 @@
     <orderEntry type="library" name="Maven: javax.activation:activation:1.1" level="project" />
     <orderEntry type="library" name="Maven: de.jensd:fontawesomefx:8.9" level="project" />
     <orderEntry type="library" name="Maven: com.gluonhq:charm-glisten:6.0.4" level="project" />
+    <orderEntry type="library" name="PasswordUnmasking" level="project" />
   </component>
 </module>

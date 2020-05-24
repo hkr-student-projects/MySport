@@ -5,6 +5,8 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import model.App;
+import model.Tools.SceneSwitcher;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,8 +31,7 @@ public class ResetCode implements Initializable {
 //        String email = dao.checkResetToken(resetcode);
 //        if(email != null){
 //            Utilities.resetEmail = email;
-//            SceneSwitcher.instance.getScene("NewPassword");
-//
+        App.instance.setScene(SceneSwitcher.instance.getScene("NewPassword"));
 //        }
     }
 
