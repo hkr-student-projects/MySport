@@ -8,7 +8,8 @@
     -fx-font-size: 12pt;
 }
 
-.button:hover, .button:focused{
+.button:hover,
+.button:focused{
     -fx-border-color: #FFFF8D;
     -fx-background-color: #FFFF8D;
     -fx-text-fill: #2A2E37;
@@ -16,7 +17,6 @@
 
 .text-field
 {
-    -fx-text-fill: #B2B2B2;
     -fx-font-size : 12pt;
     -jfx-focus-color: #FFFF8D;
     -fx-text-fill: derive(#FFFF8D, 20%);
@@ -29,8 +29,8 @@
     -fx-border-color: #ef5350;
 }
 .tab-pane {
-    -fx-tab-max-height: 0 ;
-    -fx-tab-min-height: 0 ;
+    -fx-tab-max-height: 0;
+    -fx-tab-min-height: 0;
 }
 .tab-pane .tab-header-area {
     visibility: hidden ;
@@ -45,8 +45,6 @@
     -fx-border-color: transparent;
     -fx-text-fill: BLACK;
     -fx-text-alignment: center;
-    -fx-background-radius: 0;
-
 }
 .darkGrey {
     -fx-background-color: transparent;

@@ -4,8 +4,8 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<!--<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>-->
+<!--<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>-->
 <?import java.lang.String?>
 <?import javafx.geometry.Point3D?>
 <?import javafx.scene.Cursor?>
@@ -82,26 +82,26 @@
                                                 <Cursor fx:constant="HAND" />
                                             </cursor>
                                         </JFXTextField>
-                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="USER" glyphStyle=".glyph-icon:hover{ -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 4, 0, 0, 0); }" layoutX="57.0" layoutY="93.0" size="30">
-                                            <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                            </cursor>
-                                            <effect>
-                                                <DropShadow />
-                                            </effect></FontAwesomeIconView>
-                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="LOCK" glyphStyle=".glyph-icon:hover{ -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 4, 0, 0, 0); }" layoutX="59.0" layoutY="166.0" size="31">
-                                            <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                            </cursor>
-                                            <effect>
-                                                <DropShadow />
-                                            </effect></FontAwesomeIconView>
+<!--                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="USER" glyphStyle=".glyph-icon:hover{ -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 4, 0, 0, 0); }" layoutX="57.0" layoutY="93.0" size="30">-->
+<!--                                            <cursor>-->
+<!--                                                <Cursor fx:constant="HAND" />-->
+<!--                                            </cursor>-->
+<!--                                            <effect>-->
+<!--                                                <DropShadow />-->
+<!--                                            </effect></FontAwesomeIconView>-->
+<!--                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="LOCK" glyphStyle=".glyph-icon:hover{ -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 4, 0, 0, 0); }" layoutX="59.0" layoutY="166.0" size="31">-->
+<!--                                            <cursor>-->
+<!--                                                <Cursor fx:constant="HAND" />-->
+<!--                                            </cursor>-->
+<!--                                            <effect>-->
+<!--                                                <DropShadow />-->
+<!--                                            </effect></FontAwesomeIconView>-->
                                         <Separator layoutX="82.0" layoutY="333.0" prefHeight="1.0" prefWidth="110.0" />
                                         <JFXButton fx:id="fbLoginButton" buttonType="RAISED" layoutX="103.0" layoutY="362.0" onAction="#handleFBLoginButton" prefHeight="33.0" prefWidth="231.0" style="-fx-background-color: #395697;" styleClass="darkGrey" text="Log in with Facebook">
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
                                             </cursor></JFXButton>
-                                        <FontAwesomeIconView fill="WHITE" glyphName="FACEBOOK" layoutX="115.0" layoutY="388.0" size="20" text="" wrappingWidth="19.428571701049805" />
+<!--                                        <FontAwesomeIconView fill="WHITE" glyphName="FACEBOOK" layoutX="115.0" layoutY="388.0" size="20" text="" wrappingWidth="19.428571701049805" />-->
                                         <Text fill="#686863" layoutX="48.0" layoutY="433.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account? " />
                                         <Label fx:id="labelClickSignUp" layoutX="207.0" layoutY="414.0" text="Click on the SIGN UP tab">
                                             <font>
@@ -168,7 +168,7 @@
                                                 <Cursor fx:constant="HAND" />
                                             </cursor>
                                         </JFXPasswordField>
-                                        <DatePicker fx:id="datePicker" editable="false" layoutX="253.0" layoutY="137.0" prefHeight="37.0" prefWidth="160.0" promptText="Date of birth" styleClass="datePicker" stylesheets="@../../../../../../../Desktop/MultiUserLogin/src/sample/loginSpecific.css">
+                                        <DatePicker fx:id="datePicker" editable="false" layoutX="253.0" layoutY="137.0" prefHeight="37.0" prefWidth="160.0" promptText="Date of birth" styleClass="datePicker" stylesheets="@css/loginSpecific.css">
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
                                             </cursor>
@@ -183,12 +183,12 @@
                                                 <Cursor fx:constant="HAND" />
                                             </cursor>
                                         </JFXTextField>
-                                        <JFXButton fx:id="clearButton" buttonType="RAISED" layoutX="58.0" layoutY="365.0" onAction="#handleLoginButton" prefHeight="32.0" prefWidth="88.0" ripplerFill="#7c7c7c" style="-fx-background-radius: 50px;" stylesheets="@../../../../../../../Desktop/MultiUserLogin/src/sample/loginSpecific.css" text="Clear" textFill="WHITE">
+                                        <JFXButton fx:id="clearButton" buttonType="RAISED" layoutX="58.0" layoutY="365.0" onAction="#handleLoginButton" prefHeight="32.0" prefWidth="88.0" ripplerFill="#7c7c7c" style="-fx-background-radius: 50px;" stylesheets="@css/loginSpecific.css" text="Clear" textFill="WHITE">
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
                                             </cursor>
                                         </JFXButton>
-                                        <JFXButton fx:id="createButton" buttonType="RAISED" layoutX="289.0" layoutY="365.0" onAction="#handleLoginButton" prefHeight="32.0" prefWidth="88.0" ripplerFill="#7c7c7c" style="-fx-background-radius: 50px;" stylesheets="@../../../../../../../Desktop/MultiUserLogin/src/sample/loginSpecific.css" text="Create" textFill="WHITE">
+                                        <JFXButton fx:id="createButton" buttonType="RAISED" layoutX="289.0" layoutY="365.0" onAction="#handleLoginButton" prefHeight="32.0" prefWidth="88.0" ripplerFill="#7c7c7c" style="-fx-background-radius: 50px;" stylesheets="@css/loginSpecific.css" text="Create" textFill="WHITE">
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
                                             </cursor>
@@ -207,66 +207,66 @@
                                                 </LinearGradient>
                                             </fill>
                                         </Text>
-                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="USER" layoutX="222.0" layoutY="87.0" size="24">
-                                            <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                            </cursor>
-                                            <effect>
-                                                <DropShadow />
-                                            </effect>
-                                        </FontAwesomeIconView>
-                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="BIRTHDAY_CAKE" layoutX="220.0" layoutY="159.0" size="24">
-                                            <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                            </cursor>
-                                            <effect>
-                                                <DropShadow />
-                                            </effect>
-                                        </FontAwesomeIconView>
-                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="PHONE" layoutX="10.0" layoutY="242.0" size="24" text="">
-                                            <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                            </cursor>
-                                            <effect>
-                                                <DropShadow />
-                                            </effect>
-                                        </FontAwesomeIconView>
-                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="LOCK" layoutX="11.0" layoutY="315.0" size="24">
-                                            <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                            </cursor>
-                                            <effect>
-                                                <DropShadow />
-                                            </effect>
-                                        </FontAwesomeIconView>
-                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="LOCK" layoutX="223.0" layoutY="315.0" size="24">
-                                            <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                            </cursor>
-                                            <effect>
-                                                <DropShadow />
-                                            </effect>
-                                        </FontAwesomeIconView>
-                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="ENVELOPE" layoutX="219.0" layoutY="241.0" size="24">
-                                            <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                            </cursor>
-                                            <effect>
-                                                <DropShadow />
-                                            </effect>
-                                        </FontAwesomeIconView>
-                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="USER" layoutX="10.0" layoutY="87.0" size="24" text="">
-                                            <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                            </cursor>
-                                            <effect>
-                                                <DropShadow />
-                                            </effect>
-                                        </FontAwesomeIconView>
-                                        <MaterialDesignIconView fill="#a4a4a1" glyphName="SECURITY" layoutX="7.0" layoutY="163.0" size="24">
-                                            <effect>
-                                                <DropShadow />
-                                            </effect></MaterialDesignIconView>
+<!--                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="USER" layoutX="222.0" layoutY="87.0" size="24">-->
+<!--                                            <cursor>-->
+<!--                                                <Cursor fx:constant="HAND" />-->
+<!--                                            </cursor>-->
+<!--                                            <effect>-->
+<!--                                                <DropShadow />-->
+<!--                                            </effect>-->
+<!--                                        </FontAwesomeIconView>-->
+<!--                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="BIRTHDAY_CAKE" layoutX="220.0" layoutY="159.0" size="24">-->
+<!--                                            <cursor>-->
+<!--                                                <Cursor fx:constant="HAND" />-->
+<!--                                            </cursor>-->
+<!--                                            <effect>-->
+<!--                                                <DropShadow />-->
+<!--                                            </effect>-->
+<!--                                        </FontAwesomeIconView>-->
+<!--                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="PHONE" layoutX="10.0" layoutY="242.0" size="24" text="">-->
+<!--                                            <cursor>-->
+<!--                                                <Cursor fx:constant="HAND" />-->
+<!--                                            </cursor>-->
+<!--                                            <effect>-->
+<!--                                                <DropShadow />-->
+<!--                                            </effect>-->
+<!--                                        </FontAwesomeIconView>-->
+<!--                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="LOCK" layoutX="11.0" layoutY="315.0" size="24">-->
+<!--                                            <cursor>-->
+<!--                                                <Cursor fx:constant="HAND" />-->
+<!--                                            </cursor>-->
+<!--                                            <effect>-->
+<!--                                                <DropShadow />-->
+<!--                                            </effect>-->
+<!--                                        </FontAwesomeIconView>-->
+<!--                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="LOCK" layoutX="223.0" layoutY="315.0" size="24">-->
+<!--                                            <cursor>-->
+<!--                                                <Cursor fx:constant="HAND" />-->
+<!--                                            </cursor>-->
+<!--                                            <effect>-->
+<!--                                                <DropShadow />-->
+<!--                                            </effect>-->
+<!--                                        </FontAwesomeIconView>-->
+<!--                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="ENVELOPE" layoutX="219.0" layoutY="241.0" size="24">-->
+<!--                                            <cursor>-->
+<!--                                                <Cursor fx:constant="HAND" />-->
+<!--                                            </cursor>-->
+<!--                                            <effect>-->
+<!--                                                <DropShadow />-->
+<!--                                            </effect>-->
+<!--                                        </FontAwesomeIconView>-->
+<!--                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="USER" layoutX="10.0" layoutY="87.0" size="24" text="">-->
+<!--                                            <cursor>-->
+<!--                                                <Cursor fx:constant="HAND" />-->
+<!--                                            </cursor>-->
+<!--                                            <effect>-->
+<!--                                                <DropShadow />-->
+<!--                                            </effect>-->
+<!--                                        </FontAwesomeIconView>-->
+<!--                                        <MaterialDesignIconView fill="#a4a4a1" glyphName="SECURITY" layoutX="7.0" layoutY="163.0" size="24">-->
+<!--                                            <effect>-->
+<!--                                                <DropShadow />-->
+<!--                                            </effect></MaterialDesignIconView>-->
                                     </children>
                                 </AnchorPane>
                             </content>
