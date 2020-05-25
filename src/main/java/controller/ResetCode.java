@@ -2,6 +2,9 @@ package controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.validation.NumberValidator;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,7 +16,7 @@ import java.util.ResourceBundle;
 
 public class ResetCode implements Initializable {
     @FXML
-    private JFXTextField resetCodeButton;
+    private JFXTextField resetCodeField;
 
     @FXML
     private JFXButton resetButton;
@@ -23,6 +26,17 @@ public class ResetCode implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //dao = new UserDAO();
+        NumberValidator numValidator = new NumberValidator();
+        resetCodeField.getValidators().add(numValidator);
+        numValidator.setMessage("Numerical input only!");
+        resetCodeField.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean oldValue, Boolean newValue) {
+                if(!newValue) {
+                    resetCodeField.validate();
+                }
+            }
+        });
     }
 
     @FXML

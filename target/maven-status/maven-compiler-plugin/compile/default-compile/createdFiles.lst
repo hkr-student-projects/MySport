@@ -15,6 +15,7 @@ model\Tools\Tags\Legacy.class
 controller\Calendar$WeekProperties.class
 model\People\Member.class
 model\Tools\Tags\Related.class
+model\Security\OAuthFacebookAuthenticator.class
 controller\NewPassword.class
 model\Tools\Serializable.class
 model\Database\MySqlManager.class

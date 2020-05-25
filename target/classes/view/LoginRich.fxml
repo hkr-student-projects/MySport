@@ -1,67 +1,309 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.company.PeekablePasswordField?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
-<!--<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>-->
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import java.lang.String?>
 <?import javafx.geometry.Point3D?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.media.MediaView?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="799.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginRich">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1071.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginRich">
     <children>
         <MediaView fx:id="mediaView" fitHeight="${anchorPane.height}" fitWidth="${anchorPane.height}">
             <rotationAxis>
                 <Point3D />
             </rotationAxis>
         </MediaView>
-        <Pane layoutX="439.0" layoutY="19.0" prefHeight="425.0" prefWidth="336.0" style="-fx-background-color: #ffffff67; -fx-background-radius: 120px;">
+        <Pane layoutX="607.0" layoutY="10.0" prefHeight="601.0" prefWidth="450.0" style="-fx-background-color: #ffffff67; -fx-background-radius: 120px;" stylesheets="@css/general.css">
             <effect>
                 <DropShadow color="#404040" />
             </effect>
             <children>
-                <JFXButton fx:id="loginButton" buttonType="RAISED" layoutX="67.0" layoutY="291.0" onAction="#handleLoginButton" prefHeight="43.0" prefWidth="202.0" ripplerFill="#7c7c7c" style="-fx-background-radius: 50px;" text="%key.login" textFill="WHITE">
-                    <cursor>
-                        <Cursor fx:constant="HAND" />
-                    </cursor></JFXButton>
-                <JFXButton buttonType="RAISED" layoutX="67.0" layoutY="359.0" prefHeight="43.0" prefWidth="202.0" ripplerFill="#7c7c7c" style="-fx-background-radius: 50px;" text="%key.forgot-password?" textFill="WHITE" underline="true">
-                    <cursor>
-                        <Cursor fx:constant="HAND" />
-                    </cursor></JFXButton>
-                <Label layoutX="78.0" layoutY="33.0" prefHeight="49.0" prefWidth="171.0" style="-fx-background-color: #EED334;" textFill="WHITE">
+                <Label layoutX="139.0" layoutY="14.0" prefHeight="49.0" prefWidth="171.0" style="-fx-background-color: #EED334;" textFill="WHITE">
                     <font>
                         <Font size="25.0" />
                     </font>
                 </Label>
-                <Text fill="#8f3751" layoutX="125.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MySPORT" wrappingWidth="109.6708984375">
+                <Text fill="#8f3751" layoutX="184.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MySPORT" wrappingWidth="109.6708984375">
                     <font>
                         <Font name="Gabriola" size="32.0" />
                     </font>
                 </Text>
-                <ImageView fitHeight="49.0" fitWidth="45.0" layoutX="78.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="49.0" fitWidth="45.0" layoutX="139.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@img/MySport-icon1.jpeg" />
                     </image>
                 </ImageView>
-<!--                <FontAwesomeIconView fill="WHITE" glyphName="USER" layoutX="38.0" layoutY="145.0" size="28" />-->
-<!--                <FontAwesomeIconView fill="WHITE" glyphName="LOCK" layoutX="40.0" layoutY="237.0" size="28" />-->
-                <JFXTextField fx:id="usernameTextField" labelFloat="true" layoutX="79.0" layoutY="107.0" prefHeight="43.0" prefWidth="202.0" promptText="%key.username">
-                    <font>
-                        <Font size="14.0" />
-                    </font></JFXTextField>
-                <JFXPasswordField fx:id="passwordTestField" labelFloat="true" layoutX="79.0" layoutY="197.0" prefHeight="43.0" prefWidth="202.0" promptText="%key.password">
-                    <font>
-                        <Font size="14.0" />
-                    </font></JFXPasswordField>
+                <TabPane fx:id="tabPaneLogin" layoutX="6.0" layoutY="129.0" prefHeight="469.0" prefWidth="437.0" stylesheets="@css/loginSpecific.css" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                        <Tab fx:id="tabSignIn" text="Sign in">
+                            <content>
+                                <AnchorPane prefHeight="405.0" prefWidth="391.0">
+                                    <children>
+                                        <JFXButton fx:id="loginButton" buttonType="RAISED" layoutX="103.0" layoutY="261.0" onAction="#handleLoginButton" prefHeight="35.0" prefWidth="231.0" ripplerFill="#ffffff00" style="-fx-background-radius: 50px;" text="%key.login" textFill="WHITE">
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                        </JFXButton>
+                                        <JFXButton fx:id="forgotPasswordButton" buttonType="RAISED" layoutX="128.0" layoutY="197.0" onAction="#handleForgotPasswordAction" prefHeight="43.0" prefWidth="182.0" ripplerFill="WHITE" stylesheets="@css/general.css" text="%key.forgot-password?" textFill="WHITE" underline="true">
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                            <styleClass>
+                                                <String fx:value="darkGrey" />
+                                                <String fx:value="darkGrey" />
+                                            </styleClass>
+                                        </JFXButton>
+                                        <JFXTextField fx:id="usernameTextField" labelFloat="true" layoutX="97.0" layoutY="61.0" prefHeight="43.0" prefWidth="245.0" promptText="%key.username">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                        </JFXTextField>
+                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="USER" glyphStyle=".glyph-icon:hover{ -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 4, 0, 0, 0); }" layoutX="57.0" layoutY="93.0" size="30">
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                            <effect>
+                                                <DropShadow />
+                                            </effect></FontAwesomeIconView>
+                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="LOCK" glyphStyle=".glyph-icon:hover{ -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 4, 0, 0, 0); }" layoutX="59.0" layoutY="166.0" size="31">
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                            <effect>
+                                                <DropShadow />
+                                            </effect></FontAwesomeIconView>
+                                        <Separator layoutX="82.0" layoutY="333.0" prefHeight="1.0" prefWidth="110.0" />
+                                        <JFXButton fx:id="fbLoginButton" buttonType="RAISED" layoutX="103.0" layoutY="362.0" onAction="#handleFBLoginButton" prefHeight="33.0" prefWidth="231.0" style="-fx-background-color: #395697;" styleClass="darkGrey" text="Log in with Facebook">
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor></JFXButton>
+                                        <FontAwesomeIconView fill="WHITE" glyphName="FACEBOOK" layoutX="115.0" layoutY="388.0" size="20" text="" wrappingWidth="19.428571701049805" />
+                                        <Text fill="#686863" layoutX="48.0" layoutY="433.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account? " />
+                                        <Label fx:id="labelClickSignUp" layoutX="207.0" layoutY="414.0" text="Click on the SIGN UP tab">
+                                            <font>
+                                                <Font size="16.0" />
+                                            </font>
+                                 <textFill>
+                                    <LinearGradient endX="0.20873786407766992" endY="0.6601941747572816" startX="0.20873786407766992" startY="0.8009708737864077">
+                                       <stops>
+                                          <Stop color="BLACK" />
+                                          <Stop color="#4d4d40" offset="1.0" />
+                                       </stops>
+                                    </LinearGradient>
+                                 </textFill>
+                                        </Label>
+                                        <Separator layoutX="255.0" layoutY="333.0" prefHeight="1.0" prefWidth="110.0" />
+                                        <Text fill="WHITE" layoutX="211.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.or" textAlignment="CENTER" />
+
+                                        <Line endX="144.0" layoutX="198.0" layoutY="177.0" startX="-100.0" stroke="#494949" />
+                                        <PeekablePasswordField layoutX="96.0" layoutY="134.0" prefHeight="43.0" prefWidth="245.0" promptText="%key.password" style="-fx-background-color: transparent;" />
+                              <Text layoutX="57.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to MySPORT" textAlignment="CENTER" wrappingWidth="327.7386169433594">
+                                 <font>
+                                    <Font name="Helvetica Light" size="22.0" />
+                                 </font>
+                                 <fill>
+                                    <LinearGradient endX="0.24757281553398056" endY="0.9029126213592233" startX="0.24757281553398058" startY="0.9854368932038835">
+                                       <stops>
+                                          <Stop color="#ebd0d3" />
+                                          <Stop color="#686863" offset="1.0" />
+                                       </stops>
+                                    </LinearGradient>
+                                 </fill>
+                              </Text>
+
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
+                        <Tab fx:id="tabSignUp" text="Sign up">
+                            <content>
+                                <AnchorPane prefHeight="417.0" prefWidth="448.0">
+                                    <children>
+                                        <JFXTextField fx:id="firstNameFiled" labelFloat="true" layoutX="42.0" layoutY="60.0" prefHeight="37.0" prefWidth="160.0" promptText="First Name">
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                        </JFXTextField>
+                                        <JFXTextField fx:id="lastNameField" labelFloat="true" layoutX="253.0" layoutY="60.0" prefHeight="37.0" prefWidth="160.0" promptText="Last Name">
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                        </JFXTextField>
+                                        <JFXTextField fx:id="emailTextField" labelFloat="true" layoutX="253.0" layoutY="214.0" prefHeight="37.0" prefWidth="171.0" promptText="Email">
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                        </JFXTextField>
+                                        <JFXPasswordField fx:id="passwordTextField2" labelFloat="true" layoutX="42.0" layoutY="289.0" prefHeight="37.0" prefWidth="160.0" promptText="Password">
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                        </JFXPasswordField>
+                                        <JFXPasswordField fx:id="confirmPassword" labelFloat="true" layoutX="253.0" layoutY="289.0" prefHeight="37.0" prefWidth="160.0" promptText="Confirm password">
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                        </JFXPasswordField>
+                                        <DatePicker fx:id="datePicker" editable="false" layoutX="253.0" layoutY="137.0" prefHeight="37.0" prefWidth="160.0" promptText="Date of birth" styleClass="datePicker" stylesheets="@../../../../../../../Desktop/MultiUserLogin/src/sample/loginSpecific.css">
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                        </DatePicker>
+                                        <JFXTextField fx:id="ssnTextField" labelFloat="true" layoutX="42.0" layoutY="135.0" prefHeight="37.0" prefWidth="160.0" promptText="SSN">
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                        </JFXTextField>
+                                        <JFXTextField fx:id="mobileNbrField" labelFloat="true" layoutX="42.0" layoutY="214.0" prefHeight="37.0" prefWidth="160.0" promptText="Mobile number">
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                        </JFXTextField>
+                                        <JFXButton fx:id="clearButton" buttonType="RAISED" layoutX="58.0" layoutY="365.0" onAction="#handleLoginButton" prefHeight="32.0" prefWidth="88.0" ripplerFill="#7c7c7c" style="-fx-background-radius: 50px;" stylesheets="@../../../../../../../Desktop/MultiUserLogin/src/sample/loginSpecific.css" text="Clear" textFill="WHITE">
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                        </JFXButton>
+                                        <JFXButton fx:id="createButton" buttonType="RAISED" layoutX="289.0" layoutY="365.0" onAction="#handleLoginButton" prefHeight="32.0" prefWidth="88.0" ripplerFill="#7c7c7c" style="-fx-background-radius: 50px;" stylesheets="@../../../../../../../Desktop/MultiUserLogin/src/sample/loginSpecific.css" text="Create" textFill="WHITE">
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                        </JFXButton>
+                                        <Line fx:id="line8" endX="93.0" layoutX="320.0" layoutY="175.0" startX="-67.0" stroke="#4d4d4d" />
+                                        <Text layoutX="52.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create New MySport Account" textAlignment="CENTER" wrappingWidth="327.7386169433594">
+                                            <font>
+                                                <Font name="Helvetica Light" size="22.0" />
+                                            </font>
+                                            <fill>
+                                                <LinearGradient endX="0.24757281553398056" endY="0.9029126213592233" startX="0.24757281553398058" startY="0.9854368932038835">
+                                                    <stops>
+                                                        <Stop color="#ebd0d3" />
+                                                        <Stop color="#686863" offset="1.0" />
+                                                    </stops>
+                                                </LinearGradient>
+                                            </fill>
+                                        </Text>
+                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="USER" layoutX="222.0" layoutY="87.0" size="24">
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                            <effect>
+                                                <DropShadow />
+                                            </effect>
+                                        </FontAwesomeIconView>
+                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="BIRTHDAY_CAKE" layoutX="220.0" layoutY="159.0" size="24">
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                            <effect>
+                                                <DropShadow />
+                                            </effect>
+                                        </FontAwesomeIconView>
+                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="PHONE" layoutX="10.0" layoutY="242.0" size="24" text="">
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                            <effect>
+                                                <DropShadow />
+                                            </effect>
+                                        </FontAwesomeIconView>
+                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="LOCK" layoutX="11.0" layoutY="315.0" size="24">
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                            <effect>
+                                                <DropShadow />
+                                            </effect>
+                                        </FontAwesomeIconView>
+                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="LOCK" layoutX="223.0" layoutY="315.0" size="24">
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                            <effect>
+                                                <DropShadow />
+                                            </effect>
+                                        </FontAwesomeIconView>
+                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="ENVELOPE" layoutX="219.0" layoutY="241.0" size="24">
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                            <effect>
+                                                <DropShadow />
+                                            </effect>
+                                        </FontAwesomeIconView>
+                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="USER" layoutX="10.0" layoutY="87.0" size="24" text="">
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                            <effect>
+                                                <DropShadow />
+                                            </effect>
+                                        </FontAwesomeIconView>
+                                        <MaterialDesignIconView fill="#a4a4a1" glyphName="SECURITY" layoutX="7.0" layoutY="163.0" size="24">
+                                            <effect>
+                                                <DropShadow />
+                                            </effect></MaterialDesignIconView>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
+                    </tabs>
+                </TabPane>
+                <Group layoutX="30.0" layoutY="88.0">
+                    <children>
+                        <Pane fx:id="slidingPane" layoutX="31.0" layoutY="4.0" prefHeight="35.0" prefWidth="337.0">
+                            <children>
+                                <Label fx:id="labelSignUp" alignment="CENTER" layoutX="187.0" onMouseClicked="#openSignUpTab" prefHeight="35.0" prefWidth="150.0" style="-fx-background-radius: 8px;" text="SIGN UP" textFill="#8f3942">
+                                    <font>
+                                        <Font name="Arial Bold Italic" size="16.0" />
+                                    </font>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </Label>
+                                <Label fx:id="labelSignIn" alignment="CENTER" onMouseClicked="#openSignInTab" prefHeight="35.0" prefWidth="150.0" style="-fx-background-radius: 8px;" text="SIGN IN" textFill="#8f3942">
+                                    <font>
+                                        <Font name="Arial Bold Italic" size="16.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="labelSign" alignment="CENTER" prefHeight="35.0" prefWidth="160.0" style="-fx-background-color: #EED334; -fx-background-radius: 8px;" text="SIGN IN" textFill="#8f3942">
+                                    <font>
+                                        <Font name="Arial Bold Italic" size="16.0" />
+                                    </font>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </Label>
+                            </children>
+                        </Pane>
+                    </children>
+                </Group>
             </children>
         </Pane>
+        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="185.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true" />
     </children>
 </AnchorPane>

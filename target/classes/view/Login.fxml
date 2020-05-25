@@ -63,7 +63,7 @@
       </TextField>
       <Line fx:id="line0" endX="276.0" layoutX="587.0" layoutY="365.0" startX="-100.0" />
       <Line fx:id="line1" endX="276.0" layoutX="588.0" layoutY="283.0" startX="-100.0" />
-      <Button cacheShape="false" centerShape="false" focusTraversable="false" layoutX="726.0" layoutY="366.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="147.0" scaleShape="false" stylesheets="@css/general.css" text="forgot password?" textAlignment="CENTER" textFill="#797979" underline="true">
+      <Button fx:id="forgotPassword" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="726.0" layoutY="366.0" mnemonicParsing="false" onAction="#handleForgotPasswordAction" prefHeight="31.0" prefWidth="147.0" scaleShape="false" stylesheets="@css/general.css" text="forgot password?" textAlignment="CENTER" textFill="#797979" underline="true">
          <styleClass>
             <String fx:value="darkGrey" />
             <String fx:value="cursorHand" />
