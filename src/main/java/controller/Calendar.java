@@ -21,6 +21,7 @@ import javafx.scene.text.Text;
 
 import model.App;
 import model.Database.MongoManager;
+import model.Logging.Logger;
 import model.People.Leader;
 import model.People.Member;
 import model.People.User;
@@ -67,13 +68,14 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        new Thread(() -> {
+        Thread thread = new Thread(() -> {
             currentWeek = LocalDate.now();
             loadWeeksDB();
             loadTable(0);
             fillWeek(0);
             bindTab(this);
-        }).start();
+        });
+        thread.start();
         gridPaneFast = new Node[gridPane.getRowConstraints().size()][gridPane.getColumnConstraints().size()];
         gridPane.setOnMousePressed(e -> modified = true);
         prev.setOnMouseClicked(e -> {
@@ -92,7 +94,12 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         SceneSwitcher.addListener("Calendar", EventType.ON_KEY_RELEASED, e -> {
             if(e.getCode() == KeyCode.ALT) altDown = false;
         });
-        //loadUser(new String[] { "Chess", "Volleyball" });
+        loadSports(new String[] { "Chess", "Volleyball" });
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            Logger.logException(e);
+        }
     }
 
     @Override
@@ -740,6 +747,10 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         User user = App.instance.getSession();
         if(user.getClass() == Member.class)
             return;
+        loadSports(((Leader)user).getLeaderOf());
+    }
+
+    private void loadSports(String[] sports){
         editor = true;
         adjust.setDisable(false);
         adjust.setVisible(true);
@@ -748,7 +759,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             dimming.setVisible(true);
             sportContainer.setDisable(false);
             sportContainer.setVisible(true);
-            SceneSwitcher.instance.addListener("Calendar", EventType.ON_KEY_PRESSED, keyEvent -> {
+            SceneSwitcher.addListener("Calendar", EventType.ON_KEY_PRESSED, keyEvent -> {
                 {
                     if(keyEvent.getCode() == KeyCode.ESCAPE)
                     {
@@ -761,7 +772,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             });
         });
         sportColor.setValue(Color.color(255 / 255.0, 51 / 255.0, 61 / 255.0, 0.83));
-        this.sportList.setItems(FXCollections.observableArrayList(List.of(((Leader)user).getLeaderOf())));//dont use FXCollections.observableList because of unknown css exception
+        this.sportList.setItems(FXCollections.observableArrayList(List.of(sports)));//dont use FXCollections.observableList because of unknown css exception
         gridPane.getChildren().forEach(pane -> pane.setOnMouseClicked(e -> buildActivity(pane)));
     }
 
