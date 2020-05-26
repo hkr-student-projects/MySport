@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_13">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_11">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -12,21 +12,8 @@
       <excludeFolder url="file://$MODULE_DIR$/out" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
-    <orderEntry type="jdk" jdkName="13" jdkType="JavaSDK" />
+    <orderEntry type="jdk" jdkName="11" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:win:12" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:win:12" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:win:12" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-web:win:12" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-media:win:12" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-swing:win:12" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:win:12" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:win:12" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:win:12" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-web:win:12" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-media:win:12" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-swing:win:12" level="project" />
-    <orderEntry type="library" name="PasswordUnmasking" level="project" />
     <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-base:12" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-base:mac:12" level="project" />

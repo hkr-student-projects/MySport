@@ -2,10 +2,12 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import model.App;
 import model.Logging.Logger;
-import model.People.User;
 import model.Tools.SceneSwitcher;
 
 import java.net.URL;
@@ -13,9 +15,12 @@ import java.util.ResourceBundle;
 
 public class EditAccount extends Menu implements Initializable {
 
-    @FXML Button buttonNameSave, buttonPasswordSave, buttonReturn, buttonPhoneNumberSave;
-    @FXML TextField textFieldName, textFieldMiddleName, textFieldSurname, textFieldPhoneNumber;
-    @FXML PasswordField passwordFieldPassword, passwordFieldConfirmPassword, passwordFieldCurrentPassword;
+    @FXML
+    private Button buttonNameSave, buttonPasswordSave, buttonReturn, buttonPhoneNumberSave;
+    @FXML
+    private TextField textFieldName, textFieldMiddleName, textFieldSurname, textFieldPhoneNumber;
+    @FXML
+    private PasswordField passwordFieldPassword, passwordFieldConfirmPassword, passwordFieldCurrentPassword;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) { bindTab(this); }

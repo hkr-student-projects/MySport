@@ -33316,3 +33316,108 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-26 15:50:06 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/main/resources/view/Settings.fxml
+
+[2020-05-26 15:50:06 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-26 16:14:00 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/main/resources/view/Login.fxml
+
+[2020-05-26 16:14:00 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-26 16:18:36 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/main/resources/view/Login.fxml
+
+[2020-05-26 16:18:36 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-26 16:24:47 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/main/resources/view/Login.fxml
+
+[2020-05-26 16:24:47 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-26 16:27:37 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/main/resources/view/Login.fxml
+
+[2020-05-26 16:27:37 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-26 16:30:39 CEST] [Exception] Exception message: Error resolving onAction='#handleForgotPasswordAction', either the event handler is not in the Namespace or there is an error in the script.
+/Users/Test/Documents/GitHub/MySport/src/main/resources/view/Login.fxml:71
+
+[2020-05-26 16:30:39 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader$Element.processEventHandlerAttributes()
+	at javafx.fxml.FXMLLoader$ValueElement.processEndElement()
+	at javafx.fxml.FXMLLoader.processEndElement()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
