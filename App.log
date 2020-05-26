@@ -33421,3 +33421,95 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-27 00:19:36 CEST] [Exception] Exception message: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+[2020-05-27 00:19:36 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
+	at java.sql.DriverManager.getConnection()
+	at java.sql.DriverManager.getConnection()
+	at model.Database.MySqlManager.createConnection()
+	at model.Database.MySqlManager.executeQuery()
+	at model.Database.MySqlManager.executeQuery()
+	at model.Database.MySqlManager.checkSchema()
+	at model.Database.MySqlManager.<init>()
+	at model.App.<clinit>()
+	at model.Main.main()
+[2020-05-27 00:19:36 CEST] [Exception] Exception message: Errors in query.
+[2020-05-27 00:19:36 CEST] [Exception] 
+	at model.Database.MySqlManager.executeQuery()
+	at model.Database.MySqlManager.executeQuery()
+	at model.Database.MySqlManager.checkSchema()
+	at model.Database.MySqlManager.<init>()
+	at model.App.<clinit>()
+	at model.Main.main()
+[2020-05-27 00:19:39 CEST] [Exception] Exception message: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+[2020-05-27 00:19:39 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
+	at java.sql.DriverManager.getConnection()
+	at java.sql.DriverManager.getConnection()
+	at model.Database.MySqlManager.createConnection()
+	at model.Database.MySqlManager.executeQuery()
+	at model.Database.MySqlManager.executeQuery()
+	at model.Database.MySqlManager.getEmail()
+	at controller.CreateAccount.initialize()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$11()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$9()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-27 00:19:39 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$11()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$9()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-27 00:19:39 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/main/resources/view/CreateAccount.fxml
+
+[2020-05-27 00:19:39 CEST] [Exception] Exception message: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+[2020-05-27 00:19:39 CEST] [Exception] 
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException()
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException()
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO()
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>()
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance()
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect()
+	at java.sql.DriverManager.getConnection()
+	at java.sql.DriverManager.getConnection()
+	at model.Database.MySqlManager.createConnection()
+	at model.Database.MySqlManager.executeQuery()
+	at model.Database.MySqlManager.executeQuery()
+	at model.Database.MySqlManager.loadWeeks()
+	at controller.Calendar.loadWeeksDB()
+	at controller.Calendar.lambda$initialize$0()
+	at java.lang.Thread.run()

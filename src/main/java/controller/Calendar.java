@@ -77,7 +77,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         });
         thread.start();
         gridPaneFast = new Node[gridPane.getRowConstraints().size()][gridPane.getColumnConstraints().size()];
-        gridPane.setOnMousePressed(e -> modified = true);
+        //gridPane.setOnMousePressed(e -> modified = true);
         prev.setOnMouseClicked(e -> {
             loadTable(-7);//currentWeek unmodified
             fillWeek(-7);//currentWeek modified
@@ -158,7 +158,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
                 deleteBetween(tempPane, tempPaneCords[0] + 1, tempRow, tempCol);
                 GridPane.setRowSpan(tempPane, Math.abs(extendBy) + 1);
             }
-            bakePane(Math.abs(extendBy) + 1);
+            bakePane(tempPane, Math.abs(extendBy) + 1);
         }
         else {
             pane.setStyle(getBackgroundColor());
@@ -170,17 +170,23 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         }
     }
 
-    private void bakePane(int span){
+    private void bakePane(Node pane, int span) {
         nodeTrackMouse(false);
-        buildProps((Pane)tempPane, span);
+        buildProps((Pane)pane, span);
+        //saveCurrentTable();
+        modified = true;
+        reset();
+    }
+
+    private void reset(){//reset pane creation to default
         prevPane = null;
         tempPane = null;
         tempCol = -1;
         tempRow = -1;
-        saveCurrentTable();
+        flag = true;
     }
 
-    private void buildProps(Pane pane, int span){//unite this method with method for newly created week
+    private void buildProps(Pane pane, int span){
         buildTime(pane, span);
         String sp = sportList.getValue() == null ? sportList.getItems().get(0) : sportList.getValue();
         new Thread(() -> App.mongoManager.addActivity(
@@ -398,10 +404,17 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             if(weeks.get(i).isBetween(currentWeek.getDayOfYear()))
                 weeks.removeAt(i);
 
-        WeekProperties newWeek = new WeekProperties(currentWeek.getDayOfYear() - currentWeek.getDayOfWeek().getValue() + 1, currentWeek.getDayOfYear() + (7 - currentWeek.getDayOfWeek().getValue()));
+        WeekProperties newWeek = new WeekProperties(
+                currentWeek.getDayOfYear() - currentWeek.getDayOfWeek().getValue() + 1,
+                currentWeek.getDayOfYear() + (7 - currentWeek.getDayOfWeek().getValue())
+        );
         for(Node pane : gridPane.getChildren()) {//grabbing all baked panes
             ObservableMap<Object, Object> props = pane.getProperties();
             if (props.containsKey("span")) {
+//                System.out.println("spaned pane");
+//                System.out.println("span: " + (int) pane.getProperties().get("span"));
+//                System.out.println("hf mf: " + (String) props.get("hf") + " " + (String)props.get("mf"));
+//                System.out.println();
                 int[] cords = getNodeCords(pane);
                 newWeek.addProperty(new WeekProperties.PaneProperties(
                         cords[0], cords[1], (int) pane.getProperties().get("span"), (int) pane.getProperties().get("jns"),
@@ -421,10 +434,6 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     }
 
     private void loadTable(int offset){
-        tempPane = null;
-        tempRow = -1;
-        tempCol = -1;
-        flag = true;
         if(modified)
             saveCurrentTable();
         WeekProperties desiredWeek = null;
@@ -441,13 +450,11 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
                 WeekProperties.PaneProperties paneProp = desiredWeek.panes.get(i);
                 Pane pane = (Pane) getNode(paneProp.row, paneProp.col);
                 pane.setStyle(paneProp.color);
-                for(int j = 1; j < paneProp.span; j++)
-                    gridPaneFast[paneProp.row + i][paneProp.col] = pane;
-                GridPane.setRowSpan(pane, paneProp.span);
-                deleteBetween(pane, paneProp.row + 1, paneProp.row + paneProp.span - 1, paneProp.col);
                 addChildProps(pane, paneProp.span, paneProp.jns, paneProp.activity.getText());
                 addTimeProps(pane, paneProp.hf, paneProp.mf, paneProp.ht, paneProp.mt);
                 addChilds(pane, paneProp.time, paneProp.activity, paneProp.joins, paneProp.join);
+                GridPane.setRowSpan(pane, paneProp.span);
+                deleteBetween(pane, paneProp.row + 1, paneProp.row + paneProp.span - 1, paneProp.col);
             }
     }
 
@@ -694,7 +701,9 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         p.getStylesheets().add("/view/css/general.css");
         p.getStyleClass().add("pane");
         if(trackable)
-            p.setOnMouseClicked(e -> buildActivity(p));
+            p.setOnMouseClicked(e -> {
+                buildActivity(p);
+            });
 
         return p;
     }
@@ -744,10 +753,9 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     }
 
     public void loadUser(){
-        User user = App.instance.getSession();
-        if(user.getClass() == Member.class)
+        if(App.instance.getSession().getClass() == Member.class)
             return;
-        loadSports(((Leader)user).getLeaderOf());
+        loadSports(((Leader)App.instance.getSession()).getLeaderOf());
     }
 
     private void loadSports(String[] sports){
@@ -773,7 +781,9 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         });
         sportColor.setValue(Color.color(255 / 255.0, 51 / 255.0, 61 / 255.0, 0.83));
         this.sportList.setItems(FXCollections.observableArrayList(List.of(sports)));//dont use FXCollections.observableList because of unknown css exception
-        gridPane.getChildren().forEach(pane -> pane.setOnMouseClicked(e -> buildActivity(pane)));
+        gridPane.getChildren().forEach(pane -> pane.setOnMouseClicked(e -> {
+            buildActivity(pane);
+        }));
     }
 
     public void unloadUser(){
