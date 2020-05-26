@@ -1,0 +1,11 @@
+1. TextSkin
+Cause: Jfoenix incapability with (Java SDK/Java Runtime/Java version) higher than version 9.
+
+2. CssParser
+Cause: some library is broken, typically you need to downgrade JDK
+
+3. Communication link failure
+Cause: database server is turned off or incorrect credentials
+
+4. Not On JavaFX thread
+Cause: you started a thread without a control over it, just add .join() inside the context that thread exists.
