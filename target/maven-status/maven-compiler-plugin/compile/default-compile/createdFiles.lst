@@ -6,7 +6,6 @@ model/client/models/Message.class
 model/client/models/User.class
 model/client/viewModel/MessageRowData.class
 controller/Messaging.class
-controller/ResetCode$1.class
 model/Server/test/CreateUsers.class
 model/Server/models/User.class
 controller/FAQ.class

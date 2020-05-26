@@ -73,7 +73,7 @@ public class Login implements Initializable {
     }
 
     private boolean checkEmail() {
-        if(email.getText().isBlank()){
+        if(email.getText().isEmpty()){
             error.setText("Email is empty");
             return false;
         }
@@ -85,7 +85,7 @@ public class Login implements Initializable {
     }
 
     private boolean checkPassword(){
-        if(password.getText().isBlank()){
+        if(password.getText().isEmpty()){
             error.setText("Password is empty");
             return false;
         }
@@ -120,3 +120,7 @@ public class Login implements Initializable {
         line1.setStrokeWidth(1);
     }
 }
+
+
+
+

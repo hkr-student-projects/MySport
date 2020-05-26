@@ -1,7 +1,7 @@
 package controller;
 
 import com.jfoenix.controls.JFXButton;
-//import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.RegexValidator;
 import com.jfoenix.validation.RequiredFieldValidator;
@@ -57,11 +57,11 @@ public class LoginRich implements Initializable {
     @FXML
     private Tab tabSignIn, tabSignUp;
     @FXML
-    private PasswordField passwordTextField1, passwordTextField2, confirmPassword;
+    private JFXPasswordField passwordTextField1, passwordTextField2, confirmPassword;
     @FXML
     private Label labelClickSignUp;
     @FXML
-    private TextField firstNameFiled, lastNameField, usernameTextField, emailTextField, ssnTextField, mobileNbrField;
+    private JFXTextField firstNameFiled, lastNameField, usernameTextField, emailTextField, ssnTextField, mobileNbrField;
     @FXML
     private DatePicker datePicker;
     @FXML
@@ -99,14 +99,14 @@ public class LoginRich implements Initializable {
         player.play();
 
         RegexValidator emailRegex = new RegexValidator();
-        //usernameTextField.getValidators().add(emailRegex);
+        usernameTextField.getValidators().add(emailRegex);
         if (!usernameTextField.getText().matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
             emailRegex.setMessage("Incorrect email format");
         }
 
         RequiredFieldValidator emailValidator = new RequiredFieldValidator();
         RequiredFieldValidator passwordValidator = new RequiredFieldValidator();
-        //usernameTextField.getValidators().add(emailValidator);
+        usernameTextField.getValidators().add(emailValidator);
         // passwordTextField1.getValidators().add(passwordValidator);
         emailValidator.setMessage("No input given");
         passwordValidator.setMessage("No input given");
@@ -116,7 +116,7 @@ public class LoginRich implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if (!newValue) {
-                    //usernameTextField.validate();
+                    usernameTextField.validate();
                 }
             }
         });
@@ -129,13 +129,13 @@ public class LoginRich implements Initializable {
         //         }
         //     });
 
-        try {
-            Image icon = new Image(new FileInputStream("src/sample/img/disapprove.png"));
-            emailValidator.setIcon(new ImageView(icon));
-            passwordValidator.setIcon(new ImageView(icon));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Image icon = new Image(new FileInputStream("view/img/disapprove.png"));
+//            emailValidator.setIcon(new ImageView(icon));
+//            passwordValidator.setIcon(new ImageView(icon));
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
 
 
         signInTip = new Tooltip("Press SIGN IN to login into MySPORT");

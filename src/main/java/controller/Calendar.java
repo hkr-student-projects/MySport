@@ -656,7 +656,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         }
         for(int i = start[0]; i < end[0] + 1; i++){
             Node node = getNode(i, end[1]);
-            if(node.getStyle().isBlank())
+            if(node.getStyle().isEmpty())
                 node.setStyle(getBackgroundColor());
         }
     }
