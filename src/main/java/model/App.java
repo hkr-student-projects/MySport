@@ -15,6 +15,8 @@ import model.Tools.Config;
 import model.Tools.SceneSwitcher;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 
 public class App extends Application {
@@ -37,9 +39,10 @@ public class App extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws FileNotFoundException {
+        System.setErr(new PrintStream("/dev/null"));// hide warnings
         primaryStage.getIcons().add(new Image("view/img/jarIcon.png"));
-        primaryStage.setScene(SceneSwitcher.instance.getScene("Login"));
+        primaryStage.setScene(SceneSwitcher.instance.getScene("Calendar"));
         primaryStage.initStyle(StageStyle.UTILITY);
         primaryStage.setResizable(false);
         primaryStage.show();

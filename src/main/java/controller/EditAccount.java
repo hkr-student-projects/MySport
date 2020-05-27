@@ -2,10 +2,12 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import model.App;
 import model.Logging.Logger;
-import model.People.User;
 import model.Tools.SceneSwitcher;
 
 import java.net.URL;
@@ -13,9 +15,12 @@ import java.util.ResourceBundle;
 
 public class EditAccount extends Menu implements Initializable {
 
-    @FXML Button buttonNameSave, buttonPasswordSave, buttonReturn, buttonPhoneNumberSave;
-    @FXML TextField textFieldName, textFieldMiddleName, textFieldSurname, textFieldPhoneNumber;
-    @FXML PasswordField passwordFieldPassword, passwordFieldConfirmPassword, passwordFieldCurrentPassword;
+    @FXML
+    private Button buttonNameSave, buttonPasswordSave, buttonReturn, buttonPhoneNumberSave;
+    @FXML
+    private TextField textFieldName, textFieldMiddleName, textFieldSurname, textFieldPhoneNumber;
+    @FXML
+    private PasswordField passwordFieldPassword, passwordFieldConfirmPassword, passwordFieldCurrentPassword;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) { bindTab(this); }
@@ -23,7 +28,7 @@ public class EditAccount extends Menu implements Initializable {
     @FXML
     public void buttonNameSaveClick() {
         try {
-            if (!textFieldName.getText().isBlank()) {
+            if (!textFieldName.getText().isEmpty()) {
                 if (!textFieldName.getText().matches("[A-Za-zöÖäÄåÅ]+")) {
                     alert("Error! Numbers detected!", "Re-enter new name without numbers.");
                 } else {
@@ -32,7 +37,7 @@ public class EditAccount extends Menu implements Initializable {
                     confirm("Name saved!", "New name: " + name + " has been saved!");
                     textFieldName.clear();
                 }
-            } else if (!textFieldMiddleName.getText().isBlank()) {
+            } else if (!textFieldMiddleName.getText().isEmpty()) {
                 if (!textFieldMiddleName.getText().matches("[A-Za-zöÖäÄåÅ]+")) {
                     alert("Error! Numbers detected!", "Re-enter new middle name without numbers.");
                 } else {
@@ -41,7 +46,7 @@ public class EditAccount extends Menu implements Initializable {
                     confirm("Middle-name saved!", "New Middle-name: " + middleName +" has been saved!" );
                     textFieldMiddleName.clear();
                 }
-            } else if (!textFieldSurname.getText().isBlank()) {
+            } else if (!textFieldSurname.getText().isEmpty()) {
                 if (!textFieldSurname.getText().matches("[A-Za-zöÖäÄåÅ]+")) {
                     alert("Error! Numbers detected!", "Re-enter new surname without numbers.");
                 } else {
@@ -59,7 +64,7 @@ public class EditAccount extends Menu implements Initializable {
     @FXML
     public void buttonPasswordSaveClick() {
         try {
-            if (!passwordFieldPassword.getText().isBlank() && passwordFieldPassword.getText().length() <=5) {
+            if (!passwordFieldPassword.getText().isEmpty() && passwordFieldPassword.getText().length() <=5) {
                 String password = passwordFieldPassword.getText();
                 String oldPassword = passwordFieldCurrentPassword.getText();
                 if (password.equals(passwordFieldConfirmPassword.getText())){
@@ -80,7 +85,7 @@ public class EditAccount extends Menu implements Initializable {
     @FXML
     public void buttonPhoneNumberSaveClick() {
         try {
-            if (!textFieldPhoneNumber.getText().isBlank()){
+            if (!textFieldPhoneNumber.getText().isEmpty()){
                 if (!textFieldPhoneNumber.getText().matches("[0-9]+")){
                     alert("Error! Phone number not detected", "Please enter a valid phone number.");
                 } else {

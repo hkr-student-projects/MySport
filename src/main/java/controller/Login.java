@@ -10,8 +10,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
 import model.App;
-import model.People.User;
-import model.Tools.Language;
 import model.Tools.SceneSwitcher;
 
 import java.net.URL;
@@ -75,7 +73,7 @@ public class Login implements Initializable {
     }
 
     private boolean checkEmail() {
-        if(email.getText().isBlank()){
+        if(email.getText().isEmpty()){
             error.setText("Email is empty");
             return false;
         }
@@ -87,7 +85,7 @@ public class Login implements Initializable {
     }
 
     private boolean checkPassword(){
-        if(password.getText().isBlank()){
+        if(password.getText().isEmpty()){
             error.setText("Password is empty");
             return false;
         }

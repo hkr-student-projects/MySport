@@ -33,7 +33,7 @@ public abstract class User implements Cloneable {
     }
 
     public String getMiddlename() {
-        return middlename.isBlank() ? "" : " " + middlename;
+        return middlename.isEmpty() ? "" : " " + middlename;
     }
 
     public LocalDate getBirthday() {

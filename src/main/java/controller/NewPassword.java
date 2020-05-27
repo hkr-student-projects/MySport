@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXPasswordField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import model.App;
 import model.Tools.SceneSwitcher;
 
 import java.net.URL;
@@ -32,7 +33,7 @@ public class NewPassword implements Initializable {
 
         if(newPassword.getText().equals(confirmPassword.getText())){
             //dao.updateUserPassword(Utilities.resetEmail, confirmPassword.getText());
-            SceneSwitcher.instance.getScene("Login");
+            App.instance.setScene(SceneSwitcher.instance.getScene("Login"));
         }
 
     }
