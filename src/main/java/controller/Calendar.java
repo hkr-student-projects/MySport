@@ -93,7 +93,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         SceneSwitcher.addListener("Calendar", EventType.ON_KEY_RELEASED, e -> {
             if(e.getCode() == KeyCode.ALT) altDown = false;
         });
-        loadSports(new String[] { "Chess", "Volleyball" });
+        //loadSports(new String[] { "Chess", "Volleyball" });
         try {
             thread.join();
         } catch (InterruptedException e) {

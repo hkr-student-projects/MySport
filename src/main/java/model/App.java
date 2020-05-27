@@ -42,7 +42,7 @@ public class App extends Application {
     public void start(Stage primaryStage) throws FileNotFoundException {
         System.setErr(new PrintStream("/dev/null"));// hide warnings
         primaryStage.getIcons().add(new Image("view/img/jarIcon.png"));
-        primaryStage.setScene(SceneSwitcher.instance.getScene("Calendar"));
+        primaryStage.setScene(SceneSwitcher.instance.getScene("Login"));
         primaryStage.initStyle(StageStyle.UTILITY);
         primaryStage.setResizable(false);
         primaryStage.show();
