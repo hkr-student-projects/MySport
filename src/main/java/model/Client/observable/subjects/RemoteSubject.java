@@ -1,4 +1,4 @@
-package model.client.observable.subjects;
+package model.Client.observable.subjects;
 
 //import models.Message;
 //import observable.listeners.RemoteListener;

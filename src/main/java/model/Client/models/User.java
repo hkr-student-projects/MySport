@@ -1,4 +1,4 @@
-package model.client.models;
+package model.Client.models;
 
 import java.io.Serializable;
 import java.time.LocalDate;

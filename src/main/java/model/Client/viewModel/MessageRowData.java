@@ -1,8 +1,8 @@
-package model.client.viewModel;
+package model.Client.viewModel;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import model.client.models.Message;
+import model.Client.models.Message;
 
 
 public class MessageRowData {

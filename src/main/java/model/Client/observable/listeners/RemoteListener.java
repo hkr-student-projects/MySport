@@ -1,4 +1,4 @@
-package model.client.observable.listeners;
+package model.Client.observable.listeners;
 
 //import models.Conversation;
 //import models.Message;

@@ -1,4 +1,4 @@
-package model.client.viewModel;
+package model.Client.viewModel;
 
 //import javafx.application.Platform;
 //import javafx.collections.FXCollections;

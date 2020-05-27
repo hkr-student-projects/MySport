@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import model.App;
+import model.Logging.Logger;
 import model.People.Leader;
 import model.People.User;
 import model.Tools.SceneSwitcher;
@@ -81,7 +82,13 @@ public abstract class Menu {
             App.instance.setScene(SceneSwitcher.instance.getScene("Settings"));
         });
         logout.setOnMouseClicked(e -> {
-            onBeforeLogout();
+            Thread thread = new Thread(this::onBeforeLogout);// This method is executed <number of scenes> times unlike other methods which are executed once per scene
+            thread.start();
+            try {
+                thread.join();
+            } catch (InterruptedException interruptedException) {
+                Logger.logException(interruptedException);
+            }
             App.instance.setScene(SceneSwitcher.instance.getScene("Login"));
         });
     }

@@ -1,4 +1,4 @@
-package model.client.observable.subjects;
+package model.Client.observable.subjects;
 
 //import observable.listeners.LocalListener;
 //

@@ -1,4 +1,4 @@
-package model.client.viewModel;
+package model.Client.viewModel;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
