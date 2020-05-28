@@ -82,7 +82,7 @@ public class SceneSwitcher {
                 //System.out.println(name);
                 scenes.put(name, new Scene(loader.load(), 900, 600));
             } catch (IOException e) {
-                Logger.logException(e);
+              Logger.logException(e);
             }
 
             if ((loader.getController()) != null)

@@ -59,12 +59,13 @@ public abstract class Menu {
             onBeforeSceneSwitch();
             App.instance.setScene(SceneSwitcher.instance.getScene("Account"));
         });
-//        mail.setOnMouseClicked(e -> {
-//            if(caller instanceof Mail)
-//                return;
-//            onSceneSwitch();
-//            App.instance.setScene(SceneSwitcher.instance.getScene("Mail"));
-//        });
+        mail.setOnMouseClicked(e -> {
+            if(caller instanceof Mail)
+                return;
+            //onSceneSwitch();
+            onBeforeSceneSwitch();
+            App.instance.setScene(SceneSwitcher.instance.getScene("Messaging"));
+        });
         forum.setOnMouseClicked(e -> {
             if(caller instanceof Forum)
                 return;

@@ -18,7 +18,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-
 import model.App;
 import model.Database.MongoManager;
 import model.Logging.Logger;
@@ -29,7 +28,7 @@ import model.Tools.Decomposition.Block;
 import model.Tools.EventType;
 import model.Tools.SceneSwitcher;
 import model.Tools.Serializable;
-import model.Tools.Tags.*;
+import model.Tools.Tags.Related;
 
 import java.net.URL;
 import java.time.DayOfWeek;
