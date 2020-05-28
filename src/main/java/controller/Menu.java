@@ -29,6 +29,8 @@ public abstract class Menu {
 
     protected void buildSessionName(){
         User user = App.instance.getSession();
+        if(sessionName == null)
+            return;
         sessionName.setText(user.getName() + user.getMiddlename() + " " + user.getSurname() + (user.getClass() == Leader.class ? " (Leader)" : " (Member)"));
     }
 

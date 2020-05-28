@@ -49,7 +49,7 @@ public class Login implements Initializable {
             }
             if(checkEmail() && checkPassword()){
                 int id;
-                if((id = App.mySqlManager.checkCredentials(email.getText(), password.getText())) == -1){
+                if((id = App.mySqlManager.checkCredentials(email.getText(), password.getText())) == -1) {
                     error.setText("Incorrect email or password");
                     redLines();
                     return;
@@ -57,7 +57,6 @@ public class Login implements Initializable {
                 email.setText("");
                 password.setText("");
                 error.setText("");
-                redLines();
                 App.instance.setSession(App.mySqlManager.getUser(id));
                 new Thread(
                         () -> ((Calendar)SceneSwitcher.instance.getController("Calendar")).loadUser()
