@@ -3,6 +3,7 @@ package model.Client.viewModel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+
 public class ConversationRowData {
 
     private int conversationID;

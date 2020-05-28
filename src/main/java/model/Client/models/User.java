@@ -12,6 +12,8 @@ public class User implements Cloneable, Serializable {
     private String ssn;
     private String mobile;
     private int id;
+    private static final long serialVersionUID = 6529685098267757620L;
+    public static User testUser;
 
     public User(){
 

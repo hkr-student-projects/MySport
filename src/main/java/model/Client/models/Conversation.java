@@ -9,8 +9,10 @@ public class Conversation implements Serializable {
     private int id;
     List<Message> messageList;
     List<String> participants;
+    private static final long serialVersionUID = 6529685328267757620L;
 
     public Conversation() {
+        messageList = new ArrayList<>();
         participants = new ArrayList<>();
     }
 

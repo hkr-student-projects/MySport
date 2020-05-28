@@ -3,6 +3,7 @@ package model.Client.models;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+
 public class Message implements Serializable, Comparable<Message>{
     private int id;
     private String fromMobile;
@@ -10,6 +11,7 @@ public class Message implements Serializable, Comparable<Message>{
     private String toMobile;
     private String message;
     private LocalDateTime timestamp;
+    private static final long serialVersionUID = 6529685329237757620L;
 
     public String getFromName() {
         return fromName;
