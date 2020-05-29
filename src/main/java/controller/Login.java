@@ -10,9 +10,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
 import model.App;
+import model.People.User;
 import model.Tools.SceneSwitcher;
+import model.Client.mediator.ChatMediatorClient;
+import model.Client.viewModel.ChatClientViewModel;
 
+import java.io.IOException;
 import java.net.URL;
+import java.rmi.NotBoundException;
 import java.util.ResourceBundle;
 
 public class Login implements Initializable {
@@ -49,7 +54,9 @@ public class Login implements Initializable {
             }
             if(checkEmail() && checkPassword()){
                 int id;
-                if((id = App.mySqlManager.checkCredentials(email.getText(), password.getText())) == -1){
+                if((id = App.mySqlManager.checkCredentials(
+                        email.getText(),
+                        password.getText())) == -1) {
                     error.setText("Incorrect email or password");
                     redLines();
                     return;
@@ -57,7 +64,6 @@ public class Login implements Initializable {
                 email.setText("");
                 password.setText("");
                 error.setText("");
-                redLines();
                 App.instance.setSession(App.mySqlManager.getUser(id));
                 new Thread(
                         () -> ((Calendar)SceneSwitcher.instance.getController("Calendar")).loadUser()
@@ -118,6 +124,29 @@ public class Login implements Initializable {
         line0.setStrokeWidth(1);
         line1.setStroke(Paint.valueOf("#000000"));
         line1.setStrokeWidth(1);
+    }
+    private void setupMessaging(User user){
+        Messaging messagingController = null;
+        System.out.println("In messaging initialiser");
+        try {
+            //messagingRoot = loader.load();
+            messagingController = (Messaging) SceneSwitcher.controllers.get("Messaging");
+            model.Client.models.User localUser= new model.Client.models.User();
+            localUser.setId(user.getId());
+            localUser.setMobile(user.getMobile());
+            localUser.setName(user.getName());
+            System.out.println("Messaging initialiser " + localUser.getName() + " : " + localUser.getMobile());
+            ChatMediatorClient chatMediatorClient = new ChatMediatorClient(localUser);
+            ChatClientViewModel chatClientViewModel = new ChatClientViewModel(user.getName(), chatMediatorClient);
+
+            messagingController.init(chatClientViewModel);
+
+            SceneSwitcher.controllers.put("Messaging", messagingController);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (NotBoundException e) {
+            e.printStackTrace();
+        }
     }
 }
 

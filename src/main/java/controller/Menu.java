@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import model.App;
+import model.Logging.Logger;
 import model.People.Leader;
 import model.People.User;
 import model.Tools.SceneSwitcher;
@@ -28,6 +29,8 @@ public abstract class Menu {
 
     protected void buildSessionName(){
         User user = App.instance.getSession();
+        if(sessionName == null)
+            return;
         sessionName.setText(user.getName() + user.getMiddlename() + " " + user.getSurname() + (user.getClass() == Leader.class ? " (Leader)" : " (Member)"));
     }
 
@@ -56,12 +59,13 @@ public abstract class Menu {
             onBeforeSceneSwitch();
             App.instance.setScene(SceneSwitcher.instance.getScene("Account"));
         });
-//        mail.setOnMouseClicked(e -> {
-//            if(caller instanceof Mail)
-//                return;
-//            onSceneSwitch();
-//            App.instance.setScene(SceneSwitcher.instance.getScene("Mail"));
-//        });
+        mail.setOnMouseClicked(e -> {
+            if(caller instanceof Mail)
+                return;
+            //onSceneSwitch();
+            onBeforeSceneSwitch();
+            App.instance.setScene(SceneSwitcher.instance.getScene("Messaging"));
+        });
         forum.setOnMouseClicked(e -> {
             if(caller instanceof Forum)
                 return;
@@ -81,7 +85,13 @@ public abstract class Menu {
             App.instance.setScene(SceneSwitcher.instance.getScene("Settings"));
         });
         logout.setOnMouseClicked(e -> {
-            onBeforeLogout();
+            Thread thread = new Thread(this::onBeforeLogout);// This method is executed <number of scenes> times unlike other methods which are executed once per scene
+            thread.start();
+            try {
+                thread.join();
+            } catch (InterruptedException interruptedException) {
+                Logger.logException(interruptedException);
+            }
             App.instance.setScene(SceneSwitcher.instance.getScene("Login"));
         });
     }
