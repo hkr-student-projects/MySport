@@ -229,7 +229,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </FontAwesomeIconView>
-                        <FontAwesomeIconView fx:id="logout" fill="WHITE" glyphName="POWER_OFF" layoutX="33.0" layoutY="393.0" size="30" />
+                        <FontAwesomeIconView  fill="WHITE" glyphName="POWER_OFF" layoutX="33.0" layoutY="393.0" size="30" />
                      </children>
                   </Pane>
                </children>
