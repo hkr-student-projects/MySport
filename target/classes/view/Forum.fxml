@@ -21,17 +21,17 @@
          <children>
             <Pane layoutX="84.0" layoutY="29.0" prefHeight="50.0" prefWidth="630.0" style="-fx-background-color: #763dee; -fx-background-radius: 15;">
                <children>
-                  <Text fill="WHITE" layoutX="180.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category">
+                  <Text fill="WHITE" layoutX="180.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.category">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Text>
-                  <Text fill="WHITE" layoutX="371.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Topics">
+                  <Text fill="WHITE" layoutX="371.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.topics">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Text>
-                  <Text fill="WHITE" layoutX="548.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Users">
+                  <Text fill="WHITE" layoutX="548.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.users">
                      <font>
                         <Font size="16.0" />
                      </font>

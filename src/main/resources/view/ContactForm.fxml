@@ -110,7 +110,7 @@
          <children>
             <VBox layoutX="106.0" layoutY="41.0" prefHeight="347.0" prefWidth="267.0">
                <children>
-                  <Text fill="#763dee" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+                  <Text fill="#763dee" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.contactName">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
@@ -123,7 +123,7 @@
                         <Insets />
                      </VBox.margin>
                   </TextField>
-                  <Text fill="#763dee" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail">
+                  <Text fill="#763dee" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.contactEmail">
                      <VBox.margin>
                         <Insets top="40.0" />
                      </VBox.margin>
@@ -136,7 +136,7 @@
                         <Insets />
                      </VBox.margin>
                   </TextField>
-                  <Text fill="#763dee" layoutX="10.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Message">
+                  <Text fill="#763dee" layoutX="10.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.contactMessage">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -147,11 +147,11 @@
                   <TextArea fx:id="message" prefHeight="99.0" prefWidth="267.0" styleClass="fieldPurpleBorder" />
                </children>
             </VBox>
-            <JFXButton fx:id="send" layoutX="373.0" layoutY="388.0" style="-fx-background-color: #763dee;" text="Send" textFill="WHITE" />
-            <JFXButton fx:id="clear" layoutX="106.0" layoutY="388.0" onAction="#clearFields" style="-fx-background-color: #763dee;" text="Clear" textFill="WHITE" />
-            <JFXButton layoutX="14.0" layoutY="14.0" onAction="#returnButtonPress" style="-fx-background-color: #763dee;" text="Return" textFill="WHITE" />
+            <JFXButton fx:id="send" layoutX="373.0" layoutY="388.0" style="-fx-background-color: #763dee;" text="%key.contactSend" textFill="WHITE" />
+            <JFXButton fx:id="clear" layoutX="106.0" layoutY="388.0" onAction="#clearFields" style="-fx-background-color: #763dee;" text="%key.contactClear" textFill="WHITE" />
+            <JFXButton layoutX="14.0" layoutY="14.0" onAction="#returnButtonPress" style="-fx-background-color: #763dee;" text="%key.contactReturn" textFill="WHITE" />
          </children></Pane>
-        <Text fill="WHITE" layoutX="252.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact us">
+        <Text fill="WHITE" layoutX="252.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.contactus">
             <font>
                 <Font size="27.0" />
             </font>
