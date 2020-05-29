@@ -1,10 +1,10 @@
 [
   {
-    "DatabaseUsername":"sql3342653",
+    "DatabaseUsername":"sql3344107",
     "DatabasePort":3306,
-    "DatabasePassword":"L6Kjy6T6ha",
-    "DatabaseName":"sql3342653",
+    "DatabasePassword":"xhLWE9ssu3",
+    "DatabaseName":"sql3344107",
     "lang":"en",
-    "DatabaseAddress":"jdbc:mysql://sql3.freemysqlhosting.net/sql3342653?&allowMultiQueries=true&serverTimezone=Europe/Stockholm&useSSL=true"
+    "DatabaseAddress":"jdbc:mysql://sql3.freemysqlhosting.net/sql3344107?&allowMultiQueries=true&serverTimezone=Europe/Stockholm&useSSL=true"
   }
 ]
