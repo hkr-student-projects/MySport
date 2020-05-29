@@ -1,34 +1,24 @@
 package controller;
 
 import com.jfoenix.controls.JFXToggleButton;
-import com.restfb.DefaultFacebookClient;
-import com.restfb.FacebookClient;
-import com.restfb.Parameter;
-import com.restfb.Version;
-import com.restfb.exception.FacebookException;
-import com.restfb.scope.ScopeBuilder;
-import com.restfb.types.User;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
-import javafx.stage.Stage;
 import model.App;
-import model.Tools.Language;
+import model.People.User;
 import model.Tools.SceneSwitcher;
+import model.Client.mediator.ChatMediatorClient;
+import model.Client.viewModel.ChatClientViewModel;
 
+import java.io.IOException;
 import java.net.URL;
+import java.rmi.NotBoundException;
 import java.util.ResourceBundle;
-
-import static com.restfb.logging.RestFBLogger.CLIENT_LOGGER;
 
 public class Login implements Initializable {
 
@@ -47,15 +37,6 @@ public class Login implements Initializable {
     @FXML
     private Line line0, line1;
 
-    private Stage stage;
-    private static final String SUCCESS_URL = "https://www.facebook.com/connect/login_success.html";
-    private String appId = "2864933576924620";
-    private String appSecret = "5b11cb850b5100f411224c64f188360f";
-    private static void consumeAccessToken(FacebookClient.AccessToken accessToken) {
-        CLIENT_LOGGER.debug("Access token: " + accessToken.getAccessToken());
-        CLIENT_LOGGER.debug("Expires: " + accessToken.getExpires());
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         password.focusedProperty().addListener((obs, wasFocused, isNowFocused) -> {
@@ -73,7 +54,9 @@ public class Login implements Initializable {
             }
             if(checkEmail() && checkPassword()){
                 int id;
-                if((id = App.mySqlManager.checkCredentials(email.getText(), password.getText())) == -1){
+                if((id = App.mySqlManager.checkCredentials(
+                        email.getText(),
+                        password.getText())) == -1) {
                     error.setText("Incorrect email or password");
                     redLines();
                     return;
@@ -81,7 +64,6 @@ public class Login implements Initializable {
                 email.setText("");
                 password.setText("");
                 error.setText("");
-                redLines();
                 App.instance.setSession(App.mySqlManager.getUser(id));
                 new Thread(
                         () -> ((Calendar)SceneSwitcher.instance.getController("Calendar")).loadUser()
@@ -97,7 +79,7 @@ public class Login implements Initializable {
     }
 
     private boolean checkEmail() {
-        if(email.getText().isBlank()){
+        if(email.getText().isEmpty()){
             error.setText("Email is empty");
             return false;
         }
@@ -109,7 +91,7 @@ public class Login implements Initializable {
     }
 
     private boolean checkPassword(){
-        if(password.getText().isBlank()){
+        if(password.getText().isEmpty()){
             error.setText("Password is empty");
             return false;
         }
@@ -143,71 +125,29 @@ public class Login implements Initializable {
         line1.setStroke(Paint.valueOf("#000000"));
         line1.setStrokeWidth(1);
     }
-    @FXML
-    public void handleFBLoginButton(ActionEvent event) {
-        System.out.println("In handle button");
-        WebView webView = new WebView();
-        WebEngine webEngine = webView.getEngine();
-        System.out.println("In startLogin");
-
-
-        // obtain Facebook access token by loading login page
-        stage = new Stage();
-        DefaultFacebookClient facebookClient = new DefaultFacebookClient(Version.LATEST);
-        String loginDialogUrl = facebookClient.getLoginDialogUrl(appId, SUCCESS_URL, new ScopeBuilder());
-        System.out.println(loginDialogUrl);
-        webEngine.load(loginDialogUrl + "&display=popup&response_type=code");
-        webEngine.locationProperty().addListener((property, oldValue, newValue) -> {
-                    if (newValue.startsWith(SUCCESS_URL)) {
-                        // extract access token
-                        CLIENT_LOGGER.debug(newValue);
-                        int codeOffset = newValue.indexOf("code=");
-                        String code = newValue.substring(codeOffset + "code=".length());
-                        FacebookClient.AccessToken accessToken = facebookClient.obtainUserAccessToken(
-                                appId, appSecret, SUCCESS_URL, code);
-
-                        // trigger further code's execution
-                        consumeAccessToken(accessToken);
-
-                        // close the app as goal was reached
-                        stage.close();
-                        try {
-                            goToNextScene(accessToken.getAccessToken());
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-
-                    } else if ("https://www.facebook.com/dialog/close".equals(newValue)) {
-                        throw new IllegalStateException("dialog closed");
-                    }
-                }
-        );
-
-        Scene scene = new Scene(webView);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void goToNextScene(String accessToken) throws Exception {
-        FacebookClient client = new DefaultFacebookClient(accessToken, Version.LATEST);
-        com.restfb.types.User user = null;
+    private void setupMessaging(User user){
+        Messaging messagingController = null;
+        System.out.println("In messaging initialiser");
         try {
-            user = client.fetchObject("me", User.class, Parameter.with("fields", "name,email"));
+            //messagingRoot = loader.load();
+            messagingController = (Messaging) SceneSwitcher.controllers.get("Messaging");
+            model.Client.models.User localUser= new model.Client.models.User();
+            localUser.setId(user.getId());
+            localUser.setMobile(user.getMobile());
+            localUser.setName(user.getName());
+            System.out.println("Messaging initialiser " + localUser.getName() + " : " + localUser.getMobile());
+            ChatMediatorClient chatMediatorClient = new ChatMediatorClient(localUser);
+            ChatClientViewModel chatClientViewModel = new ChatClientViewModel(user.getName(), chatMediatorClient);
 
-        } catch (FacebookException ignored) {
-        }
-        if (stage != null) {
-            App.instance.setScene(SceneSwitcher.instance.getScene("Account"));
+            messagingController.init(chatClientViewModel);
 
+            SceneSwitcher.controllers.put("Messaging", messagingController);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (NotBoundException e) {
+            e.printStackTrace();
         }
     }
-    @FXML
-    public void handleForgotPasswordAction(ActionEvent actionEvent) {
-        //show a screen to receive the user's email address
-        App.instance.setScene(SceneSwitcher.instance.getScene("ResetCode"));
-
-    }
-
 }
 
 

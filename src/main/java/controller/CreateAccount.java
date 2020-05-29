@@ -64,7 +64,7 @@ public class CreateAccount implements Initializable {
                 emailError.setVisible(false);
             }
 
-            if (e.getCode() == KeyCode.BACK_SPACE && email.getText().isBlank())
+            if (e.getCode() == KeyCode.BACK_SPACE && email.getText().isEmpty())
                 emailStr = "";
             else if (e.getCode() == KeyCode.BACK_SPACE && email.getText().length() > 0)
                 emailStr = emailStr.substring(0, emailStr.length() - 2);
@@ -161,7 +161,7 @@ public class CreateAccount implements Initializable {
     private void saveClick() {
         String naming = "[A-Z][a-z]{1,50}";
 
-        if (fieldCheck(firstname, naming, line0) & (middlename.getText().isBlank() || fieldCheck(middlename, naming, line1))
+        if (fieldCheck(firstname, naming, line0) & (middlename.getText().isEmpty() || fieldCheck(middlename, naming, line1))
                 & fieldCheck(surname, naming, line2) & fieldCheck(ssn, "\\d{8}\\-\\d{4}", line3) & fieldCheck(mobile, "\\+\\d{3}\\-\\d{3}\\-\\d{2}\\-\\d{2}", line4)
                 & emailFormat & passwordCheck() & dateCheck()
         ) {

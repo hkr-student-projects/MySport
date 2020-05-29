@@ -19,7 +19,7 @@
    <children>
       <Pane layoutX="303.0" layoutY="104.0" prefHeight="392.0" prefWidth="295.0" style="-fx-background-radius: 33px; -fx-background-color: #fff;">
          <children>
-            <JFXTextField fx:id="resetCodeField" alignment="CENTER" focusColor="#405aa800" layoutX="59.0" layoutY="207.0" prefHeight="27.0" prefWidth="177.0" promptText="%key.enterresetcode">
+            <JFXTextField fx:id="resetCodeButton" alignment="CENTER" focusColor="#405aa800" layoutX="59.0" layoutY="207.0" prefHeight="27.0" prefWidth="177.0" promptText="%key.enterresetcode">
                <font>
                   <Font name="Arial" size="15.0" />
                </font>
