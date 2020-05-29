@@ -61,7 +61,7 @@
                 <DatePicker fx:id="birthday" layoutX="283.0" layoutY="205.0" prefHeight="27.0" prefWidth="201.0" styleClass="datePicker" stylesheets="@css/general.css" />
                 <Line fx:id="line8" endX="100.0" layoutX="383.0" layoutY="232.0" startX="-100.0" />
                 <Label fx:id="passError" layoutX="42.0" layoutY="422.0" prefHeight="17.0" prefWidth="201.0" text="passwords does no match" textFill="#ff5050" visible="false" />
-            <Label fx:id="emailError" layoutX="43.0" layoutY="359.0" prefHeight="17.0" prefWidth="201.0" text="email already taken" textFill="#ff5050" visible="false" />
+                <Label fx:id="emailError" layoutX="43.0" layoutY="359.0" prefHeight="17.0" prefWidth="201.0" text="email already taken" textFill="#ff5050" visible="false" />
             </children>
         </Pane>
         <Text disable="true" fill="WHITE" layoutX="709.0" layoutY="593.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MySport" textAlignment="CENTER" visible="false" wrappingWidth="190.73861694335938">

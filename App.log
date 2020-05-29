@@ -37624,3 +37624,54 @@ The last packet sent successfully to the chatServer was 0 milliseconds ago. The 
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-29 15:26:12 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/main/resources/view/Messaging.fxml
+
+[2020-05-29 15:26:12 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$11()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$9()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-29 15:26:13 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/main/resources/view/CreateAccount.fxml
+
+[2020-05-29 15:26:13 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$11()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$9()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-29 15:30:01 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/main/resources/view/Messaging.fxml
+
+[2020-05-29 15:30:01 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$11()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$9()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
