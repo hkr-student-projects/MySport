@@ -12,7 +12,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<?import javafx.scene.control.PasswordField?>
 <AnchorPane fx:id="anchorPane" cacheShape="false" centerShape="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #763dee;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EditAccount">
     <children>
         <HBox alignment="CENTER" layoutX="40.0" layoutY="69.0" prefHeight="479.0" prefWidth="811.0" spacing="25.0">
@@ -40,8 +39,8 @@
                   <TextField fx:id="textFieldSurname" layoutX="172.0" layoutY="250.0" promptText="%key.changesn" />
                   <Button fx:id="buttonNameSave" layoutX="172.0" layoutY="285.0" mnemonicParsing="false" onAction="#buttonNameSaveClick" prefHeight="25.0" prefWidth="149.0" styleClass="buttonInAcc" stylesheets="@css/general.css" text="%key.savechngs" textFill="WHITE" />
                   <Button fx:id="buttonReturn" layoutX="18.0" layoutY="427.0" mnemonicParsing="false" onAction="#buttonReturnClick" styleClass="buttonInAcc" stylesheets="@css/general.css" text="%key.return" textFill="WHITE" />
-                  <PasswordField fx:id="passwordFieldPassword" layoutX="560.0" layoutY="213.0" promptText="%key.nwpswd" />
-                  <PasswordField fx:id="passwordFieldConfirmPassword" layoutX="560.0" layoutY="251.0" promptText="%key.conpsswd" />
+                  <TextField fx:id="textFieldPassword" layoutX="560.0" layoutY="213.0" promptText="%key.nwpswd" />
+                  <TextField fx:id="textFieldConfirmPassword" layoutX="560.0" layoutY="251.0" promptText="%key.conpsswd" />
                   <Button fx:id="buttonPasswordSave" layoutX="560.0" layoutY="287.0" mnemonicParsing="false" onAction="#buttonPasswordSaveClick" prefHeight="25.0" prefWidth="149.0" styleClass="buttonInAcc" stylesheets="@css/general.css" text="%key.savechngs" textFill="WHITE" />
                   <TextField fx:id="textFieldPhoneNumber" layoutX="362.0" layoutY="251.0" promptText="%key.newphn" />
                   <Button fx:id="buttonPhoneNumberSave" layoutX="362.0" layoutY="287.0" mnemonicParsing="false" onAction="#buttonPhoneNumberSaveClick" prefHeight="25.0" prefWidth="149.0" styleClass="buttonInAcc" stylesheets="@css/general.css" text="%key.savechngs" textFill="WHITE" />

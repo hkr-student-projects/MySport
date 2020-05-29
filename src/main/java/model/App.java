@@ -15,8 +15,6 @@ import model.Tools.Config;
 import model.Tools.SceneSwitcher;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
 import java.util.ArrayList;
 
 public class App extends Application {
@@ -30,7 +28,7 @@ public class App extends Application {
 
     static {
         config = new Config();
-        //mySqlManager = new MySqlManager();
+        mySqlManager = new MySqlManager();
         mongoManager = new MongoManager();
     }
 
@@ -39,9 +37,7 @@ public class App extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws FileNotFoundException {
-        System.setErr(new PrintStream("/dev/null"));// hide warnings
-        //System.setErr(new PrintStream("NUL:"));// for windows
+    public void start(Stage primaryStage) {
         primaryStage.getIcons().add(new Image("view/img/jarIcon.png"));
         primaryStage.setScene(SceneSwitcher.instance.getScene("Login"));
         primaryStage.initStyle(StageStyle.UTILITY);

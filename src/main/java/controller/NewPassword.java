@@ -34,6 +34,7 @@ public class NewPassword implements Initializable {
         if(newPassword.getText().equals(confirmPassword.getText())){
             //dao.updateUserPassword(Utilities.resetEmail, confirmPassword.getText());
             App.instance.setScene(SceneSwitcher.instance.getScene("Login"));
+           // App.instance.setScene(SceneSwitcher.instance.getScene("LoginRich"));
         }
 
     }

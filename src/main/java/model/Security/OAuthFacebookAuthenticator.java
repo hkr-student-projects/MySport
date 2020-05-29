@@ -63,7 +63,7 @@ public class OAuthFacebookAuthenticator {
                         stage.close();
                         try {
                             controller.goToNextScene(accessToken.getAccessToken());
-                            //loginController.goToNextScene(accessToken.getAccessToken());
+                            loginController.goToNextScene(accessToken.getAccessToken());
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

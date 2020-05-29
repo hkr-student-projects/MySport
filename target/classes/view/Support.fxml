@@ -106,12 +106,12 @@
         <Pane cacheShape="false" centerShape="false" disable="true" layoutX="560.0" layoutY="66.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="303.0" style="-fx-background-color: white; -fx-background-radius: 33;" visible="false" />
           <Pane cacheShape="false" centerShape="false" layoutX="76.0" layoutY="126.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="446.0" prefWidth="478.0" styleClass="paneEvent" stylesheets="@css/general.css">
          <children>
-            <Text fill="#763dee" layoutX="162.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.populartopics">
+            <Text fill="#763dee" layoutX="163.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Popular topics">
                <font>
                   <Font size="24.0" />
                </font>
             </Text>
-            <Text fill="#763dee" layoutX="184.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.contactus">
+            <Text fill="#763dee" layoutX="182.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact us">
                <font>
                   <Font size="24.0" />
                </font>
@@ -140,7 +140,7 @@
                <graphic>
                   <Pane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="341.0" style="-fx-background-color: #763dee;" styleClass="paneEvent" stylesheets="@css/general.css">
                      <children>
-                        <Text fill="WHITE" layoutX="112.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.contactform">
+                        <Text fill="WHITE" layoutX="112.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact form">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -153,7 +153,7 @@
                </cursor>
             </Button>
          </children></Pane>
-      <Text fill="WHITE" layoutX="185.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.supportHead">
+      <Text fill="WHITE" layoutX="181.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How can we help you?">
          <font>
             <Font size="27.0" />
          </font>
