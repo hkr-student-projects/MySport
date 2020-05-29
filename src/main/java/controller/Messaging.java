@@ -4,30 +4,41 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
-//import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
-
+import javafx.util.Callback;
+import model.Client.viewModel.ChatClientViewModel;
+import model.Client.viewModel.ConversationRowData;
+import model.Client.viewModel.UserRowData;
 
 import java.io.IOException;
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.ResourceBundle;
 
-public class Messaging implements Initializable {
+
+
+public class Messaging extends Menu implements Initializable {
+
+    @FXML
+    public ListView convListView;
+
+    @FXML
+    public ListView msgListView;
+
     @FXML
     private Pane pane;
 
@@ -53,6 +64,14 @@ public class Messaging implements Initializable {
     private Button logout;
 
     @FXML
+    private AnchorPane rootPane;
+    @FXML
+    private AnchorPane titleBar;
+
+    @FXML
+    private AnchorPane detailPane;
+
+    @FXML
     private AnchorPane chatPane;
 
     @FXML
@@ -76,13 +95,26 @@ public class Messaging implements Initializable {
     private JFXDrawer drawerPane;
 
     @FXML
+    private ScrollPane clientListScroll;
+
+    @FXML
+    private VBox clientListBox;
+    @FXML
+    private Button btnClose;
+
+    @FXML
     private JFXHamburger hamburger;
 
     @FXML
     private JFXDrawer drawer;
 
     @FXML
+    private VBox box;
+
+
+    @FXML
     private JFXButton setting;
+
 
     @FXML
     private JFXButton inbox;
@@ -95,11 +127,74 @@ public class Messaging implements Initializable {
 
     private Tooltip homeTip, accountTip, mailTip, forumTip, calendarTip, settingTip, logOutTip, inboxTip, sentTip, binTip;
 
+    @FXML
+    private ComboBox namesList;
 
+    private ChatClientViewModel model;
 
+    public void init(ChatClientViewModel viewModel)
+    {
+        System.out.println("In Controller init");
+        model = viewModel;
+        viewModel.setController(this);
+        this.namesList.getItems().addAll(model.getUsers());
+
+        convListView.setItems(model.getConversationRowData());
+        convListView.setCellFactory(conversationListView -> new ConversationListViewCell());
+
+        msgListView.setItems(model.getConversationMessages());
+        msgListView.setCellFactory(messageListView -> new MessageListViewCell());
+
+        selectLastitemInMessagesList();
+
+        namesList.setItems(model.getUsers());
+
+        namesList.setCellFactory(new Callback<ListView<UserRowData>,ListCell<UserRowData>>(){
+
+            @Override
+            public ListCell<UserRowData> call(ListView<UserRowData> p) {
+
+                final ListCell<UserRowData> cell = new ListCell<UserRowData>(){
+
+                    @Override
+                    protected void updateItem(UserRowData t, boolean bln) {
+                        super.updateItem(t, bln);
+
+                        if(t != null){
+                            setText(t.getUsername());
+                        }else{
+                            setText(null);
+                        }
+                    }
+
+                };
+
+                return cell;
+            }
+        });
+        namesList.showingProperty().addListener((obs, wasShowing, isShowing) -> {
+            if (! isShowing) {
+                //System.out.println("Combo box popup hidden");
+                newUserConversation(null);
+            }
+        });
+        /*
+        nameField.textProperty().bindBidirectional(viewModel.getNameProperty());
+        numberField.textProperty().bindBidirectional(viewModel.getNumberProperty());
+        resultLabel.textProperty().bind(viewModel.getResultProperty());
+
+        numberColumn.setCellValueFactory(d -> d.getValue().getNumberProperty());
+        nameColumn.setCellValueFactory(d -> d.getValue().getNameProperty());
+
+        studentTable.setItems(viewModel.getAllStudents());
+
+         */
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        bindTab(this);
+
         homeTip = new Tooltip("Home");
         home.setTooltip(homeTip);
         homeTip.setStyle("-fx-background-color: #763DEE");
@@ -156,35 +251,93 @@ public class Messaging implements Initializable {
             }
         });
     }
-   // System.out.println(username);
-   //  for(Node text : emojiList.getChildren()){
-   //      text.setOnMouseClicked(event -> {
-   //          txtMsg.setText(txtMsg.getText()+" "+((Text)text).getText());
-   //          emojiList.setVisible(false);
-   //      });
-   //  }
 
+    public ChatClientViewModel getModel() {
+        return model;
+    }
 
+    public void setModel(ChatClientViewModel model) {
+        this.model = model;
+    }
+
+    public void selectLastitemInMessagesList(){
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                int size = model.getConversationMessages().size();
+                msgListView.scrollTo(size);
+                msgListView.getSelectionModel().select(size);
+            }
+        });
+    }
 
     @FXML
     void emojiAction(ActionEvent event) {
         if (emojiList.isVisible()) {
-
             emojiList.setVisible(false);
         } else {
             emojiList.setVisible(true);
         }
     }
 
+    @FXML
+    public void clickTextField(ActionEvent event){
+        System.out.println("Text field clicked");
+        txtMsg.requestFocus();
+    }
+
+    @FXML
+    public void clickConversation(ActionEvent event){
+        // get object clicked in ListView
+    }
+
+    @FXML
+    public void handleConversationClick(MouseEvent event) {
+        ConversationRowData conversationRowData = (ConversationRowData) convListView.getSelectionModel().getSelectedItem();
+        if(conversationRowData != null) {
+            System.out.println("clicked on " + conversationRowData.getName());
+            model.loadMessages(conversationRowData);
+        }
+        selectLastitemInMessagesList();
+        txtMsg.requestFocus();
+    }
 
     @FXML
     void sendAction(ActionEvent event) {
         if (txtMsg.getText().trim().equals("")) return;
+        String message = txtMsg.getText().trim();
+        model.sendMessage(message);
         //controller.notifyAllClients(username,txtMsg.getText().trim());
         txtMsg.setText("");
+        selectLastitemInMessagesList();
         txtMsg.requestFocus();
     }
 
+    @FXML
+    public void newUserConversation(ActionEvent event) {
+        UserRowData userRowData = (UserRowData)namesList.getSelectionModel().getSelectedItem();
+        model.initiateConversation(userRowData.getUser());
+        selectLastitemInMessagesList();
+        txtMsg.requestFocus();
+    }
 
+    @Override
+    protected void onBurgerOpen() {
 
+    }
+
+    @Override
+    protected void onBurgerClose() {
+
+    }
+
+    @Override
+    protected void onBeforeSceneSwitch() {
+
+    }
+
+    @Override
+    protected void onBeforeLogout() {
+
+    }
 }

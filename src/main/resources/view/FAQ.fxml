@@ -116,7 +116,7 @@
                         <Cursor fx:constant="OPEN_HAND" />
                     </cursor>
                 </Button>
-            <JFXButton layoutX="14.0" layoutY="19.0" onAction="#returnButtonPress" style="-fx-background-color: #763dee;" text="Return" textFill="WHITE" />
+            <JFXButton layoutX="14.0" layoutY="19.0" onAction="#returnButtonPress" style="-fx-background-color: #763dee;" text="%key.contactReturn" textFill="WHITE" />
             </children></Pane>
         <Text fill="WHITE" layoutX="284.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FAQs">
             <font>

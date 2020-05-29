@@ -129,13 +129,13 @@ public class LoginRich implements Initializable {
         //         }
         //     });
 
-        try {
-            Image icon = new Image(new FileInputStream("src/sample/img/disapprove.png"));
-            emailValidator.setIcon(new ImageView(icon));
-            passwordValidator.setIcon(new ImageView(icon));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Image icon = new Image(new FileInputStream("view/img/disapprove.png"));
+//            emailValidator.setIcon(new ImageView(icon));
+//            passwordValidator.setIcon(new ImageView(icon));
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
 
 
         signInTip = new Tooltip("Press SIGN IN to login into MySPORT");

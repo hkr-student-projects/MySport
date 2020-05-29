@@ -41,7 +41,7 @@ public class MongoManager {
             Day day = collection.find(
                     BasicDBObject.parse("{ _id: "+ date.getDayOfMonth()+", \"activities._id\": \""+sport+"\" }")
             ).first();
-            ArrayList list = day.getActivities();
+            ArrayList list = day.getActivities();//legacy approach sorry
             for(Object o : list){
                 Document d = (Document) o;
                 if(d.getString("_id").equals(sport)){
