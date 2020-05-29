@@ -1,4 +1,4 @@
-package model.Client.models;
+package chatServer.clientModels;
 
 import java.io.Serializable;
 import java.util.ArrayList;

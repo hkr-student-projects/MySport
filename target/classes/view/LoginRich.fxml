@@ -236,7 +236,7 @@
                                             </effect>
                                         </FontAwesomeIconView>
                                         <FontAwesomeIconView fill="#a4a4a1" glyphName="ENVELOPE" layoutX="219.0" layoutY="241.0" size="24">
-                                            <cursor>
+                        w                    <cursor>
                                                 <Cursor fx:constant="HAND" />
                                             </cursor>
                                             <effect>

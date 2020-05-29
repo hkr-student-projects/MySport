@@ -1,8 +1,7 @@
-package model.Client.models;
+package chatServer.clientModels;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-
 
 public class Message implements Serializable, Comparable<Message>{
     private int id;
@@ -63,6 +62,6 @@ public class Message implements Serializable, Comparable<Message>{
 
     @Override
     public int compareTo(Message message) {
-        return 0;
+        return getTimestamp().compareTo(message.getTimestamp());
     }
 }

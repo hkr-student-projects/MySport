@@ -1,4 +1,5 @@
-package model.Client.models;
+package chatServer.clientModels;
+
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -13,13 +14,12 @@ public class User implements Cloneable, Serializable {
     private String mobile;
     private int id;
     private static final long serialVersionUID = 6529685098267757620L;
-    public static User testUser;
 
     public User(){
 
     }
 
-    protected User(int id, String name, String middleName, String surname, String ssn, String phoneNumber, LocalDate birthDay){
+    public User(int id, String name, String middleName, String surname, String ssn, String phoneNumber, LocalDate birthDay){
 
         this.id = id;
         this.name = name;
