@@ -82,7 +82,7 @@ public class SceneSwitcher {
                 //System.out.println(name);
                 scenes.put(name, new Scene(loader.load(), 900, 600));
             } catch (IOException e) {
-              Logger.logException(e);
+                Logger.logException(e);
             }
 
             if ((loader.getController()) != null)
@@ -91,7 +91,7 @@ public class SceneSwitcher {
     }
 
     private static void bindListeners(){//find a way to iterate
-       // scenes.forEach((n, s) -> System.out.println(n));
+        // scenes.forEach((n, s) -> System.out.println(n));
         scenes.get("Calendar").setOnKeyPressed(e -> {
             ArrayList<EventHandler<? super KeyEvent>> listeners = sceneEventHandlers.get("Calendar").get(EventType.ON_KEY_PRESSED);
             for(int i = 0; i < listeners.size(); i++)

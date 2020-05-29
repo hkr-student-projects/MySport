@@ -37590,3 +37590,37 @@ The last packet sent successfully to the chatServer was 0 milliseconds ago. The 
 [2020-05-28 23:38:31 CEST] [Exception] Exception message: 
 /C:/Users/petro/OneDrive/Documents/GitHub/MySport/src/main/resources/view/Messaging.fxml:232
 
+[2020-05-29 15:12:15 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/main/resources/view/Messaging.fxml
+
+[2020-05-29 15:12:15 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$11()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$9()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-29 15:12:15 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/main/resources/view/CreateAccount.fxml
+
+[2020-05-29 15:12:15 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$11()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$9()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
