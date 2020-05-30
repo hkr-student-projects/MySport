@@ -25,7 +25,7 @@ public class SceneSwitcher {
     public static SceneSwitcher instance = new SceneSwitcher();
 
     static {
-        load(true, "se");
+        load(true, "en");
         bindListeners();
     }
 
