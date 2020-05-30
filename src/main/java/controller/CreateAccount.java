@@ -1,23 +1,20 @@
 package controller;
 
+import com.jfoenix.controls.JFXDatePicker;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
 import model.App;
-import model.Tools.ArrayList;
 import model.Tools.SceneSwitcher;
-import model.Tools.ThreadResult;
 
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
-import java.util.Map;
 import java.util.ResourceBundle;
 
 public class CreateAccount implements Initializable {
@@ -27,7 +24,7 @@ public class CreateAccount implements Initializable {
     @FXML
     private PasswordField password, repassword;
     @FXML
-    private DatePicker birthday;
+    private JFXDatePicker birthday;
     @FXML
     private Line line0, line1, line2, line3, line4, line5, line6, line7, line8;
     @FXML

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
@@ -15,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #763dee;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateAccount">
+<AnchorPane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #763dee;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateAccount">
     <children>
         <Pane cacheShape="false" centerShape="false" disable="true" layoutX="560.0" layoutY="66.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="303.0" style="-fx-background-color: white; -fx-background-radius: 33;" visible="false" />
         <Pane layoutX="189.0" layoutY="26.0" prefHeight="548.0" prefWidth="522.0" styleClass="paneEvent" stylesheets="@css/general.css">
@@ -58,10 +59,11 @@
                         <String fx:value="cursorHand" />
                     </styleClass>
                 </JFXButton>
-                <DatePicker fx:id="birthday" layoutX="283.0" layoutY="205.0" prefHeight="27.0" prefWidth="201.0" styleClass="datePicker" stylesheets="@css/general.css" />
-                <Line fx:id="line8" endX="100.0" layoutX="383.0" layoutY="232.0" startX="-100.0" />
+<!--                <DatePicker fx:id="birthday" disable="true" layoutX="283.0" layoutY="205.0" prefHeight="27.0" prefWidth="201.0" styleClass="datePicker" stylesheets="@css/general.css" visible="false" />-->
+                <Line fx:id="line8" disable="true" endX="100.0" layoutX="383.0" layoutY="232.0" startX="-100.0" visible="false" />
                 <Label fx:id="passError" layoutX="42.0" layoutY="422.0" prefHeight="17.0" prefWidth="201.0" text="passwords does no match" textFill="#ff5050" visible="false" />
                 <Label fx:id="emailError" layoutX="43.0" layoutY="359.0" prefHeight="17.0" prefWidth="201.0" text="email already taken" textFill="#ff5050" visible="false" />
+            <JFXDatePicker fx:id="birthday" defaultColor="#763dee" layoutX="280.0" layoutY="202.0" prefHeight="29.0" prefWidth="233.0" />
             </children>
         </Pane>
         <Text disable="true" fill="WHITE" layoutX="709.0" layoutY="593.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MySport" textAlignment="CENTER" visible="false" wrappingWidth="190.73861694335938">

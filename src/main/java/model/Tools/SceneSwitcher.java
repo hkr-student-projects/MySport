@@ -51,7 +51,7 @@ public class SceneSwitcher {
     }
 
     public static void changeLanguage(Language lang){
-        load(true, lang.getCode());
+        load(false, lang.getCode());
     }
 
     private static void load(boolean eventLoad, String lang){
@@ -60,10 +60,13 @@ public class SceneSwitcher {
         scenes = new HashMap<>(files.length);
         controllers = new HashMap<>(files.length);
         loaders = new HashMap<>(files.length);
-        sceneEventHandlers = new HashMap<>(files.length);
+        if(eventLoad)
+            sceneEventHandlers = new HashMap<>(files.length);
 
         for (File f : files) {
             String name = f.getName().substring(0, f.getName().length() - 5);
+            if(name.equals("Messaging"))//TODO
+                continue;
             FXMLLoader loader = null;
             try {
                 loader = new FXMLLoader(f.toURI().toURL());

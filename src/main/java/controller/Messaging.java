@@ -6,27 +6,20 @@ import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.util.Callback;
 import model.Client.viewModel.ChatClientViewModel;
 import model.Client.viewModel.ConversationRowData;
 import model.Client.viewModel.UserRowData;
 
-import java.io.IOException;
 import java.net.URL;
-import java.rmi.RemoteException;
 import java.util.ResourceBundle;
 
 
@@ -273,11 +266,7 @@ public class Messaging extends Menu implements Initializable {
 
     @FXML
     void emojiAction(ActionEvent event) {
-        if (emojiList.isVisible()) {
-            emojiList.setVisible(false);
-        } else {
-            emojiList.setVisible(true);
-        }
+        emojiList.setVisible(!emojiList.isVisible());
     }
 
     @FXML

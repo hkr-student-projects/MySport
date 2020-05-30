@@ -57,17 +57,23 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     private Node tempPane, prevPane;
     private int tempRow, tempCol, initY, initX;
     private boolean flag = true, editor = false, modified = false, altDown = false;
-    private LocalDate currentWeek;
+    private static LocalDate currentWeek;
     private static ArrayList<WeekProperties> weeks;
+    private static MongoManager.Day today;//Today's sports COULD BE NULL because there might not be any sports for today
 
     static {
-        weeks = new ArrayList<>();
+        currentWeek = LocalDate.now();
+        weeks = new ArrayList<>(3);
+        today = App.mongoManager.getDay(currentWeek);
+    }
+
+    public static java.util.ArrayList<MongoManager.Activity> getTodayActivities() {
+        return today.getActivities();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Thread thread = new Thread(() -> {
-            currentWeek = LocalDate.now();
             loadWeeksDB();
             loadTable(0);
             fillWeek(0);
@@ -204,7 +210,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
                 LocalDate.of(
                         this.currentWeek.getYear(),
                         this.currentWeek.getMonthValue(),
-                        this.currentWeek.getDayOfYear()
+                        this.currentWeek.getDayOfMonth()
                 ),
                 new MongoManager.Activity(
                         sp, "Hus 7", 0, 930, 1005,
@@ -359,36 +365,72 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         int difY = initY - sceneY;
         int difX = initX - sceneX;
         if(Math.abs(difY) > 15){
+            ObservableMap<Object, Object> props = pane.getProperties();
+            String sport = ((Text)pane.getChildren().get(1)).getText();
+            int startTime = getMinutes((int)props.get("hf"), (int)props.get("mf"));
             int[] cords = getNodeCords(pane);
             int span = (int)pane.getProperties().get("span");
             int var0 = span;
             int var1 = 0;
             int var2 = 1;
-            if(difY > 0){
+            if(difY > 0){//UP
                 if(cords[0] == 0 || checkFreeSpace(cords, -1))
                     return;
                 var0 = -1;
                 var1 = span - 1;
                 var2 = -1;
             }
-            else
+            else//DOWN
                 if(cords[0] + span == gridPane.getRowConstraints().size() || checkFreeSpace(cords, span))//grindPane.rows.count
                     return;
+            Thread changing = new Thread(() -> App.mongoManager.changeTime(//changing in mongoDB database
+                    currentWeek,
+                    sport,
+                    startTime,
+                    getMinutes((int)props.get("hf"), (int)props.get("mf")),
+                    getMinutes((int)props.get("ht"), (int)props.get("mt"))
+            ));
+            changing.start();
             addBetween(cords[0] + var1, cords[0] + var1, cords[1]);
             gridPane.getChildren().remove(pane);//strict order
             gridPane.add(pane, cords[1], cords[0] + var2);//strict order
             gridPaneFast[cords[0] + var0][cords[1]] = pane;
             buildTime(pane, span);
             GridPane.setRowSpan(pane, span);
+            try {
+                changing.join();
+            } catch (InterruptedException e) {
+                Logger.logException(e);
+            }
         }
         else if(Math.abs(difX) > 50){
+            Thread removing = new Thread(() -> {
+                ObservableMap<Object, Object> props = pane.getProperties();
+                String sport = ((Text)pane.getChildren().get(1)).getText();
+                App.mongoManager.removeActivity(
+                        currentWeek,
+                        sport,
+                        getMinutes((int)props.get("hf"), (int)props.get("mf"))
+                );
+                if(currentWeek.equals(LocalDate.now()))
+                    today.removeActivity(sport);
+            });
+            removing.start();
             int[] cords = getNodeCords(pane);
             int span = (int)pane.getProperties().get("span");
             gridPane.getChildren().remove(pane);
             addBetween(cords[0], cords[0] + span - 1, cords[1]);
+            try {
+                removing.join();
+            } catch (InterruptedException e) {
+                Logger.logException(e);
+            }
         }
     }
 
+    private int getMinutes(int h, int m){
+        return h * 60 + m;
+    }
 
     private void saveWeeksDB() { //DATABASE SAVE
         if(weeks.size() == 0)
@@ -409,7 +451,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
                 currentWeek.getDayOfYear() - currentWeek.getDayOfWeek().getValue() + 1,
                 currentWeek.getDayOfYear() + (7 - currentWeek.getDayOfWeek().getValue())
         );
-        for(Node pane : gridPane.getChildren()) {//grabbing all baked panes
+        for(Node pane : gridPane.getChildren()) {//grabbing all baked panes. [0]Time [1]Activity [2]Joins [3]Join/Out
             ObservableMap<Object, Object> props = pane.getProperties();
             if (props.containsKey("span")) {
                 int[] cords = getNodeCords(pane);
