@@ -30,7 +30,7 @@ public class App extends Application {
 
     static {
         config = new Config();
-        //mySqlManager = new MySqlManager();
+        mySqlManager = new MySqlManager();
         mongoManager = new MongoManager();
     }
 
