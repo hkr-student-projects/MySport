@@ -5,25 +5,20 @@ import java.awt.TrayIcon.MessageType;
 
 public class ActivityReminder {
 
-public  throws AWTException {
-        if () {
-        ActivityReminder td = new ActivityReminder();
-        td.displayTray();
-        } else {
-        System.err.println("System tray not supported!");
-        }
-        }
+        public static AppReminder appReminder = new AppReminder();
+        public static ActivityReminder activityReminder = new ActivityReminder();
 
-public void displayTray() throws AWTException {
-        SystemTray tray = SystemTray.getSystemTray();
 
-        Image image = Toolkit.getDefaultToolkit().createImage("icon.png");
+        public void displayTray() throws AWTException {
+                SystemTray tray = SystemTray.getSystemTray();
 
-        TrayIcon trayIcon = new TrayIcon(image, " Demo");
-        trayIcon.setImageAutoSize(true);
-        trayIcon.setToolTip("demo");
-        tray.add(trayIcon);
+                Image image = Toolkit.getDefaultToolkit().createImage("icon.png");
 
-        trayIcon.displayMessage("MySport", " Activity will start 1 Hour before: " , MessageType.INFO);
+                TrayIcon trayIcon = new TrayIcon(image, " Demo");
+                trayIcon.setImageAutoSize(true);
+                trayIcon.setToolTip("demo");
+                tray.add(trayIcon);
+
+                trayIcon.displayMessage("MySport", " Activity will start 1 Hour before: " , MessageType.INFO);
         }
-        }
+}
