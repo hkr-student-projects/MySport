@@ -180,7 +180,7 @@
                         <Insets left="5.0" />
                      </padding>
                   </VBox>
-                  <Text layoutX="10.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.activities" textAlignment="CENTER" wrappingWidth="282.16357421875">
+                  <Text layoutX="10.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Today's Agenda" textAlignment="CENTER" wrappingWidth="282.16357421875">
                      <font>
                         <Font name="Helvetica Light" size="20.0" />
                      </font>
