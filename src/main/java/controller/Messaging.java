@@ -26,7 +26,7 @@ import java.util.ResourceBundle;
 
 
 
-public class Messaging implements Initializable { // extends Menu
+public class Messaging extends Menu implements Initializable { // extends Menu
 
     @FXML
     public ListView convListView,msgListView ;
@@ -83,7 +83,7 @@ public class Messaging implements Initializable { // extends Menu
     private ScrollPane clientListScroll;
 
     @FXML
-    private JFXHamburger hamburger;
+    private JFXHamburger burger;
 
     @FXML
     private JFXButton inbox, sent , bin;
@@ -158,6 +158,7 @@ public class Messaging implements Initializable { // extends Menu
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         for(Node text : emojiList.getChildren()){
             text.setOnMouseClicked(event -> {
                 txtMsg.setText(txtMsg.getText()+" "+((Text)text).getText());
@@ -165,7 +166,7 @@ public class Messaging implements Initializable { // extends Menu
             });
         }
 
-        //bindTab(this);
+        bindTab(this);
         System.out.println("In initialize Messaging");
         //  homeTip = new Tooltip("Home");
         //  home.setTooltip(homeTip);
@@ -211,10 +212,10 @@ public class Messaging implements Initializable { // extends Menu
 
         drawerPane.setSidePane(pane);
         System.out.println("Drawer finished");
-        HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(hamburger);
+        HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(burger);
         System.out.println("transition finished");
         transition.setRate(-1);
-        hamburger.addEventHandler(MouseEvent.MOUSE_PRESSED, (e) -> {
+        burger.addEventHandler(MouseEvent.MOUSE_PRESSED, (e) -> {
             transition.setRate(transition.getRate() * -1);
             transition.play();
 
@@ -296,22 +297,16 @@ public class Messaging implements Initializable { // extends Menu
         txtMsg.requestFocus();
     }
 
-    //  @Override
-    //  protected void onBurgerOpen() {
-//
-    //  }
-//
-    //  @Override
-    //  protected void onBurgerClose() {
-//
-    //  }
-//
-    //  @Override
-    //  protected void onBeforeSceneSwitch() {
-//
-    //  }
-//
-    //  @Override
-    //  protected void onBeforeLogout() {
-    //       }
+     @Override
+     protected void onBurgerOpen() {
+     }
+     @Override
+     protected void onBurgerClose() {
+     }
+     @Override
+     protected void onBeforeSceneSwitch() {
+     }
+     @Override
+     protected void onBeforeLogout() {
+          }
 }

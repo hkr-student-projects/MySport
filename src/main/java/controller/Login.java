@@ -77,7 +77,9 @@ public class Login implements Initializable {
                         ((Menu)c).buildSessionName();
                 });
                 setupMessaging(user);
+                System.out.println("Finished setting up messaging");
                 App.instance.setScene(SceneSwitcher.instance.getScene("Home"));
+                System.out.println("Redirecting to Home");
                 resetLines();
             }
         });

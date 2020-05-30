@@ -49,7 +49,7 @@ public class Message implements Serializable, Comparable<Message>{
         return id;
     }
 
-    private void setId(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
