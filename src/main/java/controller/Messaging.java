@@ -165,7 +165,7 @@ public class Messaging extends Menu implements Initializable { // extends Menu
             });
         }
 
-        //bindTab(this);
+        bindTab(this);
         System.out.println("In initialize Messaging");
         //  homeTip = new Tooltip("Home");
         //  home.setTooltip(homeTip);
