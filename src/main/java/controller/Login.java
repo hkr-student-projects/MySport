@@ -54,6 +54,9 @@ public class Login implements Initializable {
             }
             if(checkEmail() && checkPassword()){
                 int id;
+                if( App.mySqlManager == null){
+                    System.out.println("MySqlManager is null");
+                }
                 if((id = App.mySqlManager.checkCredentials(
                         email.getText(),
                         password.getText())) == -1) {
@@ -64,7 +67,8 @@ public class Login implements Initializable {
                 email.setText("");
                 password.setText("");
                 error.setText("");
-                App.instance.setSession(App.mySqlManager.getUser(id));
+                User user = App.mySqlManager.getUser(id);
+                App.instance.setSession(user);
                 new Thread(
                         () -> ((Calendar)SceneSwitcher.instance.getController("Calendar")).loadUser()
                 ).start();
@@ -72,6 +76,7 @@ public class Login implements Initializable {
                     if(c instanceof Menu)
                         ((Menu)c).buildSessionName();
                 });
+                setupMessaging(user);
                 App.instance.setScene(SceneSwitcher.instance.getScene("Home"));
                 resetLines();
             }
@@ -127,7 +132,7 @@ public class Login implements Initializable {
     }
     private void setupMessaging(User user){
         Messaging messagingController = null;
-        System.out.println("In messaging initialiser");
+        System.out.println("In messaging initializer");
         try {
             //messagingRoot = loader.load();
             messagingController = (Messaging) SceneSwitcher.controllers.get("Messaging");
