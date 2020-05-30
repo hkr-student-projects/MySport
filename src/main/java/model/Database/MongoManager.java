@@ -33,52 +33,6 @@ public class MongoManager {
         rootLogger.setLevel(Level.OFF);
     }
 
-    @Legacy(reason = "Codec needed for converting Document to Day")
-    public int getParticipantsCount(LocalDate date, String sport){
-        int sum = 0;
-        try(MongoClient client = getClient()){
-            MongoCollection<Day> collection = getCollection(client, date);
-            Day day = collection.find(
-                    BasicDBObject.parse("{ _id: "+ date.getDayOfMonth()+", " +
-                            "\"activities._id\": \"" + sport + "\" }")
-            ).first();
-            for(Object o :  day.getActivities()){
-                Document activity = (Document) o;
-                if(activity.getString("_id").equals(sport)){
-                    sum = activity.getList("members", Integer.class).size() + activity.getList("leaders", Integer.class).size();
-                    break;
-                }
-            }
-        }
-
-        return sum;
-    }
-
-    public Day getDay(LocalDate date){
-        ArrayList<Activity> activities = new ArrayList<>(3);
-        try(MongoClient client = getClient()){
-            MongoCollection<Day> collection = getCollection(client, date);
-            Day day = collection.find(
-                    BasicDBObject.parse("{ _id: "+ date.getDayOfMonth()+" }")
-            ).first();
-            if(day == null)
-                return null;
-            for(Object a : day.getActivities()){
-                Document document = (Document) a;
-                activities.add(new Activity(
-                        document.getString("_id"),
-                        document.getString("location"),
-                        document.getInteger("rating"),
-                        document.getInteger("start"),
-                        document.getInteger("end"),
-                        new ArrayList<>(document.getList("leaders", Integer.class)),
-                        new ArrayList<>(document.getList("members", Integer.class))
-                ));
-            }
-        }
-        return new Day(date.getDayOfMonth(), date.getDayOfYear(), activities);
-    }
-
 //    @Legacy(reason = "Codec needed for converting Document to Day")
 //    public int getParticipation(int year, int[] months, int id){
 //        int sum = 0;
@@ -131,7 +85,7 @@ public class MongoManager {
                     BasicDBObject.parse("{ _id: " + date.getDayOfMonth() + ", " +
                             "\"activities._id\": \"" + sport + "\", " +
                             "\"activities.start\": \"" + startTime + "\" }"),
-                    BasicDBObject.parse("{ set: { \"activities.start\": \"" + newStart + "\", " +
+                    BasicDBObject.parse("{ $set: { \"activities.start\": \"" + newStart + "\", " +
                             "\"activities.end\": \"" + newEnd + "\" } }")
             );
         }
@@ -175,6 +129,53 @@ public class MongoManager {
 
     private void insertDay(MongoCollection<Day> collection, int dayOfMonth, int dayOfYear){
         collection.insertOne(new Day(dayOfMonth, dayOfYear, new ArrayList<>(5)));
+    }
+
+
+    @Legacy(reason = "Codec needed for converting Document to Day")
+    public int getParticipantsCount(LocalDate date, String sport){
+        int sum = 0;
+        try(MongoClient client = getClient()){
+            MongoCollection<Day> collection = getCollection(client, date);
+            Day day = collection.find(
+                    BasicDBObject.parse("{ _id: "+ date.getDayOfMonth()+", " +
+                            "\"activities._id\": \"" + sport + "\" }")
+            ).first();
+            for(Object o :  day.getActivities()){
+                Document activity = (Document) o;
+                if(activity.getString("_id").equals(sport)){
+                    sum = activity.getList("members", Integer.class).size() + activity.getList("leaders", Integer.class).size();
+                    break;
+                }
+            }
+        }
+
+        return sum;
+    }
+
+    public Day getDay(LocalDate date){
+        ArrayList<Activity> activities = new ArrayList<>(3);
+        try(MongoClient client = getClient()){
+            MongoCollection<Day> collection = getCollection(client, date);
+            FindIterable<Day> day = collection.find(
+                    BasicDBObject.parse("{ _id: "+ date.getDayOfMonth()+" }")
+            );
+            if(day.first() == null)
+                return null;
+            for(Object a : day.first().getActivities()){
+                Document document = (Document) a;
+                activities.add(new Activity(
+                        document.getString("_id"),
+                        document.getString("location"),
+                        document.getInteger("rating"),
+                        document.getInteger("start"),
+                        document.getInteger("end"),
+                        new ArrayList<>(document.getList("leaders", Integer.class)),
+                        new ArrayList<>(document.getList("members", Integer.class))
+                ));
+            }
+        }
+        return new Day(date.getDayOfMonth(), date.getDayOfYear(), activities);
     }
 
     private MongoCollection<Day> getCollection(MongoClient client, LocalDate date){
@@ -248,6 +249,10 @@ public class MongoManager {
 
         public int getDayOfYear() {
             return dayOfYear;
+        }
+
+        public void setDayOfYear(int dayOfYear) {
+            this.dayOfYear = dayOfYear;
         }
     }
 

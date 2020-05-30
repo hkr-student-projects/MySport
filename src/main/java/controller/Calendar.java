@@ -98,7 +98,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         SceneSwitcher.addListener("Calendar", EventType.ON_KEY_RELEASED, e -> {
             if(e.getCode() == KeyCode.ALT) altDown = false;
         });
-        loadSports(new String[] { "Chess", "Volleyball" });
+        //loadSports(new String[] { "Chess", "Volleyball" });
         try {
             thread.join();
         } catch (InterruptedException e) {
@@ -206,18 +206,29 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     private void buildProps(Pane pane, int span){
         buildTime(pane, span);
         String sp = sportList.getValue() == null ? sportList.getItems().get(0) : sportList.getValue();
-        new Thread(() -> App.mongoManager.addActivity(
+        new Thread(() -> {
+            ObservableMap<Object, Object> props = pane.getProperties();
+            App.mongoManager.addActivity(
                 LocalDate.of(
-                        this.currentWeek.getYear(),
-                        this.currentWeek.getMonthValue(),
-                        this.currentWeek.getDayOfMonth()
+                        currentWeek.getYear(),
+                        currentWeek.getMonthValue(),
+                        currentWeek.getDayOfMonth()
                 ),
                 new MongoManager.Activity(
-                        sp, "Hus 7", 0, 930, 1005,
+                        sp, "Hus 7", 0,
+                        getMinutes(
+                            Integer.parseInt((String)props.get("hf")),
+                            Integer.parseInt((String)props.get("mf"))
+                        ),
+                        getMinutes(
+                            Integer.parseInt((String)props.get("ht")),
+                            Integer.parseInt((String)props.get("mt"))
+                        ),
                         new java.util.ArrayList<>(),
                         new java.util.ArrayList<>()
                 )
-        )).start();
+            );
+        }).start();
         addChildProps(pane, span, 0, sp);
         addChilds(pane,
                 buildSport(sp),
@@ -327,13 +338,13 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     private void joinActivity(boolean join, String sport){
         if(join)
             App.mongoManager.addParticipant(
-                    this.currentWeek, sport, App.instance.getSession().getId(),
-                    App.instance.getSession().getClass() == Leader.class
+                currentWeek, sport, App.instance.getSession().getId(),
+                App.instance.getSession().getClass() == Leader.class
             );
         else
             App.mongoManager.removeParticipant(
-                    this.currentWeek, sport, App.instance.getSession().getId(),
-                    App.instance.getSession().getClass() == Leader.class
+                currentWeek, sport, App.instance.getSession().getId(),
+                App.instance.getSession().getClass() == Leader.class
             );
     }
 
@@ -361,18 +372,23 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             pane.getChildren().add(buildTime(time));
     }
 
+    //TODO
     private void move(Pane pane, int sceneY, int sceneX){
         int difY = initY - sceneY;
         int difX = initX - sceneX;
         if(Math.abs(difY) > 15){
             ObservableMap<Object, Object> props = pane.getProperties();
             String sport = ((Text)pane.getChildren().get(1)).getText();
-            int startTime = getMinutes((int)props.get("hf"), (int)props.get("mf"));
+            int startTime = getMinutes(
+                Integer.parseInt((String)props.get("hf")),
+                Integer.parseInt((String)props.get("mf"))
+            );
             int[] cords = getNodeCords(pane);
             int span = (int)pane.getProperties().get("span");
             int var0 = span;
             int var1 = 0;
             int var2 = 1;
+
             if(difY > 0){//UP
                 if(cords[0] == 0 || checkFreeSpace(cords, -1))
                     return;
@@ -383,25 +399,32 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             else//DOWN
                 if(cords[0] + span == gridPane.getRowConstraints().size() || checkFreeSpace(cords, span))//grindPane.rows.count
                     return;
-            Thread changing = new Thread(() -> App.mongoManager.changeTime(//changing in mongoDB database
-                    currentWeek,
-                    sport,
-                    startTime,
-                    getMinutes((int)props.get("hf"), (int)props.get("mf")),
-                    getMinutes((int)props.get("ht"), (int)props.get("mt"))
-            ));
-            changing.start();
             addBetween(cords[0] + var1, cords[0] + var1, cords[1]);
             gridPane.getChildren().remove(pane);//strict order
             gridPane.add(pane, cords[1], cords[0] + var2);//strict order
             gridPaneFast[cords[0] + var0][cords[1]] = pane;
             buildTime(pane, span);
+            ObservableMap<Object, Object> reProps = pane.getProperties();//updated after time build
+            Thread changing = new Thread(() -> App.mongoManager.changeTime(//changing in mongoDB database
+                    currentWeek,
+                    sport,
+                    startTime,
+                    getMinutes(
+                            Integer.parseInt((String) reProps.get("hf")),
+                            Integer.parseInt((String) reProps.get("mf"))
+                    ),
+                    getMinutes(
+                            Integer.parseInt((String) reProps.get("ht")),
+                            Integer.parseInt((String) reProps.get("mt"))
+                    )
+            ));
+            changing.start();
             GridPane.setRowSpan(pane, span);
-            try {
-                changing.join();
-            } catch (InterruptedException e) {
-                Logger.logException(e);
-            }
+//            try {
+//                changing.join();
+//            } catch (InterruptedException e) {
+//                Logger.logException(e);
+//            }
         }
         else if(Math.abs(difX) > 50){
             Thread removing = new Thread(() -> {
