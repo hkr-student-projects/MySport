@@ -128,7 +128,11 @@ public class ChatClientViewModel implements LocalListener<User, Message, Convers
         }
 
         if(currentConversationID == conversationID){
-            Platform.runLater(() -> conversationMessages.add(new MessageRowData(message)));
+            Platform.runLater(() -> {
+                //if(messageDoesNotExistInConversationMessages(message, conversationID)) {
+                    conversationMessages.add(new MessageRowData(message));
+              //  }
+            });
         }
 
         ConversationRowData rowData = findConversationRowData(conversationID);
@@ -138,6 +142,22 @@ public class ChatClientViewModel implements LocalListener<User, Message, Convers
                 conversationRowData.set(findConversationRowDataIndex(conversationID), rowData);
             });
         }
+    }
+
+    private boolean messageDoesNotExistInConversationMessages(Message message, int conversationID) {
+        boolean doesNotExist = true;
+        for(Conversation convo : userConversations) {
+            if(convo.getId() == conversationID){
+                for(Message msg :convo.getMessageList()){
+                    if(msg.getId() == message.getId()){
+                        System.out.println(("Found duplicate message ID" + message.getId()));
+                        doesNotExist = false;
+                        break;
+                    }
+                }
+            }
+        }
+        return doesNotExist;
     }
 
     @Override

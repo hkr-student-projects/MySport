@@ -82,8 +82,7 @@ public class Messaging extends Menu implements Initializable { // extends Menu
     @FXML
     private ScrollPane clientListScroll;
 
-    @FXML
-    private JFXHamburger hamburger;
+
 
     @FXML
     private JFXButton inbox, sent , bin;
@@ -158,6 +157,7 @@ public class Messaging extends Menu implements Initializable { // extends Menu
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         for(Node text : emojiList.getChildren()){
             text.setOnMouseClicked(event -> {
                 txtMsg.setText(txtMsg.getText()+" "+((Text)text).getText());
@@ -211,20 +211,20 @@ public class Messaging extends Menu implements Initializable { // extends Menu
 
         drawerPane.setSidePane(pane);
         System.out.println("Drawer finished");
-        HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(hamburger);
-        System.out.println("transition finished");
-        transition.setRate(-1);
-        hamburger.addEventHandler(MouseEvent.MOUSE_PRESSED, (e) -> {
-            transition.setRate(transition.getRate() * -1);
-            transition.play();
+      ////  HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(burger);
+        //System.out.println("transition finished");
+        //transition.setRate(-1);
+        //burger.addEventHandler(MouseEvent.MOUSE_PRESSED, (e) -> {
+        //    transition.setRate(transition.getRate() * -1);
+        //    transition.play();
 
-            if (drawerPane.isOpened()) {
-                drawerPane.close();
-            } else {
-                drawerPane.open();
-            }
-        });
-        System.out.println("hamburger finished");
+       //     if (drawerPane.isOpened()) {
+       //         drawerPane.close();
+       //     } else {
+       //         drawerPane.open();
+       //     }
+       // });
+       // System.out.println("hamburger finished");
     }
 
     public ChatClientViewModel getModel() {
@@ -296,6 +296,9 @@ public class Messaging extends Menu implements Initializable { // extends Menu
         txtMsg.requestFocus();
     }
 
+
+
+
     @Override
     protected void onBurgerOpen() {
 
@@ -334,4 +337,5 @@ public class Messaging extends Menu implements Initializable { // extends Menu
     //  @Override
     //  protected void onBeforeLogout() {
     //       }
+
 }
