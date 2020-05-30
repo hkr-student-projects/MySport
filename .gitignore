@@ -14,3 +14,4 @@ App.log
 /target/maven-status/
 /target/test-classes/
 *.jar
+App.log

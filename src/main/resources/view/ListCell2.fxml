@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.image.Image?>
-<AnchorPane xmlns="http://javafx.com/javafx"
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<AnchorPane
             xmlns:fx="http://javafx.com/fxml"
+            xmlns="http://javafx.com/javafx/9.0.1"
             fx:id="gridPane" prefHeight="123.0" prefWidth="323.0">
         <children>
             <Circle fill="#fcfcfc" layoutX="52.0" layoutY="52.0" radius="38.0" stroke="WHITE" strokeType="INSIDE" />

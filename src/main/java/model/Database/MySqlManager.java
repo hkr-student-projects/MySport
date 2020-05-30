@@ -20,6 +20,12 @@ public class MySqlManager {
     private final String schedule = "`" + App.config.DatabaseName + "`.`schedule`";
     private final String leader_has_activity = "`" + App.config.DatabaseName + "`.`leader_has_activity`";
     private final String activity = "`" + App.config.DatabaseName + "`.`activity`";
+    private final String conversation = "`" + App.config.DatabaseName + "`.`conversation`";
+    private final String conversationMessage = "`" + App.config.DatabaseName + "`.`conversation_message`";
+    private final String message = "`" + App.config.DatabaseName + "`.`message`";
+    private final String userConversation = "`" + App.config.DatabaseName + "`.`user_conversation`";
+    private final String resetpwtoken = "`" + App.config.DatabaseName + "`.`resetpwtoken`";
+    private final String userlogon = "`" + App.config.DatabaseName + "`.`userlogon`";
 
     static {
         try{
@@ -234,60 +240,94 @@ public class MySqlManager {
     {
         try {
             executeQuery(QueryType.UDP, "CREATE TABLE IF NOT EXISTS "+member+" ("+
-                            "`id` INT NOT NULL AUTO_INCREMENT," +
-                            "`name` VARCHAR(45) NOT NULL," +
-                            "`middlename` VARCHAR(45) NOT NULL," +
-                            "`surname` VARCHAR(45) NULL," +
-                            "`ssn` CHAR(13) NOT NULL," +
-                            "`mobile` VARCHAR(25) NOT NULL," +
-                            "`birthday` DATE NOT NULL," +
-                            "PRIMARY KEY (`id`));" +
-                            "CREATE TABLE IF NOT EXISTS "+account+" (\n" +
-                            "  `member_id` INT NOT NULL AUTO_INCREMENT,\n" +
-                            "  `email` VARCHAR(128) NOT NULL,\n" +
-                            "  `password` VARCHAR(128) NOT NULL,\n" +
-                            "  INDEX `fk_account_member_idx` (`member_id` ASC),\n" +
-                            "  PRIMARY KEY (`member_id`),\n" +
-                            "  CONSTRAINT `fk_account_member`\n" +
-                            "    FOREIGN KEY (`member_id`)\n" +
-                            "    REFERENCES "+member+" (`id`)\n" +
-                            "    ON DELETE CASCADE\n" +
-                            "    ON UPDATE CASCADE);\n" +
-                            "CREATE TABLE IF NOT EXISTS "+leader+" (\n" +
-                            "  `member_id` INT NOT NULL AUTO_INCREMENT,\n" +
-                            "  `key_number` VARCHAR(25) NOT NULL,\n" +
-                            "  `board_position` VARCHAR(45) NOT NULL,\n" +
-                            "  INDEX `fk_leader_member_idx` (`member_id` ASC),\n" +
-                            "  PRIMARY KEY (`member_id`),\n" +
-                            "  CONSTRAINT `fk_leader_member`\n" +
-                            "    FOREIGN KEY (`member_id`)\n" +
-                            "    REFERENCES "+member+" (`id`)\n" +
-                            "    ON DELETE CASCADE\n" +
-                            "    ON UPDATE CASCADE);\n" +
-                            "CREATE TABLE IF NOT EXISTS "+activity+" (\n" +
-                            "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
-                            "  `name` VARCHAR(45) NOT NULL,\n" +
-                            "  PRIMARY KEY (`id`));\n" +
-                            "  CREATE TABLE IF NOT EXISTS "+schedule+" (\n" +
-                            "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
-                            "  `week` BLOB NOT NULL,\n" +
-                            "  PRIMARY KEY (`id`));" +
-                            "  CREATE TABLE IF NOT EXISTS "+leader_has_activity+" (\n" +
-                            "  `leader_member_id` INT NOT NULL,\n" +
-                            "  `activity_id` INT NOT NULL,\n" +
-                            "  PRIMARY KEY (`leader_member_id`, `activity_id`),\n" +
-                            "  INDEX `fk_leader_has_activity_activity_idx` (`activity_id` ASC),\n" +
-                            "  INDEX `fk_leader_has_activity_leader_idx` (`leader_member_id` ASC),\n" +
-                            "  CONSTRAINT `fk_leader_has_activity_leader`\n" +
-                            "    FOREIGN KEY (`leader_member_id`)\n" +
-                            "    REFERENCES "+leader+" (`member_id`)\n" +
-                            "    ON DELETE CASCADE\n" +
-                            "    ON UPDATE CASCADE,\n" +
-                            "  CONSTRAINT `fk_leader_has_activity_activity`\n" +
-                            "    FOREIGN KEY (`activity_id`)\n" +
-                            "    REFERENCES "+activity+" (`id`)\n" +
-                            "    ON DELETE CASCADE\n" +
-                            "    ON UPDATE CASCADE);"
+                    "`id` INT NOT NULL AUTO_INCREMENT," +
+                    "`name` VARCHAR(45) NOT NULL," +
+                    "`middlename` VARCHAR(45) NOT NULL," +
+                    "`surname` VARCHAR(45) NULL," +
+                    "`ssn` CHAR(13) NOT NULL," +
+                    "`mobile` VARCHAR(25) NOT NULL," +
+                    "`birthday` DATE NOT NULL," +
+                    "`gender` VARCHAR(7) NOT NULL,\n" +
+                    "`address` VARCHAR(128) NOT NULL,\n" +
+                    "`nic` VARCHAR(10) NOT NULL,\n" +
+                    "PRIMARY KEY (`id`));" +
+                    "CREATE TABLE IF NOT EXISTS "+account+" (\n" +
+                    "  `member_id` INT NOT NULL AUTO_INCREMENT,\n" +
+                    "  `email` VARCHAR(128) NOT NULL,\n" +
+                    "  `password` VARCHAR(128) NOT NULL,\n" +
+                    "  INDEX `fk_account_member_idx` (`member_id` ASC),\n" +
+                    "  PRIMARY KEY (`member_id`),\n" +
+                    "  CONSTRAINT `fk_account_member`\n" +
+                    "    FOREIGN KEY (`member_id`)\n" +
+                    "    REFERENCES "+member+" (`id`)\n" +
+                    "    ON DELETE CASCADE\n" +
+                    "    ON UPDATE CASCADE);\n" +
+                    "CREATE TABLE IF NOT EXISTS "+leader+" (\n" +
+                    "  `member_id` INT NOT NULL AUTO_INCREMENT,\n" +
+                    "  `key_number` VARCHAR(25) NOT NULL,\n" +
+                    "  `board_position` VARCHAR(45) NOT NULL,\n" +
+                    "  INDEX `fk_leader_member_idx` (`member_id` ASC),\n" +
+                    "  PRIMARY KEY (`member_id`),\n" +
+                    "  CONSTRAINT `fk_leader_member`\n" +
+                    "    FOREIGN KEY (`member_id`)\n" +
+                    "    REFERENCES "+member+" (`id`)\n" +
+                    "    ON DELETE CASCADE\n" +
+                    "    ON UPDATE CASCADE);\n" +
+                    "CREATE TABLE IF NOT EXISTS "+activity+" (\n" +
+                    "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
+                    "  `name` VARCHAR(45) NOT NULL,\n" +
+                    "  PRIMARY KEY (`id`));\n" +
+                    "  CREATE TABLE IF NOT EXISTS "+schedule+" (\n" +
+                    "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
+                    "  `week` BLOB NOT NULL,\n" +
+                    "  PRIMARY KEY (`id`));" +
+                    "  CREATE TABLE IF NOT EXISTS "+leader_has_activity+" (\n" +
+                    "  `leader_member_id` INT NOT NULL,\n" +
+                    "  `activity_id` INT NOT NULL,\n" +
+                    "  PRIMARY KEY (`leader_member_id`, `activity_id`),\n" +
+                    "  INDEX `fk_leader_has_activity_activity_idx` (`activity_id` ASC),\n" +
+                    "  INDEX `fk_leader_has_activity_leader_idx` (`leader_member_id` ASC),\n" +
+                    "  CONSTRAINT `fk_leader_has_activity_leader`\n" +
+                    "    FOREIGN KEY (`leader_member_id`)\n" +
+                    "    REFERENCES "+leader+" (`member_id`)\n" +
+                    "    ON DELETE CASCADE\n" +
+                    "    ON UPDATE CASCADE,\n" +
+                    "  CONSTRAINT `fk_leader_has_activity_activity`\n" +
+                    "    FOREIGN KEY (`activity_id`)\n" +
+                    "    REFERENCES "+activity+" (`id`)\n" +
+                    "    ON DELETE CASCADE\n" +
+                    "    ON UPDATE CASCADE);" +
+                    "CREATE TABLE IF NOT EXISTS "+conversation+" (\n" +
+                    "  `id` INT(11) NOT NULL AUTO_INCREMENT,\n" +
+                    "  PRIMARY KEY (`id`));"+
+                    "CREATE TABLE IF NOT EXISTS "+conversationMessage+" (" +
+                    "  `id` INT(11) NOT NULL AUTO_INCREMENT,\n" +
+                    "  `conversation_id` INT(11) NOT NULL,\n" +
+                    "  `message_id` INT(11) NOT NULL,\n" +
+                    "  PRIMARY KEY (`id`));" +
+                    "CREATE TABLE IF NOT EXISTS "+message+" (\n" +
+                    "  `id` INT(11) NOT NULL AUTO_INCREMENT,\n" +
+                    "  `fromMobile` VARCHAR(45) NOT NULL,\n" +
+                    "  `toMobile` VARCHAR(45) NOT NULL,\n" +
+                    "  `message` VARCHAR(1000) NOT NULL,\n" +
+                    "  `timestamp` TIMESTAMP NOT NULL,\n" +
+                    "  PRIMARY KEY (`id`));" +
+                    "CREATE TABLE IF NOT EXISTS "+userConversation+" (\n" +
+                    "  `id` INT(11) NOT NULL AUTO_INCREMENT,\n" +
+                    "  `user_id` INT(11) NOT NULL,\n" +
+                    "  `conversation_id` INT(11) NOT NULL,\n" +
+                    "  PRIMARY KEY (`id`));" +
+                    "CREATE TABLE IF NOT EXISTS "+resetpwtoken+" (\n" +
+                    "  `id` INT(11) NOT NULL AUTO_INCREMENT,\n" +
+                    "  `email` VARCHAR(45) NULL DEFAULT NULL,\n" +
+                    "  `token` VARCHAR(45) NULL DEFAULT NULL,\n" +
+                    "  `futuredate` TIMESTAMP NULL DEFAULT NULL,\n" +
+                    "  PRIMARY KEY (`id`));" +
+                    "CREATE TABLE IF NOT EXISTS "+userlogon+" (\n" +
+                    "  `userid` INT(11) NOT NULL AUTO_INCREMENT,\n" +
+                    "  `email` VARCHAR(255) NULL DEFAULT NULL,\n" +
+                    "  `password` BLOB NOT NULL,\n" +
+                    "  PRIMARY KEY (`userid`));"
             );
         }
         catch (Exception ex){

@@ -6,27 +6,20 @@ import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.util.Callback;
 import model.Client.viewModel.ChatClientViewModel;
 import model.Client.viewModel.ConversationRowData;
 import model.Client.viewModel.UserRowData;
 
-import java.io.IOException;
 import java.net.URL;
-import java.rmi.RemoteException;
 import java.util.ResourceBundle;
 
 
@@ -34,96 +27,37 @@ import java.util.ResourceBundle;
 public class Messaging extends Menu implements Initializable {
 
     @FXML
-    public ListView convListView;
-
-    @FXML
-    public ListView msgListView;
+    public ListView convListView, msgListView;
 
     @FXML
     private Pane pane;
 
     @FXML
-    private Button home;
+    private Button home, account, mail, forum, calendar, settings, logout, btnSend, btnEmoji, btnClose;
 
     @FXML
-    private Button account;
-
-    @FXML
-    private Button mail;
-
-    @FXML
-    private Button forum;
-
-    @FXML
-    private Button calendar;
-
-    @FXML
-    private Button settings;
-
-    @FXML
-    private Button logout;
-
-    @FXML
-    private AnchorPane rootPane;
-    @FXML
-    private AnchorPane titleBar;
-
-    @FXML
-    private AnchorPane detailPane;
-
-    @FXML
-    private AnchorPane chatPane;
+    private AnchorPane rootPane, titleBar, detailPane, chatPane;
 
     @FXML
     private TextArea txtMsg;
 
     @FXML
-    private VBox chatBox;
+    private VBox chatBox, clientListBox, box;
 
     @FXML
-    private Button btnSend;
-
-    @FXML
-    private ScrollPane scrollPane;
+    private ScrollPane scrollPane, clientListScroll;
 
     @FXML
     private TextFlow emojiList;
 
     @FXML
-    private Button btnEmoji;
-    @FXML
-    private JFXDrawer drawerPane;
-
-    @FXML
-    private ScrollPane clientListScroll;
-
-    @FXML
-    private VBox clientListBox;
-    @FXML
-    private Button btnClose;
+    private JFXDrawer drawerPane, drawer;
 
     @FXML
     private JFXHamburger hamburger;
 
     @FXML
-    private JFXDrawer drawer;
-
-    @FXML
-    private VBox box;
-
-
-    @FXML
-    private JFXButton setting;
-
-
-    @FXML
-    private JFXButton inbox;
-
-    @FXML
-    private JFXButton sent;
-
-    @FXML
-    private JFXButton bin;
+    private JFXButton setting, inbox, sent, bin;
 
     private Tooltip homeTip, accountTip, mailTip, forumTip, calendarTip, settingTip, logOutTip, inboxTip, sentTip, binTip;
 
@@ -273,11 +207,7 @@ public class Messaging extends Menu implements Initializable {
 
     @FXML
     void emojiAction(ActionEvent event) {
-        if (emojiList.isVisible()) {
-            emojiList.setVisible(false);
-        } else {
-            emojiList.setVisible(true);
-        }
+        emojiList.setVisible(!emojiList.isVisible());
     }
 
     @FXML
