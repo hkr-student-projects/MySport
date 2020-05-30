@@ -1,28 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--<?import com.company.PeekablePasswordField?>-->
-<?import com.jfoenix.controls.*?>
-<?import de.jensd.fx.glyphs.fontawesome.*?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
 <?import javafx.geometry.Point3D?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.effect.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.media.MediaView?>
-<?import javafx.scene.paint.*?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.*?>
-<?import java.lang.String?>
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1071.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginRich">
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginRich">
     <children>
         <MediaView fx:id="mediaView" fitHeight="${anchorPane.height}" fitWidth="${anchorPane.height}">
             <rotationAxis>
                 <Point3D />
             </rotationAxis>
         </MediaView>
-        <Pane layoutX="607.0" layoutY="10.0" prefHeight="601.0" prefWidth="450.0" style="-fx-background-color: #ffffff67; -fx-background-radius: 120px;" stylesheets="@css/general.css">
+        <Pane layoutX="436.0" prefHeight="601.0" prefWidth="450.0" style="-fx-background-color: #ffffff67; -fx-background-radius: 120px;" stylesheets="@css/general.css">
             <effect>
                 <DropShadow color="#404040" />
             </effect>
