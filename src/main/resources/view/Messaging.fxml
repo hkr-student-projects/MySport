@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" stylesheets="@css/general.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Messaging">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" stylesheets="@css/general.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Messaging">
    <children>
       <AnchorPane fx:id="chatPane" layoutX="450.0" prefHeight="600.0" prefWidth="450.0" stylesheets="@css/general.css">
          <children>
@@ -40,62 +40,62 @@
                   <Button fx:id="btnSend" accessibleRole="PARENT" layoutX="366.0" layoutY="507.0" mnemonicParsing="false" onAction="#sendAction" prefHeight="30.0" prefWidth="34.0" style="-fx-background-color: #763DEE;" stylesheets="@css/general.css" />
                   <TextFlow fx:id="emojiList" layoutX="91.0" layoutY="397.0" prefHeight="91.0" prefWidth="260.0" visible="false">
                      <children>
-                        <Text fill="#f9ff38" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="😀" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😁" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😂" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😃" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😄" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😅" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😆" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😇" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😈" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😉" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😊" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😋" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😌" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😍" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😎" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😏" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😐" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😑" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😒" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😓" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😔" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😕" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😖" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😗" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😘" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😙" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😚" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😛" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😜" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😝" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😞" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😟" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😠" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😡" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😢" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😣" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😤" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😥" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😦" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😧" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😨" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😩" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😪" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😫" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😬" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😭" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😮" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😯" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😰" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😱" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😲" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😳" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😴" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😵" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😶" />
-                        <Text fill="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😷" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😀" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😁" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😂" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😃" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😄" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😅" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😆" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😇" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😈" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😉" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😊" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😋" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😌" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😍" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😎" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😏" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😐" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😑" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😒" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😓" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😔" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😕" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😖" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😗" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😘" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😙" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😚" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😛" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😜" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😝" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😞" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😟" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😠" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😡" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😢" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😣" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😤" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😥" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😦" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😧" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😨" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😩" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😪" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😫" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😬" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😭" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😮" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😯" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😰" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😱" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😲" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😳" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😴" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😵" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😶" />
+                        <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😷" />
                         <Text fill="#5542b5" strokeType="OUTSIDE" strokeWidth="0.0" text="😸" />
                         <Text fill="#5542b5" strokeType="OUTSIDE" strokeWidth="0.0" text="😹" />
                         <Text fill="#5542b5" strokeType="OUTSIDE" strokeWidth="0.0" text="😺" />
@@ -229,7 +229,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </FontAwesomeIconView>
-                        <FontAwesomeIconView  fill="WHITE" glyphName="POWER_OFF" layoutX="33.0" layoutY="393.0" size="30" />
+                        <FontAwesomeIconView fill="WHITE" glyphName="POWER_OFF" layoutX="33.0" layoutY="393.0" size="30" />
                      </children>
                   </Pane>
                </children>
