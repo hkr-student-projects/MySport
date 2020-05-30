@@ -37590,3 +37590,530 @@ The last packet sent successfully to the chatServer was 0 milliseconds ago. The 
 [2020-05-28 23:38:31 CEST] [Exception] Exception message: 
 /C:/Users/petro/OneDrive/Documents/GitHub/MySport/src/main/resources/view/Messaging.fxml:232
 
+[2020-05-29 15:27:55 CEST] [Exception] Exception message: 
+/C:/Users/krist/Documents/GitHub/MySport/src/main/resources/view/CreateAccount.fxml
+
+[2020-05-29 15:27:55 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+	at com.sun.glass.ui.win.WinApplication._runLoop()
+	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3()
+	at java.lang.Thread.run()
+[2020-05-29 15:27:56 CEST] [Exception] Exception message: 
+/C:/Users/krist/Documents/GitHub/MySport/src/main/resources/view/Messaging.fxml
+
+[2020-05-29 15:27:56 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+	at com.sun.glass.ui.win.WinApplication._runLoop()
+	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3()
+	at java.lang.Thread.run()
+[2020-05-29 15:28:32 CEST] [Exception] Exception message: 
+/C:/Users/krist/Documents/GitHub/MySport/src/main/resources/view/CreateAccount.fxml
+
+[2020-05-29 15:28:32 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+	at com.sun.glass.ui.win.WinApplication._runLoop()
+	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3()
+	at java.lang.Thread.run()
+[2020-05-29 15:28:33 CEST] [Exception] Exception message: 
+/C:/Users/krist/Documents/GitHub/MySport/src/main/resources/view/Messaging.fxml
+
+[2020-05-29 15:28:33 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+	at com.sun.glass.ui.win.WinApplication._runLoop()
+	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3()
+	at java.lang.Thread.run()
+[2020-05-29 15:28:49 CEST] [Exception] Exception message: 
+/C:/Users/krist/Documents/GitHub/MySport/src/main/resources/view/CreateAccount.fxml
+
+[2020-05-29 15:28:49 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.changeLanguage()
+	at controller.Settings.language()
+	at model.Tools.ThreadResult.run()
+	at java.lang.Thread.run()
+[2020-05-29 15:28:49 CEST] [Exception] Exception message: 
+/C:/Users/krist/Documents/GitHub/MySport/src/main/resources/view/Messaging.fxml
+
+[2020-05-29 15:28:49 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.changeLanguage()
+	at controller.Settings.language()
+	at model.Tools.ThreadResult.run()
+	at java.lang.Thread.run()
+[2020-05-29 15:29:04 CEST] [Exception] Exception message: 
+/C:/Users/krist/Documents/GitHub/MySport/src/main/resources/view/CreateAccount.fxml
+
+[2020-05-29 15:29:04 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.changeLanguage()
+	at controller.Settings.language()
+	at model.Tools.ThreadResult.run()
+	at java.lang.Thread.run()
+[2020-05-29 15:29:04 CEST] [Exception] Exception message: 
+/C:/Users/krist/Documents/GitHub/MySport/src/main/resources/view/Messaging.fxml
+
+[2020-05-29 15:29:04 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.changeLanguage()
+	at controller.Settings.language()
+	at model.Tools.ThreadResult.run()
+	at java.lang.Thread.run()
+[2020-05-29 15:29:36 CEST] [Exception] Exception message: 
+/C:/Users/krist/Documents/GitHub/MySport/src/main/resources/view/CreateAccount.fxml
+
+[2020-05-29 15:29:36 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+	at com.sun.glass.ui.win.WinApplication._runLoop()
+	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3()
+	at java.lang.Thread.run()
+[2020-05-29 15:29:37 CEST] [Exception] Exception message: 
+/C:/Users/krist/Documents/GitHub/MySport/src/main/resources/view/Messaging.fxml
+
+[2020-05-29 15:29:37 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+	at com.sun.glass.ui.win.WinApplication._runLoop()
+	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3()
+	at java.lang.Thread.run()
+[2020-05-29 16:44:13 CEST] [Exception] Exception message: 
+/C:/Users/krist/Documents/GitHub/MySport/src/main/resources/view/CreateAccount.fxml
+
+[2020-05-29 16:44:13 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+	at com.sun.glass.ui.win.WinApplication._runLoop()
+	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3()
+	at java.lang.Thread.run()
+[2020-05-29 16:44:14 CEST] [Exception] Exception message: 
+/C:/Users/krist/Documents/GitHub/MySport/src/main/resources/view/Home.fxml
+
+[2020-05-29 16:44:14 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+	at com.sun.glass.ui.win.WinApplication._runLoop()
+	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3()
+	at java.lang.Thread.run()
+[2020-05-29 16:44:14 CEST] [Exception] Exception message: 
+/C:/Users/krist/Documents/GitHub/MySport/src/main/resources/view/Messaging.fxml
+
+[2020-05-29 16:44:14 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+	at com.sun.glass.ui.win.WinApplication._runLoop()
+	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3()
+	at java.lang.Thread.run()
+[2020-05-29 16:44:14 CEST] [Exception] Exception message: 
+/C:/Users/krist/Documents/GitHub/MySport/src/main/resources/view/Settings.fxml
+
+[2020-05-29 16:44:14 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+	at com.sun.glass.ui.win.WinApplication._runLoop()
+	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3()
+	at java.lang.Thread.run()
+[2020-05-29 16:44:48 CEST] [Exception] Exception message: 
+/C:/Users/krist/Documents/GitHub/MySport/src/main/resources/view/CreateAccount.fxml
+
+[2020-05-29 16:44:48 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+	at com.sun.glass.ui.win.WinApplication._runLoop()
+	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3()
+	at java.lang.Thread.run()
+[2020-05-29 16:44:48 CEST] [Exception] Exception message: 
+/C:/Users/krist/Documents/GitHub/MySport/src/main/resources/view/Home.fxml
+
+[2020-05-29 16:44:48 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+	at com.sun.glass.ui.win.WinApplication._runLoop()
+	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3()
+	at java.lang.Thread.run()
+[2020-05-29 16:44:48 CEST] [Exception] Exception message: 
+/C:/Users/krist/Documents/GitHub/MySport/src/main/resources/view/Messaging.fxml
+
+[2020-05-29 16:44:48 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+	at com.sun.glass.ui.win.WinApplication._runLoop()
+	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3()
+	at java.lang.Thread.run()
+[2020-05-29 16:44:49 CEST] [Exception] Exception message: 
+/C:/Users/krist/Documents/GitHub/MySport/src/main/resources/view/Settings.fxml
+
+[2020-05-29 16:44:49 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+	at com.sun.glass.ui.win.WinApplication._runLoop()
+	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3()
+	at java.lang.Thread.run()
+[2020-05-29 17:34:32 CEST] [Exception] Exception message: 
+/C:/Users/krist/Documents/GitHub/MySport/src/main/resources/view/CreateAccount.fxml
+
+[2020-05-29 17:34:32 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+	at com.sun.glass.ui.win.WinApplication._runLoop()
+	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3()
+	at java.lang.Thread.run()
+[2020-05-29 17:34:32 CEST] [Exception] Exception message: 
+/C:/Users/krist/Documents/GitHub/MySport/src/main/resources/view/Messaging.fxml
+
+[2020-05-29 17:34:32 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+	at com.sun.glass.ui.win.WinApplication._runLoop()
+	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3()
+	at java.lang.Thread.run()
+[2020-05-29 17:34:33 CEST] [Exception] Exception message: Error resolving onAction='#changeBackgroundColor', either the event handler is not in the Namespace or there is an error in the script.
+/C:/Users/krist/Documents/GitHub/MySport/src/main/resources/view/Settings.fxml:48
+
+[2020-05-29 17:34:33 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader$Element.processEventHandlerAttributes()
+	at javafx.fxml.FXMLLoader$ValueElement.processEndElement()
+	at javafx.fxml.FXMLLoader.processEndElement()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+	at com.sun.glass.ui.win.WinApplication._runLoop()
+	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3()
+	at java.lang.Thread.run()
+[2020-05-29 18:36:24 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+	at com.sun.glass.ui.win.WinApplication._runLoop()
+	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3()
+	at java.lang.Thread.run()
+[2020-05-29 18:36:24 CEST] [Exception] Exception message: 
+/C:/Users/krist/Documents/GitHub/MySport/src/main/resources/view/CreateAccount.fxml
+
+[2020-05-29 18:36:25 CEST] [Exception] Exception message: 
+/C:/Users/krist/Documents/GitHub/MySport/src/main/resources/view/Messaging.fxml
+
+[2020-05-29 18:36:25 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+	at com.sun.glass.ui.win.WinApplication._runLoop()
+	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3()
+	at java.lang.Thread.run()
+[2020-05-29 18:36:56 CEST] [Exception] Exception message: 
+/C:/Users/krist/Documents/GitHub/MySport/src/main/resources/view/CreateAccount.fxml
+
+[2020-05-29 18:36:56 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.changeLanguage()
+	at controller.Settings.language()
+	at model.Tools.ThreadResult.run()
+	at java.lang.Thread.run()
+[2020-05-29 18:36:57 CEST] [Exception] Exception message: 
+/C:/Users/krist/Documents/GitHub/MySport/src/main/resources/view/Messaging.fxml
+
+[2020-05-29 18:36:57 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.changeLanguage()
+	at controller.Settings.language()
+	at model.Tools.ThreadResult.run()
+	at java.lang.Thread.run()
+[2020-05-29 18:37:04 CEST] [Exception] Exception message: 
+/C:/Users/krist/Documents/GitHub/MySport/src/main/resources/view/CreateAccount.fxml
+
+[2020-05-29 18:37:04 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.changeLanguage()
+	at controller.Settings.language()
+	at model.Tools.ThreadResult.run()
+	at java.lang.Thread.run()
+[2020-05-29 18:37:04 CEST] [Exception] Exception message: 
+/C:/Users/krist/Documents/GitHub/MySport/src/main/resources/view/Messaging.fxml
+
+[2020-05-29 18:37:04 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.changeLanguage()
+	at controller.Settings.language()
+	at model.Tools.ThreadResult.run()
+	at java.lang.Thread.run()
+[2020-05-29 19:07:23 CEST] [Exception] Exception message: 
+/C:/Users/krist/Documents/GitHub/MySport/src/main/resources/view/CreateAccount.fxml
+
+[2020-05-29 19:07:23 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+	at com.sun.glass.ui.win.WinApplication._runLoop()
+	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3()
+	at java.lang.Thread.run()
+[2020-05-29 19:07:24 CEST] [Exception] Exception message: 
+/C:/Users/krist/Documents/GitHub/MySport/src/main/resources/view/Messaging.fxml
+
+[2020-05-29 19:07:24 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.<clinit>()
+	at model.App.start()
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9()
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
+	at java.security.AccessController.doPrivileged()
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11()
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+	at com.sun.glass.ui.win.WinApplication._runLoop()
+	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3()
+	at java.lang.Thread.run()

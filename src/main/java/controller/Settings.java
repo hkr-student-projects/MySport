@@ -111,7 +111,7 @@ public class Settings extends Menu implements Initializable {
         return FXCollections.observableArrayList(labels);
     }
     @FXML
-    void changeBackgroundColor(ActionEvent event) {
+    public void changeBackgroundColor(ActionEvent event) {
         Color selectedColor = colorPicker.getValue();
         anchorPane.setBackground(new Background(new BackgroundFill(Paint.valueOf(selectedColor.toString()), CornerRadii.EMPTY, Insets.EMPTY)));
     }
