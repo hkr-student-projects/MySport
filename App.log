@@ -37675,3 +37675,16 @@ The last packet sent successfully to the chatServer was 0 milliseconds ago. The 
 	at java.security.AccessController.doPrivileged()
 	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10()
 	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run()
+[2020-05-30 20:46:46 CEST] [Exception] Exception message: 
+/Users/Test/Documents/GitHub/MySport/src/main/resources/view/Calendar.fxml
+
+[2020-05-30 20:46:46 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.changeLanguage()
+	at controller.Settings.language()
+	at model.Tools.ThreadResult.run()
+	at java.lang.Thread.run()
