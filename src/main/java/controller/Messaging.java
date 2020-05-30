@@ -297,16 +297,46 @@ public class Messaging extends Menu implements Initializable { // extends Menu
         txtMsg.requestFocus();
     }
 
-     @Override
-     protected void onBurgerOpen() {
-     }
-     @Override
-     protected void onBurgerClose() {
-     }
-     @Override
-     protected void onBeforeSceneSwitch() {
-     }
-     @Override
-     protected void onBeforeLogout() {
-          }
+
+
+
+    @Override
+    protected void onBurgerOpen() {
+
+    }
+
+    @Override
+    protected void onBurgerClose() {
+
+    }
+
+    @Override
+    protected void onBeforeSceneSwitch() {
+
+    }
+
+    @Override
+    protected void onBeforeLogout() {
+
+    }
+
+    //  @Override
+    //  protected void onBurgerOpen() {
+//
+    //  }
+//
+    //  @Override
+    //  protected void onBurgerClose() {
+//
+    //  }
+//
+    //  @Override
+    //  protected void onBeforeSceneSwitch() {
+//
+    //  }
+//
+    //  @Override
+    //  protected void onBeforeLogout() {
+    //       }
+
 }

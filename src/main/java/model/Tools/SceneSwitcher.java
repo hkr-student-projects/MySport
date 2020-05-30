@@ -1,16 +1,14 @@
 package model.Tools;
 
-import com.mysql.cj.log.Log;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
-import model.App;
 import model.Logging.Logger;
+import model.Tools.Tags.Legacy;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.net.MalformedURLException;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +23,7 @@ public class SceneSwitcher {
     public static SceneSwitcher instance = new SceneSwitcher();
 
     static {
-        load(true, "en");
+        load("se");
         bindListeners();
     }
 
@@ -51,17 +49,17 @@ public class SceneSwitcher {
     }
 
     public static void changeLanguage(Language lang){
-        load(false, lang.getCode());
+        load(lang.getCode());
     }
 
-    private static void load(boolean eventLoad, String lang){
+    @Legacy(reason = "All .fxml files and related files are loaded again on event of language change")
+    private static void load(String lang){
         File[] files = new File("src/main/resources/view").listFiles((dir, name) ->
                 name.toLowerCase().endsWith(".fxml"));
         scenes = new HashMap<>(files.length);
         controllers = new HashMap<>(files.length);
         loaders = new HashMap<>(files.length);
-        if(eventLoad)
-            sceneEventHandlers = new HashMap<>(files.length);
+        sceneEventHandlers = new HashMap<>(files.length);
 
         for (File f : files) {
             String name = f.getName().substring(0, f.getName().length() - 5);
@@ -72,17 +70,15 @@ public class SceneSwitcher {
                 Logger.logException(e);
             }
             loader.setResources(ResourceBundle.getBundle("lang_" + lang + ""));
+
             Map<EventType, ArrayList<EventHandler<? super KeyEvent>>> events = new HashMap<>(3);
-            if(eventLoad){
-                events.put(EventType.ON_KEY_PRESSED, new ArrayList<>(5));// 5 is the apx. number of listeners of onKeyPressed event on "name" scene
-                events.put(EventType.ON_KEY_RELEASED, new ArrayList<>(5));
-            }
+            events.put(EventType.ON_KEY_PRESSED, new ArrayList<>(5));// 5 is the apx. number of listeners of onKeyPressed event on "name" scene
+            events.put(EventType.ON_KEY_RELEASED, new ArrayList<>(5));
             loaders.put(name, loader);
             sceneEventHandlers.put(name, events);
             try {
-                System.out.println(name);
+                //System.out.println(name);
                 scenes.put(name, new Scene(loader.load(), 900, 600));
-                System.out.println(name + " loading succeeded");
             } catch (IOException e) {
                 Logger.logException(e);
             }
@@ -93,7 +89,6 @@ public class SceneSwitcher {
     }
 
     private static void bindListeners(){//find a way to iterate
-        // scenes.forEach((n, s) -> System.out.println(n));
         scenes.get("Calendar").setOnKeyPressed(e -> {
             ArrayList<EventHandler<? super KeyEvent>> listeners = sceneEventHandlers.get("Calendar").get(EventType.ON_KEY_PRESSED);
             for(int i = 0; i < listeners.size(); i++)

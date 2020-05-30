@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" stylesheets="@css/general.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Messaging">
+<AnchorPane fx:id="anchorPane" prefHeight="600.0" prefWidth="900.0" stylesheets="@css/general.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Messaging">
    <children>
       <AnchorPane fx:id="chatPane" layoutX="450.0" prefHeight="600.0" prefWidth="450.0" stylesheets="@css/general.css">
          <children>

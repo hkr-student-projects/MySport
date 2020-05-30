@@ -3,15 +3,16 @@ package controller;
 import com.jfoenix.controls.JFXDatePicker;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
 import model.App;
 import model.Tools.ArrayList;
+import model.Tools.Colorable;
 import model.Tools.SceneSwitcher;
 import model.Tools.ThreadResult;
 
@@ -21,8 +22,10 @@ import java.time.LocalDate;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-public class CreateAccount implements Initializable {
+public class CreateAccount implements Initializable, Colorable {
 
+    @FXML
+    private AnchorPane anchorPane;
     @FXML
     private TextField firstname, middlename, surname, ssn, mobile, email;
     @FXML
@@ -42,42 +45,37 @@ public class CreateAccount implements Initializable {
         addFocusStyle(new TextField[]{firstname, middlename, surname, ssn, mobile, email, password, repassword},
                 line0, line1, line2, line3, line4, line5, line6, line7
         );
-//        email.setOnKeyTyped(e -> {
-//            emailsList = App.mySqlManager.getEmail();
-//            if (!emailsList.isEmpty()) {
-//                if (email.getText().matches("^[A-Za-z0-9+_.-]+@([A-Za-z0-9]{2,10}\\.)+[A-Za-z]{2,8}$")) {
-//                    ThreadResult<String, Boolean> emailCheck = new ThreadResult<>(this::getEmails, email.getText());
-//                    Thread thread = new Thread(emailCheck);
-//                    thread.start();
-//                    try {
-//                        thread.join();
-//                    } catch (InterruptedException interruptedException) {
-//                        interruptedException.printStackTrace();
-//                    }
-//                    if (emailCheck.getValue()) {
-//                        emailFormat = false;
-//                        redLine(line5);
-//                        emailError.setVisible(true);
-//                    } else
-//                        emailFormat = true;
-//                } else {
-//                    emailFormat = false;
-//                    resetLine(line5);
-//                    emailError.setVisible(false);
-//                }
-//
-//                if (e.getCode() == KeyCode.BACK_SPACE && email.getText().isEmpty())
-//                    emailStr = "";
-//                else if (e.getCode() == KeyCode.BACK_SPACE && email.getText().length() > 0)
-//                    emailStr = emailStr.substring(0, emailStr.length() - 2);
-//                else
-//                    emailStr += e.getText();
-//            } else {
-//                emailFormat = false;
-//                redLine(line5);
-//                emailError.setVisible(true);
-//            }
-//        });
+        emailsList = App.mySqlManager.getEmail();
+        email.setOnKeyTyped(e -> {
+                if (email.getText().matches("^[A-Za-z0-9+_.-]+@([A-Za-z0-9]{2,10}\\.)+[A-Za-z]{2,8}$")) {
+                    ThreadResult<String, Boolean> emailCheck = new ThreadResult<>(this::getEmails, email.getText());
+                    Thread thread = new Thread(emailCheck);
+                    thread.start();
+                    try {
+                        thread.join();
+                    } catch (InterruptedException interruptedException) {
+                        interruptedException.printStackTrace();
+                    }
+                    if (emailCheck.getValue()) {
+                        emailFormat = false;
+                        redLine(line5);
+                        emailError.setVisible(true);
+                    } else
+                        emailFormat = true;
+                } else {
+                    emailFormat = false;
+                    resetLine(line5);
+                    emailError.setVisible(false);
+                }
+
+                if (e.getCode() == KeyCode.BACK_SPACE && email.getText().isEmpty())
+                    emailStr = "";
+                else if (e.getCode() == KeyCode.BACK_SPACE && email.getText().length() > 0)
+                    emailStr = emailStr.substring(0, emailStr.length() - 2);
+                else
+                    emailStr += e.getText();
+
+        });
     }
 
     private void addFocusStyle(TextField[] fields, Line... lines) {
@@ -100,16 +98,16 @@ public class CreateAccount implements Initializable {
 //        return App.mySqlManager.existsEmail(email);
 //    }
 
-//    private Boolean getEmails(String email) {
-//        ArrayList<String> entries = emailsList.get("email");
-//
-//        for (int i = 0; i < entries.size(); i++) {
-//            if (entries.get(i).matches(email)) {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
+    private Boolean getEmails(String email) {
+        ArrayList<String> entries = emailsList.get("email");
+
+        for (int i = 0; i < entries.size(); i++) {
+            if (entries.get(i).matches(email)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     private void resetLine(Line line) {
         line.setStroke(Paint.valueOf("#000000"));
@@ -195,5 +193,11 @@ public class CreateAccount implements Initializable {
     @FXML
     public void returnHome() {
         App.instance.setScene(SceneSwitcher.instance.getScene("Login"));
+    }
+
+    @Override
+    public void changeColor(String background, double opacity) {
+        this.anchorPane.setStyle(background);
+        this.anchorPane.setOpacity(opacity);
     }
 }
