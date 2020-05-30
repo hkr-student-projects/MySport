@@ -24,7 +24,7 @@ public class QueryQueue {
     public synchronized void processLog(){
 
         while (true){
-            Boolean flag = false;
+            boolean flag = false;
 
             if(methodQueue.size() <= 0)
                 break;

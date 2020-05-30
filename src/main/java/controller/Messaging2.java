@@ -27,7 +27,7 @@ import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.ResourceBundle;
 
-public class Messaging2 implements Initializable {
+public class Messaging2 extends Menu implements Initializable {
     @FXML
     private Pane pane;
 
@@ -186,5 +186,23 @@ public class Messaging2 implements Initializable {
     }
 
 
+    @Override
+    protected void onBurgerOpen() {
 
+    }
+
+    @Override
+    protected void onBurgerClose() {
+
+    }
+
+    @Override
+    protected void onBeforeSceneSwitch() {
+
+    }
+
+    @Override
+    protected void onBeforeLogout() {
+
+    }
 }

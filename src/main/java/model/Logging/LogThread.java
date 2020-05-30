@@ -2,15 +2,15 @@ package model.Logging;
 
 public class LogThread extends Thread {
 
-    private LogEntry _entry;
+    private final LogEntry entry;
 
     public LogThread(String name, LogEntry entry){
         super(name);
-        _entry = entry;
+        this.entry = entry;
     }
 
     public void run(){
-        LoggerQueue.Resource.enqueue(_entry);
+        LoggerQueue.Resource.enqueue(entry);
         LoggerQueue.Resource.processLog();
     }
 }

@@ -154,6 +154,10 @@ public class MongoManager {
         return sum;
     }
 
+    public Day getDay(){
+        return getDay(LocalDate.now());
+    }
+
     public Day getDay(LocalDate date){
         ArrayList<Activity> activities = new ArrayList<>(3);
         try(MongoClient client = getClient()){

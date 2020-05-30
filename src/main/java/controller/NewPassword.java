@@ -11,7 +11,7 @@ import model.Tools.SceneSwitcher;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class NewPassword implements Initializable {
+public class NewPassword extends Menu implements Initializable {
 
     @FXML
     private JFXPasswordField newPassword;
@@ -35,6 +35,26 @@ public class NewPassword implements Initializable {
             //dao.updateUserPassword(Utilities.resetEmail, confirmPassword.getText());
             App.instance.setScene(SceneSwitcher.instance.getScene("Login"));
         }
+
+    }
+
+    @Override
+    protected void onBurgerOpen() {
+
+    }
+
+    @Override
+    protected void onBurgerClose() {
+
+    }
+
+    @Override
+    protected void onBeforeSceneSwitch() {
+
+    }
+
+    @Override
+    protected void onBeforeLogout() {
 
     }
 }
