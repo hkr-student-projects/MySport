@@ -132,7 +132,7 @@ public class Block {
         byte g = readByte();
         byte b = readByte();
         byte a = readByte();
-        return String.format("%s,%s,%s,%s", r < 0 ? 256 - r : r, g < 0 ? 256 - g : g, b < 0 ? 256 - b : b, a / 100.0f);
+        return "-fx-background-color: " + String.format("#%02x%02x%02x", r, g, b) + ";";
     }
 
     public void writeByte(byte value)

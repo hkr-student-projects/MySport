@@ -3,15 +3,16 @@ package controller;
 import com.jfoenix.controls.JFXDatePicker;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
 import model.App;
 import model.Tools.ArrayList;
+import model.Tools.Colorable;
 import model.Tools.SceneSwitcher;
 import model.Tools.ThreadResult;
 
@@ -21,8 +22,10 @@ import java.time.LocalDate;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-public class CreateAccount implements Initializable {
+public class CreateAccount implements Initializable, Colorable {
 
+    @FXML
+    private AnchorPane anchorPane;
     @FXML
     private TextField firstname, middlename, surname, ssn, mobile, email;
     @FXML
@@ -190,5 +193,11 @@ public class CreateAccount implements Initializable {
     @FXML
     public void returnHome() {
         App.instance.setScene(SceneSwitcher.instance.getScene("Login"));
+    }
+
+    @Override
+    public void changeColor(String background, double opacity) {
+        this.anchorPane.setStyle(background);
+        this.anchorPane.setOpacity(opacity);
     }
 }

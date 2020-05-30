@@ -7,10 +7,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
 import model.App;
 import model.People.User;
+import model.Tools.Colorable;
 import model.Tools.SceneSwitcher;
 import model.Client.mediator.ChatMediatorClient;
 import model.Client.viewModel.ChatClientViewModel;
@@ -20,8 +22,10 @@ import java.net.URL;
 import java.rmi.NotBoundException;
 import java.util.ResourceBundle;
 
-public class Login implements Initializable {
+public class Login implements Initializable, Colorable {
 
+    @FXML
+    private AnchorPane anchorPane;
     @FXML
     private TextField email;
     @FXML
@@ -152,6 +156,12 @@ public class Login implements Initializable {
         } catch (NotBoundException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void changeColor(String background, double opacity) {
+        this.anchorPane.setStyle(background);
+        this.anchorPane.setOpacity(opacity);
     }
 }
 

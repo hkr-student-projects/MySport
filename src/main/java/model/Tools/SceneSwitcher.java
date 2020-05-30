@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import model.Logging.Logger;
+import model.Tools.Tags.Legacy;
 
 import java.io.File;
 import java.io.IOException;
@@ -51,6 +52,7 @@ public class SceneSwitcher {
         load(lang.getCode());
     }
 
+    @Legacy(reason = "All .fxml files and related files are loaded again on event of language change")
     private static void load(String lang){
         File[] files = new File("src/main/resources/view").listFiles((dir, name) ->
                 name.toLowerCase().endsWith(".fxml"));
@@ -77,9 +79,8 @@ public class SceneSwitcher {
             loaders.put(name, loader);
             sceneEventHandlers.put(name, events);
             try {
-                System.out.println(name);
+                //System.out.println(name);
                 scenes.put(name, new Scene(loader.load(), 900, 600));
-                System.out.println(name + " loading succeeded");
             } catch (IOException e) {
                 Logger.logException(e);
             }
@@ -90,7 +91,6 @@ public class SceneSwitcher {
     }
 
     private static void bindListeners(){//find a way to iterate
-        // scenes.forEach((n, s) -> System.out.println(n));
         scenes.get("Calendar").setOnKeyPressed(e -> {
             ArrayList<EventHandler<? super KeyEvent>> listeners = sceneEventHandlers.get("Calendar").get(EventType.ON_KEY_PRESSED);
             for(int i = 0; i < listeners.size(); i++)

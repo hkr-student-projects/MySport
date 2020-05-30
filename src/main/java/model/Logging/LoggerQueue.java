@@ -11,7 +11,7 @@ public class LoggerQueue {
 
     public static LoggerQueue Resource = new LoggerQueue();
     private static final Object lock = new Object();
-    private ArrayDeque<LogEntry> logEntryQueue = new ArrayDeque<>();
+    private final ArrayDeque<LogEntry> logEntryQueue = new ArrayDeque<>();
 
     public void enqueue(LogEntry le)
     {

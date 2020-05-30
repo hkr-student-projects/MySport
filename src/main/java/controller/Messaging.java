@@ -26,7 +26,7 @@ import java.util.ResourceBundle;
 
 
 
-public class Messaging implements Initializable { // extends Menu
+public class Messaging extends Menu implements Initializable { // extends Menu
 
     @FXML
     public ListView convListView,msgListView ;
@@ -294,6 +294,26 @@ public class Messaging implements Initializable { // extends Menu
         model.initiateConversation(userRowData.getUser());
         selectLastitemInMessagesList();
         txtMsg.requestFocus();
+    }
+
+    @Override
+    protected void onBurgerOpen() {
+
+    }
+
+    @Override
+    protected void onBurgerClose() {
+
+    }
+
+    @Override
+    protected void onBeforeSceneSwitch() {
+
+    }
+
+    @Override
+    protected void onBeforeLogout() {
+
     }
 
     //  @Override
