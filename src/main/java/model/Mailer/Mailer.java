@@ -7,7 +7,7 @@ import java.util.Properties;
 
 public class Mailer {
 
-    public static void sendMail(String recipients, String textMessage, String subject) {
+    public static void sendMail(String sender, String recipients, String textMessage, String subject) {
 
         final String username = "mysport.hkr@gmail.com";
         final String password = "Pa55W0rd";
@@ -28,14 +28,14 @@ public class Mailer {
         try {
 
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("mysport.hkr@gmail.com"));
+            message.setFrom(new InternetAddress(sender));
             message.setRecipients(
                     Message.RecipientType.TO,
                     //InternetAddress.parse("petrus.daniel@protonmail.com")
                     InternetAddress.parse(recipients)
             );
             message.setSubject(subject);
-            message.setText(textMessage);
+            message.setText(textMessage + "\n\n" + sender);
 
             Transport.send(message);
 
