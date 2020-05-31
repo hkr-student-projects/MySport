@@ -18,16 +18,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 import model.App;
 import model.Database.MongoManager;
 import model.Logging.Logger;
 import model.People.Leader;
 import model.People.Member;
-import model.Tools.ArrayList;
+import model.Tools.*;
 import model.Tools.Decomposition.Block;
-import model.Tools.EventType;
-import model.Tools.SceneSwitcher;
-import model.Tools.Serializable;
 import model.Tools.Tags.Related;
 
 import java.net.URL;
@@ -53,6 +51,8 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     private JFXComboBox<String> sportList;
     @FXML
     private ColorPicker sportColor;
+    @FXML
+    private Pane popUp;
     private Node[][] gridPaneFast;
     private Node tempPane, prevPane;
     private int tempRow, tempCol, initY, initX;
@@ -206,7 +206,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
 
     private void buildProps(Pane pane, int span){
         buildTime(pane, span);
-        String sp = sportList.getValue() == null ? sportList.getItems().get(0) : sportList.getValue();
+        String sportName = sportList.getValue() == null ? sportList.getItems().get(0) : sportList.getValue();
         new Thread(() -> {
             ObservableMap<Object, Object> props = pane.getProperties();
             App.mongoManager.addActivity(
@@ -216,7 +216,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
                         currentWeek.getDayOfMonth()
                 ),
                 new MongoManager.Activity(
-                        sp, "Hus 7", 0,
+                        sportName, "Hus 7", 0,
                         getMinutes(
                             Integer.parseInt((String)props.get("hf")),
                             Integer.parseInt((String)props.get("mf"))
@@ -230,12 +230,14 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
                 )
             );
         }).start();
-        addChildProps(pane, span, 0, sp);
+        addChildProps(pane, span, 0, sportName);
         addChilds(pane,
-                buildSport(sp),
+                buildSport(sportName),
                 buildJoins(span, 0),
                 buildJoin(span, false)
         );
+        ObservableMap<Object, Object> props = pane.getProperties();
+        createPopUp(sportName + " session at: " + props.get("hf") + ":" + props.get("mf") + " - " + props.get("ht") + ":" + props.get("mt"));
     }
 
     @Related(to = { "Baked pane", "Calendar.buildProps()", "Calendar.loadWeek()" })
@@ -427,7 +429,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
                 App.mongoManager.removeActivity(
                         currentWeek,
                         sport,
-                        getMinutes((int)props.get("hf"), (int)props.get("mf"))
+                        getMinutes(Integer.parseInt((String)props.get("hf")), Integer.parseInt((String)props.get("mf")))
                 );
                 if(currentWeek.equals(LocalDate.now()))
                     today.removeActivity(sport);
@@ -866,6 +868,16 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         sportColor.setValue(null);
         this.sportList.getItems().clear();//dont use FXCollections.observableList because of unknown css exception
         gridPane.getChildren().forEach(pane -> pane.setOnMouseClicked(null));
+    }
+
+    private void createPopUp(String message){
+        Text text = (Text) popUp.getChildren().get(0);
+        text.setText(message);
+        new Thread(() -> {
+            FadeTransition ft = new FadeTransition(popUp, Duration.millis(2000));
+            ft.play();
+            ft.setOnFinished(e -> ft.playReverse());
+        }).start();
     }
 }
 // row: 15px, 4 rows per hour, textfield: 22px, spacing: 4(15px) - 2(22px / 2)
