@@ -128,10 +128,10 @@ public class Block {
 
     public String readColor()
     {
-        byte r = readByte();
-        byte g = readByte();
-        byte b = readByte();
-        byte a = readByte();
+        short r = readInt16();
+        short g = readInt16();
+        short b = readInt16();
+        //byte a = readByte();
         return "-fx-background-color: " + String.format("#%02x%02x%02x", r, g, b) + ";";
     }
 
@@ -179,30 +179,29 @@ public class Block {
             this.writeString(values[(int)index]);
     }
 
-    public void writeColor(String[] rgba)
+    public void writeColor(String hex)
     {
-        if(rgba.length != 4)
-            throw new InvalidParameterException("Argument \"rgba[]\" must have exactly 4 elements");
-        byte r, g, b;
-        float a;
+        short r, g, b;
         try {
-            r = (byte) Short.parseShort(rgba[0]);
-            g = (byte) Short.parseShort(rgba[1]);
-            b = (byte) Short.parseShort(rgba[2]);
-            a = Float.parseFloat(rgba[3]);
-            writeColor(r, g, b, a);
+//            r = (byte) Short.parseShort(rgb[0]);
+//            g = (byte) Short.parseShort(rgb[1]);
+//            b = (byte) Short.parseShort(rgb[2]);
+            r = Short.valueOf(hex.substring(0, 2), 16 );
+            g = Short.valueOf(hex.substring(2, 4), 16 );
+            b = Short.valueOf(hex.substring(4, 6), 16 );
+            writeColor(r, g, b);
         }
         catch (NumberFormatException ex){
             Logger.logException(ex);
         }
     }
 
-    public void writeColor(byte r, byte g, byte b, float a)
+    public void writeColor(short r, short g, short b)
     {
-        this.writeByte(r);
-        this.writeByte(g);
-        this.writeByte(b);
-        this.writeByte((byte) (a * 100.0f));
+        this.writeInt16(r);
+        this.writeInt16(g);
+        this.writeInt16(b);
+        //this.writeByte((byte) (a * 100.0f));
     }
 
     public void writeBoolean(boolean value)

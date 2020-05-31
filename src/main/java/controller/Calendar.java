@@ -233,7 +233,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         addChilds(pane,
                 buildSport(sportName),
                 buildJoins(span, 0),
-                buildJoin(span, false)
+                buildJoin(span)
         );
         ObservableMap<Object, Object> props = pane.getProperties();
         createPopUp(sportName + " session at: " + props.get("hf") + ":" + props.get("mf") + " - " + props.get("ht") + ":" + props.get("mt"));
@@ -241,7 +241,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
 
     @Related(to = { "Baked pane", "Calendar.buildProps()", "Calendar.loadWeek()" })
     private void addChilds(Pane pane, Node... nodes){
-        setEntered(pane, false);
+        setEntered(pane);
         pane.getChildren().addAll(nodes);
         pane.setOnMousePressed(e -> { initY = (short)e.getSceneY(); initX = (short)e.getSceneX(); });
         if(editor){
@@ -297,8 +297,8 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     }
 
     @Related(to = { "Baked pane", "Calendar.buildProps()", "Calendar.loadWeek()" })
-    private Button buildJoin(int span, boolean joined){//baked sport
-        Button join = new Button(joined ? "Out" : "Join");
+    private Button buildJoin(int span){//baked sport
+        Button join = new Button("Join");
         join.getStylesheets().add("/view/css/general.css");
         join.getStyleClass().addAll("joinButton", "cursorHand");
         join.setPrefWidth(30);
@@ -319,7 +319,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         Text t = (Text) p.getChildren().get(2);
         ObservableMap<Object, Object> props = p.getProperties();
         int jns = (int) props.get("jns");
-        joinActivity(flag, ((Text) p.getChildren().get(1)).getText());
+        //joinActivity(flag, ((Text) p.getChildren().get(1)).getText());
         if(flag){
             t.setText(++jns + "+");
             props.remove("jns");
@@ -517,7 +517,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     }
 
     @Related(to = { "Baked pane" })
-    private void setEntered(Pane pane, boolean joined) {
+    private void setEntered(Pane pane) {
         pane.setOnMouseEntered(e -> {
             Button b = (Button) pane.getChildren().get(3);
             if(altDown && b.isDisable())
@@ -549,7 +549,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             block.writeByte((byte) pane.row);
             block.writeByte((byte) pane.col);
             block.writeByte((byte) pane.span);
-            block.writeColor(getRGBAColor(pane.color).split(","));
+            block.writeColor(getHexColor(pane.color));
             block.writeString(pane.hf);
             block.writeString(pane.mf);
             block.writeString(pane.ht);
@@ -581,7 +581,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             byte row = block.readByte();
             byte col = block.readByte();
             byte span = block.readByte();
-            String color = "-fx-background-color: " + block.readColor() + ";";
+            String color = block.readColor();
             String hf = block.readString();
             String mf = block.readString();
             String ht = block.readString();
@@ -593,7 +593,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
                     buildTime(String.format("%s:%s - %s:%s", hf, mf, ht, mt)),
                     buildSport(sportName),
                     buildJoins(span, jns),
-                    buildJoin(span, false)
+                    buildJoin(span)
             ));
         }
 
@@ -652,8 +652,8 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         }
     }
 
-    private String getRGBAColor(String unformatted){
-        return unformatted.substring(unformatted.indexOf('(') + 1, unformatted.indexOf(')'));
+    private String getHexColor(String style){
+        return style.substring(style.indexOf('#') + 1);
     }
 
     private boolean checkFreeSpace(int[] cords, int span) {
@@ -743,7 +743,6 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             if(node.getStyle().isEmpty()){
                 node.setStyle(getBackgroundStyle(node));
             }
-
         }
     }
 

@@ -9,3 +9,4 @@ Cause: database chatServer is turned off or incorrect credentials
 
 4. Not On JavaFX thread
 Cause: you started a thread without a control over it, just add .join() inside the context that thread exists.
+if problem still exists then place a part of code that causes that exception in Platform.runLater(Runnable)
