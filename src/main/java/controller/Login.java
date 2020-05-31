@@ -79,14 +79,16 @@ public class Login implements Initializable, Colorable {
                             email.getText(),
                             password.getText())) == -1) {
                         System.out.println(id);
-                        passwordFormat = true;
+                        passwordFormat = false;
 
                         return;
+                    } else {
+                        passwordFormat = true;
                     }
 
                     User user = App.mySqlManager.getUser(id);
                     App.instance.setSession(user);
-                    setupMessaging(user);
+//                    setupMessaging(user);
 
                     ((Calendar) SceneSwitcher.instance.getController("Calendar")).loadUser();
                     SceneSwitcher.controllers.forEach((n, c) -> {
@@ -105,9 +107,12 @@ public class Login implements Initializable, Colorable {
                     App.instance.setScene(SceneSwitcher.instance.getScene("Home"));
                     System.out.println("Redirecting to Home");
                     resetLines();
+                    email.setText(null);
+                    password.setText(null);
+                    error.setText(null);
                 } else {
                     redLines();
-                    error.setText("Incorrect password!");
+                    error.setText("Incorrect credentials!");
                 }
 
             }
@@ -173,29 +178,29 @@ public class Login implements Initializable, Colorable {
         line1.setStrokeWidth(1);
     }
 
-    public static void setupMessaging(User user) {
-        Messaging messagingController = null;
-        System.out.println("In messaging initializer");
-        try {
-            //messagingRoot = loader.load();
-            messagingController = (Messaging) SceneSwitcher.controllers.get("Messaging");
-            model.Client.models.User localUser = new model.Client.models.User();
-            localUser.setId(user.getId());
-            localUser.setMobile(user.getMobile());
-            localUser.setName(user.getName());
-            System.out.println("Messaging initialiser " + localUser.getName() + " : " + localUser.getMobile());
-            ChatMediatorClient chatMediatorClient = new ChatMediatorClient(localUser);
-            ChatClientViewModel chatClientViewModel = new ChatClientViewModel(user.getName(), chatMediatorClient);
-
-            messagingController.init(chatClientViewModel);
-
-            SceneSwitcher.controllers.put("Messaging", messagingController);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (NotBoundException e) {
-            e.printStackTrace();
-        }
-    }
+//    public static void setupMessaging(User user) {
+//        Messaging messagingController = null;
+//        System.out.println("In messaging initializer");
+//        try {
+//            //messagingRoot = loader.load();
+//            messagingController = (Messaging) SceneSwitcher.controllers.get("Messaging");
+//            model.Client.models.User localUser = new model.Client.models.User();
+//            localUser.setId(user.getId());
+//            localUser.setMobile(user.getMobile());
+//            localUser.setName(user.getName());
+//            System.out.println("Messaging initialiser " + localUser.getName() + " : " + localUser.getMobile());
+//            ChatMediatorClient chatMediatorClient = new ChatMediatorClient(localUser);
+//            ChatClientViewModel chatClientViewModel = new ChatClientViewModel(user.getName(), chatMediatorClient);
+//
+//            messagingController.init(chatClientViewModel);
+//
+//            SceneSwitcher.controllers.put("Messaging", messagingController);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } catch (NotBoundException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     @Override
     public void changeColor(String background, double opacity) {
