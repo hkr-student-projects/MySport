@@ -73,9 +73,8 @@ public abstract class Menu implements Colorable {
             App.instance.setScene(SceneSwitcher.instance.getScene("Account"));
         });
         mail.setOnMouseClicked(e -> {
-            if(caller instanceof Mail)
+            if(caller instanceof Messaging)
                 return;
-            //onSceneSwitch();
             onBeforeSceneSwitch();
             App.instance.setScene(SceneSwitcher.instance.getScene("Messaging"));
         });
