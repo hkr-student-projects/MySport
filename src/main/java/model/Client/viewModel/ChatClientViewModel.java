@@ -37,6 +37,7 @@ public class ChatClientViewModel implements LocalListener<User, Message, Convers
     private ChatMediatorClient mediator;
     private User newUserToChatWith;
     private Messaging controller;
+    int previousMessageID = -1;
 
     public ChatClientViewModel(String currentUser, ChatMediatorClient mediatorLocal) {
         System.out.println("In ChatClientViewModel constructor");
@@ -80,9 +81,14 @@ public class ChatClientViewModel implements LocalListener<User, Message, Convers
         System.out.println("Clearing old messages");
         Platform.runLater(() -> conversationMessages.clear());
         System.out.println("Putting in the new messages");
+
         conversationMessagesList.forEach(i -> {
-            Platform.runLater(() -> conversationMessages.add(new MessageRowData(i)));
+            //if(i.getId() != 0) {
+                //System.out.println("Message ID is " + i.getId());
+                Platform.runLater(() -> conversationMessages.add(new MessageRowData(i)));
+           // }
         });
+        previousMessageID = -1;
     }
 
     public void setUserConversations(List<Conversation> userConversations) {
@@ -129,9 +135,9 @@ public class ChatClientViewModel implements LocalListener<User, Message, Convers
 
         if(currentConversationID == conversationID){
             Platform.runLater(() -> {
-                //if(messageDoesNotExistInConversationMessages(message, conversationID)) {
+                if(message.getId() != 0){
                     conversationMessages.add(new MessageRowData(message));
-              //  }
+                }
             });
         }
 
@@ -246,6 +252,13 @@ public class ChatClientViewModel implements LocalListener<User, Message, Convers
             if(conversation.getId() == conversationRowData.getConversationID()){
                 // get Message list
                 List<Message> messages = conversation.getMessageList();
+                if(messages != null && messages.size() > 1) {
+                    if (messages.get(0) != null && messages.get(1) != null) {
+                        if (messages.get(0).getMessage().equals(messages.get(1).getMessage())) {
+                            messages.remove(0);
+                        }
+                    }
+                }
                 System.out.println("Messages size is " + messages.size());
                 // initialize conv mesages list
                 initializeConversationMessages(messages);
