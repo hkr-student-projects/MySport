@@ -161,7 +161,7 @@ public class Login implements Initializable, Colorable {
         line1.setStroke(Paint.valueOf("#000000"));
         line1.setStrokeWidth(1);
     }
-    private void setupMessaging(User user){
+    public static void setupMessaging(User user){
         Messaging messagingController = null;
         System.out.println("In messaging initializer");
         try {
