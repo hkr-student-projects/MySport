@@ -26,34 +26,13 @@ import java.util.ResourceBundle;
 
 
 
-public class Messaging extends Menu implements Initializable { // extends Menu
+public class Messaging extends Menu implements Initializable {
 
     @FXML
     public ListView convListView,msgListView ;
 
     @FXML
     private Pane pane;
-
-    //  @FXML
-    //  private Button home;
-//
-    //  @FXML
-    //  private Button account;
-//
-    //  @FXML
-    //  private Button mail;
-//
-    //  @FXML
-    //  private Button forum;
-//
-    //  @FXML
-    //  private Button calendar;
-//
-    //  @FXML
-    //  private Button settings;
-//
-    //  @FXML
-    //  private Button logout;
 
     @FXML
     private AnchorPane rootPane,titleBar ,detailPane ;
@@ -68,7 +47,7 @@ public class Messaging extends Menu implements Initializable { // extends Menu
     private VBox chatBox, clientListBox, box;
 
     @FXML
-    private Button btnSend, btnEmoji, btnClose;
+    private Button btnSend, btnEmoji;
 
     @FXML
     private ScrollPane scrollPane;
@@ -77,15 +56,9 @@ public class Messaging extends Menu implements Initializable { // extends Menu
     private TextFlow emojiList;
 
     @FXML
-    private JFXDrawer drawerPane;
-
-    @FXML
     private ScrollPane clientListScroll;
 
 
-
-    @FXML
-    private JFXButton inbox, sent , bin;
 
     @FXML
     private ComboBox namesList;
@@ -157,6 +130,8 @@ public class Messaging extends Menu implements Initializable { // extends Menu
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        bindTab(this);
+
 
         for(Node text : emojiList.getChildren()){
             text.setOnMouseClicked(event -> {
@@ -165,7 +140,7 @@ public class Messaging extends Menu implements Initializable { // extends Menu
             });
         }
 
-        bindTab(this);
+
         System.out.println("In initialize Messaging");
         //  homeTip = new Tooltip("Home");
         //  home.setTooltip(homeTip);
@@ -195,36 +170,7 @@ public class Messaging extends Menu implements Initializable { // extends Menu
         //  logout.setTooltip(logOutTip);
         //  logOutTip.setStyle("-fx-background-color: #763DEE");
 //
-        inboxTip = new Tooltip("Inbox");
-        inbox.setTooltip(inboxTip);
-        inboxTip.setStyle("-fx-background-color: #763DEE");
 
-        sentTip = new Tooltip("Sent");
-        sent.setTooltip(sentTip);
-        sentTip.setStyle("-fx-background-color: #763DEE");
-
-        binTip = new Tooltip("Bin");
-        bin.setTooltip(binTip);
-        binTip.setStyle("-fx-background-color: #763DEE");
-
-
-
-        drawerPane.setSidePane(pane);
-        System.out.println("Drawer finished");
-      ////  HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(burger);
-        //System.out.println("transition finished");
-        //transition.setRate(-1);
-        //burger.addEventHandler(MouseEvent.MOUSE_PRESSED, (e) -> {
-        //    transition.setRate(transition.getRate() * -1);
-        //    transition.play();
-
-       //     if (drawerPane.isOpened()) {
-       //         drawerPane.close();
-       //     } else {
-       //         drawerPane.open();
-       //     }
-       // });
-       // System.out.println("hamburger finished");
     }
 
     public ChatClientViewModel getModel() {
@@ -318,24 +264,5 @@ public class Messaging extends Menu implements Initializable { // extends Menu
     protected void onBeforeLogout() {
 
     }
-
-    //  @Override
-    //  protected void onBurgerOpen() {
-//
-    //  }
-//
-    //  @Override
-    //  protected void onBurgerClose() {
-//
-    //  }
-//
-    //  @Override
-    //  protected void onBeforeSceneSwitch() {
-//
-    //  }
-//
-    //  @Override
-    //  protected void onBeforeLogout() {
-    //       }
 
 }

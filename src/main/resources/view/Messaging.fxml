@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXDrawer?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.lang.String?>
-<?import javafx.scene.Cursor?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.ListView?>
@@ -13,24 +11,26 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
 <AnchorPane fx:id="anchorPane" prefHeight="600.0" prefWidth="900.0" stylesheets="@css/general.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Messaging">
    <children>
-      <AnchorPane fx:id="chatPane" layoutX="450.0" prefHeight="600.0" prefWidth="450.0" stylesheets="@css/general.css">
+      <AnchorPane fx:id="chatPane" layoutX="450.0" prefHeight="600.0" prefWidth="450.0" styleClass="loginLogo" stylesheets="@css/general.css">
          <children>
             <AnchorPane fx:id="chatPane1" layoutX="7.0" layoutY="40.0" prefHeight="547.0" prefWidth="427.0">
                <children>
-                  <javafx.scene.control.TextArea fx:id="txtMsg" accessibleRole="PARENT" layoutX="21.0" layoutY="507.0" prefHeight="30.0" prefWidth="337.0" promptText="%key.yourMessage" styleClass="text-area" stylesheets="@css/general.css" wrapText="true" />
+                  <javafx.scene.control.TextArea fx:id="txtMsg" accessibleRole="PARENT" layoutX="21.0" layoutY="507.0" prefHeight="39.0" prefWidth="356.0" promptText="%key.yourMessage" styleClass="text-area" stylesheets="@css/general.css" wrapText="true" />
                   <ScrollPane fx:id="scrollPane" accessibleRole="PARENT" hbarPolicy="NEVER" layoutX="14.0" layoutY="14.0" prefHeight="453.0" prefWidth="399.0" vvalue="1.0">
                      <content>
                         <!--<VBox fx:id="chatBox" alignment="TOP_RIGHT" prefHeight="451.0" prefWidth="398.0" /> -->
                         <ListView fx:id="msgListView" prefHeight="451.0" prefWidth="398.0" />
                      </content>
                   </ScrollPane>
-                  <Button fx:id="btnSend" accessibleRole="PARENT" layoutX="366.0" layoutY="507.0" mnemonicParsing="false" onAction="#sendAction" prefHeight="30.0" prefWidth="34.0" style="-fx-background-color: #763DEE;" stylesheets="@css/general.css" />
+                  <Button fx:id="btnSend" accessibleRole="PARENT" layoutX="385.0" layoutY="510.0" mnemonicParsing="false" onAction="#sendAction" prefHeight="30.0" prefWidth="34.0" style="-fx-background-color: white;" stylesheets="@css/general.css" />
                   <TextFlow fx:id="emojiList" layoutX="91.0" layoutY="397.0" prefHeight="91.0" prefWidth="260.0" visible="false">
                      <children>
                         <Text stroke="#f9ff38" strokeType="OUTSIDE" strokeWidth="0.0" text="😀" />
@@ -115,7 +115,7 @@
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="🙏" />
                      </children>
                   </TextFlow>
-                  <Button fx:id="btnEmoji" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" layoutX="334.0" layoutY="507.0" maxWidth="-Infinity" minHeight="19.0" minWidth="39.0" mnemonicParsing="false" onAction="#emojiAction" style="-fx-background-color: YELLOW;" styleClass="btnEmoji" text="😊" />
+                  <Button fx:id="btnEmoji" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" layoutX="348.0" layoutY="508.0" maxWidth="-Infinity" minHeight="19.0" minWidth="39.0" mnemonicParsing="false" onAction="#emojiAction" style="-fx-background-color: YELLOW;" styleClass="btnEmoji" text="😊" />
                   <FontAwesomeIconView fill="#a19090" glyphName="PAPERCLIP" layoutX="30.0" layoutY="530.0" size="23" />
                </children>
             </AnchorPane>
@@ -123,115 +123,19 @@
       </AnchorPane>
       <Pane prefHeight="600.0" prefWidth="450.0" styleClass="loginLogo" stylesheets="@css/general.css">
          <children>
-            <JFXDrawer fx:id="drawerPane" prefHeight="600.0" prefWidth="93.0">
+            <AnchorPane prefHeight="600.0" prefWidth="450.0">
                <children>
-                  <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="93.0" styleClass="loginLogo" stylesheets="@css/general.css">
-                     <children>
-                        <JFXButton fx:id="home" accessibleRole="INCREMENT_BUTTON" buttonType="RAISED" prefHeight="59.0" prefWidth="93.0" ripplerFill="WHITE" text="." textFill="#f2f0f0">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </JFXButton>
-                        <FontAwesomeIconView accessibleRole="INCREMENT_BUTTON" fill="#f2f2f2" glyphName="HOME" layoutX="33.0" layoutY="40.0" size="30">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </FontAwesomeIconView>
-                        <JFXButton fx:id="mail" buttonType="RAISED" layoutY="118.0" prefHeight="59.0" prefWidth="93.0" ripplerFill="WHITE" text="." textFill="#f2f0f0">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </JFXButton>
-                        <JFXButton fx:id="forum" buttonType="RAISED" layoutY="177.0" prefHeight="59.0" prefWidth="93.0" ripplerFill="WHITE" text="." textFill="#f2f0f0">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </JFXButton>
-                        <JFXButton fx:id="calendar" buttonType="RAISED" layoutY="236.0" prefHeight="59.0" prefWidth="93.0" ripplerFill="WHITE" text="." textFill="#f2f0f0">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </JFXButton>
-                        <JFXButton fx:id="logout" buttonType="RAISED" layoutY="354.0" prefHeight="59.0" prefWidth="93.0" ripplerFill="WHITE" text="." textFill="#f2f0f0">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </JFXButton>
-                        <JFXButton fx:id="settings" buttonType="RAISED" layoutY="295.0" prefHeight="59.0" prefWidth="93.0" ripplerFill="WHITE" text="." textFill="#f2f0f0">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </JFXButton>
-                        <JFXButton fx:id="account" buttonType="RAISED" layoutY="59.0" prefHeight="59.0" prefWidth="93.0" ripplerFill="WHITE" text="." textFill="#f2f0f0">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </JFXButton>
-                        <JFXButton fx:id="inbox" buttonType="RAISED" layoutY="413.0" prefHeight="59.0" prefWidth="93.0" ripplerFill="WHITE" text="." textFill="#f2f0f0">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </JFXButton>
-                        <JFXButton fx:id="sent" buttonType="RAISED" layoutY="472.0" prefHeight="59.0" prefWidth="93.0" ripplerFill="WHITE" text="." textFill="#f2f0f0">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </JFXButton>
-                        <JFXButton fx:id="bin" buttonType="RAISED" layoutY="531.0" prefHeight="69.0" prefWidth="93.0" ripplerFill="WHITE" text="." textFill="#f2f0f0">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </JFXButton>
-                        <FontAwesomeIconView fill="#f2f2f2" glyphName="USER" layoutX="35.0" layoutY="99.0" size="30">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </FontAwesomeIconView>
-                        <FontAwesomeIconView fill="#f2f2f2" glyphName="CALENDAR" layoutX="33.0" layoutY="276.0" size="30">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </FontAwesomeIconView>
-                        <FontAwesomeIconView fill="#f2f2f2" glyphName="COG" layoutX="32.0" layoutY="335.0" size="30">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </FontAwesomeIconView>
-                        <FontAwesomeIconView fill="#f2f2f2" glyphName="INBOX" layoutX="34.0" layoutY="453.0" size="30">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </FontAwesomeIconView>
-                        <FontAwesomeIconView fill="#f2f2f2" glyphName="SEND" layoutX="32.0" layoutY="512.0" size="30">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </FontAwesomeIconView>
-                        <FontAwesomeIconView fill="#f2f2f2" glyphName="TRASH" layoutX="35.0" layoutY="576.0" size="30">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </FontAwesomeIconView>
-                        <FontAwesomeIconView fill="#f2f2f2" glyphName="ENVELOPE" layoutX="32.0" layoutY="159.0" size="30" text="">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </FontAwesomeIconView>
-                        <FontAwesomeIconView fill="#f2f2f2" glyphName="COMMENTS" layoutX="35.0" layoutY="217.0" size="30">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </FontAwesomeIconView>
-                        <FontAwesomeIconView fill="WHITE" glyphName="POWER_OFF" layoutX="33.0" layoutY="393.0" size="30" />
-                     </children>
-                  </Pane>
-               </children>
-            </JFXDrawer>
-            <AnchorPane layoutX="95.0" prefHeight="600.0" prefWidth="355.0">
-               <children>
-                  <FontAwesomeIconView fill="#a19b9b" glyphName="SEARCH" layoutX="293.0" layoutY="43.0" size="20" text="" />
-                  <ListView fx:id="convListView" layoutX="14.0" layoutY="100.0" onMouseClicked="#handleConversationClick" prefHeight="492.0" prefWidth="323.0" />
-                  <ComboBox fx:id="namesList" layoutX="14.0" layoutY="22.0" onAction="#newUserConversation" prefHeight="31.0" prefWidth="323.0" />
+                  <ScrollPane layoutX="14.0" layoutY="108.0" prefWidth="325.0">
+                     <content>
+                        <ListView fx:id="convListView" onMouseClicked="#handleConversationClick" prefHeight="475.0" prefWidth="323.0" />
+                     </content>
+                  </ScrollPane>
+                  <ComboBox fx:id="namesList" layoutX="14.0" layoutY="54.0" onAction="#newUserConversation" prefHeight="31.0" prefWidth="323.0" />
+                  <Text fx:id="sessionName" fill="WHITE" layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="John Cena (Leader)" wrappingWidth="341.0">
+                     <font>
+                        <Font name="AppleGothic Regular" size="14.0" />
+                     </font>
+                  </Text>
                </children>
             </AnchorPane>
          </children>
@@ -249,5 +153,75 @@
             <String fx:value="button" />
          </styleClass>
       </Button>
+      <HBox fx:id="bar" alignment="CENTER_RIGHT" layoutX="400.0" layoutY="3.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="31.0" prefWidth="400.0" spacing="25.0" style="-fx-background-color: transparent;">
+         <children>
+            <Button fx:id="home" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/home-icon_2.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="account" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/user-icon_1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="mail" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/mail-icon_14.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="forum" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/forum-icon_1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="calendar" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/calendar-icon_4.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="settings" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/settings-icon_10.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="logout" mnemonicParsing="false" prefHeight="9.0" prefWidth="32.0" styleClass="buttonTab" stylesheets="@css/general.css">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/power-off-icon_1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </HBox>
    </children>
 </AnchorPane>
