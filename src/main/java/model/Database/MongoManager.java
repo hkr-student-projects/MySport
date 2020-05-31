@@ -80,24 +80,25 @@ public class MongoManager {
     }
 
     public UpdateResult changeTime(LocalDate date, String sport, int startTime, int newStart, int newEnd){
+        UpdateResult result;
         try(MongoClient client = getClient()) {
-            return getCollection(client, date).updateOne(
+            result = getCollection(client, date).updateOne(
                     BasicDBObject.parse("{ _id: " + date.getDayOfMonth() + ", " +
                             "\"activities._id\": \"" + sport + "\", " +
-                            "\"activities.start\": \"" + startTime + "\" }"),
-                    BasicDBObject.parse("{ $set: { \"activities.start\": \"" + newStart + "\", " +
-                            "\"activities.end\": \"" + newEnd + "\" } }")
+                            "\"activities.start\": " + startTime + " }"),
+                    BasicDBObject.parse("{ $set: { \"activities.$.start\": " + newStart + ", \"activities.$.end\": " + newEnd + " } }")
             );
         }
+
+        return result;
     }
 
     public UpdateResult removeParticipant(LocalDate date, String sport, int id, boolean isLeader){
-        String table = isLeader ? "leaders" : "members";
         try(MongoClient client = getClient()) {
             return getCollection(client, date).updateOne(
                     BasicDBObject.parse("{ _id: " + date.getDayOfMonth() + ", " +
                             "\"activities._id\": \"" + sport + "\" }"),
-                    BasicDBObject.parse("{ $pull: { \"activities.$." + table + "\": " + id +" } }")
+                    BasicDBObject.parse("{ $pull: { \"activities.$." + (isLeader ? "leaders" : "members") + "\": " + id +" } }")
             );
         }
     }
@@ -151,6 +152,10 @@ public class MongoManager {
         }
 
         return sum;
+    }
+
+    public Day getDay(){
+        return getDay(LocalDate.now());
     }
 
     public Day getDay(LocalDate date){

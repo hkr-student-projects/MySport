@@ -56,6 +56,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     private Node[][] gridPaneFast;
     private Node tempPane, prevPane;
     private int tempRow, tempCol, initY, initX;
+    private final double globalOpacity = 0.8;
     private boolean flag = true, editor = false, modified = false, altDown = false;
     private static LocalDate currentWeek;
     private static ArrayList<WeekProperties> weeks;
@@ -164,7 +165,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             bakePane(tempPane, Math.abs(extendBy) + 1);
         }
         else {
-            pane.setStyle(getBackgroundColor());
+            pane.setStyle(getBackgroundStyle(pane));
             int[] cords = getNodeCords(pane);
             tempRow = cords[0];
             tempCol = cords[1];
@@ -304,21 +305,21 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         join.setFont(new Font("Helvetica Light", 8));
         join.setLayoutX(10);
         join.setLayoutY(15 * (span - 1) - 20);
-        join.setOnMouseClicked(e -> switchAction(join, joined));
+        join.setOnMouseClicked(e -> switchAction(join));
 
         return join;
     }
 
     @Related(to = { "Calendar.buildJoin()" })
-    private void switchAction(Button button, boolean joined){
+    private void switchAction(Button button){
         modified = true;
-        //boolean flag = button.getText().equals("Join");
+        boolean flag = button.getText().equals("Join");
         Pane p = (Pane) button.getParent();
         Text t = (Text) p.getChildren().get(2);
         ObservableMap<Object, Object> props = p.getProperties();
         int jns = (int) props.get("jns");
         joinActivity(flag, ((Text) p.getChildren().get(1)).getText());
-        if(joined){
+        if(flag){
             t.setText(++jns + "+");
             props.remove("jns");
             props.put("jns", jns);
@@ -372,7 +373,6 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             pane.getChildren().add(buildTime(time));
     }
 
-    //TODO
     private void move(Pane pane, int sceneY, int sceneX){
         int difY = initY - sceneY;
         int difX = initX - sceneX;
@@ -404,27 +404,21 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             gridPane.add(pane, cords[1], cords[0] + var2);//strict order
             gridPaneFast[cords[0] + var0][cords[1]] = pane;
             buildTime(pane, span);
+            GridPane.setRowSpan(pane, span);
             ObservableMap<Object, Object> reProps = pane.getProperties();//updated after time build
-            Thread changing = new Thread(() -> App.mongoManager.changeTime(//changing in mongoDB database
+            new Thread(() -> App.mongoManager.changeTime(//changing in mongoDB database
                     currentWeek,
                     sport,
                     startTime,
                     getMinutes(
-                            Integer.parseInt((String) reProps.get("hf")),
-                            Integer.parseInt((String) reProps.get("mf"))
+                        Integer.parseInt((String) reProps.get("hf")),
+                        Integer.parseInt((String) reProps.get("mf"))
                     ),
                     getMinutes(
-                            Integer.parseInt((String) reProps.get("ht")),
-                            Integer.parseInt((String) reProps.get("mt"))
+                        Integer.parseInt((String) reProps.get("ht")),
+                        Integer.parseInt((String) reProps.get("mt"))
                     )
-            ));
-            changing.start();
-            GridPane.setRowSpan(pane, span);
-//            try {
-//                changing.join();
-//            } catch (InterruptedException e) {
-//                Logger.logException(e);
-//            }
+            )).start();
         }
         else if(Math.abs(difX) > 50){
             Thread removing = new Thread(() -> {
@@ -512,6 +506,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
                 WeekProperties.PaneProperties paneProp = desiredWeek.panes.get(i);
                 Pane pane = (Pane) getNode(paneProp.row, paneProp.col);
                 pane.setStyle(paneProp.color);
+                pane.setOpacity(globalOpacity);
                 addChildProps(pane, paneProp.span, paneProp.jns, paneProp.activity.getText());
                 addTimeProps(pane, paneProp.hf, paneProp.mf, paneProp.ht, paneProp.mt);
                 addChilds(pane, paneProp.time, paneProp.activity, paneProp.joins, paneProp.join);
@@ -528,7 +523,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             {
                 b.setDisable(false);
                 b.setVisible(true);
-                b.setOnMouseClicked(e1 -> switchAction(b, joined));
+                b.setOnMouseClicked(e1 -> switchAction(b));
             }
         });
     }
@@ -585,7 +580,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             byte row = block.readByte();
             byte col = block.readByte();
             byte span = block.readByte();
-            String color = "-fx-background-color: rgba("+ block.readColor() +")";
+            String color = "-fx-background-color: " + block.readColor() + ";";
             String hf = block.readString();
             String mf = block.readString();
             String ht = block.readString();
@@ -709,7 +704,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
                     resetColorBetween(curCords, prevCords);
                 }
                 if(!p.getProperties().containsKey("span"))//do not allow to go over it
-                    p.setStyle(getBackgroundColor());
+                    p.setStyle(getBackgroundStyle(p));
 
                 tempRow = curCords[0];
                 tempCol = curCords[1];
@@ -744,8 +739,10 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         }
         for(int i = start[0]; i < end[0] + 1; i++){
             Node node = getNode(i, end[1]);
-            if(node.getStyle().isEmpty())
-                node.setStyle(getBackgroundColor());
+            if(node.getStyle().isEmpty()){
+                node.setStyle(getBackgroundStyle(node));
+            }
+
         }
     }
 
@@ -816,13 +813,14 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         }
     }
 
-    private String getBackgroundColor(){
+    private String getBackgroundStyle(Node node){
         Color color = sportColor.getValue();
-        return getBackgroundColor((int)color.getRed() * 255, (int)color.getGreen() * 255, (int)color.getBlue() * 255, color.getOpacity());
+        node.setOpacity(globalOpacity);
+        return getBackgroundStyle((int)(color.getRed() * 255.0), (int)(color.getGreen() * 255.0), (int)(color.getBlue() * 255.0), color.getOpacity());
     }
 
-    private String getBackgroundColor(int r, int g, int b, double o){
-        return String.format("-fx-background-color: rgba(%s,%s,%s,%s)", r, g, b, o);
+    private String getBackgroundStyle(int r, int g, int b, double o){
+        return "-fx-background-color: " + String.format("#%02x%02x%02x", r, g, b) + "";
     }
 
     public void loadUser(){
@@ -852,7 +850,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
                 }
             });
         });
-        sportColor.setValue(Color.color(255 / 255.0, 51 / 255.0, 61 / 255.0, 0.83));
+        sportColor.setValue(Color.color(255 / 255.0, 51 / 255.0, 61 / 255.0, 0.75));
         this.sportList.setItems(FXCollections.observableArrayList(List.of(sports)));//dont use FXCollections.observableList because of unknown css exception
         gridPane.getChildren().forEach(pane -> pane.setOnMouseClicked(e -> {
             buildActivity(pane);
