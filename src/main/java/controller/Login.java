@@ -13,6 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
 import model.App;
+import model.Database.MySqlManager;
 import model.People.User;
 import model.Tools.ArrayList;
 import model.Tools.Colorable;
@@ -46,63 +47,75 @@ public class Login implements Initializable, Colorable {
     @FXML
     private Line line0, line1;
 
-    private Boolean emailFormat = true;
+    private Boolean emailFormat = false;
+    private Boolean passwordFormat = false;
     private String emailStr;
-    private Label passError, emailError;
 
-    private Map<String, ArrayList<String>> emailsList;
+    private Map<String, model.Tools.ArrayList<String>> emailsList;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        emailsList = App.mySqlManager.getEmail();
         password.focusedProperty().addListener((obs, wasFocused, isNowFocused) -> {
-            if (isNowFocused){
+            if (isNowFocused) {
                 password.setText("");
                 error.setText("");
             }
         });
+        email.setOnKeyTyped(this::emailChecking);
         signUp.setOnMouseClicked(e -> App.instance.setScene(SceneSwitcher.instance.getScene("CreateAccount")));
         login.setOnMouseClicked(e -> {
-            if(toggle.isSelected())
-            {
+            if (toggle.isSelected()) {
                 App.instance.setScene(SceneSwitcher.instance.getScene("Home"));
                 return;
-            } else {
-                App.instance.setScene(SceneSwitcher.instance.getScene("Home"));
+            }
+            if (emailFormat && checkPassword()) {
+                new Thread(() -> {
+                    int id;
+                    if (App.mySqlManager == null) {
+                        System.out.println("MySqlManager is null");
+                    }
+                    if ((id = App.mySqlManager.checkCredentials(
+                            email.getText(),
+                            password.getText())) == -1) {
+                        System.out.println(id);
+                        passwordFormat = true;
+
+                        return;
+                    }
+
+                    User user = App.mySqlManager.getUser(id);
+                    App.instance.setSession(user);
+                    setupMessaging(user);
+
+                    ((Calendar) SceneSwitcher.instance.getController("Calendar")).loadUser();
+                    SceneSwitcher.controllers.forEach((n, c) -> {
+                        if (c instanceof Menu) {
+                            ((Menu) c).buildSessionName();
+                        }
+                    });
+                }).start();
+
+                if (passwordFormat) {
+
+                    System.out.println("Finished setting up messaging");
+                    email.setText("");
+                    password.setText("");
+                    error.setText("");
+                    App.instance.setScene(SceneSwitcher.instance.getScene("Home"));
+                    System.out.println("Redirecting to Home");
+                    resetLines();
+                } else {
+                    redLines();
+                    error.setText("Incorrect password!");
+                }
+
             }
 
-//            if(checkEmail() && checkPassword()){
-//                int id;
-//                if( App.mySqlManager == null){
-//                    System.out.println("MySqlManager is null");
-//                }
-//                if((id = App.mySqlManager.checkCredentials(
-//                        email.getText(),
-//                        password.getText())) == -1) {
-//                    error.setText("Incorrect email or password");
-//                    redLines();
-//                    return;
-//                }
-//                email.setText("");
-//                password.setText("");
-//                error.setText("");
-//                User user = App.mySqlManager.getUser(id);
-//                App.instance.setSession(user);
-//                new Thread(
-//                        () -> ((Calendar)SceneSwitcher.instance.getController("Calendar")).loadUser()
-//                ).start();
-//                SceneSwitcher.controllers.forEach((n, c) -> {
-//                    if(c instanceof Menu)
-//                        ((Menu)c).buildSessionName();
-//                });
-//                setupMessaging(user);
-//                System.out.println("Finished setting up messaging");
-//                App.instance.setScene(SceneSwitcher.instance.getScene("Home"));
-//                System.out.println("Redirecting to Home");
-//                resetLines();
-//            }
         });
-        email.setOnKeyTyped(this::handle);
+
     }
+
     private Boolean getEmails(String email) {
         ArrayList<String> entries = emailsList.get("email");
 
@@ -115,37 +128,35 @@ public class Login implements Initializable, Colorable {
     }
 
     private boolean checkEmail() {
-        if(email.getText().isEmpty()){
+        if (email.getText().isEmpty()) {
             error.setText("Email is empty");
             return false;
-        }
-        else if(!email.getText().matches("^[A-Za-z0-9+_.-]+@(.+)$")){
+        } else if (!email.getText().matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
             error.setText("Incorrect email format");
             return false;
         }
         return true;
     }
 
-    private boolean checkPassword(){
-        if(password.getText().isEmpty()){
-            error.setText("Password is empty");
+    private boolean checkPassword() {
+        if (password.getText().isEmpty()) {
+//            error.setText("Password is empty");
             return false;
-        }
-        else if(password.getText().length() < 5){
-            error.setText("Incorrect password length");
+        } else if (password.getText().length() < 5) {
+//            error.setText("Incorrect password length");
             return false;
         }
         return true;
     }
 
-    private void redLines(){
+    private void redLines() {
         //?change CSS class
         line0.setStroke(Paint.valueOf("#ff4c4c"));
         line0.setStrokeWidth(2);
         line1.setStroke(Paint.valueOf("#ff4c4c"));
         line1.setStrokeWidth(2);
         email.focusedProperty().addListener((obs, wasFocused, isNowFocused) -> {
-            if (isNowFocused){
+            if (isNowFocused) {
                 line0.setStroke(Paint.valueOf("#000000"));
                 line0.setStrokeWidth(1);
                 line1.setStroke(Paint.valueOf("#000000"));
@@ -155,19 +166,20 @@ public class Login implements Initializable, Colorable {
         });
     }
 
-    private void resetLines(){
+    private void resetLines() {
         line0.setStroke(Paint.valueOf("#000000"));
         line0.setStrokeWidth(1);
         line1.setStroke(Paint.valueOf("#000000"));
         line1.setStrokeWidth(1);
     }
-    public static void setupMessaging(User user){
+
+    public static void setupMessaging(User user) {
         Messaging messagingController = null;
         System.out.println("In messaging initializer");
         try {
             //messagingRoot = loader.load();
             messagingController = (Messaging) SceneSwitcher.controllers.get("Messaging");
-            model.Client.models.User localUser= new model.Client.models.User();
+            model.Client.models.User localUser = new model.Client.models.User();
             localUser.setId(user.getId());
             localUser.setMobile(user.getMobile());
             localUser.setName(user.getName());
@@ -191,7 +203,8 @@ public class Login implements Initializable, Colorable {
         this.anchorPane.setOpacity(opacity);
     }
 
-    private void handle(KeyEvent e) {
+
+    private void emailChecking(KeyEvent e) {
         if (email.getText().matches("^[A-Za-z0-9+_.-]+@([A-Za-z0-9]{2,10}\\.)+[A-Za-z]{2,8}$")) {
             ThreadResult<String, Boolean> emailCheck = new ThreadResult<>(this::getEmails, email.getText());
             Thread thread = new Thread(emailCheck);
@@ -201,16 +214,14 @@ public class Login implements Initializable, Colorable {
             } catch (InterruptedException interruptedException) {
                 interruptedException.printStackTrace();
             }
-            if (emailCheck.getValue()) {
+            if (!emailCheck.getValue()) {
                 emailFormat = false;
-                redLines();
-                emailError.setVisible(true);
+                error.setText("Email doesn't exist!");
             } else
                 emailFormat = true;
         } else {
             emailFormat = false;
             resetLines();
-            emailError.setVisible(false);
         }
 
         if (e.getCode() == KeyCode.BACK_SPACE && email.getText().isEmpty())
@@ -221,7 +232,9 @@ public class Login implements Initializable, Colorable {
             emailStr += e.getText();
 
     }
+
 }
+
 
 
 
