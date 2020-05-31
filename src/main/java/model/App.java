@@ -40,8 +40,6 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-//        System.setErr(new PrintStream("/dev/null"));// hide warnings
-        //System.setErr(new PrintStream("NUL:"));// for windows
         primaryStage.getIcons().add(new Image("view/img/jarIcon.png"));
         primaryStage.setScene(SceneSwitcher.instance.getScene("Login"));
         primaryStage.initStyle(StageStyle.UTILITY);

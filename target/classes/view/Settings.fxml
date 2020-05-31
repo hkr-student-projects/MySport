@@ -44,7 +44,7 @@
                   <Font name="Arial" size="16.0" />
                </font>
             </JFXButton>
-            <JFXComboBox fx:id="comboBox" focusColor="#7539b5" layoutX="164.0" layoutY="122.0" prefHeight="27.0" prefWidth="104.0" />
+            <JFXComboBox fx:id="languages" focusColor="#7539b5" layoutX="164.0" layoutY="122.0" prefHeight="27.0" prefWidth="104.0" />
             <ColorPicker fx:id="colorPicker" layoutX="164.0" layoutY="229.0" style="-fx-background-color: transparent;" />
             <JFXButton fx:id="about" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="53.0" layoutY="388.0" onAction="#buttonAboutClick" prefHeight="32.0" prefWidth="104.0" scaleShape="false" style="-fx-background-radius: 15;" styleClass="buttonInAcc" stylesheets="@css/general.css" text="%key.about" textFill="WHITE">
                <font>

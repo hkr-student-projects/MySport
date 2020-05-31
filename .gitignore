@@ -16,3 +16,4 @@ App.log
 *.jar
 App.log
 NUL:
+target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
