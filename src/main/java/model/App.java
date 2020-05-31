@@ -41,7 +41,7 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
         primaryStage.getIcons().add(new Image("view/img/jarIcon.png"));
-        primaryStage.setScene(SceneSwitcher.instance.getScene("Login"));
+        primaryStage.setScene(SceneSwitcher.instance.getScene("LoginRich"));
         primaryStage.initStyle(StageStyle.UTILITY);
         primaryStage.setResizable(false);
         primaryStage.show();
