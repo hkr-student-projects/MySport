@@ -45,7 +45,7 @@ public class CreateAccount implements Initializable, Colorable {
         addFocusStyle(new TextField[]{firstname, middlename, surname, ssn, mobile, email, password, repassword},
                 line0, line1, line2, line3, line4, line5, line6, line7
         );
-        emailsList = App.mySqlManager.getEmail();
+        emailsList = App.mySqlManager.getEmails();
         email.setOnKeyTyped(e -> {
                 if (email.getText().matches("^[A-Za-z0-9+_.-]+@([A-Za-z0-9]{2,10}\\.)+[A-Za-z]{2,8}$")) {
                     ThreadResult<String, Boolean> emailCheck = new ThreadResult<>(this::getEmails, email.getText());

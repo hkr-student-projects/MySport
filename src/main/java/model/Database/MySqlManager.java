@@ -409,7 +409,7 @@ public class MySqlManager {
         UDP
     }
 
-    public Map<String, ArrayList<String>> getEmail(){
+    public Map<String, ArrayList<String>> getEmails(){
         return (Map<String, ArrayList<String>>) executeQuery(QueryType.READER, "SELECT email FROM "+account);
     }
 }
