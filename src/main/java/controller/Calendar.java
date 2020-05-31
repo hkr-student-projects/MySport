@@ -233,7 +233,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         addChilds(pane,
                 buildSport(sportName),
                 buildJoins(span, 0),
-                buildJoin(span, false)
+                buildJoin(span)
         );
         ObservableMap<Object, Object> props = pane.getProperties();
         createPopUp(sportName + " session at: " + props.get("hf") + ":" + props.get("mf") + " - " + props.get("ht") + ":" + props.get("mt"));
@@ -241,7 +241,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
 
     @Related(to = { "Baked pane", "Calendar.buildProps()", "Calendar.loadWeek()" })
     private void addChilds(Pane pane, Node... nodes){
-        setEntered(pane, false);
+        setEntered(pane);
         pane.getChildren().addAll(nodes);
         pane.setOnMousePressed(e -> { initY = (short)e.getSceneY(); initX = (short)e.getSceneX(); });
         if(editor){
@@ -297,8 +297,8 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     }
 
     @Related(to = { "Baked pane", "Calendar.buildProps()", "Calendar.loadWeek()" })
-    private Button buildJoin(int span, boolean joined){//baked sport
-        Button join = new Button(joined ? "Out" : "Join");
+    private Button buildJoin(int span){//baked sport
+        Button join = new Button("Join");
         join.getStylesheets().add("/view/css/general.css");
         join.getStyleClass().addAll("joinButton", "cursorHand");
         join.setPrefWidth(30);
@@ -306,21 +306,21 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         join.setFont(new Font("Helvetica Light", 8));
         join.setLayoutX(10);
         join.setLayoutY(15 * (span - 1) - 20);
-        join.setOnMouseClicked(e -> switchAction(join, joined));
+        join.setOnMouseClicked(e -> switchAction(join));
 
         return join;
     }
 
     @Related(to = { "Calendar.buildJoin()" })
-    private void switchAction(Button button, boolean joined){
+    private void switchAction(Button button){
         modified = true;
-        //boolean flag = button.getText().equals("Join");
+        boolean flag = button.getText().equals("Join");
         Pane p = (Pane) button.getParent();
         Text t = (Text) p.getChildren().get(2);
         ObservableMap<Object, Object> props = p.getProperties();
         int jns = (int) props.get("jns");
-        joinActivity(flag, ((Text) p.getChildren().get(1)).getText());
-        if(joined){
+        //joinActivity(flag, ((Text) p.getChildren().get(1)).getText());
+        if(flag){
             t.setText(++jns + "+");
             props.remove("jns");
             props.put("jns", jns);
@@ -517,14 +517,14 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     }
 
     @Related(to = { "Baked pane" })
-    private void setEntered(Pane pane, boolean joined) {
+    private void setEntered(Pane pane) {
         pane.setOnMouseEntered(e -> {
             Button b = (Button) pane.getChildren().get(3);
             if(altDown && b.isDisable())
             {
                 b.setDisable(false);
                 b.setVisible(true);
-                b.setOnMouseClicked(e1 -> switchAction(b, joined));
+                b.setOnMouseClicked(e1 -> switchAction(b));
             }
         });
     }
@@ -593,7 +593,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
                     buildTime(String.format("%s:%s - %s:%s", hf, mf, ht, mt)),
                     buildSport(sportName),
                     buildJoins(span, jns),
-                    buildJoin(span, false)
+                    buildJoin(span)
             ));
         }
 
@@ -743,7 +743,6 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             if(node.getStyle().isEmpty()){
                 node.setStyle(getBackgroundStyle(node));
             }
-
         }
     }
 
