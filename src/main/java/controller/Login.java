@@ -13,13 +13,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
 import model.App;
-import model.Database.MySqlManager;
+import model.Client.mediator.ChatMediatorClient;
+import model.Client.viewModel.ChatClientViewModel;
 import model.People.User;
 import model.Tools.ArrayList;
 import model.Tools.Colorable;
 import model.Tools.SceneSwitcher;
-import model.Client.mediator.ChatMediatorClient;
-import model.Client.viewModel.ChatClientViewModel;
 import model.Tools.ThreadResult;
 
 import java.io.IOException;
@@ -72,13 +71,9 @@ public class Login implements Initializable, Colorable {
             if (emailFormat && checkPassword()) {
                 new Thread(() -> {
                     int id;
-                    if (App.mySqlManager == null) {
-                        System.out.println("MySqlManager is null");
-                    }
                     if ((id = App.mySqlManager.checkCredentials(
                             email.getText(),
                             password.getText())) == -1) {
-                        System.out.println(id);
                         passwordFormat = true;
 
                         return;
