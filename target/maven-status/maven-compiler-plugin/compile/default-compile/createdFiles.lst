@@ -1,3 +1,4 @@
 model\AppReminder\AppReminder.class
+model\Tools\FadeTransition.class
 model\AppReminder\ActivityReminder.class
 model\Tools\Colorable.class

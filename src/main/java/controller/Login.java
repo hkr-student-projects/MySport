@@ -214,11 +214,14 @@ public class Login implements Initializable, Colorable {
             } catch (InterruptedException interruptedException) {
                 interruptedException.printStackTrace();
             }
-            if (!emailCheck.getValue()) {
+            System.out.println(emailCheck.getValue());
+            if (!emailCheck.getValue() && email.getText().contains(".com")) {
                 emailFormat = false;
                 error.setText("Email doesn't exist!");
-            } else
+            } else {
                 emailFormat = true;
+                error.setText(null);
+            }
         } else {
             emailFormat = false;
             resetLines();
