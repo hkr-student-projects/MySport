@@ -18,16 +18,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 import model.App;
 import model.Database.MongoManager;
 import model.Logging.Logger;
 import model.People.Leader;
 import model.People.Member;
-import model.Tools.ArrayList;
+import model.Tools.*;
 import model.Tools.Decomposition.Block;
-import model.Tools.EventType;
-import model.Tools.SceneSwitcher;
-import model.Tools.Serializable;
 import model.Tools.Tags.Related;
 
 import java.net.URL;
@@ -53,6 +51,8 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     private JFXComboBox<String> sportList;
     @FXML
     private ColorPicker sportColor;
+    @FXML
+    private Pane popUp;
     private Node[][] gridPaneFast;
     private Node tempPane, prevPane;
     private int tempRow, tempCol, initY, initX;
@@ -60,49 +60,48 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     private boolean flag = true, editor = false, modified = false, altDown = false;
     private static LocalDate currentWeek;
     private static ArrayList<WeekProperties> weeks;
-    private static MongoManager.Day today;//Today's sports COULD BE NULL because there might not be any sports for today
 
     static {
         currentWeek = LocalDate.now();
         weeks = new ArrayList<>(3);
-        today = App.mongoManager.getDay(currentWeek);
-    }
-
-    public static java.util.ArrayList<MongoManager.Activity> getTodayActivities() {
-        return today.getActivities();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Thread thread = new Thread(() -> {
-            loadWeeksDB();
-            loadTable(0);
-            fillWeek(0);
-            bindTab(this);
-        });
-        thread.start();
-        gridPaneFast = new Node[gridPane.getRowConstraints().size()][gridPane.getColumnConstraints().size()];
-        //gridPane.setOnMousePressed(e -> modified = true);
-        prev.setOnMouseClicked(e -> {
-            loadTable(-7);//currentWeek unmodified
-            fillWeek(-7);//currentWeek modified
-            modified = false;
-        });
-        next.setOnMouseClicked(e -> {
-            loadTable(7);//currentWeek unmodified
-            fillWeek(7);//currentWeek modified
-            modified = false;
-        });
-        SceneSwitcher.addListener("Calendar", EventType.ON_KEY_PRESSED, e -> {
-             if(e.getCode() == KeyCode.ALT) altDown = true;
-        });
-        SceneSwitcher.addListener("Calendar", EventType.ON_KEY_RELEASED, e -> {
-            if(e.getCode() == KeyCode.ALT) altDown = false;
-        });
-        //loadSports(new String[] { "Chess", "Volleyball" });
-        try {
-            thread.join();
-        } catch (InterruptedException e) {
+        try{
+            Thread thread = new Thread(() -> {
+                loadWeeksDB();
+                loadTable(0);
+                fillWeek(0);
+                bindTab(this);
+            });
+            thread.start();
+            gridPaneFast = new Node[gridPane.getRowConstraints().size()][gridPane.getColumnConstraints().size()];
+            //gridPane.setOnMousePressed(e -> modified = true);
+            prev.setOnMouseClicked(e -> {
+                loadTable(-7);//currentWeek unmodified
+                fillWeek(-7);//currentWeek modified
+                modified = false;
+            });
+            next.setOnMouseClicked(e -> {
+                loadTable(7);//currentWeek unmodified
+                fillWeek(7);//currentWeek modified
+                modified = false;
+            });
+            SceneSwitcher.addListener("Calendar", EventType.ON_KEY_PRESSED, e -> {
+                if(e.getCode() == KeyCode.ALT) altDown = true;
+            });
+            SceneSwitcher.addListener("Calendar", EventType.ON_KEY_RELEASED, e -> {
+                if(e.getCode() == KeyCode.ALT) altDown = false;
+            });
+            //loadSports(new String[] { "Chess", "Volleyball" });
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                Logger.logException(e);
+            }
+        }
+        catch(Exception e){
             Logger.logException(e);
         }
     }
@@ -206,7 +205,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
 
     private void buildProps(Pane pane, int span){
         buildTime(pane, span);
-        String sp = sportList.getValue() == null ? sportList.getItems().get(0) : sportList.getValue();
+        String sportName = sportList.getValue() == null ? sportList.getItems().get(0) : sportList.getValue();
         new Thread(() -> {
             ObservableMap<Object, Object> props = pane.getProperties();
             App.mongoManager.addActivity(
@@ -216,7 +215,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
                         currentWeek.getDayOfMonth()
                 ),
                 new MongoManager.Activity(
-                        sp, "Hus 7", 0,
+                        sportName, "Hus 7", 0,
                         getMinutes(
                             Integer.parseInt((String)props.get("hf")),
                             Integer.parseInt((String)props.get("mf"))
@@ -230,17 +229,19 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
                 )
             );
         }).start();
-        addChildProps(pane, span, 0, sp);
+        addChildProps(pane, span, 0, sportName);
         addChilds(pane,
-                buildSport(sp),
+                buildSport(sportName),
                 buildJoins(span, 0),
-                buildJoin(span, false)
+                buildJoin(span)
         );
+        ObservableMap<Object, Object> props = pane.getProperties();
+        createPopUp(sportName + " session at: " + props.get("hf") + ":" + props.get("mf") + " - " + props.get("ht") + ":" + props.get("mt"));
     }
 
     @Related(to = { "Baked pane", "Calendar.buildProps()", "Calendar.loadWeek()" })
     private void addChilds(Pane pane, Node... nodes){
-        setEntered(pane, false);
+        setEntered(pane);
         pane.getChildren().addAll(nodes);
         pane.setOnMousePressed(e -> { initY = (short)e.getSceneY(); initX = (short)e.getSceneX(); });
         if(editor){
@@ -296,8 +297,8 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     }
 
     @Related(to = { "Baked pane", "Calendar.buildProps()", "Calendar.loadWeek()" })
-    private Button buildJoin(int span, boolean joined){//baked sport
-        Button join = new Button(joined ? "Out" : "Join");
+    private Button buildJoin(int span){//baked sport
+        Button join = new Button("Join");
         join.getStylesheets().add("/view/css/general.css");
         join.getStyleClass().addAll("joinButton", "cursorHand");
         join.setPrefWidth(30);
@@ -318,7 +319,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         Text t = (Text) p.getChildren().get(2);
         ObservableMap<Object, Object> props = p.getProperties();
         int jns = (int) props.get("jns");
-        joinActivity(flag, ((Text) p.getChildren().get(1)).getText());
+        //joinActivity(flag, ((Text) p.getChildren().get(1)).getText());
         if(flag){
             t.setText(++jns + "+");
             props.remove("jns");
@@ -427,10 +428,10 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
                 App.mongoManager.removeActivity(
                         currentWeek,
                         sport,
-                        getMinutes((int)props.get("hf"), (int)props.get("mf"))
+                        getMinutes(Integer.parseInt((String)props.get("hf")), Integer.parseInt((String)props.get("mf")))
                 );
-                if(currentWeek.equals(LocalDate.now()))
-                    today.removeActivity(sport);
+//                if(currentWeek.equals(LocalDate.now()))
+//                    today.removeActivity(sport);
             });
             removing.start();
             int[] cords = getNodeCords(pane);
@@ -516,7 +517,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     }
 
     @Related(to = { "Baked pane" })
-    private void setEntered(Pane pane, boolean joined) {
+    private void setEntered(Pane pane) {
         pane.setOnMouseEntered(e -> {
             Button b = (Button) pane.getChildren().get(3);
             if(altDown && b.isDisable())
@@ -548,7 +549,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             block.writeByte((byte) pane.row);
             block.writeByte((byte) pane.col);
             block.writeByte((byte) pane.span);
-            block.writeColor(getRGBAColor(pane.color).split(","));
+            block.writeColor(getHexColor(pane.color));
             block.writeString(pane.hf);
             block.writeString(pane.mf);
             block.writeString(pane.ht);
@@ -580,7 +581,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             byte row = block.readByte();
             byte col = block.readByte();
             byte span = block.readByte();
-            String color = "-fx-background-color: " + block.readColor() + ";";
+            String color = block.readColor();
             String hf = block.readString();
             String mf = block.readString();
             String ht = block.readString();
@@ -592,7 +593,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
                     buildTime(String.format("%s:%s - %s:%s", hf, mf, ht, mt)),
                     buildSport(sportName),
                     buildJoins(span, jns),
-                    buildJoin(span, false)
+                    buildJoin(span)
             ));
         }
 
@@ -651,8 +652,8 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         }
     }
 
-    private String getRGBAColor(String unformatted){
-        return unformatted.substring(unformatted.indexOf('(') + 1, unformatted.indexOf(')'));
+    private String getHexColor(String style){
+        return style.substring(style.indexOf('#') + 1);
     }
 
     private boolean checkFreeSpace(int[] cords, int span) {
@@ -742,7 +743,6 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             if(node.getStyle().isEmpty()){
                 node.setStyle(getBackgroundStyle(node));
             }
-
         }
     }
 
@@ -866,6 +866,16 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         sportColor.setValue(null);
         this.sportList.getItems().clear();//dont use FXCollections.observableList because of unknown css exception
         gridPane.getChildren().forEach(pane -> pane.setOnMouseClicked(null));
+    }
+
+    private void createPopUp(String message){
+        Text text = (Text) popUp.getChildren().get(0);
+        text.setText(message);
+        new Thread(() -> {
+            FadeTransition ft = new FadeTransition(popUp, Duration.millis(2000));
+            ft.play();
+            ft.setOnFinished(e -> ft.playReverse());
+        }).start();
     }
 }
 // row: 15px, 4 rows per hour, textfield: 22px, spacing: 4(15px) - 2(22px / 2)

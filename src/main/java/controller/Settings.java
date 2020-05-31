@@ -60,7 +60,7 @@ public class Settings extends Menu implements Initializable {
         bindTab(this);
         colorPicker.setValue(Color.valueOf("#763dee"));
         languages.setItems(getLanguages());
-        languages.setOnAction(e -> new Thread(() -> {
+        languages.setOnAction(e -> {
             User user = App.instance.getSession();
             setAppLanguage(((Label) languages.getValue()).getText());
             App.instance.setSession(user);
@@ -70,7 +70,7 @@ public class Settings extends Menu implements Initializable {
                     ((Menu)c).buildSessionName();
             });
             Login.setupMessaging(user);
-        }).start());
+        });
         about.setOnMouseClicked(e -> App.instance.setScene(SceneSwitcher.instance.getScene("About")));
         save.setOnMouseClicked(e -> Menu.changeThemeColor(colorPicker.getValue()));
     }

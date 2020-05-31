@@ -50,6 +50,7 @@ public class SceneSwitcher {
 
     public static void changeLanguage(Language lang){
         load(lang.getCode());
+        bindListeners();
     }
 
     @Legacy(reason = "All .fxml files and related files are loaded again on event of language change")

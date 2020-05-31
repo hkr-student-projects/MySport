@@ -107,9 +107,9 @@ public class ChatDAO {
      */
 
     // JDBC URL, username and password of MySQL server
-    private static final String url = "jdbc:mysql://127.0.0.1:3306/mysport?serverTimezone=UTC&autoReconnect=true&useSSL=false";
-    private static final String user = "root";
-    private static final String password = "";
+    private static final String url = "jdbc:mysql://sql3.freemysqlhosting.net/sql3344107?&allowMultiQueries=true&serverTimezone=Europe/Stockholm&useSSL=true";
+    private static final String user = "sql3344107";
+    private static final String password = "xhLWE9ssu3";
     // JDBC variables for opening and managing connection
     private static Connection connect;
 

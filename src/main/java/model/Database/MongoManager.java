@@ -110,8 +110,8 @@ public class MongoManager {
         try(MongoClient client = getClient()) {
             return getCollection(client, date).updateOne(
                     BasicDBObject.parse("{ _id: " + date.getDayOfMonth() + " }"),
-                    BasicDBObject.parse("{ $pull: { \"activities._id\": \"" + sport + "\", " +
-                            "\"activities.start\": \"" + startTime + "\" } }")
+                    BasicDBObject.parse("{ $pull: { \"activities.$._id\": \"" + sport + "\", " +
+                            "\"activities.$.start\": \"" + startTime + "\" } }")
             );
         }
     }

@@ -18,8 +18,8 @@ public class OAuthFacebookAuthenticator {
 
     private static final String SUCCESS_URL = "https://www.facebook.com/connect/login_success.html";
 
-    private String appId = "2864933576924620";
-    private String appSecret = "5b11cb850b5100f411224c64f188360f";
+    private String appId = "723485301733851";
+    private String appSecret = "611461734b62fe7d07ee90a813f69fd5";
 
     private Stage stage;
     private LoginRich controller;

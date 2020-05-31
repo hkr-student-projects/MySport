@@ -97,13 +97,14 @@ public abstract class Menu implements Colorable {
             App.instance.setScene(SceneSwitcher.instance.getScene("Settings"));
         });
         logout.setOnMouseClicked(e -> {
-            Thread thread = new Thread(this::onBeforeLogout);// This method is executed <number of scenes> times unlike other methods which are executed once per scene
-            thread.start();
-            try {
-                thread.join();
-            } catch (InterruptedException ex) {
-                Logger.logException(ex);
-            }
+//            Thread thread = new Thread(this::onBeforeLogout);// This method is executed <number of scenes> times unlike other methods which are executed once per scene
+//            thread.start();
+//            try {
+//                thread.join();
+//            } catch (InterruptedException ex) {
+//                Logger.logException(ex);
+//            }
+            onBeforeLogout();
             App.instance.setScene(SceneSwitcher.instance.getScene("Login"));
         });
     }
