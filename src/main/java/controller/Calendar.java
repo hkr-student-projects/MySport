@@ -68,10 +68,6 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         today = App.mongoManager.getDay(currentWeek);
     }
 
-    public static java.util.ArrayList<MongoManager.Activity> getTodayActivities() {
-        return today.getActivities();
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Thread thread = new Thread(() -> {
