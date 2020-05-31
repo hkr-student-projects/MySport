@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import model.App;
+import model.People.User;
 import model.Tools.Language;
 import model.Tools.SceneSwitcher;
 
@@ -28,7 +29,7 @@ public class Settings extends Menu implements Initializable {
     @FXML
     private ColorPicker colorPicker;
     @FXML
-    private JFXComboBox comboBox;
+    private JFXComboBox languages;
     private Locale locale;
     @FXML
     private Button about, save;
@@ -59,13 +60,23 @@ public class Settings extends Menu implements Initializable {
 
         bindTab(this);
         colorPicker.setValue(Color.valueOf("#763dee"));
-        comboBox.setItems(getLanguages());
-        comboBox.setOnAction(e -> new Thread(() -> getLanguage(((Label) comboBox.getValue()).getText())).start());
+        languages.setItems(getLanguages());
+        languages.setOnAction(e -> new Thread(() -> {
+            User user = App.instance.getSession();
+            setAppLanguage(((Label) languages.getValue()).getText());
+            App.instance.setSession(user);
+            ((Calendar)SceneSwitcher.instance.getController("Calendar")).loadUser();
+            SceneSwitcher.controllers.forEach((n, c) -> {
+                if(c instanceof Menu)
+                    ((Menu)c).buildSessionName();
+            });
+            Login.setupMessaging(user);
+        }).start());
         about.setOnMouseClicked(e -> App.instance.setScene(SceneSwitcher.instance.getScene("About")));
         save.setOnMouseClicked(e -> Menu.changeThemeColor(colorPicker.getValue()));
     }
 
-    private void getLanguage(String currentLabel) {
+    private void setAppLanguage(String currentLabel) {
         switch (currentLabel) {
             case "English":
                 SceneSwitcher.changeLanguage(Language.EN);
