@@ -306,21 +306,21 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         join.setFont(new Font("Helvetica Light", 8));
         join.setLayoutX(10);
         join.setLayoutY(15 * (span - 1) - 20);
-        join.setOnMouseClicked(e -> switchAction(join));
+        join.setOnMouseClicked(e -> switchAction(join, joined));
 
         return join;
     }
 
     @Related(to = { "Calendar.buildJoin()" })
-    private void switchAction(Button button){
+    private void switchAction(Button button, boolean joined){
         modified = true;
-        boolean flag = button.getText().equals("Join");
+        //boolean flag = button.getText().equals("Join");
         Pane p = (Pane) button.getParent();
         Text t = (Text) p.getChildren().get(2);
         ObservableMap<Object, Object> props = p.getProperties();
         int jns = (int) props.get("jns");
         joinActivity(flag, ((Text) p.getChildren().get(1)).getText());
-        if(flag){
+        if(joined){
             t.setText(++jns + "+");
             props.remove("jns");
             props.put("jns", jns);
@@ -524,7 +524,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             {
                 b.setDisable(false);
                 b.setVisible(true);
-                b.setOnMouseClicked(e1 -> switchAction(b));
+                b.setOnMouseClicked(e1 -> switchAction(b, joined));
             }
         });
     }
@@ -549,7 +549,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             block.writeByte((byte) pane.row);
             block.writeByte((byte) pane.col);
             block.writeByte((byte) pane.span);
-            block.writeColor(getRGBAColor(pane.color).split(","));
+            block.writeColor(getHexColor(pane.color));
             block.writeString(pane.hf);
             block.writeString(pane.mf);
             block.writeString(pane.ht);
@@ -581,7 +581,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             byte row = block.readByte();
             byte col = block.readByte();
             byte span = block.readByte();
-            String color = "-fx-background-color: " + block.readColor() + ";";
+            String color = block.readColor();
             String hf = block.readString();
             String mf = block.readString();
             String ht = block.readString();
@@ -652,8 +652,8 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         }
     }
 
-    private String getRGBAColor(String unformatted){
-        return unformatted.substring(unformatted.indexOf('(') + 1, unformatted.indexOf(')'));
+    private String getHexColor(String style){
+        return style.substring(style.indexOf('#') + 1);
     }
 
     private boolean checkFreeSpace(int[] cords, int span) {

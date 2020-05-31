@@ -178,14 +178,15 @@ public class MySqlManager {
 
     public void saveWeeks(byte[][] weeks){//do not want to unite because of need to create new array of objects
         executeQuery(QueryType.UPDATE, "TRUNCATE " + schedule + ";");
-        executeQuery(QueryType.UPDATE, "INSERT INTO " + schedule + " (week) VALUES (?)"+ repeat(",(?)", weeks.length - 1) +";", weeks, Types.BINARY);
+        executeQuery(QueryType.UPDATE, "INSERT INTO " + schedule + " (week) VALUES (?)" + repeat(weeks.length - 1) + ";", weeks, Types.BINARY);
     }
 
-    private String repeat(String str, int len){
+    private String repeat(int len){
+        StringBuilder output = new StringBuilder();
         for(int i = 0; i < len; i++)
-            str += str;
+            output.append(",(?)");
 
-        return str;
+        return output.toString();
     }
 
     @SuppressWarnings("Because QueryType is Reader")
