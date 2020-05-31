@@ -38261,3 +38261,16 @@ The last packet sent successfully to the chatServer was 0 milliseconds ago. The 
 	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3()
 	at java.lang.Thread.run()
 
+[2020-05-31 14:13:02 CEST] [Exception] Exception message: 
+/C:/Users/krist/Documents/GitHub/MySport/src/main/resources/view/LoginRich.fxml
+
+[2020-05-31 14:13:02 CEST] [Exception] 
+	at javafx.fxml.FXMLLoader.constructLoadException()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.loadImpl()
+	at javafx.fxml.FXMLLoader.load()
+	at model.Tools.SceneSwitcher.load()
+	at model.Tools.SceneSwitcher.changeLanguage()
+	at controller.Settings.getLanguage()
+	at controller.Settings.lambda$initialize$0()
+	at java.lang.Thread.run()

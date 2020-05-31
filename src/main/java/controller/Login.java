@@ -7,19 +7,24 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
 import model.App;
 import model.People.User;
+import model.Tools.ArrayList;
 import model.Tools.Colorable;
 import model.Tools.SceneSwitcher;
 import model.Client.mediator.ChatMediatorClient;
 import model.Client.viewModel.ChatClientViewModel;
+import model.Tools.ThreadResult;
 
 import java.io.IOException;
 import java.net.URL;
 import java.rmi.NotBoundException;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class Login implements Initializable, Colorable {
@@ -41,6 +46,12 @@ public class Login implements Initializable, Colorable {
     @FXML
     private Line line0, line1;
 
+    private Boolean emailFormat = true;
+    private String emailStr;
+    private Label passError, emailError;
+
+    private Map<String, ArrayList<String>> emailsList;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         password.focusedProperty().addListener((obs, wasFocused, isNowFocused) -> {
@@ -55,38 +66,52 @@ public class Login implements Initializable, Colorable {
             {
                 App.instance.setScene(SceneSwitcher.instance.getScene("Home"));
                 return;
-            }
-            if(checkEmail() && checkPassword()){
-                int id;
-                if( App.mySqlManager == null){
-                    System.out.println("MySqlManager is null");
-                }
-                if((id = App.mySqlManager.checkCredentials(
-                        email.getText(),
-                        password.getText())) == -1) {
-                    error.setText("Incorrect email or password");
-                    redLines();
-                    return;
-                }
-                email.setText("");
-                password.setText("");
-                error.setText("");
-                User user = App.mySqlManager.getUser(id);
-                App.instance.setSession(user);
-                new Thread(
-                        () -> ((Calendar)SceneSwitcher.instance.getController("Calendar")).loadUser()
-                ).start();
-                SceneSwitcher.controllers.forEach((n, c) -> {
-                    if(c instanceof Menu)
-                        ((Menu)c).buildSessionName();
-                });
-                setupMessaging(user);
-                System.out.println("Finished setting up messaging");
+            } else {
                 App.instance.setScene(SceneSwitcher.instance.getScene("Home"));
-                System.out.println("Redirecting to Home");
-                resetLines();
             }
+
+//            if(checkEmail() && checkPassword()){
+//                int id;
+//                if( App.mySqlManager == null){
+//                    System.out.println("MySqlManager is null");
+//                }
+//                if((id = App.mySqlManager.checkCredentials(
+//                        email.getText(),
+//                        password.getText())) == -1) {
+//                    error.setText("Incorrect email or password");
+//                    redLines();
+//                    return;
+//                }
+//                email.setText("");
+//                password.setText("");
+//                error.setText("");
+//                User user = App.mySqlManager.getUser(id);
+//                App.instance.setSession(user);
+//                new Thread(
+//                        () -> ((Calendar)SceneSwitcher.instance.getController("Calendar")).loadUser()
+//                ).start();
+//                SceneSwitcher.controllers.forEach((n, c) -> {
+//                    if(c instanceof Menu)
+//                        ((Menu)c).buildSessionName();
+//                });
+//                setupMessaging(user);
+//                System.out.println("Finished setting up messaging");
+//                App.instance.setScene(SceneSwitcher.instance.getScene("Home"));
+//                System.out.println("Redirecting to Home");
+//                resetLines();
+//            }
         });
+        email.setOnKeyTyped(this::handle);
+    }
+    private Boolean getEmails(String email) {
+        ArrayList<String> entries = emailsList.get("email");
+
+        for (int i = 0; i < entries.size(); i++) {
+            if (entries.get(i).matches(email)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private boolean checkEmail() {
@@ -164,6 +189,37 @@ public class Login implements Initializable, Colorable {
     public void changeColor(String background, double opacity) {
         this.anchorPane.setStyle(background);
         this.anchorPane.setOpacity(opacity);
+    }
+
+    private void handle(KeyEvent e) {
+        if (email.getText().matches("^[A-Za-z0-9+_.-]+@([A-Za-z0-9]{2,10}\\.)+[A-Za-z]{2,8}$")) {
+            ThreadResult<String, Boolean> emailCheck = new ThreadResult<>(this::getEmails, email.getText());
+            Thread thread = new Thread(emailCheck);
+            thread.start();
+            try {
+                thread.join();
+            } catch (InterruptedException interruptedException) {
+                interruptedException.printStackTrace();
+            }
+            if (emailCheck.getValue()) {
+                emailFormat = false;
+                redLines();
+                emailError.setVisible(true);
+            } else
+                emailFormat = true;
+        } else {
+            emailFormat = false;
+            resetLines();
+            emailError.setVisible(false);
+        }
+
+        if (e.getCode() == KeyCode.BACK_SPACE && email.getText().isEmpty())
+            emailStr = "";
+        else if (e.getCode() == KeyCode.BACK_SPACE && email.getText().length() > 0)
+            emailStr = emailStr.substring(0, emailStr.length() - 2);
+        else
+            emailStr += e.getText();
+
     }
 }
 
