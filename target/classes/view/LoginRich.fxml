@@ -27,14 +27,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginRich">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginRich">
     <children>
         <MediaView fx:id="mediaView" fitHeight="${anchorPane.height}" fitWidth="${anchorPane.height}">
             <rotationAxis>
                 <Point3D />
             </rotationAxis>
         </MediaView>
-        <Pane layoutX="436.0" prefHeight="601.0" prefWidth="450.0" style="-fx-background-color: #ffffff67; -fx-background-radius: 120px;" stylesheets="@css/general.css">
+        <Pane layoutX="436.0" layoutY="12.0" prefHeight="577.0" prefWidth="450.0" style="-fx-background-color: #ffffff67; -fx-background-radius: 120px;" stylesheets="@css/general.css">
             <effect>
                 <DropShadow color="#404040" />
             </effect>
@@ -60,12 +60,12 @@
                             <content>
                                 <AnchorPane prefHeight="405.0" prefWidth="391.0">
                                     <children>
-                                        <JFXButton fx:id="loginButton" buttonType="RAISED" layoutX="103.0" layoutY="261.0" onAction="#handleLoginButton" prefHeight="35.0" prefWidth="231.0" ripplerFill="#ffffff00" style="-fx-background-radius: 50px;" text="%key.login" textFill="WHITE">
+                                        <JFXButton fx:id="loginButton" buttonType="RAISED" layoutX="103.0" layoutY="261.0" onAction="#handleLoginButton" prefHeight="35.0" prefWidth="231.0" ripplerFill="#ffffff00" style="-fx-background-radius: 50px;" text="Log in" textFill="WHITE">
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
                                             </cursor>
                                         </JFXButton>
-                                        <JFXButton fx:id="forgotPasswordButton" buttonType="RAISED" layoutX="128.0" layoutY="197.0" onAction="#handleForgotPasswordAction" prefHeight="43.0" prefWidth="182.0" ripplerFill="WHITE" stylesheets="@css/general.css" text="%key.forgot-password?" textFill="WHITE" underline="true">
+                                        <JFXButton fx:id="forgotPasswordButton" buttonType="RAISED" layoutX="128.0" layoutY="197.0" onAction="#handleForgotPasswordAction" prefHeight="43.0" prefWidth="182.0" ripplerFill="WHITE" stylesheets="@css/general.css" text="Forgot password?" textFill="WHITE" underline="true">
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
                                             </cursor>
@@ -74,7 +74,7 @@
                                                 <String fx:value="darkGrey" />
                                             </styleClass>
                                         </JFXButton>
-                                        <JFXTextField fx:id="usernameTextField" labelFloat="true" layoutX="97.0" layoutY="61.0" prefHeight="43.0" prefWidth="245.0" promptText="%key.username">
+                                        <JFXTextField fx:id="usernameTextField" labelFloat="true" layoutX="97.0" layoutY="61.0" prefHeight="43.0" prefWidth="245.0" promptText="Username">
                                             <font>
                                                 <Font size="14.0" />
                                             </font>
@@ -82,14 +82,14 @@
                                                 <Cursor fx:constant="HAND" />
                                             </cursor>
                                         </JFXTextField>
-                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="USER" glyphStyle=".glyph-icon:hover{ -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 4, 0, 0, 0); }" layoutX="57.0" layoutY="93.0" size="30">
+                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="USER" layoutX="57.0" layoutY="93.0" size="30">
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
                                             </cursor>
                                             <effect>
                                                 <DropShadow />
                                             </effect></FontAwesomeIconView>
-                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="LOCK" glyphStyle=".glyph-icon:hover{ -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 4, 0, 0, 0); }" layoutX="59.0" layoutY="166.0" size="31">
+                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="LOCK" layoutX="59.0" layoutY="166.0" size="31">
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
                                             </cursor>
@@ -102,8 +102,8 @@
                                                 <Cursor fx:constant="HAND" />
                                             </cursor></JFXButton>
                                         <FontAwesomeIconView fill="WHITE" glyphName="FACEBOOK" layoutX="115.0" layoutY="388.0" size="20" text="" wrappingWidth="19.428571701049805" />
-                                        <Text fill="#686863" layoutX="48.0" layoutY="433.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account? " />
-                                        <Label fx:id="labelClickSignUp" layoutX="207.0" layoutY="414.0" text="Click on the SIGN UP tab">
+                                        <Text fill="#686863" layoutX="54.0" layoutY="422.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account? " />
+                                        <Label fx:id="labelClickSignUp" layoutX="207.0" layoutY="404.0" text="Click on the SIGN UP tab">
                                             <font>
                                                 <Font size="16.0" />
                                             </font>
@@ -117,9 +117,7 @@
                                             </textFill>
                                         </Label>
                                         <Separator layoutX="255.0" layoutY="333.0" prefHeight="1.0" prefWidth="110.0" />
-                                        <Text fill="WHITE" layoutX="211.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%key.or" textAlignment="CENTER" />
-
-                                        <Line endX="144.0" layoutX="198.0" layoutY="177.0" startX="-100.0" stroke="#494949" />
+                                        <Text fill="WHITE" layoutX="211.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OR" textAlignment="CENTER" />
 <!--                                        <PeekablePasswordField layoutX="96.0" layoutY="134.0" prefHeight="43.0" prefWidth="245.0" promptText="%key.password" style="-fx-background-color: transparent;" />-->
                                         <Text layoutX="57.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to MySPORT" textAlignment="CENTER" wrappingWidth="327.7386169433594">
                                             <font>
@@ -134,6 +132,10 @@
                                                 </LinearGradient>
                                             </fill>
                                         </Text>
+                              <JFXPasswordField layoutX="97.0" layoutY="139.0" prefHeight="37.0" prefWidth="246.0" promptText="Password">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></JFXPasswordField>
 
                                     </children>
                                 </AnchorPane>
@@ -223,7 +225,7 @@
                                                 <DropShadow />
                                             </effect>
                                         </FontAwesomeIconView>
-                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="PHONE" layoutX="10.0" layoutY="242.0" size="24" text="">
+                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="PHONE" layoutX="10.0" layoutY="242.0" size="24">
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
                                             </cursor>
@@ -255,7 +257,7 @@
                                                 <DropShadow />
                                             </effect>
                                         </FontAwesomeIconView>
-                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="USER" layoutX="10.0" layoutY="87.0" size="24" text="">
+                                        <FontAwesomeIconView fill="#a4a4a1" glyphName="USER" layoutX="10.0" layoutY="87.0" size="24">
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
                                             </cursor>
@@ -263,6 +265,11 @@
                                                 <DropShadow />
                                             </effect>
                                         </FontAwesomeIconView>
+                              <FontAwesomeIconView fill="#a3a3a2" glyphName="SHIELD" layoutX="10.0" layoutY="162.0" size="24">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </FontAwesomeIconView>
 <!--                                        <MaterialDesignIconView fill="#a4a4a1" glyphName="SECURITY" layoutX="7.0" layoutY="163.0" size="24">-->
 <!--                                            <effect>-->
 <!--                                                <DropShadow />-->
@@ -304,6 +311,5 @@
                 </Group>
             </children>
         </Pane>
-        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="185.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true" />
     </children>
 </AnchorPane>
