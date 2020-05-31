@@ -60,12 +60,10 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     private boolean flag = true, editor = false, modified = false, altDown = false;
     private static LocalDate currentWeek;
     private static ArrayList<WeekProperties> weeks;
-    private static MongoManager.Day today;//Today's sports COULD BE NULL because there might not be any sports for today
 
     static {
         currentWeek = LocalDate.now();
         weeks = new ArrayList<>(3);
-        today = App.mongoManager.getDay(currentWeek);
     }
 
     @Override
@@ -427,8 +425,8 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
                         sport,
                         getMinutes(Integer.parseInt((String)props.get("hf")), Integer.parseInt((String)props.get("mf")))
                 );
-                if(currentWeek.equals(LocalDate.now()))
-                    today.removeActivity(sport);
+//                if(currentWeek.equals(LocalDate.now()))
+//                    today.removeActivity(sport);
             });
             removing.start();
             int[] cords = getNodeCords(pane);
