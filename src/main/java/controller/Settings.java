@@ -38,7 +38,6 @@ public class Settings extends Menu implements Initializable {
     @FXML
     public Button buttonAbout, saveButton;
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

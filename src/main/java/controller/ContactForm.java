@@ -30,6 +30,7 @@ public class ContactForm extends Menu implements Initializable {
         send.setOnAction(event -> {
 
             Mailer.sendMail(email.getText(), username ,message.getText(), name.getText());
+            clearFields();
 
         });
 
