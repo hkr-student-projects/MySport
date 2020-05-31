@@ -68,35 +68,40 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Thread thread = new Thread(() -> {
-            loadWeeksDB();
-            loadTable(0);
-            fillWeek(0);
-            bindTab(this);
-        });
-        thread.start();
-        gridPaneFast = new Node[gridPane.getRowConstraints().size()][gridPane.getColumnConstraints().size()];
-        //gridPane.setOnMousePressed(e -> modified = true);
-        prev.setOnMouseClicked(e -> {
-            loadTable(-7);//currentWeek unmodified
-            fillWeek(-7);//currentWeek modified
-            modified = false;
-        });
-        next.setOnMouseClicked(e -> {
-            loadTable(7);//currentWeek unmodified
-            fillWeek(7);//currentWeek modified
-            modified = false;
-        });
-        SceneSwitcher.addListener("Calendar", EventType.ON_KEY_PRESSED, e -> {
-             if(e.getCode() == KeyCode.ALT) altDown = true;
-        });
-        SceneSwitcher.addListener("Calendar", EventType.ON_KEY_RELEASED, e -> {
-            if(e.getCode() == KeyCode.ALT) altDown = false;
-        });
-        //loadSports(new String[] { "Chess", "Volleyball" });
-        try {
-            thread.join();
-        } catch (InterruptedException e) {
+        try{
+            Thread thread = new Thread(() -> {
+                loadWeeksDB();
+                loadTable(0);
+                fillWeek(0);
+                bindTab(this);
+            });
+            thread.start();
+            gridPaneFast = new Node[gridPane.getRowConstraints().size()][gridPane.getColumnConstraints().size()];
+            //gridPane.setOnMousePressed(e -> modified = true);
+            prev.setOnMouseClicked(e -> {
+                loadTable(-7);//currentWeek unmodified
+                fillWeek(-7);//currentWeek modified
+                modified = false;
+            });
+            next.setOnMouseClicked(e -> {
+                loadTable(7);//currentWeek unmodified
+                fillWeek(7);//currentWeek modified
+                modified = false;
+            });
+            SceneSwitcher.addListener("Calendar", EventType.ON_KEY_PRESSED, e -> {
+                if(e.getCode() == KeyCode.ALT) altDown = true;
+            });
+            SceneSwitcher.addListener("Calendar", EventType.ON_KEY_RELEASED, e -> {
+                if(e.getCode() == KeyCode.ALT) altDown = false;
+            });
+            //loadSports(new String[] { "Chess", "Volleyball" });
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                Logger.logException(e);
+            }
+        }
+        catch(Exception e){
             Logger.logException(e);
         }
     }
