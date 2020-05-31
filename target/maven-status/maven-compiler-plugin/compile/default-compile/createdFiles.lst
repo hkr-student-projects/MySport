@@ -15,6 +15,7 @@ model\Localization\Localization.class
 model\PasswordUnmasking\PeekablePasswordFieldSkin$2.class
 model\Tools\Expression.class
 model\PasswordUnmasking\PeekablePasswordField.class
+model\Tools\FadeTransition.class
 model\Logging\QueryQueue.class
 model\Database\MySqlManager$QueryType.class
 model\PasswordUnmasking\PeekablePasswordFieldSkin$1.class
