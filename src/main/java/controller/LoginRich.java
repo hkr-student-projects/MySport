@@ -249,9 +249,9 @@ public class LoginRich implements Initializable {
 //            );
             App.instance.setSession(new Member(
                     -1,
-                    user.getFirstName(),
-                    user.getMiddleName(),
-                    user.getLastName(),
+                    "Robin",
+                    "Leif",
+                    "Andersen",
                     "12341212-1234",
                     generatePhone(),
                     LocalDate.now()
