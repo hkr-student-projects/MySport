@@ -94,7 +94,7 @@ public class LoginRich implements Initializable {
         mediaView.fitWidthProperty().bind(anchorPane.widthProperty());
         mediaView.fitHeightProperty().bind(anchorPane.heightProperty());
 
-        Rectangle2D viewportRect = new Rectangle2D(500, 200, 799, 462);
+        Rectangle2D viewportRect = new Rectangle2D(500, 200, 900, 600);
         mediaView.setViewport(viewportRect);
 
         player.setVolume(0);
