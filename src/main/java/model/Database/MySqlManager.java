@@ -7,6 +7,7 @@ import model.People.User;
 import model.Tools.ArrayList;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -39,7 +40,7 @@ public class MySqlManager {
         checkSchema();
     }
 
-    public void addAccount(String name, String middlename, String surname, String ssn, String mobile, String email, String password, Date birthday) {
+    public void addAccount(String name, String middlename, String surname, String ssn, String mobile, String email, String password, LocalDate birthday) {
         executeQuery(QueryType.UPDATE, "INSERT INTO "+member+" (name, middlename, surname, ssn, mobile, birthday) " +
                 "VALUES (?, ?, ?, ?, ?, ?);" +
                 "INSERT INTO "+account+" (email, password) " +

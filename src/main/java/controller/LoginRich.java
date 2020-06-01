@@ -219,15 +219,16 @@ public class LoginRich implements Initializable {
         System.out.println("user.getBirthday(): " + user.getBirthday());
         if (stage != null) {
 
-            App.instance.setSession(new Member(
-                    -1,
-                    "Robin",
-                    "Leif",
-                    "Andersen",
+            App.mySqlManager.addAccount(user.getFirstName(),
+                    user.getMiddleName(),
+                    user.getLastName(),
                     "12341212-1234",
                     generatePhone(),
+                    user.getEmail(),
+                    "",
                     LocalDate.now()
-            ));
+
+            );
             ((Calendar) SceneSwitcher.instance.getController("Calendar")).loadUser();
             SceneSwitcher.controllers.forEach((n, c) -> {
                 if (c instanceof Menu) {

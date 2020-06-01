@@ -97,7 +97,7 @@ public class Config{
         languageCode = "en";
         DatabaseAddress = "jdbc:mysql://localhost/mysport?&allowMultiQueries=true&serverTimezone=Europe/Stockholm&autoReconnect=true&useSSL=false";
         DatabaseUsername = "root";
-        DatabasePassword = "";
+        DatabasePassword = "root";
         DatabaseName = "mysport";
         DatabasePort = 3306;
         writeConfig();
