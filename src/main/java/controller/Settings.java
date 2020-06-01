@@ -19,9 +19,7 @@ import model.Tools.SceneSwitcher;
 
 import java.io.File;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Locale;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class Settings extends Menu implements Initializable {
     @FXML
@@ -29,7 +27,7 @@ public class Settings extends Menu implements Initializable {
     @FXML
     private ColorPicker colorPicker;
     @FXML
-    private JFXComboBox languages;
+    private JFXComboBox languages, themes;
     private Locale locale;
     @FXML
     private Button about, save;
@@ -59,6 +57,8 @@ public class Settings extends Menu implements Initializable {
 
         bindTab(this);
         colorPicker.setValue(Color.valueOf("#763dee"));
+        themes.setItems(FXCollections.observableArrayList(List.of("Login", "LoginRich")));
+        themes.setOnAction(e -> App.login = String.valueOf(themes.getValue()));
         languages.setItems(getLanguages());
         languages.setOnAction(e -> {
             User user = App.instance.getSession();

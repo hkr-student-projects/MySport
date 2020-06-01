@@ -6,7 +6,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
@@ -37,45 +36,52 @@ public class CreateAccount implements Initializable, Colorable {
     @FXML
     private Label passError, emailError;
     private boolean emailFormat = true;
-    private String emailStr;
     private Map<String, model.Tools.ArrayList<String>> emailsList;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Thread getEmails = new Thread(() -> emailsList = App.mySqlManager.getEmails());
+        getEmails.start();
         addFocusStyle(new TextField[]{firstname, middlename, surname, ssn, mobile, email, password, repassword},
                 line0, line1, line2, line3, line4, line5, line6, line7
         );
-        emailsList = App.mySqlManager.getEmails();
         email.setOnKeyTyped(e -> {
-                if (email.getText().matches("^[A-Za-z0-9+_.-]+@([A-Za-z0-9]{2,10}\\.)+[A-Za-z]{2,8}$")) {
-                    ThreadResult<String, Boolean> emailCheck = new ThreadResult<>(this::getEmails, email.getText());
-                    Thread thread = new Thread(emailCheck);
-                    thread.start();
-                    try {
-                        thread.join();
-                    } catch (InterruptedException interruptedException) {
-                        interruptedException.printStackTrace();
-                    }
-                    if (emailCheck.getValue()) {
-                        emailFormat = false;
-                        redLine(line5);
-                        emailError.setVisible(true);
-                    } else
-                        emailFormat = true;
-                } else {
-                    emailFormat = false;
-                    resetLine(line5);
-                    emailError.setVisible(false);
+            if (email.getText().matches("^[A-Za-z0-9+_.-]+@([A-Za-z0-9]{2,10}\\.)+[A-Za-z]{2,8}$")) {
+                ThreadResult<String, Boolean> emailCheck = new ThreadResult<>(this::existsEmail, email.getText());
+                Thread thread = new Thread(emailCheck);
+                thread.start();
+                try {
+                    thread.join();
+                } catch (InterruptedException ex) {
+                    ex.printStackTrace();
                 }
-
-                if (e.getCode() == KeyCode.BACK_SPACE && email.getText().isEmpty())
-                    emailStr = "";
-                else if (e.getCode() == KeyCode.BACK_SPACE && email.getText().length() > 0)
-                    emailStr = emailStr.substring(0, emailStr.length() - 2);
-                else
-                    emailStr += e.getText();
-
+                if (emailCheck.getValue()) {
+                    emailFormat = false;
+                    emailError.setVisible(true);
+                    redLine(line5);
+                } else {
+                    emailFormat = true;
+                    emailError.setVisible(false);
+                    resetLine(line5);
+                }
+            }
+            else
+                emailFormat = false;
         });
+        try {
+            getEmails.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private Boolean existsEmail(String email) {
+        ArrayList<String> entries = emailsList.get("email");
+
+        for (int i = 0; i < entries.size(); i++)
+            if (entries.get(i).equals(email))
+                return true;
+        return false;
     }
 
     private void addFocusStyle(TextField[] fields, Line... lines) {
@@ -98,16 +104,16 @@ public class CreateAccount implements Initializable, Colorable {
 //        return App.mySqlManager.existsEmail(email);
 //    }
 
-    private Boolean getEmails(String email) {
-        ArrayList<String> entries = emailsList.get("email");
-
-        for (int i = 0; i < entries.size(); i++) {
-            if (entries.get(i).matches(email)) {
-                return true;
-            }
-        }
-        return false;
-    }
+//    private Boolean getEmails(String email) {
+//        ArrayList<String> entries = emailsList.get("email");
+//
+//        for (int i = 0; i < entries.size(); i++) {
+//            if (entries.get(i).matches(email)) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 
     private void resetLine(Line line) {
         line.setStroke(Paint.valueOf("#000000"));
@@ -170,6 +176,7 @@ public class CreateAccount implements Initializable, Colorable {
                 & fieldCheck(surname, naming, line2) & fieldCheck(ssn, "\\d{8}\\-\\d{4}", line3) & fieldCheck(mobile, "\\+\\d{3}\\-\\d{3}\\-\\d{2}\\-\\d{2}", line4)
                 & emailFormat & passwordCheck() & dateCheck()
         ) {
+            ((Login) SceneSwitcher.instance.getController("Login")).addEmail(email.getText());
             new Thread(() -> App.mySqlManager.addAccount(firstname.getText(), middlename.getText(), surname.getText(), ssn.getText(), mobile.getText(), email.getText(), password.getText(), Date.valueOf(birthday.getValue()))).start();
             App.instance.setScene(SceneSwitcher.instance.getScene("Login"));
         }

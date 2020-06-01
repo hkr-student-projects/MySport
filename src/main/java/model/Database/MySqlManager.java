@@ -18,14 +18,13 @@ public class MySqlManager {
     private final String leader = "`" + App.config.DatabaseName + "`.`leader`";
     private final String account = "`" + App.config.DatabaseName + "`.`account`";
     private final String schedule = "`" + App.config.DatabaseName + "`.`schedule`";
-    private final String leader_has_activity = "`" + App.config.DatabaseName + "`.`leader_has_activity`";
+    private final String leader_activity = "`" + App.config.DatabaseName + "`.`leader_activity`";
     private final String activity = "`" + App.config.DatabaseName + "`.`activity`";
     private final String conversation = "`" + App.config.DatabaseName + "`.`conversation`";
     private final String conversationMessage = "`" + App.config.DatabaseName + "`.`conversation_message`";
     private final String message = "`" + App.config.DatabaseName + "`.`message`";
-    private final String userConversation = "`" + App.config.DatabaseName + "`.`user_conversation`";
+    private final String memberConversation = "`" + App.config.DatabaseName + "`.`member_conversation`";
     private final String resetpwtoken = "`" + App.config.DatabaseName + "`.`resetpwtoken`";
-    private final String userlogon = "`" + App.config.DatabaseName + "`.`userlogon`";
 
     static {
         try{
@@ -145,7 +144,7 @@ public class MySqlManager {
         ArrayList<Object> entries = leaderData.get("member_id");
         if(entries.size() != 0){
             Map<String, ArrayList<Object>> activities = (Map<String, ArrayList<Object>>)executeQuery(QueryType.READER,
-                    "SELECT name FROM "+activity+" JOIN "+leader_has_activity+" ON leader_member_id = ? AND activity_id = id",
+                    "SELECT name FROM "+activity+" JOIN "+ leader_activity +" ON leader_member_id = ? AND activity_id = id",
                     new Object[] { id },
                     new int[] { Types.INTEGER }
             );
@@ -248,9 +247,9 @@ public class MySqlManager {
                     "`ssn` CHAR(13) NOT NULL," +
                     "`mobile` VARCHAR(25) NOT NULL," +
                     "`birthday` DATE NOT NULL," +
-                    "`gender` VARCHAR(7) NOT NULL,\n" +
-                    "`address` VARCHAR(128) NOT NULL,\n" +
-                    "`nic` VARCHAR(10) NOT NULL,\n" +
+//                    "`gender` VARCHAR(7) NOT NULL,\n" +
+//                    "`address` VARCHAR(128) NOT NULL,\n" +
+//                    "`nic` VARCHAR(10) NOT NULL,\n" +
                     "PRIMARY KEY (`id`));" +
                     "CREATE TABLE IF NOT EXISTS "+account+" (\n" +
                     "  `member_id` INT NOT NULL AUTO_INCREMENT,\n" +
@@ -282,7 +281,7 @@ public class MySqlManager {
                     "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
                     "  `week` BLOB NOT NULL,\n" +
                     "  PRIMARY KEY (`id`));" +
-                    "  CREATE TABLE IF NOT EXISTS "+leader_has_activity+" (\n" +
+                    "  CREATE TABLE IF NOT EXISTS "+ leader_activity +" (\n" +
                     "  `leader_member_id` INT NOT NULL,\n" +
                     "  `activity_id` INT NOT NULL,\n" +
                     "  PRIMARY KEY (`leader_member_id`, `activity_id`),\n" +
@@ -301,11 +300,6 @@ public class MySqlManager {
                     "CREATE TABLE IF NOT EXISTS "+conversation+" (\n" +
                     "  `id` INT(11) NOT NULL AUTO_INCREMENT,\n" +
                     "  PRIMARY KEY (`id`));"+
-                    "CREATE TABLE IF NOT EXISTS "+conversationMessage+" (" +
-                    "  `id` INT(11) NOT NULL AUTO_INCREMENT,\n" +
-                    "  `conversation_id` INT(11) NOT NULL,\n" +
-                    "  `message_id` INT(11) NOT NULL,\n" +
-                    "  PRIMARY KEY (`id`));" +
                     "CREATE TABLE IF NOT EXISTS "+message+" (\n" +
                     "  `id` INT(11) NOT NULL AUTO_INCREMENT,\n" +
                     "  `fromMobile` VARCHAR(45) NOT NULL,\n" +
@@ -313,22 +307,46 @@ public class MySqlManager {
                     "  `message` VARCHAR(1000) NOT NULL,\n" +
                     "  `timestamp` TIMESTAMP NOT NULL,\n" +
                     "  PRIMARY KEY (`id`));" +
-                    "CREATE TABLE IF NOT EXISTS "+userConversation+" (\n" +
-                    "  `id` INT(11) NOT NULL AUTO_INCREMENT,\n" +
-                    "  `user_id` INT(11) NOT NULL,\n" +
+                    "CREATE TABLE IF NOT EXISTS "+conversationMessage+" (\n" +
+                    "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
                     "  `conversation_id` INT(11) NOT NULL,\n" +
-                    "  PRIMARY KEY (`id`));" +
+                    "  `message_id` INT(11) NOT NULL,\n" +
+                    "  PRIMARY KEY (`id`),\n" +
+                    "  INDEX `fk_conversation_has_message_message1_idx` (`message_id` ASC),\n" +
+                    "  INDEX `fk_conversation_has_message_conversation1_idx` (`conversation_id` ASC),\n" +
+                    "  CONSTRAINT `fk_conversation_has_message_conversation1`\n" +
+                    "    FOREIGN KEY (`conversation_id`)\n" +
+                    "    REFERENCES "+conversation+" (`id`)\n" +
+                    "    ON DELETE CASCADE\n" +
+                    "    ON UPDATE CASCADE,\n" +
+                    "  CONSTRAINT `fk_conversation_has_message_message1`\n" +
+                    "    FOREIGN KEY (`message_id`)\n" +
+                    "    REFERENCES "+message+" (`id`)\n" +
+                    "    ON DELETE CASCADE\n" +
+                    "    ON UPDATE CASCADE);" +
+                    "CREATE TABLE IF NOT EXISTS "+memberConversation+" (\n" +
+                    "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
+                    "  `member_id` INT(11) NOT NULL,\n" +
+                    "  `conversation_id` INT(11) NOT NULL,\n" +
+                    "  INDEX `fk_member_has_conversation_conversation1_idx` (`conversation_id` ASC),\n" +
+                    "  INDEX `fk_member_has_conversation_member1_idx` (`member_id` ASC),\n" +
+                    "  PRIMARY KEY (`id`),\n" +
+                    "  CONSTRAINT `fk_member_has_conversation_member1`\n" +
+                    "    FOREIGN KEY (`member_id`)\n" +
+                    "    REFERENCES "+member+" (`id`)\n" +
+                    "    ON DELETE CASCADE\n" +
+                    "    ON UPDATE CASCADE,\n" +
+                    "  CONSTRAINT `fk_member_has_conversation_conversation1`\n" +
+                    "    FOREIGN KEY (`conversation_id`)\n" +
+                    "    REFERENCES "+conversation+" (`id`)\n" +
+                    "    ON DELETE CASCADE\n" +
+                    "    ON UPDATE CASCADE);" +
                     "CREATE TABLE IF NOT EXISTS "+resetpwtoken+" (\n" +
                     "  `id` INT(11) NOT NULL AUTO_INCREMENT,\n" +
                     "  `email` VARCHAR(45) NULL DEFAULT NULL,\n" +
                     "  `token` VARCHAR(45) NULL DEFAULT NULL,\n" +
                     "  `futuredate` TIMESTAMP NULL DEFAULT NULL,\n" +
-                    "  PRIMARY KEY (`id`));" +
-                    "CREATE TABLE IF NOT EXISTS "+userlogon+" (\n" +
-                    "  `userid` INT(11) NOT NULL AUTO_INCREMENT,\n" +
-                    "  `email` VARCHAR(255) NULL DEFAULT NULL,\n" +
-                    "  `password` BLOB NOT NULL,\n" +
-                    "  PRIMARY KEY (`userid`));"
+                    "  PRIMARY KEY (`id`));"
             );
         }
         catch (Exception ex){

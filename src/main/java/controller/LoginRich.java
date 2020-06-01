@@ -34,11 +34,14 @@ import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.App;
+import model.People.Member;
 import model.Tools.SceneSwitcher;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 import static com.restfb.logging.RestFBLogger.CLIENT_LOGGER;
@@ -215,16 +218,51 @@ public class LoginRich implements Initializable {
         stage.show();
     }
 
-    public void goToNextScene(String accessToken) throws Exception {
-        FacebookClient client = new DefaultFacebookClient(accessToken, Version.LATEST);
-        User user = null;
-        try {
-            user = client.fetchObject("me", User.class, Parameter.with("fields", "name,email"));
+    private String generatePhone(){
+        Random rand = new Random();
+        return String.format("+0%s%s-%s%s%s-%s%s-%s%s",
+                rand.nextInt(10),
+                rand.nextInt(10),
+                rand.nextInt(10),
+                rand.nextInt(10),
+                rand.nextInt(10),
+                rand.nextInt(10),
+                rand.nextInt(10),
+                rand.nextInt(10),
+                rand.nextInt(10)
+        );
+    }
 
-        } catch (FacebookException ignored) {
-        }
+    public void goToNextScene(String accessToken) {
+        FacebookClient client = new DefaultFacebookClient(accessToken, Version.LATEST);
+        User user = client.fetchObject("me", User.class, Parameter.with("fields", "name,email"));;
+        System.out.println("user.getBirthday(): " + user.getBirthday());
         if (stage != null) {
-            App.instance.setScene(SceneSwitcher.instance.getScene("Account"));
+//            App.mySqlManager.addAccount(user.getFirstName(),
+//                    user.getMiddleName(),
+//                    user.getLastName(),
+//                    "12341212-1234",
+//                    generatePhone(),
+//                    user.getEmail(),
+//                    "12345",
+//                    Date
+//            );
+            App.instance.setSession(new Member(
+                    -1,
+                    user.getFirstName(),
+                    user.getMiddleName(),
+                    user.getLastName(),
+                    "12341212-1234",
+                    generatePhone(),
+                    LocalDate.now()
+            ));
+            ((Calendar) SceneSwitcher.instance.getController("Calendar")).loadUser();
+            SceneSwitcher.controllers.forEach((n, c) -> {
+                if (c instanceof Menu) {
+                    ((Menu) c).buildSessionName();
+                }
+            });
+            App.instance.setScene(SceneSwitcher.instance.getScene("Home"));
             //URL url = new File("sample/Account.fxml").toURI().toURL();
             //  File myFile = new File("word.txt");
             //  System.out.println("Attempting to read from file in: "+myFile.getCanonicalPath());

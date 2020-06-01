@@ -62,6 +62,7 @@ public class Login implements Initializable, Colorable {
         signUp.setOnMouseClicked(e -> App.instance.setScene(SceneSwitcher.instance.getScene("CreateAccount")));
         login.setOnMouseClicked(e -> {
             if (toggle.isSelected()) {
+                ((Calendar) SceneSwitcher.instance.getController("Calendar")).loadSports(new String[] { "Chess", "Football", "Boxing" });
                 App.instance.setScene(SceneSwitcher.instance.getScene("Home"));
                 return;
             }
@@ -73,7 +74,7 @@ public class Login implements Initializable, Colorable {
                         email.getText(),
                         password.getText())) == -1) {
                     redLines();
-                    error.setText("Incorrect credentials!");
+                    Platform.runLater(() -> error.setText("Incorrect credentials!"));
 
                     return;
                 }
@@ -108,6 +109,10 @@ public class Login implements Initializable, Colorable {
             if (entries.get(i).equals(email))
                 return true;
         return false;
+    }
+
+    public void addEmail(String email){
+        emailsList.get("email").add(email);
     }
 
 //    private boolean checkEmail() {
@@ -178,8 +183,8 @@ public class Login implements Initializable, Colorable {
             thread.start();
             try {
                 thread.join();
-            } catch (InterruptedException interruptedException) {
-                interruptedException.printStackTrace();
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
             }
             //System.out.println(emailCheck.getValue());
             if (!emailCheck.getValue()) {

@@ -71,7 +71,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
         try{
             Thread thread = new Thread(() -> {
                 loadWeeksDB();
-                loadTable(0);
+                //loadTable(0);
                 fillWeek(0);
                 bindTab(this);
             });
@@ -422,27 +422,27 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             )).start();
         }
         else if(Math.abs(difX) > 50){
-            Thread removing = new Thread(() -> {
-                ObservableMap<Object, Object> props = pane.getProperties();
-                String sport = ((Text)pane.getChildren().get(1)).getText();
-                App.mongoManager.removeActivity(
-                        currentWeek,
-                        sport,
-                        getMinutes(Integer.parseInt((String)props.get("hf")), Integer.parseInt((String)props.get("mf")))
-                );
-//                if(currentWeek.equals(LocalDate.now()))
-//                    today.removeActivity(sport);
-            });
-            removing.start();
+//            Thread removing = new Thread(() -> {
+//                ObservableMap<Object, Object> props = pane.getProperties();
+//                String sport = ((Text)pane.getChildren().get(1)).getText();
+//                App.mongoManager.removeActivity(
+//                        currentWeek,
+//                        sport,
+//                        getMinutes(Integer.parseInt((String)props.get("hf")), Integer.parseInt((String)props.get("mf")))
+//                );
+////                if(currentWeek.equals(LocalDate.now()))
+////                    today.removeActivity(sport);
+//            });
+//            removing.start();
             int[] cords = getNodeCords(pane);
             int span = (int)pane.getProperties().get("span");
             gridPane.getChildren().remove(pane);
             addBetween(cords[0], cords[0] + span - 1, cords[1]);
-            try {
-                removing.join();
-            } catch (InterruptedException e) {
-                Logger.logException(e);
-            }
+//            try {
+//                removing.join();
+//            } catch (InterruptedException e) {
+//                Logger.logException(e);
+//            }
         }
     }
 
@@ -770,7 +770,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
 
     private Pane createPane(boolean trackable){
         Pane p = new Pane();
-        p.getStylesheets().add("/view/css/general.css");
+        p.getStylesheets().add("view/css/general.css");
         p.getStyleClass().add("pane");
         if(trackable)
             p.setOnMouseClicked(e -> buildActivity(p));
@@ -824,13 +824,13 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
     }
 
     public void loadUser(){
-        if(App.instance.getSession().getClass() == Member.class)
-            return;
-        loadSports(((Leader)App.instance.getSession()).getLeaderOf());
+        editor = App.instance.getSession().getClass() == Leader.class;//strict order
+        loadTable(0);//strict order
+        if(editor)
+            loadSports(((Leader)App.instance.getSession()).getLeaderOf());
     }
 
-    private void loadSports(String[] sports){
-        editor = true;
+    public void loadSports(String[] sports){
         adjust.setDisable(false);
         adjust.setVisible(true);
         adjust.setOnMouseClicked(e -> {

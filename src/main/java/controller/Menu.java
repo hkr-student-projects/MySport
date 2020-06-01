@@ -7,13 +7,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import model.App;
-import model.Logging.Logger;
 import model.People.Leader;
 import model.People.User;
-import java.util.ArrayList;
-
 import model.Tools.Colorable;
 import model.Tools.SceneSwitcher;
+
+import java.util.ArrayList;
 
 public abstract class Menu implements Colorable {
     @FXML
@@ -105,7 +104,7 @@ public abstract class Menu implements Colorable {
 //                Logger.logException(ex);
 //            }
             onBeforeLogout();
-            App.instance.setScene(SceneSwitcher.instance.getScene("Login"));
+            App.instance.setScene(SceneSwitcher.instance.getScene(App.login));
         });
     }
 
