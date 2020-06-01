@@ -83,10 +83,7 @@ public class ChatClientViewModel implements LocalListener<User, Message, Convers
         System.out.println("Putting in the new messages");
 
         conversationMessagesList.forEach(i -> {
-            //if(i.getId() != 0) {
-                //System.out.println("Message ID is " + i.getId());
-                Platform.runLater(() -> conversationMessages.add(new MessageRowData(i)));
-           // }
+            Platform.runLater(() -> conversationMessages.add(new MessageRowData(i)));
         });
         previousMessageID = -1;
     }

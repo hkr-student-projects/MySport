@@ -10,7 +10,7 @@ public class Mailer {
     public static void sendMail(String sender, String recipients, String textMessage, String subject) {
 
         final String username = "mysport.hkr@gmail.com";
-        final String password = "Pa55W0rd";
+        final String password = "";
 
         Properties prop = new Properties();
         prop.put("mail.smtp.host", "smtp.gmail.com");
@@ -31,7 +31,6 @@ public class Mailer {
             message.setFrom(new InternetAddress(sender));
             message.setRecipients(
                     Message.RecipientType.TO,
-                    //InternetAddress.parse("petrus.daniel@protonmail.com")
                     InternetAddress.parse(recipients)
             );
             message.setSubject(subject);

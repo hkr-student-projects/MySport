@@ -95,7 +95,6 @@ public class Config{
 
     public void loadDefaults(){
         languageCode = "en";
-       // DatabaseAddress = "jdbc:mysql://localhost/hotel?&allowMultiQueries=true&serverTimezone=Europe/Stockholm&useSSL=false";
         DatabaseAddress = "jdbc:mysql://localhost/mysport?&allowMultiQueries=true&serverTimezone=Europe/Stockholm&autoReconnect=true&useSSL=false";
         DatabaseUsername = "root";
         DatabasePassword = "";

@@ -9,7 +9,6 @@ import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
 import com.restfb.Parameter;
 import com.restfb.Version;
-import com.restfb.exception.FacebookException;
 import com.restfb.scope.ScopeBuilder;
 import com.restfb.types.User;
 import javafx.animation.TranslateTransition;
@@ -21,8 +20,6 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -37,8 +34,6 @@ import model.App;
 import model.People.Member;
 import model.Tools.SceneSwitcher;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.Random;
@@ -123,22 +118,7 @@ public class LoginRich implements Initializable {
                 }
             }
         });
-        //     passwordTextField1.focusedProperty().addListener(new ChangeListener<Boolean>() {
-        //         @Override
-        //         public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-        //             if (!newValue) {
-        //                 passwordTextField1.validate();
-        //             }
-        //         }
-        //     });
 
-//        try {
-//            Image icon = new Image(new FileInputStream("view/img/disapprove.png"));
-//            emailValidator.setIcon(new ImageView(icon));
-//            passwordValidator.setIcon(new ImageView(icon));
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
 
 
         signInTip = new Tooltip("Press SIGN IN to login into MySPORT");
@@ -238,15 +218,7 @@ public class LoginRich implements Initializable {
         User user = client.fetchObject("me", User.class, Parameter.with("fields", "name,email"));;
         System.out.println("user.getBirthday(): " + user.getBirthday());
         if (stage != null) {
-//            App.mySqlManager.addAccount(user.getFirstName(),
-//                    user.getMiddleName(),
-//                    user.getLastName(),
-//                    "12341212-1234",
-//                    generatePhone(),
-//                    user.getEmail(),
-//                    "12345",
-//                    Date
-//            );
+
             App.instance.setSession(new Member(
                     -1,
                     "Robin",
@@ -263,23 +235,7 @@ public class LoginRich implements Initializable {
                 }
             });
             App.instance.setScene(SceneSwitcher.instance.getScene("Home"));
-            //URL url = new File("sample/Account.fxml").toURI().toURL();
-            //  File myFile = new File("word.txt");
-            //  System.out.println("Attempting to read from file in: "+myFile.getCanonicalPath());
 
-            //  Scanner input = new Scanner(myFile);
-            //  String in = "";
-            //  in = input.nextLine();
-
-            //Parent root = FXMLLoader.load(url);
-            //Text lblData = (Text) root.lookup("#welcomeLabel");
-            //if (user != null && lblData != null) {
-            //    lblData.setText("Welcome " + user.getName());
-            //}
-
-            //Scene scene = new Scene(root);
-            //stage.setScene(scene);
-            //stage.show();
         }
     }
     @FXML

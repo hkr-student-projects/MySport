@@ -17,10 +17,7 @@ import java.util.Map;
 @Deprecated(since = "06.05.2020")
 public class Localization {
 
-//    private static String[] _bookingStage;
-//    private static String[] _mainMenu;
-//    private static String[] _bookingInfo;
-//    private static String[] _adminPanel;
+
     private static Map<String, String> bookingInfo;
     private static Map<String, String> booking;
     private static Map<String, String> admin;
@@ -115,21 +112,6 @@ public class Localization {
         }
     }
 
-//    private static void loadDefaults(){
-//        try (FileWriter file = new FileWriter("en.translation.json", false)) {
-//
-//            _translations.put("button_not_found", "Unable to find the button {0} in {1}");
-//            _translations.put("json_format_fail", "Incorrect json in {0}");
-//            _translations.put("field_format_fail", "The field {0} in {1} is empty");
-//            _translations.put("field_empty", "The field {0} in {1} is empty");
-//            _translations.put("login_password_fail", "Login: {0} or password: {1} is incorrect");
-//            _translations.put("keyid_not_found", "KeyID {0} was not found");
-//            file.write(Serialize());
-//            file.flush();
-//
-//        } catch (IOException e) {
-//            Logger.logException(e.getMessage());
-//        }
-//    }
+
 
 }

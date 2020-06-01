@@ -69,7 +69,7 @@ public class Settings extends Menu implements Initializable {
                 if(c instanceof Menu)
                     ((Menu)c).buildSessionName();
             });
-//            Login.setupMessaging(user);
+            Login.setupMessaging(user);
         });
         about.setOnMouseClicked(e -> App.instance.setScene(SceneSwitcher.instance.getScene("About")));
         save.setOnMouseClicked(e -> Menu.changeThemeColor(colorPicker.getValue()));
@@ -93,7 +93,7 @@ public class Settings extends Menu implements Initializable {
 
     private ObservableList<Label> getLanguages() {
         ArrayList<Label> labels = new ArrayList<>();
-        File[] files = new File("src/main/resources/view/img/flags").listFiles();//(dir, name) ->name.toLowerCase().startsWith("flag_")
+        File[] files = new File("src/main/resources/view/img/flags").listFiles();
         for (File f : files) {
             ImageView view = new ImageView(new Image("view/img/flags/" + f.getName() + ""));
             view.setPreserveRatio(true);
@@ -107,10 +107,7 @@ public class Settings extends Menu implements Initializable {
         return FXCollections.observableArrayList(labels);
     }
 
-//    public void changeBackground() {
-//
-////        anchorPane.setBackground(new Background(new BackgroundFill(Paint.valueOf(selectedColor.toString()), CornerRadii.EMPTY, Insets.EMPTY)));
-//    }
+
 
     public void buttonAboutClick() {
         App.instance.setScene(SceneSwitcher.instance.getScene("About"));

@@ -25,9 +25,7 @@ public class Translator{// implements ISerializable<String>, IDeserializable<Has
         //runs before static methods
     }
 
-//    public Translator(){
-//
-//    }
+
 
     public static String translate(String keyID, Object... args){
         for (Map.Entry<String, String> pair : translations.entrySet())
@@ -52,7 +50,7 @@ public class Translator{// implements ISerializable<String>, IDeserializable<Has
     //@Override
     private static void Deserialize(FileReader reader) {
 
-        //HashMap<String, String> tran = new HashMap<String, String>();
+
         try
         {
             JSONParser jsonParser = new JSONParser();
@@ -69,7 +67,7 @@ public class Translator{// implements ISerializable<String>, IDeserializable<Has
             Logger.logException(ex);
         }
 
-        //return tran;
+
     }
 
     private static void loadTranslation(){

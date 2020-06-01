@@ -247,9 +247,7 @@ public class MySqlManager {
                     "`ssn` CHAR(13) NOT NULL," +
                     "`mobile` VARCHAR(25) NOT NULL," +
                     "`birthday` DATE NOT NULL," +
-//                    "`gender` VARCHAR(7) NOT NULL,\n" +
-//                    "`address` VARCHAR(128) NOT NULL,\n" +
-//                    "`nic` VARCHAR(10) NOT NULL,\n" +
+
                     "PRIMARY KEY (`id`));" +
                     "CREATE TABLE IF NOT EXISTS "+account+" (\n" +
                     "  `member_id` INT NOT NULL AUTO_INCREMENT,\n" +
@@ -431,13 +429,3 @@ public class MySqlManager {
         return (Map<String, ArrayList<String>>) executeQuery(QueryType.READER, "SELECT email FROM "+account);
     }
 }
-//    private String[] getColumns(String query){
-//        String var0 = query.trim();
-//        int i = var0.indexOf("FROM");
-//        var0 = var0.substring(7, (i == -1 ? var0.indexOf("from") : i) - 1);
-//        String[] cols = var0.split(",");
-//        String[] colsFormatted = new String[cols.length];
-//        for(int j = 0; j < cols.length; j ++)
-//            colsFormatted[j] = cols[j].trim();
-//        return colsFormatted;
-//    }

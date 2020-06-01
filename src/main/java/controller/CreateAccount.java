@@ -100,20 +100,6 @@ public class CreateAccount implements Initializable, Colorable {
         }
     }
 
-//    private boolean existsEmail(String email) {
-//        return App.mySqlManager.existsEmail(email);
-//    }
-
-//    private Boolean getEmails(String email) {
-//        ArrayList<String> entries = emailsList.get("email");
-//
-//        for (int i = 0; i < entries.size(); i++) {
-//            if (entries.get(i).matches(email)) {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
 
     private void resetLine(Line line) {
         line.setStroke(Paint.valueOf("#000000"));

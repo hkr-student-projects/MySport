@@ -38,9 +38,7 @@ public class SceneSwitcher {
     }
 
     public static void addListener(String sceneName, EventType eventName, EventHandler<? super KeyEvent> handler){
-        //get events and their listeners of particular scene
-        //get current listeners of particular event
-        //add new listener for particular scene
+
         sceneEventHandlers.get(sceneName).get(eventName).add(handler);
     }
 
@@ -100,10 +98,6 @@ public class SceneSwitcher {
             for(int i = 0; i < listeners.size(); i++)
                 listeners.get(i).handle(e);
         });
-//        scenes.get("Calendar").setOnMouseClicked(e -> {
-//            ArrayList<EventHandler<? super KeyEvent>> listeners = sceneEventHandlers.get("Calendar").get(EventType.ON_MOUSE_CLICKED);
-//            for(int i = 0; i < listeners.size(); i++)
-//                listeners.get(i).handle(e);
-//        });
+
     }
 }

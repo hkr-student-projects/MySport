@@ -17,11 +17,6 @@ public class ArrayList<T> {
         size = 0;
     }
 
-//    public ArrayList(Collection<? extends T> c) {
-//        content = c.toArray();
-//        contentID = new Object[content.length];
-//        size = content.length;
-//    }
 
     public ArrayList(int initialCapacity) {
         if (initialCapacity > 0)

@@ -8,15 +8,6 @@ import java.lang.reflect.Parameter;
 
 import static java.lang.System.out;
 
-//public static final String ANSI_RESET = "\u001B[0m";
-//public static final String ANSI_BLACK = "\u001B[30m";
-//public static final String ANSI_RED = "\u001B[31m";
-//public static final String ANSI_GREEN = "\u001B[32m";
-//public static final String ANSI_YELLOW = "\u001B[33m";
-//public static final String ANSI_BLUE = "\u001B[34m";
-//public static final String ANSI_PURPLE = "\u001B[35m";
-//public static final String ANSI_CYAN = "\u001B[36m";
-//public static final String ANSI_WHITE = "\u001B[37m";
 
 enum ELogType{
 
@@ -98,59 +89,6 @@ public class Logger {
        }
    }
 
-//     public static void logUML(Package pack, boolean alsoFields){
-//        //for (Class type : pack.getde)
-//         try(FileWriter writer = new FileWriter(""+ type.getName() +".methods.txt", false))
-//         {
-//             if(alsoFields){
-//                 for(Field field : type.getDeclaredFields()){
-//                     String[] par = field.getAnnotatedType().toString().split("\\.");
-//                     String out = par.length == 0 ? par[0] : par[par.length - 1];
-//                     writer.write(("- " + field.getName() + ": "+ out + "\n"));
-//                 }
-//                 writer.write('\n');
-//             }
-//
-//             for(Method method : type.getDeclaredMethods()){
-//                 String params = "";
-//                 for (Parameter param : method.getParameters()){
-////                     out.println(param.getType());
-////                     out.println(param.getParameterizedType());
-////                     out.println(param.getAnnotatedType());
-////                     out.println('\n');
-////                     class javafx.stage.Stage
-////                     class javafx.stage.Stage
-////                     javafx.stage.Stage
-////
-////
-////                     class java.lang.Class
-////                     java.lang.Class<? extends javafx.application.Application>
-////                     java.lang.Class<? extends javafx.application.Application>
-////
-////
-////                     class [Ljava.lang.String;
-////                     class [Ljava.lang.String;
-////                     java.lang.String[]
-////
-////
-////                     class [Ljava.lang.String;
-////                     class [Ljava.lang.String;
-////                     java.lang.String[]
-//                     String[] par = param.getAnnotatedType().toString().split("\\.");
-//                     String out = par.length == 0 ? par[0] : par[par.length - 1];
-//                     params += "" + param.getName() + ": "+ out +", ";
-//                 }
-//                 String[] par2 = method.getReturnType().toString().split("\\.");
-//                 String out2 = par2.length == 0 ? par2[0] : par2[par2.length - 1];
-//                 params = params.isEmpty() ? params : params.substring(0, params.length() - 2);
-//                 writer.write(("+ " + method.getName() + "(" + params + "): "+ out2 + "\n"));
-//             }
-//             writer.flush();
-//         }
-//         catch(IOException ex){
-//             writeConsole(ex.getMessage(), ELogType.Exception);
-//         }
-//     }
 
     public static void logUML(Class type, boolean alsoFields){
         try(FileWriter writer = new FileWriter(""+ type.getName() +".UML.txt", false))
@@ -167,28 +105,7 @@ public class Logger {
             for(Method method : type.getMethods()){
                 String params = "";
                 for (Parameter param : method.getParameters()){
-//                     out.println(param.getType());
-//                     out.println(param.getParameterizedType());
-//                     out.println(param.getAnnotatedType());
-//                     out.println('\n');
-//                     class javafx.stage.Stage
-//                     class javafx.stage.Stage
-//                     javafx.stage.Stage
-//
-//
-//                     class java.lang.Class
-//                     java.lang.Class<? extends javafx.application.Application>
-//                     java.lang.Class<? extends javafx.application.Application>
-//
-//
-//                     class [Ljava.lang.String;
-//                     class [Ljava.lang.String;
-//                     java.lang.String[]
-//
-//
-//                     class [Ljava.lang.String;
-//                     class [Ljava.lang.String;
-//                     java.lang.String[]
+
                     String[] par = param.getAnnotatedType().toString().split("\\.");
                     String out = par.length == 0 ? par[0] : par[par.length - 1];
                     params += "" + param.getName() + ": "+ out +", ";

@@ -33,29 +33,6 @@ public class MongoManager {
         rootLogger.setLevel(Level.OFF);
     }
 
-//    @Legacy(reason = "Codec needed for converting Document to Day")
-//    public int getParticipation(int year, int[] months, int id){
-//        int sum = 0;
-//        try(MongoClient client = getClient()){
-//            MongoDatabase database = getDatabase(client, year);
-//            for(int month : months){
-//                MongoCollection<Day> monthC = getCollection(client, LocalDate.of(year, month, 1));
-//            }
-//            Day day = collection.find(
-//                    BasicDBObject.parse("{ _id: "+ date.getDayOfMonth()+", \"activities._id\": \""+sport+"\" }")
-//            ).first();
-//            ArrayList list = day.getActivities();//legacy approach sorry
-//            for(Object o : list){
-//                Document activity = (Document) o;
-//                if(activity.getString("_id").equals(sport)){
-//                    sum = activity.getList("members", Integer.class).size() + activity.getList("leaders", Integer.class).size();
-//                    break;
-//                }
-//            }
-//        }
-//
-//        return sum;
-//    }
 
     public void addActivity(LocalDate date, Activity activity){
         try(MongoClient client = getClient()) {
@@ -104,9 +81,6 @@ public class MongoManager {
     }
 
     public UpdateResult removeActivity(LocalDate date, String sport, int startTime){
-//        BasicDBObject selectID = new BasicDBObject("activities",
-//                new BasicDBObject( "_id", sport));
-//        BasicDBObject pull = new BasicDBObject("$pull", selectID);
         try(MongoClient client = getClient()) {
             return getCollection(client, date).updateOne(
                     BasicDBObject.parse("{ _id: " + date.getDayOfMonth() + " }"),
@@ -124,9 +98,6 @@ public class MongoManager {
         }
     }
 
-//    public void printAll(MongoCollection<Day> collection){
-//        collection.find().forEach(System.out::println);
-//    }
 
     private void insertDay(MongoCollection<Day> collection, int dayOfMonth, int dayOfYear){
         collection.insertOne(new Day(dayOfMonth, dayOfYear, new ArrayList<>(5)));
@@ -366,14 +337,3 @@ public class MongoManager {
     }
 }
 
-// Server = years
-// Database = year
-// Collection = Month
-// Document = Day
-
-//db.games.update({'_id': 73}, {$pull: {'goals': {'goal': 4}}})
-//BasicDBObject query = new BasicDBObject("_id", 73);
-//    BasicDBObject fields = new BasicDBObject("goals", 
-//        new BasicDBObject( "goal", 4));
-//    BasicDBObject update = new BasicDBObject("$pull",fields);
-//    games.update( query, update );

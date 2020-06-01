@@ -44,45 +44,7 @@ public class ChatMediator implements RemoteSubject {
         ChatDAO dao = new ChatDAO();
         ChatMediator chatMediator = new ChatMediator(dao);
     }
-/*
-sendMessage
-    insert message into DB and get its ID
-    insert new conversation_message into DB
-    return to Chatmediator
-        Look for Users who are part of this conversation from DB
-        For each User found, search the active listeners Map for Listeners mapped by mobileNumber
-        call receiveMessage method on them
-  addListener
-    receive mobileNumber and Remotelistener
-    put key and value into Map
-  newConversation
-    insert message into DB and get its ID
-    create new conversation and get its ID
-    insert new conversation_message into DB
-    Look for User whose mobileNumber is fromID
-    insert new user_conversation into DB
-    Look for User whose mobileNumber is toID
-    insert new user_conversation into DB
-    return to Chatmediator
-        Look for RemoteListener mapped by mobileNumber in fromID
-        call receiveMessage method on it
-        Look for RemoteListener mapped by mobileNumber in toID
-        call receiveMessage method on it
-  loadConversations
-    Search for User whose mobileNumber is userID supplied
-    Search user_conversation where userid = User.id
-    For each result, load Conversation where id is same
-    return conversations to ChatMediator
-        Look for RemoteListener mapped by mobileNumber in userID
-        call receiveConversations
-  loadTeamMembersContacts
-    load all users in the DB
-    return conversations to ChatMediator
-        Look for RemoteListener mapped by mobileNumber in userID
-        call receiveUsers
 
-
- */
     @Override
     public boolean addListener(String userID, RemoteListener var) throws RemoteException {
         System.out.println("Add listener called on userID: " + userID);
@@ -135,13 +97,7 @@ sendMessage
         if(user != null){
             List<Conversation> conversations = model.getConversationsForUser(user.getId());
             return conversations;
-            /*
-            RemoteListener rm = listenerUserMap.get(user.getMobile());
-            if(rm != null){
-                rm.receiveConversations(conversations);
-            }
 
-             */
         }
         return null;
     }
@@ -150,11 +106,6 @@ sendMessage
         System.out.println("loadTeamMembersContacts called for " + mobileNumber);
         List<User> users = model.getAllUsersNot(mobileNumber);
         return users;
-        //RemoteListener rm = listenerUserMap.get(mobileNumber);
-        /*
-        if(rm != null){
-            rm.receiveUsers(users);
-        }
-         */
+
     }
 }

@@ -23,7 +23,7 @@ import model.App;
 import model.Database.MongoManager;
 import model.Logging.Logger;
 import model.People.Leader;
-import model.People.Member;
+
 import model.Tools.*;
 import model.Tools.Decomposition.Block;
 import model.Tools.Tags.Related;
@@ -422,27 +422,12 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             )).start();
         }
         else if(Math.abs(difX) > 50){
-//            Thread removing = new Thread(() -> {
-//                ObservableMap<Object, Object> props = pane.getProperties();
-//                String sport = ((Text)pane.getChildren().get(1)).getText();
-//                App.mongoManager.removeActivity(
-//                        currentWeek,
-//                        sport,
-//                        getMinutes(Integer.parseInt((String)props.get("hf")), Integer.parseInt((String)props.get("mf")))
-//                );
-////                if(currentWeek.equals(LocalDate.now()))
-////                    today.removeActivity(sport);
-//            });
-//            removing.start();
+
             int[] cords = getNodeCords(pane);
             int span = (int)pane.getProperties().get("span");
             gridPane.getChildren().remove(pane);
             addBetween(cords[0], cords[0] + span - 1, cords[1]);
-//            try {
-//                removing.join();
-//            } catch (InterruptedException e) {
-//                Logger.logException(e);
-//            }
+
         }
     }
 
@@ -528,16 +513,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
             }
         });
     }
-    //  count
-//  week: {year, mon, day}
-// {
-//  row;
-//  col;
-//  span;
-//  color;
-//  time: {hour from, min from, hour to, min to}
-//  sport;
-// }
+
     @Override
     public byte[] serialize(WeekProperties week) {
         Block block = new Block();
@@ -562,16 +538,7 @@ public class Calendar extends Menu implements Initializable, Serializable<Calend
 
         return bytes;
     }
-    //  count
-    //  week: {year, mon, day}
-    // {
-    //  row;
-    //  col;
-    //  span;
-    //  color;
-    //  time: {hour from, min from, hour to, min to}
-    //  sport;
-    // }
+
     @Override
     public WeekProperties deserialize(byte[] bytes) {
         Block block = new Block(bytes);

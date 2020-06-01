@@ -18,21 +18,18 @@ public class ResetCode extends Menu implements Initializable {
     @FXML
     private JFXButton resetButton;
 
-    //UserDAO dao;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //dao = new UserDAO();
+
     }
 
     @FXML
     void handleResetCode(ActionEvent event) {
-//        String resetcode = resetCodeButton.getText();
-//        String email = dao.checkResetToken(resetcode);
-//        if(email != null){
-//            Utilities.resetEmail = email;
+
         App.instance.setScene(SceneSwitcher.instance.getScene("NewPassword"));
-//        }
+
     }
 
     @Override

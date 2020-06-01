@@ -15,101 +15,12 @@ import java.util.List;
 
 public class ChatDAO {
 
-     /*
-    create table userlogon (
-    -> userid integer not null auto_increment,
-    -> email varchar(255),
-    -> password blob not null,
-    -> primary key (userid)
-    -> );
-    DROP TABLE IF EXISTS `member`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-    /*!40101 SET character_set_client = utf8 */;
-  /*  CREATE TABLE `user` (
-            `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
-  `middlename` varchar(45) NOT NULL,
-  `surname` varchar(45) DEFAULT NULL,
-  `ssn` char(13) NOT NULL,
-  `mobile` varchar(25) NOT NULL,
-  `birthday` date NOT NULL,
-    PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8; */
-    /*!40101 SET character_set_client = @saved_cs_client */;
-/*
-    user
-    user_conversation
-    CREATE TABLE `user_conversation` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `conversation_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-)
-    conversation
-    CREATE TABLE `conversation` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`)
-)
-    conversation_message
-  CREATE TABLE `conversation_message` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `conversation_id` int(11) NOT NULL,
-  `message_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-)
-    message
-    CREATE TABLE `message` (
-       `id` int(11) NOT NULL AUTO_INCREMENT,
-       `fromMobile` varchar(45) NOT NULL,
-       `toMobile` varchar(45) NOT NULL,
-       `message` varchar(1000) NOT NULL,
-       `timestamp` timestamp NOT NULL,
-        PRIMARY KEY (`id`)
-  }
 
-  sendMessage
-    insert message into DB and get its ID
-    insert new conversation_message into DB
-    return to Chatmediator
-        Look for Users who are part of this conversation from DB
-        For each User found, search the active listeners Map for Listeners mapped by mobileNumber
-        call receiveMessage method on them
-  addListener
-    receive mobileNumber and Remotelistener
-    put key and value into Map
-  newConversation
-    insert message into DB and get its ID
-    create new conversation and get its ID
-    insert new conversation_message into DB
-    Look for User whose mobileNumber is fromID
-    insert new user_conversation into DB
-    Look for User whose mobileNumber is toID
-    insert new user_conversation into DB
-    return to Chatmediator
-        Look for RemoteListener mapped by mobileNumber in fromID
-        call receiveMessage method on it
-        Look for RemoteListener mapped by mobileNumber in toID
-        call receiveMessage method on it
-  loadConversations
-    Search for User whose mobileNumber is userID supplied
-    Search user_conversation where userid = User.id
-    For each result, load Conversation where id is same
-    return conversations to ChatMediator
-        Look for RemoteListener mapped by mobileNumber in userID
-        call receiveConversations
-  loadTeamMembersContacts
-    load all users in the DB
-    return conversations to ChatMediator
-        Look for RemoteListener mapped by mobileNumber in userID
-        call receiveUsers
-
-
-     */
 
     // JDBC URL, username and password of MySQL server
     private static final String url = "jdbc:mysql://sql3.freemysqlhosting.net/sql3344107?&allowMultiQueries=true&serverTimezone=Europe/Stockholm&useSSL=true";
     private static final String user = "sql3344107";
-    private static final String password = "xhLWE9ssu3";
+    private static final String password = "";
     // JDBC variables for opening and managing connection
     private static Connection connect;
 
